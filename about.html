@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | RM-Engineering</title>
+  <meta name="description" content="RM-Engineering - Recursive Motomasa Engineering について">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="scanlines"></div>
+  <div class="noise"></div>
+
+  <nav>
+    <a href="index.html" class="logo">
+      <span class="logo-bracket">[</span>RM<span class="logo-dot">.</span>ENG<span class="logo-bracket">]</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">_home</a></li>
+      <li><a href="blog.html">_blog</a></li>
+      <li><a href="apps.html">_apps</a></li>
+      <li><a href="about.html" class="active">_about</a></li>
+    </ul>
+    <button class="nav-toggle" onclick="toggleNav()">≡</button>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <span class="page-label">// ABOUT</span>
+    <h1 class="page-title">RM-ENG</h1>
+    <p class="page-desc">Recursive Motomasa Engineering — ソロエンジニアの記録</p>
+  </div>
+
+  <div class="about-container">
+
+    <div class="about-grid">
+      <div class="about-block">
+        <div class="about-block-title">// PROFILE</div>
+        <div>
+          <div class="about-name">基真<br><span style="font-size:1.2rem;color:var(--text-dim);">Motomasa</span></div>
+          <div class="about-handle">@motomasa-honda</div>
+        </div>
+        <p class="about-bio">
+          AI × 自動化 × ソロ開発をテーマに活動するエンジニア。<br><br>
+          Mac mini M4とRX 7900 XTX搭載Linux PCのデュアルマシン構成で、LLMオーケストレーションパイプライン・Kaggle自動化・アプリ自動生成システムを構築中。<br><br>
+          将来的には一人会社（RM-Engineering）を設立し、AI自動化ツールとコンテンツ収益で自走するソロ開発ライフを目指している。
+        </p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="https://github.com/motomasa-honda" target="_blank" class="btn-secondary" style="padding:0.5rem 1rem;font-size:0.8rem;">GitHub</a>
+          <a href="https://zenn.dev" target="_blank" class="btn-secondary" style="padding:0.5rem 1rem;font-size:0.8rem;">Zenn</a>
+          <a href="https://qiita.com" target="_blank" class="btn-secondary" style="padding:0.5rem 1rem;font-size:0.8rem;">Qiita</a>
+        </div>
+      </div>
+
+      <div class="about-block">
+        <div class="about-block-title">// HARDWARE</div>
+        <div class="spec-list">
+          <div class="spec-item">
+            <span class="spec-key">Primary</span>
+            <span class="spec-val">Mac mini M4</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-key">Role</span>
+            <span class="spec-val">司令塔・GitHub push・操作端末</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-key">GPU Server</span>
+            <span class="spec-val">Ubuntu 24.04</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-key">CPU</span>
+            <span class="spec-val">Ryzen 9 9950X (32 threads)</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-key">GPU</span>
+            <span class="spec-val">RX 7900 XTX 24GB</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-key">Network</span>
+            <span class="spec-val">2.5G Ethernet 直結</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-key">LLM Stack</span>
+            <span class="spec-val">Ollama + ROCm</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="skill-section">
+      <div class="skill-section-title">// TECH STACK</div>
+      <div class="skill-grid">
+        <span class="skill-badge highlight">Python</span>
+        <span class="skill-badge highlight">LLM Orchestration</span>
+        <span class="skill-badge highlight">Ollama</span>
+        <span class="skill-badge highlight">ROCm</span>
+        <span class="skill-badge">FastAPI</span>
+        <span class="skill-badge">Streamlit</span>
+        <span class="skill-badge">Node.js</span>
+        <span class="skill-badge">Claude API</span>
+        <span class="skill-badge">Kaggle</span>
+        <span class="skill-badge">Machine Learning</span>
+        <span class="skill-badge">HTML/CSS/JS</span>
+        <span class="skill-badge">Vercel</span>
+        <span class="skill-badge">GitHub Actions</span>
+        <span class="skill-badge">Systemd</span>
+        <span class="skill-badge">Ubuntu</span>
+        <span class="skill-badge">macOS</span>
+      </div>
+    </div>
+
+    <div class="skill-section">
+      <div class="skill-section-title">// GOALS — 中長期ロードマップ</div>
+      <div class="goal-list">
+        <div class="goal-item">
+          <span class="goal-num">01</span>
+          <span class="goal-text">AIエージェント常駐 → 作業記録を毎日GitHub自動連携</span>
+          <span class="goal-done">✅</span>
+        </div>
+        <div class="goal-item">
+          <span class="goal-num">02</span>
+          <span class="goal-text">作業記録から技術記事生成 → Zenn/Qiitaに自動投稿</span>
+          <span class="goal-done" style="color:var(--accent2);">🔜</span>
+        </div>
+        <div class="goal-item">
+          <span class="goal-num">03</span>
+          <span class="goal-text">noteで販売して新収入源を作る</span>
+          <span class="goal-done" style="color:var(--accent2);">🔜</span>
+        </div>
+        <div class="goal-item">
+          <span class="goal-num">04</span>
+          <span class="goal-text">Kaggle自動化 + アプリ自動生成LLMをLinux環境で稼働</span>
+          <span class="goal-done" style="color:var(--accent);">◑</span>
+        </div>
+        <div class="goal-item">
+          <span class="goal-num">05</span>
+          <span class="goal-text">一人会社設立（RM-Engineering）— Mac mini M4 / RX 7900 XTX / Linux PC を経費計上</span>
+          <span class="goal-done" style="color:var(--accent2);">🔜</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-logo">
+      <span class="logo-bracket">[</span>RM<span class="logo-dot">.</span>ENG<span class="logo-bracket">]</span>
+    </div>
+    <p class="footer-sub">Recursive Motomasa Engineering</p>
+    <div class="footer-links">
+      <a href="https://github.com/motomasa-honda" target="_blank">GitHub</a>
+      <a href="https://zenn.dev" target="_blank">Zenn</a>
+      <a href="https://qiita.com" target="_blank">Qiita</a>
+    </div>
+    <p class="footer-copy">© 2026 RM-Engineering. Built with ❤️ + LLM.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apps | RM-Engineering</title>
+  <meta name="description" content="RM-Engineeringが開発したWebアプリ・ツール一覧">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="scanlines"></div>
+  <div class="noise"></div>
+
+  <nav>
+    <a href="index.html" class="logo">
+      <span class="logo-bracket">[</span>RM<span class="logo-dot">.</span>ENG<span class="logo-bracket">]</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">_home</a></li>
+      <li><a href="blog.html">_blog</a></li>
+      <li><a href="apps.html" class="active">_apps</a></li>
+      <li><a href="about.html">_about</a></li>
+    </ul>
+    <button class="nav-toggle" onclick="toggleNav()">≡</button>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <span class="page-label">// PROJECTS & APPS</span>
+    <h1 class="page-title">APPS</h1>
+    <p class="page-desc">AIと自動化を駆使して開発したツール・Webアプリ一覧</p>
+  </div>
+
+  <div class="apps-page-grid">
+
+    <div class="app-page-card">
+      <div class="app-card-header">
+        <div class="app-card-icon">⚙️</div>
+        <div class="app-card-info">
+          <div class="app-card-name">AI Dev Dashboard</div>
+          <div class="app-card-status">● RUNNING</div>
+        </div>
+      </div>
+      <div class="app-card-body">
+        <p class="app-card-desc">GPU/CPU監視・日報自動生成・Kaggle起動・アプリ生成を一元管理するダッシュボード。Ubuntu PC上のFastAPIサーバーとして常駐稼働。</p>
+        <div class="app-card-stack">
+          <span>FastAPI</span><span>Systemd</span><span>Ollama</span><span>Python</span>
+        </div>
+        <div class="app-card-links">
+          <a href="https://github.com/motomasa-honda/dashboard" target="_blank">GitHub →</a>
+          <span style="color:var(--text-dim);font-size:0.8rem;">Internal (192.168.2.2:8765)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-page-card">
+      <div class="app-card-header">
+        <div class="app-card-icon">🤖</div>
+        <div class="app-card-info">
+          <div class="app-card-name">Kaggle Auto Pipeline</div>
+          <div class="app-card-status">● ACTIVE</div>
+        </div>
+      </div>
+      <div class="app-card-body">
+        <p class="app-card-desc">複数LLMがPlanner/Coder/Judge/Fixerを担うKaggle自動最適化システム。Titanic CV 0.8238達成。Claude APIによる2層バリデーター実装済み。</p>
+        <div class="app-card-stack">
+          <span>Python</span><span>Streamlit</span><span>Claude API</span><span>Ollama</span>
+        </div>
+        <div class="app-card-links">
+          <a href="https://github.com/motomasa-honda/kaggle-pipeline" target="_blank">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-page-card">
+      <div class="app-card-header">
+        <div class="app-card-icon">🏭</div>
+        <div class="app-card-info">
+          <div class="app-card-name">App Auto Generator</div>
+          <div class="app-card-status">● ACTIVE</div>
+        </div>
+      </div>
+      <div class="app-card-body">
+        <p class="app-card-desc">プロンプトを入力するだけでdeeseek-r1:32bがHTML5アプリを自動生成。月次バッチで20本生成するbatch_generate.js実装済み。</p>
+        <div class="app-card-stack">
+          <span>Node.js</span><span>Ollama</span><span>deepseek-r1:32b</span>
+        </div>
+        <div class="app-card-links">
+          <a href="https://github.com/motomasa-honda/app-pipeline" target="_blank">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-page-card">
+      <div class="app-card-header">
+        <div class="app-card-icon">🌐</div>
+        <div class="app-card-info">
+          <div class="app-card-name">RM-Engineering 個人サイト</div>
+          <div class="app-card-status">● LIVE</div>
+        </div>
+      </div>
+      <div class="app-card-body">
+        <p class="app-card-desc">このサイト自体。HTML/CSS/JSで構築しVercelにデプロイ。GitHub pushで自動デプロイ。ダークテック系デザイン。</p>
+        <div class="app-card-stack">
+          <span>HTML</span><span>CSS</span><span>JS</span><span>Vercel</span>
+        </div>
+        <div class="app-card-links">
+          <a href="https://github.com/motomasa-honda/personal-site" target="_blank">GitHub →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="app-page-card">
+      <div class="app-card-header">
+        <div class="app-card-icon">📊</div>
+        <div class="app-card-info">
+          <div class="app-card-name">Work Log Auto Publisher</div>
+          <div class="app-card-status wip">◐ PLANNED</div>
+        </div>
+      </div>
+      <div class="app-card-body">
+        <p class="app-card-desc">作業日報からZenn/Qiita記事を自動生成・投稿するパイプライン。LLMが要約・整形・投稿まで全自動化。（開発予定）</p>
+        <div class="app-card-stack">
+          <span>Python</span><span>LLM</span><span>Zenn CLI</span>
+        </div>
+        <div class="app-card-links">
+          <span style="color:var(--text-dim);font-size:0.8rem;">Coming soon...</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-logo">
+      <span class="logo-bracket">[</span>RM<span class="logo-dot">.</span>ENG<span class="logo-bracket">]</span>
+    </div>
+    <p class="footer-sub">Recursive Motomasa Engineering</p>
+    <div class="footer-links">
+      <a href="https://github.com/motomasa-honda" target="_blank">GitHub</a>
+      <a href="https://zenn.dev" target="_blank">Zenn</a>
+      <a href="https://qiita.com" target="_blank">Qiita</a>
+    </div>
+    <p class="footer-copy">© 2026 RM-Engineering. Built with ❤️ + LLM.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

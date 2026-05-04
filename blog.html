@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | RM-Engineering</title>
+  <meta name="description" content="AI・機械学習・自動化に関する技術ブログ by RM-Engineering">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="scanlines"></div>
+  <div class="noise"></div>
+
+  <nav>
+    <a href="index.html" class="logo">
+      <span class="logo-bracket">[</span>RM<span class="logo-dot">.</span>ENG<span class="logo-bracket">]</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">_home</a></li>
+      <li><a href="blog.html" class="active">_blog</a></li>
+      <li><a href="apps.html">_apps</a></li>
+      <li><a href="about.html">_about</a></li>
+    </ul>
+    <button class="nav-toggle" onclick="toggleNav()">≡</button>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <span class="page-label">// TECHNICAL BLOG</span>
+    <h1 class="page-title">BLOG</h1>
+    <p class="page-desc">AI・機械学習・自動化・デュアルマシン開発環境に関する技術記事</p>
+  </div>
+
+  <div class="blog-container">
+    <main>
+      <div class="blog-filter">
+        <button class="filter-btn active" onclick="filterPosts('all', this)">ALL</button>
+        <button class="filter-btn" onclick="filterPosts('AI', this)">AI</button>
+        <button class="filter-btn" onclick="filterPosts('Kaggle', this)">Kaggle</button>
+        <button class="filter-btn" onclick="filterPosts('環境構築', this)">環境構築</button>
+        <button class="filter-btn" onclick="filterPosts('ROCm', this)">ROCm</button>
+        <button class="filter-btn" onclick="filterPosts('自動化', this)">自動化</button>
+      </div>
+
+      <div class="blog-list" id="blog-list">
+
+        <a href="#" class="blog-post-card" data-tags="AI 環境構築">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="post-tag">AI</span>
+              <span class="post-tag">環境構築</span>
+            </div>
+            <div class="blog-post-title">Mac mini M4 + RX 7900 XTX で構築する階層型AI開発環境</div>
+            <div class="blog-post-excerpt">デュアルマシン構成でLLMオーケストレーションパイプラインを構築した記録。Ollamaによるローカルモデル管理からsupervisor.pyの設計まで詳解します。</div>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.05.04</span>
+            <span class="external-badge">Zenn</span>
+          </div>
+        </a>
+
+        <a href="#" class="blog-post-card" data-tags="Kaggle AI 自動化">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="post-tag">Kaggle</span>
+              <span class="post-tag">自動化</span>
+            </div>
+            <div class="blog-post-title">LLMを使ったKaggle自動化パイプラインの設計と実装</div>
+            <div class="blog-post-excerpt">Planner/Coder/Judge/Fixerの役割を複数のLLMに分担させるKaggle最適化システム。CV 0.8238を達成したアーキテクチャを公開。</div>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.04.15</span>
+            <span class="external-badge">Qiita</span>
+          </div>
+        </a>
+
+        <a href="#" class="blog-post-card" data-tags="ROCm 環境構築">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="post-tag">ROCm</span>
+              <span class="post-tag">環境構築</span>
+            </div>
+            <div class="blog-post-title">Ubuntu 24.04 + ROCm で RX 7900 XTX をOllamaに正しく認識させる方法</div>
+            <div class="blog-post-excerpt">ROCR_VISIBLE_DEVICES=0 で内蔵GPU(gfx1036)を除外し、RX 7900 XTXのみをOllamaに使わせる設定。Ryzen 9 9950Xの内蔵GPU問題を解決。</div>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.04.10</span>
+            <span class="external-badge">Zenn</span>
+          </div>
+        </a>
+
+        <a href="#" class="blog-post-card" data-tags="自動化 AI">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="post-tag">自動化</span>
+              <span class="post-tag">AI</span>
+            </div>
+            <div class="blog-post-title">OllamaとNode.jsでHTML5アプリを自動生成するパイプライン</div>
+            <div class="blog-post-excerpt">プロンプトを渡すだけでdeeseek-r1:32bがHTML5アプリを生成・プレビューまで自動化。月次バッチで20本生成するbatch_generate.jsの設計。</div>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.04.01</span>
+            <span class="external-badge">Zenn</span>
+          </div>
+        </a>
+
+        <a href="#" class="blog-post-card" data-tags="環境構築">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="post-tag">環境構築</span>
+            </div>
+            <div class="blog-post-title">Mac mini M4とLinux PCをEthernet直結してSSH+インターネット共有する構成</div>
+            <div class="blog-post-excerpt">Mac miniをルーター兼インターネット共有ホストとして使い、Ubuntu PCとの2.5G LAN直結環境を構築。push_all.sh によるGitHub管理構成も解説。</div>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.03.20</span>
+          </div>
+        </a>
+
+      </div>
+    </main>
+
+    <aside class="blog-sidebar">
+      <div class="sidebar-block">
+        <div class="sidebar-title">// TOPICS</div>
+        <div class="tag-cloud">
+          <span class="tag" onclick="filterPosts('AI', null)">AI</span>
+          <span class="tag" onclick="filterPosts('Kaggle', null)">Kaggle</span>
+          <span class="tag" onclick="filterPosts('ROCm', null)">ROCm</span>
+          <span class="tag" onclick="filterPosts('環境構築', null)">環境構築</span>
+          <span class="tag" onclick="filterPosts('自動化', null)">自動化</span>
+          <span class="tag" onclick="filterPosts('LLM', null)">LLM</span>
+        </div>
+      </div>
+
+      <div class="sidebar-block">
+        <div class="sidebar-title">// EXTERNAL</div>
+        <div style="display:flex;flex-direction:column;gap:0.75rem;">
+          <a href="https://zenn.dev" target="_blank" style="color:var(--text-dim);text-decoration:none;font-size:0.8rem;display:flex;justify-content:space-between;align-items:center;">
+            Zenn <span style="color:var(--accent);font-size:0.7rem;">→</span>
+          </a>
+          <a href="https://qiita.com" target="_blank" style="color:var(--text-dim);text-decoration:none;font-size:0.8rem;display:flex;justify-content:space-between;align-items:center;">
+            Qiita <span style="color:var(--accent);font-size:0.7rem;">→</span>
+          </a>
+          <a href="https://github.com/motomasa-honda" target="_blank" style="color:var(--text-dim);text-decoration:none;font-size:0.8rem;display:flex;justify-content:space-between;align-items:center;">
+            GitHub <span style="color:var(--accent);font-size:0.7rem;">→</span>
+          </a>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <footer>
+    <div class="footer-logo">
+      <span class="logo-bracket">[</span>RM<span class="logo-dot">.</span>ENG<span class="logo-bracket">]</span>
+    </div>
+    <p class="footer-sub">Recursive Motomasa Engineering</p>
+    <div class="footer-links">
+      <a href="https://github.com/motomasa-honda" target="_blank">GitHub</a>
+      <a href="https://zenn.dev" target="_blank">Zenn</a>
+      <a href="https://qiita.com" target="_blank">Qiita</a>
+    </div>
+    <p class="footer-copy">© 2026 RM-Engineering. Built with ❤️ + LLM.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    function filterPosts(tag, btn) {
+      if (btn) {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      }
+      document.querySelectorAll('.blog-post-card').forEach(card => {
+        const tags = card.dataset.tags || '';
+        card.style.display = (tag === 'all' || tags.includes(tag)) ? '' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
