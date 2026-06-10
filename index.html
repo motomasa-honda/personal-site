@@ -1,195 +1,714 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RM-Engineering | Recursive Motomasa Engineering</title>
-  <meta name="description" content="RM-Engineering - AI・機械学習・自動化を専門とするソロエンジニアの技術ブログ＆ポートフォリオ">
-  <meta property="og:title" content="RM-Engineering">
-  <meta property="og:description" content="AI・機械学習・自動化を専門とするソロエンジニアの技術ブログ＆ポートフォリオ">
-  <meta property="og:type" content="website">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="RM-Engineering — AI Agent Infrastructure. Solo developer building autonomous systems for Kaggle, code generation, and beyond.">
+<title>RM-Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:     #050810;
+  --bg1:    #080c18;
+  --bg2:    #0c1220;
+  --bg3:    #101828;
+  --border: #182035;
+  --border2:#223050;
+  --text:   #b8ccec;
+  --text2:  #6a84aa;
+  --text3:  #384c68;
+  --green:  #00e676;
+  --blue:   #4a9eff;
+  --cyan:   #00bcd4;
+  --purple: #b388ff;
+  --amber:  #ffc107;
+  --red:    #ff5252;
+  --mono: 'Space Mono', monospace;
+  --sans: 'Inter', sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* ── BOOT OVERLAY ─────────────────────────── */
+#boot{position:fixed;inset:0;z-index:9999;background:var(--bg);
+  display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
+  padding:60px 80px;font-family:var(--mono);font-size:13px;line-height:2;
+  transition:opacity .5s ease}
+#boot.hide{opacity:0;pointer-events:none}
+.boot-line{color:var(--text3);overflow:hidden;white-space:nowrap;width:0}
+.boot-line.ok   > .bl-status{color:var(--green)}
+.boot-line.warn > .bl-status{color:var(--amber)}
+.bl-label{color:var(--text2)}
+.bl-status{margin-left:8px}
+#boot-cursor{display:inline-block;width:9px;height:16px;background:var(--green);
+  vertical-align:middle;animation:blink .7s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* ── SCANLINE TEXTURE ─────────────────────── */
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9000;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.15) 2px,rgba(0,0,0,.15) 4px);
+  opacity:.4}
+
+/* ── GRID BG ──────────────────────────────── */
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    linear-gradient(rgba(74,158,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(74,158,255,.025) 1px,transparent 1px);
+  background-size:40px 40px}
+
+/* ── NAV ──────────────────────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;
+  height:48px;padding:0 40px;
+  display:flex;align-items:center;
+  background:rgba(5,8,16,.9);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(16px)}
+.nav-logo{font-family:var(--mono);font-size:12px;font-weight:700;
+  color:var(--green);margin-right:auto;text-decoration:none;letter-spacing:2px}
+.nav-logo em{color:var(--text3);font-style:normal}
+.nav-links{display:flex;gap:32px}
+.nav-links a{font-family:var(--mono);font-size:10px;color:var(--text3);
+  text-decoration:none;letter-spacing:1.5px;transition:color .12s}
+.nav-links a:hover{color:var(--text)}
+.nav-pill{display:flex;align-items:center;gap:5px;margin-left:32px;
+  background:rgba(0,230,118,.06);border:1px solid rgba(0,230,118,.18);
+  border-radius:20px;padding:3px 10px 3px 8px;
+  font-family:var(--mono);font-size:9px;color:var(--green);letter-spacing:1px}
+.pulse{width:6px;height:6px;border-radius:50%;background:var(--green);
+  box-shadow:0 0 8px var(--green);animation:pulse 2.4s ease infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.7);opacity:.5}}
+
+/* ── HERO ─────────────────────────────────── */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 480px;
+  align-items:center;gap:60px;
+  padding:100px 80px 80px;max-width:1400px;margin:0 auto;
+  position:relative;z-index:1}
+.hero-eyebrow{font-family:var(--mono);font-size:10px;color:var(--text3);
+  letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;
+  display:flex;align-items:center;gap:10px}
+.hero-eyebrow::after{content:'';flex:1;height:1px;background:var(--border);max-width:80px}
+.hero-name{font-family:var(--mono);font-size:clamp(42px,5.5vw,80px);font-weight:700;
+  line-height:.95;letter-spacing:-2px;color:#dce8ff;margin-bottom:8px}
+.hero-name .g{
+  background:linear-gradient(120deg,var(--blue) 0%,var(--cyan) 50%,var(--purple) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-tagline{font-family:var(--mono);font-size:13px;color:var(--text3);
+  margin-bottom:28px;min-height:20px}
+.hero-tagline .typed{color:var(--cyan)}
+.hero-tagline .caret{display:inline-block;width:8px;height:13px;background:var(--cyan);
+  vertical-align:middle;animation:blink .7s step-end infinite;margin-left:1px}
+.hero-desc{font-size:15px;color:var(--text2);max-width:480px;line-height:1.75;margin-bottom:36px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{font-family:var(--mono);font-size:11px;padding:10px 22px;
+  border-radius:2px;cursor:pointer;text-decoration:none;letter-spacing:1.5px;
+  transition:all .12s;display:inline-flex;align-items:center;gap:8px;border:1px solid}
+.btn-primary{background:var(--blue);color:#fff;border-color:var(--blue)}
+.btn-primary:hover{background:#6ab8ff;box-shadow:0 0 24px rgba(74,158,255,.35)}
+.btn-ghost{background:transparent;color:var(--text2);border-color:var(--border2)}
+.btn-ghost:hover{border-color:var(--blue);color:var(--text)}
+
+/* ── TERMINAL CARD ────────────────────────── */
+.term-card{background:var(--bg1);border:1px solid var(--border2);
+  border-radius:6px;overflow:hidden;font-family:var(--mono);font-size:11.5px;
+  box-shadow:0 0 60px rgba(74,158,255,.08),inset 0 1px 0 rgba(255,255,255,.03)}
+.term-bar{display:flex;align-items:center;gap:7px;padding:10px 14px;
+  background:rgba(0,0,0,.4);border-bottom:1px solid var(--border)}
+.td{width:11px;height:11px;border-radius:50%}
+.td-r{background:#ff5f57}.td-y{background:#febc2e}.td-g{background:#28c840}
+.term-title{font-size:10px;color:var(--text3);margin-left:4px;letter-spacing:1px}
+.term-body{padding:20px;line-height:2;color:var(--text2)}
+.t-prompt{color:var(--text3)}
+.t-cmd{color:var(--green)}
+.t-kw{color:var(--purple)}
+.t-fn{color:var(--cyan)}
+.t-str{color:var(--amber)}
+.t-num{color:var(--blue)}
+.t-comment{color:var(--text3)}
+.t-ok{color:var(--green)}
+.t-dim{color:var(--text3)}
+.t-err{color:var(--red)}
+.t-blank{display:block;height:10px}
+
+/* ── SECTION COMMON ───────────────────────── */
+.section{padding:80px 80px;max-width:1400px;margin:0 auto;position:relative;z-index:1}
+.sec-label{font-family:var(--mono);font-size:9px;color:var(--text3);
+  letter-spacing:3px;text-transform:uppercase;margin-bottom:36px;
+  display:flex;align-items:center;gap:12px}
+.sec-label .sl-num{color:var(--border2)}
+.sec-label::after{content:'';flex:1;height:1px;
+  background:linear-gradient(90deg,var(--border),transparent);max-width:200px}
+
+/* ── STATS ────────────────────────────────── */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  border:1px solid var(--border);border-radius:4px;overflow:hidden;background:var(--border)}
+.stat-cell{background:var(--bg1);padding:28px 24px;position:relative;transition:background .12s}
+.stat-cell:hover{background:var(--bg2)}
+.stat-cell::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:var(--acc)}
+.stat-n{font-family:var(--mono);font-size:44px;font-weight:700;
+  color:var(--acc-color);line-height:1;margin-bottom:4px}
+.stat-l{font-family:var(--mono);font-size:9px;color:var(--text3);
+  letter-spacing:2px;text-transform:uppercase;margin-bottom:2px}
+.stat-s{font-family:var(--mono);font-size:10px;color:var(--text3)}
+
+/* ── KRS-OS SECTION ───────────────────────── */
+.krs-wrapper{background:var(--bg1);border:1px solid var(--border);border-radius:6px;
+  overflow:hidden;position:relative}
+.krs-wrapper::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--blue),var(--purple),var(--cyan),transparent)}
+.krs-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.krs-left{padding:48px;border-right:1px solid var(--border)}
+.krs-right{padding:48px}
+.krs-eyebrow{font-family:var(--mono);font-size:9px;color:var(--purple);
+  letter-spacing:3px;text-transform:uppercase;margin-bottom:14px}
+.krs-h{font-size:26px;font-weight:600;color:#dce8ff;line-height:1.2;margin-bottom:14px;
+  font-family:var(--mono)}
+.krs-desc{font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:28px}
+
+/* evolution path */
+.evo-path{display:flex;align-items:center;gap:0;margin-bottom:36px;flex-wrap:wrap}
+.evo-node{font-family:var(--mono);font-size:10px;padding:6px 14px;border:1px solid;border-radius:2px;letter-spacing:1px}
+.evo-node.done{color:var(--green);border-color:rgba(0,230,118,.3);background:rgba(0,230,118,.06)}
+.evo-node.active{color:var(--blue);border-color:rgba(74,158,255,.4);background:rgba(74,158,255,.08);
+  box-shadow:0 0 16px rgba(74,158,255,.15)}
+.evo-node.future{color:var(--text3);border-color:var(--border)}
+.evo-arr{color:var(--text3);font-family:var(--mono);font-size:12px;padding:0 6px}
+
+/* agent hub */
+.agent-hub{display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
+.agent-card{display:flex;align-items:center;gap:14px;padding:12px 16px;
+  background:var(--bg2);border:1px solid var(--border);border-radius:4px;
+  transition:border-color .12s;cursor:default}
+.agent-card:hover{border-color:var(--border2)}
+.agent-icon{width:36px;height:36px;border-radius:3px;display:flex;align-items:center;
+  justify-content:center;font-family:var(--mono);font-size:14px;flex-shrink:0}
+.ai-kaggle{background:rgba(0,230,118,.1);color:var(--green)}
+.ai-appgen{background:rgba(74,158,255,.08);color:var(--text3)}
+.ai-new{background:rgba(255,255,255,.03);color:var(--text3)}
+.agent-info{flex:1}
+.agent-name{font-family:var(--mono);font-size:12px;color:var(--text);margin-bottom:2px}
+.agent-sub{font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:1px}
+.agent-badge{font-family:var(--mono);font-size:8px;padding:2px 8px;border-radius:20px;
+  letter-spacing:1px;flex-shrink:0}
+.ab-live{background:rgba(0,230,118,.1);color:var(--green);border:1px solid rgba(0,230,118,.2)}
+.ab-soon{background:rgba(255,255,255,.04);color:var(--text3);border:1px solid var(--border)}
+.ab-plus{background:transparent;color:var(--text3);border:1px dashed var(--border)}
+
+/* layer list */
+.layer-list{display:flex;flex-direction:column;gap:4px}
+.layer-row{display:flex;align-items:center;gap:10px;padding:7px 10px;
+  background:var(--bg2);border:1px solid var(--border);border-radius:3px;
+  font-family:var(--mono);font-size:10px;transition:all .12s}
+.layer-row:hover{border-color:var(--border2);background:var(--bg3)}
+.lr-num{color:var(--text3);width:18px;flex-shrink:0}
+.lr-name{color:var(--blue);width:100px;flex-shrink:0}
+.lr-desc{color:var(--text3);flex:1;font-size:9px}
+.lr-tag{font-size:8px;padding:1px 6px;border-radius:2px;letter-spacing:1px;flex-shrink:0}
+.lt-new{color:var(--green);border:1px solid rgba(0,230,118,.25)}
+.lt-core{color:var(--purple);border:1px solid rgba(179,136,255,.25)}
+
+/* ── BLOG ─────────────────────────────────── */
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.blog-card{background:var(--bg1);border:1px solid var(--border);border-radius:4px;
+  padding:22px;cursor:pointer;transition:all .12s;text-decoration:none;display:block;
+  position:relative;overflow:hidden}
+.blog-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.blog-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:var(--card-acc,linear-gradient(90deg,var(--blue),var(--purple)))}
+.blog-meta{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.blog-tag{font-family:var(--mono);font-size:8px;padding:2px 7px;border-radius:2px;
+  letter-spacing:1px}
+.bt-krs{color:var(--purple);background:rgba(179,136,255,.1);border:1px solid rgba(179,136,255,.2)}
+.bt-kaggle{color:var(--green);background:rgba(0,230,118,.08);border:1px solid rgba(0,230,118,.18)}
+.bt-infra{color:var(--cyan);background:rgba(0,188,212,.08);border:1px solid rgba(0,188,212,.18)}
+.blog-date{font-family:var(--mono);font-size:9px;color:var(--text3)}
+.auto-badge{font-family:var(--mono);font-size:8px;color:var(--amber);
+  display:flex;align-items:center;gap:4px;letter-spacing:1px}
+.auto-dot{width:4px;height:4px;border-radius:50%;background:var(--amber);animation:pulse 2s infinite}
+.blog-title{font-size:13px;font-weight:500;color:var(--text);line-height:1.5;
+  margin-bottom:8px}
+.blog-excerpt{font-size:12px;color:var(--text2);line-height:1.65;margin-bottom:14px}
+.blog-footer{display:flex;justify-content:space-between;align-items:center;
+  font-family:var(--mono);font-size:9px;color:var(--text3)}
+.blog-arrow{color:var(--blue);transition:transform .12s}
+.blog-card:hover .blog-arrow{transform:translateX(3px)}
+
+/* ── ROADMAP ──────────────────────────────── */
+.roadmap-wrap{background:var(--bg1);border:1px solid var(--border);
+  border-radius:6px;overflow:hidden}
+.rm-item{display:grid;grid-template-columns:56px 1fr auto;align-items:center;
+  gap:0;padding:20px 28px;border-bottom:1px solid var(--border);
+  transition:background .12s}
+.rm-item:last-child{border-bottom:none}
+.rm-item:hover{background:var(--bg2)}
+.rm-num{font-family:var(--mono);font-size:11px;color:var(--text3);letter-spacing:2px}
+.rm-body{padding:0 16px}
+.rm-title{font-size:13px;font-weight:500;color:var(--text);margin-bottom:2px}
+.rm-desc{font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:.5px}
+.rm-status{font-family:var(--mono);font-size:8px;padding:3px 10px;border-radius:2px;
+  letter-spacing:1.5px;white-space:nowrap}
+.s-done{color:var(--green);background:rgba(0,230,118,.08);border:1px solid rgba(0,230,118,.2)}
+.s-wip{color:var(--amber);background:rgba(255,193,7,.08);border:1px solid rgba(255,193,7,.2)}
+.s-next{color:var(--blue);background:rgba(74,158,255,.08);border:1px solid rgba(74,158,255,.2)}
+.s-plan{color:var(--text3);background:transparent;border:1px solid var(--border)}
+
+/* ── FOOTER ───────────────────────────────── */
+footer{border-top:1px solid var(--border);padding:32px 80px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:relative;z-index:1}
+.foot-logo{font-family:var(--mono);font-size:11px;color:var(--text3);letter-spacing:2px}
+.foot-links{display:flex;gap:24px}
+.foot-links a{font-family:var(--mono);font-size:10px;color:var(--text3);
+  text-decoration:none;letter-spacing:1px;transition:color .12s}
+.foot-links a:hover{color:var(--text)}
+.foot-copy{font-family:var(--mono);font-size:9px;color:var(--text3)}
+
+/* ── DIVIDER ──────────────────────────────── */
+.divider{border:none;border-top:1px solid var(--border);
+  max-width:1400px;margin:0 auto;position:relative;z-index:1}
+
+/* ── RESPONSIVE ───────────────────────────── */
+@media(max-width:1100px){
+  .hero{grid-template-columns:1fr;gap:40px;padding:100px 40px 60px}
+  .term-card{display:none}
+  .krs-grid{grid-template-columns:1fr}
+  .krs-left{border-right:none;border-bottom:1px solid var(--border)}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .blog-grid{grid-template-columns:1fr}
+  .section{padding:60px 40px}
+}
+@media(max-width:640px){
+  nav{padding:0 20px}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  footer{flex-direction:column;gap:16px;text-align:center;padding:24px 20px}
+  .section{padding:48px 20px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  #boot{display:none}
+}
+</style>
 </head>
 <body>
-  <div class="scanlines"></div>
-  <div class="noise"></div>
 
-  <!-- NAV -->
-  <nav>
-    <a href="index.html" class="logo">
-      <span class="logo-bracket">[</span>RM<span class="logo-dot">.</span>ENG<span class="logo-bracket">]</span>
+<!-- BOOT SEQUENCE -->
+<div id="boot">
+  <div style="font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:2px;margin-bottom:24px">
+    RM-ENGINEERING OS v0.1.0 — BOOT SEQUENCE
+  </div>
+  <div id="boot-lines"></div>
+  <div style="margin-top:8px"><span id="boot-cursor"></span></div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="/">RM<em>.ENG</em></a>
+  <div class="nav-links">
+    <a href="#krs">KRS-OS</a>
+    <a href="#blog">Blog</a>
+    <a href="/apps.html">Apps</a>
+    <a href="https://github.com/motomasa-honda" target="_blank">GitHub</a>
+  </div>
+  <div class="nav-pill">
+    <span class="pulse"></span>ONLINE
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">motomasa@rm-eng <span style="color:var(--green)">~</span></div>
+    <div class="hero-name">
+      Building<br><span class="g">Autonomous</span><br>Systems
+    </div>
+    <div class="hero-tagline">
+      <span class="typed" id="typed"></span><span class="caret"></span>
+    </div>
+    <p class="hero-desc">
+      RM-Engineering は、複数LLMをオーケストレートして Kaggle・コード生成・技術記事自動化を動かすソロエンジニアのプロジェクトです。
+    </p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#krs">KRS-OS を見る →</a>
+      <a class="btn btn-ghost" href="https://github.com/motomasa-honda" target="_blank">GitHub</a>
+    </div>
+  </div>
+
+  <!-- Terminal card -->
+  <div class="term-card">
+    <div class="term-bar">
+      <span class="td td-r"></span>
+      <span class="td td-y"></span>
+      <span class="td td-g"></span>
+      <span class="term-title">kaggle_agent.py — krs-core</span>
+    </div>
+    <div class="term-body">
+<span class="t-comment"># KRS-Core v0.1.0</span>
+<br>
+<span class="t-kw">from</span> <span class="t-fn">agents.kaggle_agent</span> <span class="t-kw">import</span> KaggleAgent
+<br>
+<span class="t-kw">from</span> <span class="t-fn">core.router</span> <span class="t-kw">import</span> default_router, TaskType
+<br>
+<span class="t-blank"></span>
+<span class="t-comment"># spin up agent</span>
+<br>
+agent = <span class="t-fn">KaggleAgent</span>()
+<br>
+result = agent.<span class="t-fn">execute</span>({
+<br>
+&nbsp;&nbsp;<span class="t-str">"competition"</span>: <span class="t-str">"titanic"</span>,
+<br>
+&nbsp;&nbsp;<span class="t-str">"iterations"</span>: <span class="t-num">5</span>,
+<br>
+})
+<br>
+<span class="t-blank"></span>
+<span class="t-comment"># result</span>
+<br>
+<span class="t-fn">print</span>(result.output)
+<br>
+<span class="t-blank"></span>
+<span class="t-prompt">&gt;</span> {
+<br>
+<span class="t-prompt">&gt;</span>&nbsp;&nbsp;<span class="t-str">"best_cv"</span>: <span class="t-ok">0.8857</span>,
+<br>
+<span class="t-prompt">&gt;</span>&nbsp;&nbsp;<span class="t-str">"best_lb"</span>: <span class="t-ok">0.7990</span>,
+<br>
+<span class="t-prompt">&gt;</span>&nbsp;&nbsp;<span class="t-str">"skills_applied"</span>: <span class="t-num">12</span>,
+<br>
+<span class="t-prompt">&gt;</span>&nbsp;&nbsp;<span class="t-str">"iterations_done"</span>: <span class="t-num">5</span>,
+<br>
+<span class="t-prompt">&gt;</span> }
+<br>
+<span class="t-blank"></span>
+<span class="t-ok">✓ success</span> <span class="t-dim">elapsed: 847.3s</span>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- STATS -->
+<section class="section" id="stats">
+  <div class="sec-label"><span class="sl-num">01</span> stats // 実績</div>
+  <div class="stats-grid">
+    <div class="stat-cell" style="--acc:linear-gradient(90deg,var(--green),transparent);--acc-color:var(--green)">
+      <div class="stat-l">Skills Extracted</div>
+      <div class="stat-n">207</div>
+      <div class="stat-s">kaggle-kb/skills.json</div>
+    </div>
+    <div class="stat-cell" style="--acc:linear-gradient(90deg,var(--blue),transparent);--acc-color:var(--blue)">
+      <div class="stat-l">Best CV Score</div>
+      <div class="stat-n">0.886</div>
+      <div class="stat-s">Titanic · 5 iterations</div>
+    </div>
+    <div class="stat-cell" style="--acc:linear-gradient(90deg,var(--purple),transparent);--acc-color:var(--purple)">
+      <div class="stat-l">Agent Layers</div>
+      <div class="stat-n">7</div>
+      <div class="stat-s">KRS-Core architecture</div>
+    </div>
+    <div class="stat-cell" style="--acc:linear-gradient(90deg,var(--cyan),transparent);--acc-color:var(--cyan)">
+      <div class="stat-l">LLM Models</div>
+      <div class="stat-n">6</div>
+      <div class="stat-s">Ollama + Claude API</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- KRS-OS PREVIEW -->
+<section class="section" id="krs">
+  <div class="sec-label"><span class="sl-num">02</span> krs-os // system preview</div>
+  <div class="krs-wrapper">
+    <div class="krs-grid">
+
+      <!-- LEFT: overview -->
+      <div class="krs-left">
+        <div class="krs-eyebrow">SYSTEM OVERVIEW</div>
+        <div class="krs-h">KRS-OS<br>マルチエージェント基盤</div>
+        <p class="krs-desc">
+          Kaggle専用ツールから出発し、汎用のマルチエージェント実行環境へ進化中。
+          複数LLMをTaskTypeで自動ルーティングし、スキル注入・メモリ・実行を統合した7層アーキテクチャ。
+        </p>
+
+        <!-- evolution path -->
+        <div class="evo-path">
+          <span class="evo-node done">KRS v8</span>
+          <span class="evo-arr">→</span>
+          <span class="evo-node active">KRS-Core v0.1.0</span>
+          <span class="evo-arr">→</span>
+          <span class="evo-node future">KRS-OS</span>
+        </div>
+
+        <!-- agent hub -->
+        <div style="font-family:var(--mono);font-size:9px;color:var(--text3);
+          letter-spacing:2px;text-transform:uppercase;margin-bottom:12px">AGENT HUB</div>
+        <div class="agent-hub">
+          <div class="agent-card">
+            <div class="agent-icon ai-kaggle">⚡</div>
+            <div class="agent-info">
+              <div class="agent-name">KaggleAgent</div>
+              <div class="agent-sub">LangGraph · 13 nodes · deepseek-r1 + qwen</div>
+            </div>
+            <span class="agent-badge ab-live">● LIVE</span>
+          </div>
+          <div class="agent-card">
+            <div class="agent-icon ai-appgen">◈</div>
+            <div class="agent-info">
+              <div class="agent-name">APPGENAgent</div>
+              <div class="agent-sub">5-agent app generation pipeline</div>
+            </div>
+            <span class="agent-badge ab-soon">COMING SOON</span>
+          </div>
+          <div class="agent-card">
+            <div class="agent-icon ai-new">+</div>
+            <div class="agent-info">
+              <div class="agent-name">New Agent</div>
+              <div class="agent-sub">BaseAgent を継承して追加可能</div>
+            </div>
+            <span class="agent-badge ab-plus">OPEN SLOT</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: 7-layer architecture -->
+      <div class="krs-right">
+        <div class="krs-eyebrow">7-LAYER ARCHITECTURE</div>
+        <div class="krs-h" style="margin-bottom:20px">core/</div>
+        <div class="layer-list">
+          <div class="layer-row">
+            <span class="lr-num">07</span>
+            <span class="lr-name">interfaces/</span>
+            <span class="lr-desc">FastAPI · AgentRunRequest</span>
+            <span class="lr-tag lt-new">NEW</span>
+          </div>
+          <div class="layer-row">
+            <span class="lr-num">06</span>
+            <span class="lr-name">skills/</span>
+            <span class="lr-desc">SkillExecutor · prompt injection</span>
+            <span class="lr-tag lt-new">NEW</span>
+          </div>
+          <div class="layer-row">
+            <span class="lr-num">05</span>
+            <span class="lr-name">runtime/</span>
+            <span class="lr-desc">BaseAgent ABC · lifecycle mgmt</span>
+            <span class="lr-tag lt-new">NEW</span>
+          </div>
+          <div class="layer-row">
+            <span class="lr-num">04</span>
+            <span class="lr-name">tools/</span>
+            <span class="lr-desc">ShellTool · PythonTool</span>
+            <span class="lr-tag lt-new">NEW</span>
+          </div>
+          <div class="layer-row">
+            <span class="lr-num">03</span>
+            <span class="lr-name">router/</span>
+            <span class="lr-desc">TaskType → LLM 自動選択</span>
+            <span class="lr-tag lt-new">NEW</span>
+          </div>
+          <div class="layer-row">
+            <span class="lr-num">02</span>
+            <span class="lr-name">memory/</span>
+            <span class="lr-desc">ProjectMemory 汎用基底</span>
+            <span class="lr-tag lt-core">CORE</span>
+          </div>
+          <div class="layer-row">
+            <span class="lr-num">01</span>
+            <span class="lr-name">knowledge/</span>
+            <span class="lr-desc">SkillLibrary · 207 skills</span>
+            <span class="lr-tag lt-core">CORE</span>
+          </div>
+        </div>
+
+        <div style="margin-top:20px;padding:14px 16px;background:rgba(74,158,255,.05);
+          border:1px solid rgba(74,158,255,.12);border-radius:3px;
+          font-family:var(--mono);font-size:10px;color:var(--text3)">
+          <span style="color:var(--blue)">$</span> python3 -c
+          <span style="color:var(--green)">"from agents.kaggle_agent import KaggleAgent; print('✅ OK')"</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- BLOG -->
+<section class="section" id="blog">
+  <div class="sec-label"><span class="sl-num">03</span> blog // 技術記事</div>
+  <div class="blog-grid">
+    <a class="blog-card" href="/blog.html"
+      style="--card-acc:linear-gradient(90deg,var(--purple),var(--blue))">
+      <div class="blog-meta">
+        <span class="blog-tag bt-krs">KRS-Core</span>
+        <span class="blog-date">2026.06.08</span>
+        <span class="auto-badge"><span class="auto-dot"></span>AUTO-GEN</span>
+      </div>
+      <div class="blog-title">KRS v8 → KRS-Core v0.1.0: 汎用マルチエージェント基盤へのリファクタリング全記録</div>
+      <div class="blog-excerpt">Kaggle専用だったシステムを7層アーキテクチャの汎用基盤へ移行した全工程。BaseAgent ABC・ModelRouter・SkillExecutor実装まで。</div>
+      <div class="blog-footer">
+        <span>5 min read</span><span class="blog-arrow">→</span>
+      </div>
     </a>
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">_home</a></li>
-      <li><a href="blog.html">_blog</a></li>
-      <li><a href="apps.html">_apps</a></li>
-      <li><a href="about.html">_about</a></li>
-    </ul>
-    <button class="nav-toggle" onclick="toggleNav()">≡</button>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg-grid"></div>
-    <div class="hero-content">
-      <div class="terminal-line">
-        <span class="prompt">motomasa@rm-eng:~$</span>
-        <span class="typed" id="typed"></span><span class="cursor">▋</span>
+    <a class="blog-card" href="/blog.html"
+      style="--card-acc:linear-gradient(90deg,var(--green),var(--cyan))">
+      <div class="blog-meta">
+        <span class="blog-tag bt-kaggle">Kaggle</span>
+        <span class="blog-date">2026.05.04</span>
       </div>
-      <h1 class="hero-title">
-        <span class="title-line">Recursive</span>
-        <span class="title-line accent">Motomasa</span>
-        <span class="title-line">Engineering</span>
-      </h1>
-      <p class="hero-sub">AI × 自動化 × ソロ開発</p>
-      <div class="hero-tags">
-        <span class="tag">Mac mini M4</span>
-        <span class="tag">RX 7900 XTX</span>
-        <span class="tag">LLM Orchestration</span>
-        <span class="tag">Kaggle</span>
+      <div class="blog-title">LLMを使ったKaggle自動化パイプラインの設計と実装</div>
+      <div class="blog-excerpt">Planner/Coder/Judge の役割を複数LLMに割り当て、LangGraphで13ノードパイプラインを構築。Titanic CV 0.886 達成の記録。</div>
+      <div class="blog-footer">
+        <span>8 min read</span><span class="blog-arrow">→</span>
       </div>
-      <div class="hero-cta">
-        <a href="blog.html" class="btn-primary">技術ブログを読む →</a>
-        <a href="apps.html" class="btn-secondary">作成したアプリ →</a>
+    </a>
+    <a class="blog-card" href="/blog.html"
+      style="--card-acc:linear-gradient(90deg,var(--cyan),var(--blue))">
+      <div class="blog-meta">
+        <span class="blog-tag bt-infra">ROCm</span>
+        <span class="blog-date">2026.04.10</span>
       </div>
-    </div>
-    <div class="hero-visual">
-      <div class="code-block">
-        <div class="code-header">
-          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-          <span class="code-title">supervisor.py</span>
-        </div>
-        <pre class="code-body"><span class="c"># AI階層型オーケストレーション</span>
-<span class="k">class</span> <span class="n">Supervisor</span>:
-    <span class="k">def</span> <span class="n">__init__</span>(self):
-        self.mac  = <span class="s">"192.168.2.1"</span>
-        self.gpu  = <span class="s">"192.168.2.2"</span>
-        self.model = <span class="s">"qwen3.6:27b"</span>
-
-    <span class="k">async def</span> <span class="n">orchestrate</span>(self):
-        <span class="c"># Mac → Ubuntu GPU実行</span>
-        result = <span class="k">await</span> self.dispatch(
-            agent=<span class="s">"coder"</span>,
-            task=self.current_task
-        )
-        <span class="k">return</span> result</pre>
+      <div class="blog-title">Ubuntu 24.04 + ROCm で RX 7900 XTX を Ollama に正しく認識させる</div>
+      <div class="blog-excerpt">ROCR_VISIBLE_DEVICES で内蔵GPUを除外し、RX 7900 XTXのみをOllamaに使わせる設定方法と rocm-powercap 300W制限の解説。</div>
+      <div class="blog-footer">
+        <span>4 min read</span><span class="blog-arrow">→</span>
       </div>
-    </div>
-  </section>
+    </a>
+  </div>
+  <div style="text-align:center;margin-top:28px">
+    <a href="/blog.html" class="btn btn-ghost">全記事を見る →</a>
+  </div>
+</section>
 
-  <!-- STATS -->
-  <section class="stats">
-    <div class="stat-item">
-      <span class="stat-num" data-target="24">0</span><span class="stat-unit">GB</span>
-      <span class="stat-label">GPU VRAM</span>
-    </div>
-    <div class="stat-divider">//</div>
-    <div class="stat-item">
-      <span class="stat-num" data-target="32">0</span><span class="stat-unit">core</span>
-      <span class="stat-label">CPU Threads</span>
-    </div>
-    <div class="stat-divider">//</div>
-    <div class="stat-item">
-      <span class="stat-num" data-target="3">0</span><span class="stat-unit">LLM</span>
-      <span class="stat-label">Models Running</span>
-    </div>
-    <div class="stat-divider">//</div>
-    <div class="stat-item">
-      <span class="stat-num" data-target="100">0</span><span class="stat-unit">%</span>
-      <span class="stat-label">Automated</span>
-    </div>
-  </section>
+<hr class="divider">
 
-  <!-- LATEST POSTS -->
-  <section class="section">
-    <div class="section-header">
-      <span class="section-label">// 最新記事</span>
-      <h2 class="section-title">LATEST_POSTS</h2>
-      <a href="blog.html" class="section-link">全記事を見る →</a>
-    </div>
-    <div class="posts-grid">
-      <article class="post-card featured">
-        <div class="post-meta">
-          <span class="post-tag">AI</span>
-          <span class="post-date">2026.05.04</span>
-        </div>
-        <h3 class="post-title">Mac mini M4 + RX 7900 XTX で構築する階層型AI開発環境</h3>
-        <p class="post-excerpt">デュアルマシン構成でLLMオーケストレーションパイプラインを構築した記録。Ollamaによるローカルモデル管理からsupervisor.pyの設計まで。</p>
-        <a href="blog.html" class="post-link">続きを読む →</a>
-      </article>
-      <article class="post-card">
-        <div class="post-meta">
-          <span class="post-tag">Kaggle</span>
-          <span class="post-date">2026.04.15</span>
-        </div>
-        <h3 class="post-title">LLMを使ったKaggle自動化パイプラインの設計</h3>
-        <p class="post-excerpt">複数のLLMがPlanner/Coder/Judgeの役割を担うKaggle自動化システムの構築記録。</p>
-        <a href="blog.html" class="post-link">続きを読む →</a>
-      </article>
-      <article class="post-card">
-        <div class="post-meta">
-          <span class="post-tag">ROCm</span>
-          <span class="post-date">2026.04.10</span>
-        </div>
-        <h3 class="post-title">Ubuntu 24.04 + ROCm で RX 7900 XTX をOllamaに認識させる</h3>
-        <p class="post-excerpt">ROCR_VISIBLE_DEVICES設定で内蔵GPUを除外し、RX 7900 XTXのみをOllamaに使わせる設定方法。</p>
-        <a href="blog.html" class="post-link">続きを読む →</a>
-      </article>
-    </div>
-  </section>
-
-  <!-- APPS PREVIEW -->
-  <section class="section dark-section">
-    <div class="section-header">
-      <span class="section-label">// 開発したアプリ</span>
-      <h2 class="section-title">APPS</h2>
-      <a href="apps.html" class="section-link">全アプリを見る →</a>
-    </div>
-    <div class="apps-grid">
-      <div class="app-card">
-        <div class="app-icon">⚙️</div>
-        <h3 class="app-name">AI Dev Dashboard</h3>
-        <p class="app-desc">GPU/CPU監視・日報生成・Kaggle管理を一元化したダッシュボード</p>
-        <div class="app-tags">
-          <span>FastAPI</span><span>Systemd</span><span>Ollama</span>
-        </div>
+<!-- ROADMAP -->
+<section class="section" id="roadmap">
+  <div class="sec-label"><span class="sl-num">04</span> roadmap // goals</div>
+  <div class="roadmap-wrap">
+    <div class="rm-item">
+      <div class="rm-num">01</div>
+      <div class="rm-body">
+        <div class="rm-title">AIエージェント常駐 → 作業記録をGitHub自動連携</div>
+        <div class="rm-desc">company-work-logs · daily report · git push automation</div>
       </div>
-      <div class="app-card">
-        <div class="app-icon">🤖</div>
-        <h3 class="app-name">Kaggle Auto Pipeline</h3>
-        <p class="app-desc">LLMが自動でコード生成・検証・改善を繰り返すKaggle最適化システム</p>
-        <div class="app-tags">
-          <span>Python</span><span>Streamlit</span><span>Claude API</span>
-        </div>
+      <span class="rm-status s-done">✓ DONE</span>
+    </div>
+    <div class="rm-item">
+      <div class="rm-num">02</div>
+      <div class="rm-body">
+        <div class="rm-title">KRS-Core v0.1.0 — 汎用マルチエージェント基盤完成</div>
+        <div class="rm-desc">7-layer architecture · BaseAgent · ModelRouter · SkillExecutor</div>
       </div>
-      <div class="app-card">
-        <div class="app-icon">🏭</div>
-        <h3 class="app-name">App Generator</h3>
-        <p class="app-desc">プロンプトからHTML5アプリを自動生成するパイプライン</p>
-        <div class="app-tags">
-          <span>Node.js</span><span>Ollama</span><span>deepseek-r1</span>
-        </div>
+      <span class="rm-status s-done">✓ DONE</span>
+    </div>
+    <div class="rm-item">
+      <div class="rm-num">03</div>
+      <div class="rm-body">
+        <div class="rm-title">作業記録 → 技術記事自動生成 → Zenn / Qiita 自動投稿</div>
+        <div class="rm-desc">DailyReport → Claude API → Markdown → Vercel deploy</div>
       </div>
+      <span class="rm-status s-wip">IN PROGRESS</span>
     </div>
-  </section>
+    <div class="rm-item">
+      <div class="rm-num">04</div>
+      <div class="rm-body">
+        <div class="rm-title">APPGENAgent — 5エージェントによるアプリ自動生成</div>
+        <div class="rm-desc">Architect · Coder · Debugger · Reviewer · Judge (Claude API)</div>
+      </div>
+      <span class="rm-status s-next">NEXT</span>
+    </div>
+    <div class="rm-item">
+      <div class="rm-num">05</div>
+      <div class="rm-body">
+        <div class="rm-title">KRS-OS — 複数Agentが協調する自律開発環境</div>
+        <div class="rm-desc">AgentRegistry · Scheduler · Cross-domain knowledge sharing</div>
+      </div>
+      <span class="rm-status s-plan">PLANNED</span>
+    </div>
+    <div class="rm-item">
+      <div class="rm-num">06</div>
+      <div class="rm-body">
+        <div class="rm-title">一人会社設立 — RM-Engineering 法人化</div>
+        <div class="rm-desc">Mac mini M4 / RX 7900 XTX / Linux PC を経費計上</div>
+      </div>
+      <span class="rm-status s-plan">PLANNED</span>
+    </div>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-logo">
-      <span class="logo-bracket">[</span>RM<span class="logo-dot">.</span>ENG<span class="logo-bracket">]</span>
-    </div>
-    <p class="footer-sub">Recursive Motomasa Engineering</p>
-    <div class="footer-links">
-      <a href="https://github.com/motomasa-honda" target="_blank">GitHub</a>
-      <a href="https://zenn.dev" target="_blank">Zenn</a>
-      <a href="https://qiita.com" target="_blank">Qiita</a>
-    </div>
-    <p class="footer-copy">© 2026 RM-Engineering. Built with ❤️ + LLM.</p>
-  </footer>
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo">[[RM.ENG]] // Recursive Motomasa Engineering</div>
+  <div class="foot-links">
+    <a href="https://github.com/motomasa-honda" target="_blank">GitHub</a>
+    <a href="https://zenn.dev" target="_blank">Zenn</a>
+    <a href="https://qiita.com" target="_blank">Qiita</a>
+  </div>
+  <div class="foot-copy">© 2026 RM-Engineering · Built with LLM</div>
+</footer>
 
-  <script src="js/main.js"></script>
+<script>
+/* ── BOOT SEQUENCE ── */
+const BOOT_LINES = [
+  { label: 'kernel',      msg: 'RM-OS v0.1.0 loaded',          cls: 'ok',   delay: 0   },
+  { label: 'memory',      msg: '192GB DDR5 — OK',               cls: 'ok',   delay: 180 },
+  { label: 'gpu',         msg: 'RX 7900 XTX 24GB — ROCm ready', cls: 'ok',   delay: 320 },
+  { label: 'ollama',      msg: 'deepseek-r1:70b, qwen2.5:32b',  cls: 'ok',   delay: 480 },
+  { label: 'postgresql',  msg: 'localhost:5432 — connected',     cls: 'ok',   delay: 600 },
+  { label: 'qdrant',      msg: 'localhost:6333 — connected',     cls: 'ok',   delay: 720 },
+  { label: 'skill_lib',   msg: '207 skills loaded',              cls: 'ok',   delay: 840 },
+  { label: 'agent_hub',   msg: 'KaggleAgent — LIVE',             cls: 'ok',   delay: 960 },
+  { label: 'appgen',      msg: 'APPGENAgent — pending',          cls: 'warn', delay:1080 },
+  { label: 'system',      msg: 'all systems nominal',            cls: 'ok',   delay:1200 },
+];
+const container = document.getElementById('boot-lines');
+BOOT_LINES.forEach(({ label, msg, cls, delay }) => {
+  setTimeout(() => {
+    const div = document.createElement('div');
+    div.className = `boot-line ${cls}`;
+    div.innerHTML = `<span class="bl-label">[${label.padEnd(12,' ')}]</span><span class="bl-status">${msg}</span>`;
+    container.appendChild(div);
+    // animate width
+    requestAnimationFrame(() => {
+      div.style.transition = 'width .35s ease';
+      div.style.width = '100%';
+    });
+  }, delay);
+});
+setTimeout(() => {
+  const boot = document.getElementById('boot');
+  boot.classList.add('hide');
+  setTimeout(() => boot.style.display = 'none', 600);
+}, 1900);
+
+/* ── TYPING ANIMATION ── */
+const phrases = [
+  'Kaggle を自動化する',
+  '複数 LLM をオーケストレート',
+  '技術記事を自動生成する',
+  'KRS-OS を構築中',
+  'ソロで、速く、深く',
+];
+let pi = 0, ci = 0, deleting = false;
+const el = document.getElementById('typed');
+function tick() {
+  const phrase = phrases[pi];
+  if (!deleting) {
+    el.textContent = phrase.slice(0, ++ci);
+    if (ci === phrase.length) { deleting = true; setTimeout(tick, 1600); return; }
+    setTimeout(tick, 75);
+  } else {
+    el.textContent = phrase.slice(0, --ci);
+    if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; }
+    setTimeout(tick, 35);
+  }
+}
+setTimeout(tick, 2200);
+</script>
 </body>
 </html>

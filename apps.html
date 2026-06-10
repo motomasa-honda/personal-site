@@ -1,152 +1,174 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Apps | RM-Engineering</title>
-  <meta name="description" content="RM-Engineeringが開発したWebアプリ・ツール一覧">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apps — RM-Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#050810;--bg1:#080c18;--border:#182035;--border2:#223050;
+  --text:#b8ccec;--text2:#6a84aa;--text3:#384c68;
+  --green:#00e676;--blue:#4a9eff;--cyan:#00bcd4;--purple:#b388ff;--amber:#ffc107;
+  --mono:'Space Mono',monospace;--sans:'Inter',sans-serif;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);
+  min-height:100vh;display:flex;flex-direction:column;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    linear-gradient(rgba(74,158,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(74,158,255,.025) 1px,transparent 1px);
+  background-size:40px 40px}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9000;
+  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.12) 2px,rgba(0,0,0,.12) 4px);
+  opacity:.35}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:48px;padding:0 40px;
+  display:flex;align-items:center;
+  background:rgba(5,8,16,.9);border-bottom:1px solid var(--border);backdrop-filter:blur(16px)}
+.nav-logo{font-family:var(--mono);font-size:12px;font-weight:700;
+  color:var(--green);margin-right:auto;text-decoration:none;letter-spacing:2px}
+.nav-logo em{color:var(--text3);font-style:normal}
+.nav-links{display:flex;gap:32px}
+.nav-links a{font-family:var(--mono);font-size:10px;color:var(--text3);
+  text-decoration:none;letter-spacing:1.5px;transition:color .12s}
+.nav-links a:hover,.nav-links a.active{color:var(--text)}
+
+main{flex:1;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;padding:100px 40px 60px;position:relative;z-index:1}
+
+.cs-wrap{text-align:center;max-width:560px}
+.cs-badge{font-family:var(--mono);font-size:9px;color:var(--amber);
+  letter-spacing:3px;text-transform:uppercase;margin-bottom:28px;
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 16px;border:1px solid rgba(255,193,7,.2);border-radius:2px;
+  background:rgba(255,193,7,.06)}
+.cs-badge::before{content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--amber);box-shadow:0 0 8px var(--amber);
+  animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.6);opacity:.5}}
+
+.cs-title{font-family:var(--mono);font-size:clamp(32px,5vw,56px);font-weight:700;
+  line-height:.95;letter-spacing:-2px;color:#dce8ff;margin-bottom:16px}
+.cs-title span{
+  background:linear-gradient(120deg,var(--blue),var(--purple));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+.cs-desc{font-size:15px;color:var(--text2);line-height:1.75;margin-bottom:36px}
+
+/* terminal preview */
+.cs-term{background:var(--bg1);border:1px solid var(--border2);border-radius:5px;
+  overflow:hidden;font-family:var(--mono);font-size:11px;text-align:left;
+  margin-bottom:36px;box-shadow:0 0 40px rgba(74,158,255,.06)}
+.ct-bar{display:flex;align-items:center;gap:6px;padding:9px 14px;
+  background:rgba(0,0,0,.4);border-bottom:1px solid var(--border)}
+.ctd{width:10px;height:10px;border-radius:50%}
+.ctd-r{background:#ff5f57}.ctd-y{background:#febc2e}.ctd-g{background:#28c840}
+.ct-title{font-size:9px;color:var(--text3);margin-left:4px;letter-spacing:1px}
+.ct-body{padding:20px 22px;line-height:2;color:var(--text2)}
+.t-kw{color:var(--purple)}.t-fn{color:var(--cyan)}.t-str{color:var(--amber)}
+.t-comment{color:var(--text3)}.t-ok{color:var(--green)}.t-dim{color:var(--text3)}
+.t-blank{display:block;height:8px}
+
+/* pipeline */
+.pipeline{display:flex;align-items:center;justify-content:center;
+  gap:0;flex-wrap:wrap;margin-bottom:12px}
+.pipe-node{font-family:var(--mono);font-size:10px;padding:8px 14px;
+  border:1px solid var(--border2);border-radius:2px;color:var(--text2);
+  background:var(--bg1)}
+.pipe-arr{font-family:var(--mono);font-size:12px;color:var(--text3);padding:0 6px}
+.pipe-node.active{color:var(--blue);border-color:rgba(74,158,255,.35);
+  background:rgba(74,158,255,.07)}
+
+.cs-back{font-family:var(--mono);font-size:10px;color:var(--text3);
+  text-decoration:none;letter-spacing:1px;transition:color .12s;
+  display:inline-flex;align-items:center;gap:6px}
+.cs-back:hover{color:var(--text)}
+
+footer{border-top:1px solid var(--border);padding:24px 40px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:relative;z-index:1}
+.foot-logo{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:2px}
+.foot-copy{font-family:var(--mono);font-size:9px;color:var(--text3)}
+</style>
 </head>
 <body>
-  <div class="scanlines"></div>
-  <div class="noise"></div>
-
-  <nav>
-    <a href="index.html" class="logo">
-      <span class="logo-bracket">[</span>RM<span class="logo-dot">.</span>ENG<span class="logo-bracket">]</span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html">_home</a></li>
-      <li><a href="blog.html">_blog</a></li>
-      <li><a href="apps.html" class="active">_apps</a></li>
-      <li><a href="about.html">_about</a></li>
-    </ul>
-    <button class="nav-toggle" onclick="toggleNav()">≡</button>
-  </nav>
-
-  <div class="page-hero">
-    <div class="page-hero-bg"></div>
-    <span class="page-label">// PROJECTS & APPS</span>
-    <h1 class="page-title">APPS</h1>
-    <p class="page-desc">AIと自動化を駆使して開発したツール・Webアプリ一覧</p>
+<nav>
+  <a class="nav-logo" href="/">RM<em>.ENG</em></a>
+  <div class="nav-links">
+    <a href="/#krs">KRS-OS</a>
+    <a href="/#blog">Blog</a>
+    <a href="/apps.html" class="active">Apps</a>
+    <a href="https://github.com/motomasa-honda" target="_blank">GitHub</a>
   </div>
+</nav>
 
-  <div class="apps-page-grid">
+<main>
+  <div class="cs-wrap">
+    <div class="cs-badge">COMING SOON</div>
+    <div class="cs-title">App<span>GEN</span><br>Agent</div>
+    <p class="cs-desc">
+      5つのAIエージェントが協調してアプリを自動生成するパイプライン。<br>
+      KRS-Core v0.1.0 の完成を受け、次のフェーズとして開発予定。
+    </p>
 
-    <div class="app-page-card">
-      <div class="app-card-header">
-        <div class="app-card-icon">⚙️</div>
-        <div class="app-card-info">
-          <div class="app-card-name">AI Dev Dashboard</div>
-          <div class="app-card-status">● RUNNING</div>
-        </div>
+    <!-- agent pipeline preview -->
+    <div class="pipeline">
+      <div class="pipe-node">Architect</div>
+      <div class="pipe-arr">→</div>
+      <div class="pipe-node">Coder</div>
+      <div class="pipe-arr">→</div>
+      <div class="pipe-node">Debugger</div>
+      <div class="pipe-arr">→</div>
+      <div class="pipe-node">Reviewer</div>
+      <div class="pipe-arr">→</div>
+      <div class="pipe-node active">Judge</div>
+    </div>
+    <p style="font-family:var(--mono);font-size:9px;color:var(--text3);
+      letter-spacing:1px;text-align:center;margin-bottom:32px">
+      deepseek-r1:32b · qwen2.5-coder:32b · Claude Sonnet (Judge)
+    </p>
+
+    <!-- terminal preview -->
+    <div class="cs-term">
+      <div class="ct-bar">
+        <span class="ctd ctd-r"></span>
+        <span class="ctd ctd-y"></span>
+        <span class="ctd ctd-g"></span>
+        <span class="ct-title">appgen_agent.py — TODO</span>
       </div>
-      <div class="app-card-body">
-        <p class="app-card-desc">GPU/CPU監視・日報自動生成・Kaggle起動・アプリ生成を一元管理するダッシュボード。Ubuntu PC上のFastAPIサーバーとして常駐稼働。</p>
-        <div class="app-card-stack">
-          <span>FastAPI</span><span>Systemd</span><span>Ollama</span><span>Python</span>
-        </div>
-        <div class="app-card-links">
-          <a href="https://github.com/motomasa-honda/dashboard" target="_blank">GitHub →</a>
-          <span style="color:var(--text-dim);font-size:0.8rem;">Internal (192.168.2.2:8765)</span>
-        </div>
+      <div class="ct-body">
+<span class="t-comment"># APPGENAgent — 開発予定</span>
+<span class="t-blank"></span>
+<span class="t-kw">from</span> <span class="t-fn">agents.appgen_agent</span> <span class="t-kw">import</span> APPGENAgent
+<br>
+agent = <span class="t-fn">APPGENAgent</span>()
+<br>
+result = agent.<span class="t-fn">execute</span>({
+<br>
+&nbsp;&nbsp;<span class="t-str">"prompt"</span>: <span class="t-str">"家計簿アプリを作って"</span>,
+<br>
+&nbsp;&nbsp;<span class="t-str">"deploy_target"</span>: <span class="t-str">"vercel"</span>,
+<br>
+})
+<br>
+<span class="t-blank"></span>
+<span class="t-comment"># → Vercel URL を自動生成・デプロイ</span>
+<br>
+<span class="t-dim"># NotImplementedYet</span>
       </div>
     </div>
 
-    <div class="app-page-card">
-      <div class="app-card-header">
-        <div class="app-card-icon">🤖</div>
-        <div class="app-card-info">
-          <div class="app-card-name">Kaggle Auto Pipeline</div>
-          <div class="app-card-status">● ACTIVE</div>
-        </div>
-      </div>
-      <div class="app-card-body">
-        <p class="app-card-desc">複数LLMがPlanner/Coder/Judge/Fixerを担うKaggle自動最適化システム。Titanic CV 0.8238達成。Claude APIによる2層バリデーター実装済み。</p>
-        <div class="app-card-stack">
-          <span>Python</span><span>Streamlit</span><span>Claude API</span><span>Ollama</span>
-        </div>
-        <div class="app-card-links">
-          <a href="https://github.com/motomasa-honda/kaggle-pipeline" target="_blank">GitHub →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="app-page-card">
-      <div class="app-card-header">
-        <div class="app-card-icon">🏭</div>
-        <div class="app-card-info">
-          <div class="app-card-name">App Auto Generator</div>
-          <div class="app-card-status">● ACTIVE</div>
-        </div>
-      </div>
-      <div class="app-card-body">
-        <p class="app-card-desc">プロンプトを入力するだけでdeeseek-r1:32bがHTML5アプリを自動生成。月次バッチで20本生成するbatch_generate.js実装済み。</p>
-        <div class="app-card-stack">
-          <span>Node.js</span><span>Ollama</span><span>deepseek-r1:32b</span>
-        </div>
-        <div class="app-card-links">
-          <a href="https://github.com/motomasa-honda/app-pipeline" target="_blank">GitHub →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="app-page-card">
-      <div class="app-card-header">
-        <div class="app-card-icon">🌐</div>
-        <div class="app-card-info">
-          <div class="app-card-name">RM-Engineering 個人サイト</div>
-          <div class="app-card-status">● LIVE</div>
-        </div>
-      </div>
-      <div class="app-card-body">
-        <p class="app-card-desc">このサイト自体。HTML/CSS/JSで構築しVercelにデプロイ。GitHub pushで自動デプロイ。ダークテック系デザイン。</p>
-        <div class="app-card-stack">
-          <span>HTML</span><span>CSS</span><span>JS</span><span>Vercel</span>
-        </div>
-        <div class="app-card-links">
-          <a href="https://github.com/motomasa-honda/personal-site" target="_blank">GitHub →</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="app-page-card">
-      <div class="app-card-header">
-        <div class="app-card-icon">📊</div>
-        <div class="app-card-info">
-          <div class="app-card-name">Work Log Auto Publisher</div>
-          <div class="app-card-status wip">◐ PLANNED</div>
-        </div>
-      </div>
-      <div class="app-card-body">
-        <p class="app-card-desc">作業日報からZenn/Qiita記事を自動生成・投稿するパイプライン。LLMが要約・整形・投稿まで全自動化。（開発予定）</p>
-        <div class="app-card-stack">
-          <span>Python</span><span>LLM</span><span>Zenn CLI</span>
-        </div>
-        <div class="app-card-links">
-          <span style="color:var(--text-dim);font-size:0.8rem;">Coming soon...</span>
-        </div>
-      </div>
-    </div>
-
+    <a class="cs-back" href="/">← RM-Engineering トップに戻る</a>
   </div>
+</main>
 
-  <footer>
-    <div class="footer-logo">
-      <span class="logo-bracket">[</span>RM<span class="logo-dot">.</span>ENG<span class="logo-bracket">]</span>
-    </div>
-    <p class="footer-sub">Recursive Motomasa Engineering</p>
-    <div class="footer-links">
-      <a href="https://github.com/motomasa-honda" target="_blank">GitHub</a>
-      <a href="https://zenn.dev" target="_blank">Zenn</a>
-      <a href="https://qiita.com" target="_blank">Qiita</a>
-    </div>
-    <p class="footer-copy">© 2026 RM-Engineering. Built with ❤️ + LLM.</p>
-  </footer>
-
-  <script src="js/main.js"></script>
+<footer>
+  <div class="foot-logo">[[RM.ENG]]</div>
+  <div class="foot-copy">© 2026 RM-Engineering</div>
+</footer>
 </body>
 </html>
