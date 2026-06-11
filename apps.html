@@ -3,172 +3,329 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="RM-Engineering の Apps — KRS-Core を中心とした自律システム群。KaggleAgent (LIVE)、APPGENAgent (COMING SOON)、KRS-OS (PLANNED)。">
+<meta name="theme-color" content="#050810">
 <title>Apps — RM-Engineering</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#050810;--bg1:#080c18;--border:#182035;--border2:#223050;
-  --text:#b8ccec;--text2:#6a84aa;--text3:#384c68;
-  --green:#00e676;--blue:#4a9eff;--cyan:#00bcd4;--purple:#b388ff;--amber:#ffc107;
-  --mono:'Space Mono',monospace;--sans:'Inter',sans-serif;
+/* ── apps-only ────────────────────────────── */
+.apps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 18px;
 }
-body{background:var(--bg);color:var(--text);font-family:var(--sans);
-  min-height:100vh;display:flex;flex-direction:column;
-  -webkit-font-smoothing:antialiased;overflow-x:hidden}
-body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
-  background-image:
-    linear-gradient(rgba(74,158,255,.025) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(74,158,255,.025) 1px,transparent 1px);
-  background-size:40px 40px}
-body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9000;
-  background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.12) 2px,rgba(0,0,0,.12) 4px);
-  opacity:.35}
+.app-card {
+  background: var(--bg1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all .12s;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.app-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 1px;
+  background: var(--card-acc, linear-gradient(90deg, var(--blue), var(--purple)));
+}
+.app-card:hover {
+  border-color: var(--border2);
+  transform: translateY(-2px);
+}
+.app-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 22px;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+}
+.app-icon {
+  width: 40px; height: 40px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.app-info { flex: 1; min-width: 0; }
+.app-name {
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.app-sub {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text3);
+  letter-spacing: 1px;
+}
+.app-status {
+  font-family: var(--mono);
+  font-size: 8px;
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 1.5px;
+  white-space: nowrap;
+}
+.status-live { color: var(--green);  background: rgba(0,230,118,.08);   border: 1px solid rgba(0,230,118,.25); }
+.status-wip  { color: var(--amber);  background: rgba(255,193,7,.08);   border: 1px solid rgba(255,193,7,.25); }
+.status-soon { color: var(--text3);  background: transparent;            border: 1px solid var(--border); }
+.status-plan { color: var(--text3);  background: transparent;            border: 1px dashed var(--border); }
 
-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:48px;padding:0 40px;
-  display:flex;align-items:center;
-  background:rgba(5,8,16,.9);border-bottom:1px solid var(--border);backdrop-filter:blur(16px)}
-.nav-logo{font-family:var(--mono);font-size:12px;font-weight:700;
-  color:var(--green);margin-right:auto;text-decoration:none;letter-spacing:2px}
-.nav-logo em{color:var(--text3);font-style:normal}
-.nav-links{display:flex;gap:32px}
-.nav-links a{font-family:var(--mono);font-size:10px;color:var(--text3);
-  text-decoration:none;letter-spacing:1.5px;transition:color .12s}
-.nav-links a:hover,.nav-links a.active{color:var(--text)}
+.app-body {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+.app-desc {
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.7;
+}
+.app-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.app-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border);
+}
+.app-link {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--blue);
+  letter-spacing: 1px;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: all .12s;
+}
+.app-link:hover {
+  border-color: var(--blue);
+  background: rgba(74,158,255,.05);
+}
 
-main{flex:1;display:flex;flex-direction:column;align-items:center;
-  justify-content:center;padding:100px 40px 60px;position:relative;z-index:1}
-
-.cs-wrap{text-align:center;max-width:560px}
-.cs-badge{font-family:var(--mono);font-size:9px;color:var(--amber);
-  letter-spacing:3px;text-transform:uppercase;margin-bottom:28px;
-  display:inline-flex;align-items:center;gap:8px;
-  padding:6px 16px;border:1px solid rgba(255,193,7,.2);border-radius:2px;
-  background:rgba(255,193,7,.06)}
-.cs-badge::before{content:'';width:6px;height:6px;border-radius:50%;
-  background:var(--amber);box-shadow:0 0 8px var(--amber);
-  animation:pulse 2s ease infinite}
-@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.6);opacity:.5}}
-
-.cs-title{font-family:var(--mono);font-size:clamp(32px,5vw,56px);font-weight:700;
-  line-height:.95;letter-spacing:-2px;color:#dce8ff;margin-bottom:16px}
-.cs-title span{
-  background:linear-gradient(120deg,var(--blue),var(--purple));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-
-.cs-desc{font-size:15px;color:var(--text2);line-height:1.75;margin-bottom:36px}
-
-/* terminal preview */
-.cs-term{background:var(--bg1);border:1px solid var(--border2);border-radius:5px;
-  overflow:hidden;font-family:var(--mono);font-size:11px;text-align:left;
-  margin-bottom:36px;box-shadow:0 0 40px rgba(74,158,255,.06)}
-.ct-bar{display:flex;align-items:center;gap:6px;padding:9px 14px;
-  background:rgba(0,0,0,.4);border-bottom:1px solid var(--border)}
-.ctd{width:10px;height:10px;border-radius:50%}
-.ctd-r{background:#ff5f57}.ctd-y{background:#febc2e}.ctd-g{background:#28c840}
-.ct-title{font-size:9px;color:var(--text3);margin-left:4px;letter-spacing:1px}
-.ct-body{padding:20px 22px;line-height:2;color:var(--text2)}
-.t-kw{color:var(--purple)}.t-fn{color:var(--cyan)}.t-str{color:var(--amber)}
-.t-comment{color:var(--text3)}.t-ok{color:var(--green)}.t-dim{color:var(--text3)}
-.t-blank{display:block;height:8px}
-
-/* pipeline */
-.pipeline{display:flex;align-items:center;justify-content:center;
-  gap:0;flex-wrap:wrap;margin-bottom:12px}
-.pipe-node{font-family:var(--mono);font-size:10px;padding:8px 14px;
-  border:1px solid var(--border2);border-radius:2px;color:var(--text2);
-  background:var(--bg1)}
-.pipe-arr{font-family:var(--mono);font-size:12px;color:var(--text3);padding:0 6px}
-.pipe-node.active{color:var(--blue);border-color:rgba(74,158,255,.35);
-  background:rgba(74,158,255,.07)}
-
-.cs-back{font-family:var(--mono);font-size:10px;color:var(--text3);
-  text-decoration:none;letter-spacing:1px;transition:color .12s;
-  display:inline-flex;align-items:center;gap:6px}
-.cs-back:hover{color:var(--text)}
-
-footer{border-top:1px solid var(--border);padding:24px 40px;
-  display:flex;align-items:center;justify-content:space-between;
-  position:relative;z-index:1}
-.foot-logo{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:2px}
-.foot-copy{font-family:var(--mono);font-size:9px;color:var(--text3)}
+.icon-kaggle  { background: rgba(0,230,118,.1);   color: var(--green); }
+.icon-krs     { background: rgba(74,158,255,.1);  color: var(--blue); }
+.icon-appgen  { background: rgba(179,136,255,.1); color: var(--purple); }
+.icon-blog    { background: rgba(0,188,212,.1);   color: var(--cyan); }
+.icon-os      { background: rgba(255,193,7,.08);  color: var(--amber); }
 </style>
 </head>
 <body>
-<nav>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav aria-label="Primary">
   <a class="nav-logo" href="/">RM<em>.ENG</em></a>
-  <div class="nav-links">
-    <a href="/#krs">KRS-OS</a>
-    <a href="/#blog">Blog</a>
-    <a href="/apps.html" class="active">Apps</a>
-    <a href="https://github.com/motomasa-honda" target="_blank">GitHub</a>
-  </div>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/blog.html">Blog</a></li>
+    <li><a href="/apps.html" class="active" aria-current="page">Apps</a></li>
+    <li><a href="https://github.com/motomasa-honda" target="_blank" rel="noopener">GitHub</a></li>
+  </ul>
+  <button class="nav-toggle" data-nav-toggle aria-label="Toggle navigation" aria-expanded="false">≡</button>
 </nav>
 
-<main>
-  <div class="cs-wrap">
-    <div class="cs-badge">COMING SOON</div>
-    <div class="cs-title">App<span>GEN</span><br>Agent</div>
-    <p class="cs-desc">
-      5つのAIエージェントが協調してアプリを自動生成するパイプライン。<br>
-      KRS-Core v0.1.0 の完成を受け、次のフェーズとして開発予定。
+<main id="main">
+
+  <header class="page-hero">
+    <div class="page-eyebrow">// APPS</div>
+    <h1 class="page-title"><span class="g">Apps</span> // 自律システム群</h1>
+    <p class="page-desc">
+      KRS-Core を中核とした自律エージェント群。LIVE / WIP / PLANNED の各ステージで開発中。
     </p>
+  </header>
 
-    <!-- agent pipeline preview -->
-    <div class="pipeline">
-      <div class="pipe-node">Architect</div>
-      <div class="pipe-arr">→</div>
-      <div class="pipe-node">Coder</div>
-      <div class="pipe-arr">→</div>
-      <div class="pipe-node">Debugger</div>
-      <div class="pipe-arr">→</div>
-      <div class="pipe-node">Reviewer</div>
-      <div class="pipe-arr">→</div>
-      <div class="pipe-node active">Judge</div>
+  <section class="section">
+    <div class="sec-label"><span class="sl-num">01</span> agents // status</div>
+
+    <div class="apps-grid">
+
+      <article class="app-card" style="--card-acc: linear-gradient(90deg, var(--green), var(--cyan))">
+        <header class="app-card-header">
+          <div class="app-icon icon-kaggle">⚡</div>
+          <div class="app-info">
+            <h2 class="app-name">KaggleAgent</h2>
+            <div class="app-sub">krs-core · 13 nodes · LangGraph</div>
+          </div>
+          <span class="app-status status-live">● LIVE</span>
+        </header>
+        <div class="app-body">
+          <p class="app-desc">
+            Kaggle コンペを自律実行するエージェント。Planner / Coder / Validator / Judge の
+            複数 LLM 役割分担と 7 層 Knowledge ループで、過去 episode から戦略を recall して LB best を更新。
+          </p>
+          <div class="app-stack">
+            <span class="tag tag-blue">deepseek-r1</span>
+            <span class="tag tag-purple">qwen2.5</span>
+            <span class="tag tag-green">Claude API</span>
+            <span class="tag">LangGraph</span>
+            <span class="tag">LightGBM</span>
+          </div>
+          <div class="app-actions">
+            <a class="app-link" href="https://github.com/motomasa-honda" target="_blank" rel="noopener">GitHub →</a>
+            <a class="app-link" href="/blog.html">Blog →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="app-card" style="--card-acc: linear-gradient(90deg, var(--blue), var(--purple))">
+        <header class="app-card-header">
+          <div class="app-icon icon-krs">◆</div>
+          <div class="app-info">
+            <h2 class="app-name">KRS-Core v0.1.0</h2>
+            <div class="app-sub">7-layer · BaseAgent · ModelRouter</div>
+          </div>
+          <span class="app-status status-live">● LIVE</span>
+        </header>
+        <div class="app-body">
+          <p class="app-desc">
+            KaggleAgent を支える汎用マルチエージェント基盤。core/runtime, router, skills, tools, knowledge,
+            memory, interfaces の 7 層構成。新しい Agent は BaseAgent 継承で追加可能。
+          </p>
+          <div class="app-stack">
+            <span class="tag tag-blue">Python 3.11</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Qdrant</span>
+            <span class="tag">systemd --user</span>
+          </div>
+          <div class="app-actions">
+            <a class="app-link" href="/#krs">Architecture →</a>
+            <a class="app-link" href="/blog.html">Blog →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="app-card" style="--card-acc: linear-gradient(90deg, var(--purple), var(--blue))">
+        <header class="app-card-header">
+          <div class="app-icon icon-appgen">◈</div>
+          <div class="app-info">
+            <h2 class="app-name">APPGENAgent</h2>
+            <div class="app-sub">5-agent app generation pipeline</div>
+          </div>
+          <span class="app-status status-soon">COMING SOON</span>
+        </header>
+        <div class="app-body">
+          <p class="app-desc">
+            5 つの AI エージェント (Architect / Coder / Debugger / Reviewer / Judge) が協調して
+            自然言語からアプリを生成し Vercel に自動デプロイ。KRS-Core の AgentRegistry に組み込む形で実装予定。
+          </p>
+          <div class="app-stack">
+            <span class="tag tag-blue">Claude Sonnet</span>
+            <span class="tag tag-purple">deepseek-r1</span>
+            <span class="tag tag-cyan">qwen2.5-coder</span>
+            <span class="tag">Vercel API</span>
+          </div>
+          <div class="app-actions">
+            <span class="app-link" style="opacity:.5;cursor:not-allowed">In design</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="app-card" style="--card-acc: linear-gradient(90deg, var(--cyan), var(--blue))">
+        <header class="app-card-header">
+          <div class="app-icon icon-blog">✎</div>
+          <div class="app-info">
+            <h2 class="app-name">BlogGenAgent</h2>
+            <div class="app-sub">DailyReport → Zenn / Qiita</div>
+          </div>
+          <span class="app-status status-wip">IN PROGRESS</span>
+        </header>
+        <div class="app-body">
+          <p class="app-desc">
+            毎日の作業記録 (Git commit log + 操作ログ) を Claude API で要約し、技術記事として
+            自動生成・投稿。タイトル / Tag / Eyecatch を含む Zenn フロントマター対応。
+          </p>
+          <div class="app-stack">
+            <span class="tag tag-green">Claude API</span>
+            <span class="tag">GitHub Actions</span>
+            <span class="tag">cron (systemd)</span>
+          </div>
+          <div class="app-actions">
+            <span class="app-link" style="opacity:.5;cursor:not-allowed">Wiring</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="app-card" style="--card-acc: linear-gradient(90deg, var(--amber), var(--purple))">
+        <header class="app-card-header">
+          <div class="app-icon icon-os">◉</div>
+          <div class="app-info">
+            <h2 class="app-name">KRS-OS</h2>
+            <div class="app-sub">Multi-agent orchestration platform</div>
+          </div>
+          <span class="app-status status-plan">PLANNED</span>
+        </header>
+        <div class="app-body">
+          <p class="app-desc">
+            複数 Agent (KaggleAgent / APPGENAgent / BlogGenAgent / 新規) が協調する自律開発環境。
+            AgentRegistry + Scheduler + Cross-domain Knowledge sharing。KRS-Core の checkpointer
+            導入を土台として発展予定。
+          </p>
+          <div class="app-stack">
+            <span class="tag">AgentRegistry</span>
+            <span class="tag">PostgresSaver</span>
+            <span class="tag">cross-domain mem</span>
+          </div>
+          <div class="app-actions">
+            <span class="app-link" style="opacity:.5;cursor:not-allowed">Vision</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="app-card" style="border-style: dashed; --card-acc: var(--border)">
+        <header class="app-card-header">
+          <div class="app-icon" style="border:1px dashed var(--border);color:var(--text3)">+</div>
+          <div class="app-info">
+            <h2 class="app-name" style="color:var(--text3)">New Agent</h2>
+            <div class="app-sub">BaseAgent 継承で追加可能</div>
+          </div>
+          <span class="app-status status-plan">OPEN SLOT</span>
+        </header>
+        <div class="app-body">
+          <p class="app-desc" style="color:var(--text3)">
+            KRS-Core の AgentRegistry に register するだけで新しい Agent を追加できる設計。
+            汎用基盤完成済みのため次の Agent は最短 1 セッションで載る。
+          </p>
+        </div>
+      </article>
+
     </div>
-    <p style="font-family:var(--mono);font-size:9px;color:var(--text3);
-      letter-spacing:1px;text-align:center;margin-bottom:32px">
-      deepseek-r1:32b · qwen2.5-coder:32b · Claude Sonnet (Judge)
-    </p>
+  </section>
 
-    <!-- terminal preview -->
-    <div class="cs-term">
-      <div class="ct-bar">
-        <span class="ctd ctd-r"></span>
-        <span class="ctd ctd-y"></span>
-        <span class="ctd ctd-g"></span>
-        <span class="ct-title">appgen_agent.py — TODO</span>
-      </div>
-      <div class="ct-body">
-<span class="t-comment"># APPGENAgent — 開発予定</span>
-<span class="t-blank"></span>
-<span class="t-kw">from</span> <span class="t-fn">agents.appgen_agent</span> <span class="t-kw">import</span> APPGENAgent
-<br>
-agent = <span class="t-fn">APPGENAgent</span>()
-<br>
-result = agent.<span class="t-fn">execute</span>({
-<br>
-&nbsp;&nbsp;<span class="t-str">"prompt"</span>: <span class="t-str">"家計簿アプリを作って"</span>,
-<br>
-&nbsp;&nbsp;<span class="t-str">"deploy_target"</span>: <span class="t-str">"vercel"</span>,
-<br>
-})
-<br>
-<span class="t-blank"></span>
-<span class="t-comment"># → Vercel URL を自動生成・デプロイ</span>
-<br>
-<span class="t-dim"># NotImplementedYet</span>
-      </div>
-    </div>
-
-    <a class="cs-back" href="/">← RM-Engineering トップに戻る</a>
-  </div>
 </main>
 
 <footer>
-  <div class="foot-logo">[[RM.ENG]]</div>
-  <div class="foot-copy">© 2026 RM-Engineering</div>
+  <div class="foot-logo">[[RM.ENG]] // Recursive Motomasa Engineering</div>
+  <ul class="foot-links" style="list-style:none">
+    <li><a href="https://github.com/motomasa-honda" target="_blank" rel="noopener">GitHub</a></li>
+    <li><a href="https://zenn.dev" target="_blank" rel="noopener">Zenn</a></li>
+    <li><a href="https://qiita.com" target="_blank" rel="noopener">Qiita</a></li>
+  </ul>
+  <div class="foot-copy">© 2026 RM-Engineering · Built with LLM</div>
 </footer>
+
+<script src="/js/main.js" defer></script>
 </body>
 </html>

@@ -1,53 +1,48 @@
-// RM-Engineering — main.js
+/* ============================================================
+   RM-Engineering — Site-wide JS
+   ============================================================
+   - Active nav link 自動付与
+   - Mobile nav toggle
+   - Blog filter (blog.html でのみ意味を持つ)
+   ============================================================ */
 
-// Typing effect
-const phrases = ['whoami', 'ls -la projects/', 'ollama run qwen3.6:27b', 'python3 supervisor.py'];
-let phraseIndex = 0, charIndex = 0, isDeleting = false;
+(() => {
+  'use strict';
 
-function type() {
-  const el = document.getElementById('typed');
-  if (!el) return;
-  const phrase = phrases[phraseIndex];
-  if (isDeleting) {
-    el.textContent = phrase.substring(0, charIndex--);
-    if (charIndex < 0) { isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; setTimeout(type, 500); return; }
-  } else {
-    el.textContent = phrase.substring(0, charIndex++);
-    if (charIndex > phrase.length) { isDeleting = true; setTimeout(type, 1500); return; }
-  }
-  setTimeout(type, isDeleting ? 40 : 80);
-}
-document.addEventListener('DOMContentLoaded', () => setTimeout(type, 800));
-
-// Counter animation
-function animateCounters() {
-  document.querySelectorAll('.stat-num').forEach(el => {
-    const target = +el.dataset.target;
-    let current = 0;
-    const step = target / 40;
-    const timer = setInterval(() => {
-      current += step;
-      if (current >= target) { el.textContent = target; clearInterval(timer); return; }
-      el.textContent = Math.floor(current);
-    }, 30);
+  /* ── Active nav link by current path ─────── */
+  const path = location.pathname.replace(/\/index\.html$/, '/');
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    const href = a.getAttribute('href');
+    if (!href) return;
+    const aPath = href.replace(/\/index\.html$/, '/');
+    if (aPath === path || (aPath !== '/' && path.startsWith(aPath))) {
+      a.classList.add('active');
+    }
   });
-}
 
-const statsSection = document.querySelector('.stats');
-if (statsSection) {
-  const observer = new IntersectionObserver(entries => {
-    if (entries[0].isIntersecting) { animateCounters(); observer.disconnect(); }
-  }, { threshold: 0.5 });
-  observer.observe(statsSection);
-}
+  /* ── Mobile nav toggle ───────────────────── */
+  const toggle = document.querySelector('[data-nav-toggle]');
+  const links = document.querySelector('.nav-links');
+  if (toggle && links) {
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+  }
 
-// Nav toggle
-function toggleNav() {
-  document.querySelector('.nav-links').classList.toggle('open');
-}
-
-// Active nav link
-document.querySelectorAll('.nav-links a').forEach(a => {
-  if (a.href === window.location.href) a.classList.add('active');
-  else a.classList.remove('active');
-});
+  /* ── Blog filter ─────────────────────────── */
+  const filterButtons = document.querySelectorAll('[data-filter]');
+  if (filterButtons.length) {
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tag = btn.dataset.filter;
+        filterButtons.forEach(b => b.classList.toggle('active', b === btn));
+        document.querySelectorAll('[data-tags]').forEach(card => {
+          const tags = (card.dataset.tags || '').toLowerCase();
+          card.style.display =
+            (tag === 'all' || tags.includes(tag.toLowerCase())) ? '' : 'none';
+        });
+      });
+    });
+  }
+})();

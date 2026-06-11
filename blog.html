@@ -1,183 +1,401 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog | RM-Engineering</title>
-  <meta name="description" content="AI・機械学習・自動化に関する技術ブログ by RM-Engineering">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="RM-Engineering の技術ブログ。LLM オーケストレーション・Kaggle 自動化・ROCm 環境構築・KRS-Core 開発記録など。Zenn / Qiita 連携記事を含む。">
+<meta name="theme-color" content="#050810">
+<title>Blog — RM-Engineering</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
+
+<style>
+/* ── blog-only ────────────────────────────── */
+.blog-layout {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 80px 80px;
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 64px;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+
+.blog-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+.filter-btn {
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text3);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  border-radius: var(--radius-sm);
+  transition: all .12s;
+}
+.filter-btn:hover {
+  border-color: var(--border2);
+  color: var(--text2);
+}
+.filter-btn.active {
+  border-color: var(--blue);
+  color: var(--blue);
+  background: rgba(74, 158, 255, .08);
+}
+.filter-btn:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.blog-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.blog-post-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  background: var(--bg1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  transition: all .12s;
+  position: relative;
+  overflow: hidden;
+}
+.blog-post-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 2px;
+  background: var(--border);
+  transition: background .12s;
+}
+.blog-post-card:hover {
+  border-color: var(--border2);
+  transform: translateX(2px);
+}
+.blog-post-card:hover::before { background: var(--blue); }
+.blog-post-card:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+.blog-post-main { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.blog-post-meta { display: flex; gap: 8px; flex-wrap: wrap; }
+.blog-post-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.5;
+  font-family: var(--sans);
+}
+.blog-post-excerpt {
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.7;
+}
+.blog-post-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  white-space: nowrap;
+}
+.blog-post-date {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text3);
+  letter-spacing: 1px;
+}
+.external-badge {
+  font-family: var(--mono);
+  font-size: 8px;
+  padding: 2px 8px;
+  border: 1px solid var(--border2);
+  border-radius: var(--radius-sm);
+  color: var(--text2);
+  letter-spacing: 1px;
+}
+.external-badge.zenn   { color: var(--cyan);   border-color: rgba(0,188,212,.25); }
+.external-badge.qiita  { color: var(--green);  border-color: rgba(0,230,118,.25); }
+.external-badge.draft  { color: var(--amber);  border-color: rgba(255,193,7,.25); }
+
+/* ── sidebar ──────────────────────────────── */
+.blog-sidebar {
+  position: sticky;
+  top: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.side-block {
+  background: var(--bg1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 20px;
+}
+.side-block-title {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--purple);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.tag-cloud { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag-cloud .tag-btn {
+  background: transparent;
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text2);
+  letter-spacing: 1px;
+  transition: all .12s;
+}
+.tag-cloud .tag-btn:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+}
+
+.side-links { display: flex; flex-direction: column; gap: 10px; }
+.side-links a {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text2);
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all .12s;
+}
+.side-links a:hover {
+  border-color: var(--border2);
+  color: var(--text);
+}
+.side-links .arrow { color: var(--blue); font-size: 10px; }
+
+.empty-state {
+  padding: 80px 20px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--text3);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+}
+
+@media (max-width: 900px) {
+  .blog-layout {
+    grid-template-columns: 1fr;
+    padding: 0 20px 60px;
+    gap: 32px;
+  }
+  .blog-sidebar {
+    position: static;
+    flex-direction: row;
+    overflow-x: auto;
+  }
+  .blog-sidebar > .side-block { flex-shrink: 0; min-width: 220px; }
+  .blog-post-card {
+    grid-template-columns: 1fr;
+    padding: 20px 22px;
+    gap: 14px;
+  }
+  .blog-post-side {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+</style>
 </head>
 <body>
-  <div class="scanlines"></div>
-  <div class="noise"></div>
 
-  <nav>
-    <a href="index.html" class="logo">
-      <span class="logo-bracket">[</span>RM<span class="logo-dot">.</span>ENG<span class="logo-bracket">]</span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html">_home</a></li>
-      <li><a href="blog.html" class="active">_blog</a></li>
-      <li><a href="apps.html">_apps</a></li>
-      <li><a href="about.html">_about</a></li>
-    </ul>
-    <button class="nav-toggle" onclick="toggleNav()">≡</button>
-  </nav>
+<a class="skip-link" href="#main">Skip to content</a>
 
-  <div class="page-hero">
-    <div class="page-hero-bg"></div>
-    <span class="page-label">// TECHNICAL BLOG</span>
-    <h1 class="page-title">BLOG</h1>
-    <p class="page-desc">AI・機械学習・自動化・デュアルマシン開発環境に関する技術記事</p>
-  </div>
+<nav aria-label="Primary">
+  <a class="nav-logo" href="/">RM<em>.ENG</em></a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/blog.html" class="active" aria-current="page">Blog</a></li>
+    <li><a href="/apps.html">Apps</a></li>
+    <li><a href="https://github.com/motomasa-honda" target="_blank" rel="noopener">GitHub</a></li>
+  </ul>
+  <button class="nav-toggle" data-nav-toggle aria-label="Toggle navigation" aria-expanded="false">≡</button>
+</nav>
 
-  <div class="blog-container">
-    <main>
-      <div class="blog-filter">
-        <button class="filter-btn active" onclick="filterPosts('all', this)">ALL</button>
-        <button class="filter-btn" onclick="filterPosts('AI', this)">AI</button>
-        <button class="filter-btn" onclick="filterPosts('Kaggle', this)">Kaggle</button>
-        <button class="filter-btn" onclick="filterPosts('環境構築', this)">環境構築</button>
-        <button class="filter-btn" onclick="filterPosts('ROCm', this)">ROCm</button>
-        <button class="filter-btn" onclick="filterPosts('自動化', this)">自動化</button>
+<main id="main">
+
+  <header class="page-hero">
+    <div class="page-eyebrow">// TECHNICAL BLOG</div>
+    <h1 class="page-title"><span class="g">Blog</span> // 技術記事</h1>
+    <p class="page-desc">
+      LLM オーケストレーション、Kaggle 自動化、ROCm 環境構築、KRS-Core 開発記録。
+      Zenn / Qiita 連携記事と自動生成記事 (AUTO-GEN) を含みます。
+    </p>
+  </header>
+
+  <div class="blog-layout">
+
+    <div>
+      <div class="blog-filter" role="tablist" aria-label="記事カテゴリフィルタ">
+        <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">ALL</button>
+        <button class="filter-btn" data-filter="krs-core" role="tab" aria-selected="false">KRS-Core</button>
+        <button class="filter-btn" data-filter="kaggle" role="tab" aria-selected="false">Kaggle</button>
+        <button class="filter-btn" data-filter="llm" role="tab" aria-selected="false">LLM</button>
+        <button class="filter-btn" data-filter="rocm" role="tab" aria-selected="false">ROCm</button>
+        <button class="filter-btn" data-filter="infra" role="tab" aria-selected="false">Infra</button>
       </div>
 
-      <div class="blog-list" id="blog-list">
+      <div class="blog-list">
 
-        <a href="#" class="blog-post-card" data-tags="AI 環境構築">
+        <a href="#" class="blog-post-card" data-tags="krs-core llm">
           <div class="blog-post-main">
             <div class="blog-post-meta">
-              <span class="post-tag">AI</span>
-              <span class="post-tag">環境構築</span>
+              <span class="tag tag-purple">KRS-Core</span>
+              <span class="tag tag-blue">LLM</span>
             </div>
-            <div class="blog-post-title">Mac mini M4 + RX 7900 XTX で構築する階層型AI開発環境</div>
-            <div class="blog-post-excerpt">デュアルマシン構成でLLMオーケストレーションパイプラインを構築した記録。Ollamaによるローカルモデル管理からsupervisor.pyの設計まで詳解します。</div>
+            <h2 class="blog-post-title">KRS v8 → KRS-Core v0.1.0: 汎用マルチエージェント基盤へのリファクタリング全記録</h2>
+            <p class="blog-post-excerpt">
+              Kaggle 専用だったシステムを 7 層アーキテクチャの汎用基盤へ移行した全工程。
+              BaseAgent ABC・ModelRouter・SkillExecutor 実装まで。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.08</span>
+            <span class="external-badge draft">DRAFT</span>
+          </div>
+        </a>
+
+        <a href="#" class="blog-post-card" data-tags="kaggle llm">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-green">Kaggle</span>
+              <span class="tag tag-blue">LLM</span>
+            </div>
+            <h2 class="blog-post-title">LLM を使った Kaggle 自動化パイプラインの設計と実装</h2>
+            <p class="blog-post-excerpt">
+              Planner / Coder / Judge / Fixer の役割を複数 LLM に分担し LangGraph で 13 ノードパイプラインを構築。
+              Titanic CV 0.886 達成のアーキテクチャ公開。
+            </p>
           </div>
           <div class="blog-post-side">
             <span class="blog-post-date">2026.05.04</span>
-            <span class="external-badge">Zenn</span>
+            <span class="external-badge qiita">Qiita</span>
           </div>
         </a>
 
-        <a href="#" class="blog-post-card" data-tags="Kaggle AI 自動化">
+        <a href="#" class="blog-post-card" data-tags="rocm infra">
           <div class="blog-post-main">
             <div class="blog-post-meta">
-              <span class="post-tag">Kaggle</span>
-              <span class="post-tag">自動化</span>
+              <span class="tag tag-cyan">ROCm</span>
+              <span class="tag">Infra</span>
             </div>
-            <div class="blog-post-title">LLMを使ったKaggle自動化パイプラインの設計と実装</div>
-            <div class="blog-post-excerpt">Planner/Coder/Judge/Fixerの役割を複数のLLMに分担させるKaggle最適化システム。CV 0.8238を達成したアーキテクチャを公開。</div>
-          </div>
-          <div class="blog-post-side">
-            <span class="blog-post-date">2026.04.15</span>
-            <span class="external-badge">Qiita</span>
-          </div>
-        </a>
-
-        <a href="#" class="blog-post-card" data-tags="ROCm 環境構築">
-          <div class="blog-post-main">
-            <div class="blog-post-meta">
-              <span class="post-tag">ROCm</span>
-              <span class="post-tag">環境構築</span>
-            </div>
-            <div class="blog-post-title">Ubuntu 24.04 + ROCm で RX 7900 XTX をOllamaに正しく認識させる方法</div>
-            <div class="blog-post-excerpt">ROCR_VISIBLE_DEVICES=0 で内蔵GPU(gfx1036)を除外し、RX 7900 XTXのみをOllamaに使わせる設定。Ryzen 9 9950Xの内蔵GPU問題を解決。</div>
+            <h2 class="blog-post-title">Ubuntu 24.04 + ROCm で RX 7900 XTX を Ollama に正しく認識させる</h2>
+            <p class="blog-post-excerpt">
+              ROCR_VISIBLE_DEVICES で内蔵 GPU を除外し RX 7900 XTX のみを Ollama に使わせる設定方法と
+              rocm-powercap 300W 制限の解説。
+            </p>
           </div>
           <div class="blog-post-side">
             <span class="blog-post-date">2026.04.10</span>
-            <span class="external-badge">Zenn</span>
+            <span class="external-badge zenn">Zenn</span>
           </div>
         </a>
 
-        <a href="#" class="blog-post-card" data-tags="自動化 AI">
+        <a href="#" class="blog-post-card" data-tags="llm infra">
           <div class="blog-post-main">
             <div class="blog-post-meta">
-              <span class="post-tag">自動化</span>
-              <span class="post-tag">AI</span>
+              <span class="tag tag-blue">LLM</span>
+              <span class="tag">Infra</span>
             </div>
-            <div class="blog-post-title">OllamaとNode.jsでHTML5アプリを自動生成するパイプライン</div>
-            <div class="blog-post-excerpt">プロンプトを渡すだけでdeeseek-r1:32bがHTML5アプリを生成・プレビューまで自動化。月次バッチで20本生成するbatch_generate.jsの設計。</div>
-          </div>
-          <div class="blog-post-side">
-            <span class="blog-post-date">2026.04.01</span>
-            <span class="external-badge">Zenn</span>
-          </div>
-        </a>
-
-        <a href="#" class="blog-post-card" data-tags="環境構築">
-          <div class="blog-post-main">
-            <div class="blog-post-meta">
-              <span class="post-tag">環境構築</span>
-            </div>
-            <div class="blog-post-title">Mac mini M4とLinux PCをEthernet直結してSSH+インターネット共有する構成</div>
-            <div class="blog-post-excerpt">Mac miniをルーター兼インターネット共有ホストとして使い、Ubuntu PCとの2.5G LAN直結環境を構築。push_all.sh によるGitHub管理構成も解説。</div>
+            <h2 class="blog-post-title">Mac mini M4 + RX 7900 XTX で構築する階層型 AI 開発環境</h2>
+            <p class="blog-post-excerpt">
+              デュアルマシン構成で LLM オーケストレーションパイプラインを構築した記録。
+              Ollama によるローカルモデル管理から supervisor.py の設計まで詳解。
+            </p>
           </div>
           <div class="blog-post-side">
             <span class="blog-post-date">2026.03.20</span>
+            <span class="external-badge zenn">Zenn</span>
+          </div>
+        </a>
+
+        <a href="#" class="blog-post-card" data-tags="infra">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag">Infra</span>
+            </div>
+            <h2 class="blog-post-title">Mac mini と Linux PC を Ethernet 直結して SSH + Internet Sharing する構成</h2>
+            <p class="blog-post-excerpt">
+              Mac mini をルーター兼インターネット共有ホストとして使い、Ubuntu PC との 2.5G LAN 直結環境を構築。
+              rsync ベースのデプロイ運用も解説。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.03.05</span>
+            <span class="external-badge draft">DRAFT</span>
           </div>
         </a>
 
       </div>
-    </main>
 
-    <aside class="blog-sidebar">
-      <div class="sidebar-block">
-        <div class="sidebar-title">// TOPICS</div>
+      <p style="margin-top:36px;font-family:var(--mono);font-size:10px;color:var(--text3);text-align:center;letter-spacing:1px">
+        // more posts coming via auto-generation pipeline
+      </p>
+    </div>
+
+    <aside class="blog-sidebar" aria-label="サイドバー">
+      <div class="side-block">
+        <div class="side-block-title">// TOPICS</div>
         <div class="tag-cloud">
-          <span class="tag" onclick="filterPosts('AI', null)">AI</span>
-          <span class="tag" onclick="filterPosts('Kaggle', null)">Kaggle</span>
-          <span class="tag" onclick="filterPosts('ROCm', null)">ROCm</span>
-          <span class="tag" onclick="filterPosts('環境構築', null)">環境構築</span>
-          <span class="tag" onclick="filterPosts('自動化', null)">自動化</span>
-          <span class="tag" onclick="filterPosts('LLM', null)">LLM</span>
+          <button class="tag-btn" data-filter="krs-core">KRS-Core</button>
+          <button class="tag-btn" data-filter="llm">LLM</button>
+          <button class="tag-btn" data-filter="kaggle">Kaggle</button>
+          <button class="tag-btn" data-filter="rocm">ROCm</button>
+          <button class="tag-btn" data-filter="infra">Infra</button>
         </div>
       </div>
 
-      <div class="sidebar-block">
-        <div class="sidebar-title">// EXTERNAL</div>
-        <div style="display:flex;flex-direction:column;gap:0.75rem;">
-          <a href="https://zenn.dev" target="_blank" style="color:var(--text-dim);text-decoration:none;font-size:0.8rem;display:flex;justify-content:space-between;align-items:center;">
-            Zenn <span style="color:var(--accent);font-size:0.7rem;">→</span>
-          </a>
-          <a href="https://qiita.com" target="_blank" style="color:var(--text-dim);text-decoration:none;font-size:0.8rem;display:flex;justify-content:space-between;align-items:center;">
-            Qiita <span style="color:var(--accent);font-size:0.7rem;">→</span>
-          </a>
-          <a href="https://github.com/motomasa-honda" target="_blank" style="color:var(--text-dim);text-decoration:none;font-size:0.8rem;display:flex;justify-content:space-between;align-items:center;">
-            GitHub <span style="color:var(--accent);font-size:0.7rem;">→</span>
-          </a>
+      <div class="side-block">
+        <div class="side-block-title">// EXTERNAL</div>
+        <div class="side-links">
+          <a href="https://zenn.dev" target="_blank" rel="noopener">Zenn <span class="arrow">→</span></a>
+          <a href="https://qiita.com" target="_blank" rel="noopener">Qiita <span class="arrow">→</span></a>
+          <a href="https://github.com/motomasa-honda" target="_blank" rel="noopener">GitHub <span class="arrow">→</span></a>
         </div>
       </div>
     </aside>
+
   </div>
 
-  <footer>
-    <div class="footer-logo">
-      <span class="logo-bracket">[</span>RM<span class="logo-dot">.</span>ENG<span class="logo-bracket">]</span>
-    </div>
-    <p class="footer-sub">Recursive Motomasa Engineering</p>
-    <div class="footer-links">
-      <a href="https://github.com/motomasa-honda" target="_blank">GitHub</a>
-      <a href="https://zenn.dev" target="_blank">Zenn</a>
-      <a href="https://qiita.com" target="_blank">Qiita</a>
-    </div>
-    <p class="footer-copy">© 2026 RM-Engineering. Built with ❤️ + LLM.</p>
-  </footer>
+</main>
 
-  <script src="js/main.js"></script>
-  <script>
-    function filterPosts(tag, btn) {
-      if (btn) {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-      }
-      document.querySelectorAll('.blog-post-card').forEach(card => {
-        const tags = card.dataset.tags || '';
-        card.style.display = (tag === 'all' || tags.includes(tag)) ? '' : 'none';
-      });
-    }
-  </script>
+<footer>
+  <div class="foot-logo">[[RM.ENG]] // Recursive Motomasa Engineering</div>
+  <ul class="foot-links" style="list-style:none">
+    <li><a href="https://github.com/motomasa-honda" target="_blank" rel="noopener">GitHub</a></li>
+    <li><a href="https://zenn.dev" target="_blank" rel="noopener">Zenn</a></li>
+    <li><a href="https://qiita.com" target="_blank" rel="noopener">Qiita</a></li>
+  </ul>
+  <div class="foot-copy">© 2026 RM-Engineering · Built with LLM</div>
+</footer>
+
+<script src="/js/main.js" defer></script>
 </body>
 </html>

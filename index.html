@@ -3,10 +3,63 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="RM-Engineering — AI Agent Infrastructure. Solo developer building autonomous systems for Kaggle, code generation, and beyond.">
-<title>RM-Engineering</title>
+<meta name="description" content="RM-Engineering — Recursive Motomasa Engineering. Mac mini M4 と RX 7900 XTX 搭載 Linux PC のデュアル構成で、複数 LLM をオーケストレートする自律 Agent (KRS-Core / KaggleAgent) を構築するソロエンジニアのプロジェクト。">
+<meta name="theme-color" content="#050810">
+<meta name="author" content="motomasa-honda">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://personal-site-eight-delta.vercel.app/">
+
+<!-- OGP -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RM-Engineering">
+<meta property="og:title" content="RM-Engineering — Building Autonomous Systems">
+<meta property="og:description" content="Mac mini M4 と Linux GPU 機で複数 LLM をオーケストレートし、Kaggle / コード生成 / 技術記事自動化を動かすソロエンジニアのプロジェクト。">
+<meta property="og:url" content="https://personal-site-eight-delta.vercel.app/">
+<meta property="og:image" content="https://personal-site-eight-delta.vercel.app/og.png">
+<meta property="og:locale" content="ja_JP">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RM-Engineering — Building Autonomous Systems">
+<meta name="twitter:description" content="複数 LLM をオーケストレートして自律 Agent を作るソロ開発プロジェクト。">
+<meta name="twitter:image" content="https://personal-site-eight-delta.vercel.app/og.png">
+
+<!-- JSON-LD: Person + WebSite -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "name": "motomasa",
+      "alternateName": "RM-Engineering",
+      "url": "https://personal-site-eight-delta.vercel.app/",
+      "sameAs": [
+        "https://github.com/motomasa-honda",
+        "https://zenn.dev",
+        "https://qiita.com"
+      ],
+      "jobTitle": "Solo Engineer",
+      "knowsAbout": ["LLM Orchestration", "Kaggle", "Python", "ROCm", "LangGraph"]
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://personal-site-eight-delta.vercel.app/",
+      "name": "RM-Engineering",
+      "inLanguage": "ja"
+    }
+  ]
+}
+</script>
+
+<title>RM-Engineering — Building Autonomous Systems</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- Shared design system (also imported by about/blog/apps) -->
+<link rel="stylesheet" href="/css/site.css">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -303,19 +356,26 @@ footer{border-top:1px solid var(--border);padding:32px 80px;
   <div style="margin-top:8px"><span id="boot-cursor"></span></div>
 </div>
 
+<!-- Skip link for a11y -->
+<a class="skip-link" href="#main">Skip to content</a>
+
 <!-- NAV -->
-<nav>
-  <a class="nav-logo" href="/">RM<em>.ENG</em></a>
-  <div class="nav-links">
-    <a href="#krs">KRS-OS</a>
-    <a href="#blog">Blog</a>
-    <a href="/apps.html">Apps</a>
-    <a href="https://github.com/motomasa-honda" target="_blank">GitHub</a>
-  </div>
-  <div class="nav-pill">
+<nav aria-label="Primary">
+  <a class="nav-logo" href="/" aria-label="RM-Engineering home">RM<em>.ENG</em></a>
+  <ul class="nav-links">
+    <li><a href="/" class="active" aria-current="page">Home</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/blog.html">Blog</a></li>
+    <li><a href="/apps.html">Apps</a></li>
+    <li><a href="https://github.com/motomasa-honda" target="_blank" rel="noopener">GitHub</a></li>
+  </ul>
+  <div class="nav-pill" aria-hidden="true">
     <span class="pulse"></span>ONLINE
   </div>
+  <button class="nav-toggle" data-nav-toggle aria-label="Toggle navigation" aria-expanded="false">≡</button>
 </nav>
+
+<main id="main">
 
 <!-- HERO -->
 <section class="hero">
@@ -641,17 +701,20 @@ result = agent.<span class="t-fn">execute</span>({
   </div>
 </section>
 
+</main>
+
 <!-- FOOTER -->
 <footer>
   <div class="foot-logo">[[RM.ENG]] // Recursive Motomasa Engineering</div>
   <div class="foot-links">
-    <a href="https://github.com/motomasa-honda" target="_blank">GitHub</a>
-    <a href="https://zenn.dev" target="_blank">Zenn</a>
+    <a href="https://github.com/motomasa-honda" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://zenn.dev" target="_blank" rel="noopener">Zenn</a>
     <a href="https://qiita.com" target="_blank">Qiita</a>
   </div>
   <div class="foot-copy">© 2026 RM-Engineering · Built with LLM</div>
 </footer>
 
+<script src="/js/main.js" defer></script>
 <script>
 /* ── BOOT SEQUENCE ── */
 const BOOT_LINES = [

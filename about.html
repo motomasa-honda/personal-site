@@ -1,163 +1,359 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About | RM-Engineering</title>
-  <meta name="description" content="RM-Engineering - Recursive Motomasa Engineering について">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="RM-Engineering について。Mac mini M4 + RX 7900 XTX のデュアルマシン構成で LLM オーケストレーション・Kaggle 自動化・アプリ自動生成を構築するソロエンジニア motomasa の紹介。">
+<meta name="theme-color" content="#050810">
+<title>About — RM-Engineering</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
+
+<style>
+/* ── about-only ───────────────────────────── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 64px;
+}
+.about-block {
+  background: var(--bg1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 36px 32px;
+  position: relative;
+  overflow: hidden;
+}
+.about-block::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--blue), var(--purple), transparent);
+}
+.about-block-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--purple);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.about-name {
+  font-family: var(--mono);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text-bright);
+  letter-spacing: -1px;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+.about-handle {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--cyan);
+  margin-bottom: 24px;
+}
+.about-bio {
+  font-size: 14px;
+  color: var(--text2);
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+.about-bio strong { color: var(--text); font-weight: 500; }
+.about-links { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* spec list (hardware) */
+.spec-list {
+  display: flex; flex-direction: column;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+}
+.spec-item {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--border);
+}
+.spec-item:last-child { border-bottom: none; }
+.spec-key { color: var(--text3); letter-spacing: 1px; }
+.spec-val { color: var(--text); }
+.spec-val .accent { color: var(--cyan); }
+
+/* skill grid */
+.skill-grid {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.skill {
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text2);
+  letter-spacing: .5px;
+  transition: all .12s;
+}
+.skill:hover {
+  border-color: var(--blue);
+  color: var(--text);
+  background: rgba(74, 158, 255, .05);
+}
+.skill.primary {
+  border-color: rgba(0, 230, 118, .25);
+  color: var(--green);
+  background: rgba(0, 230, 118, .05);
+}
+
+/* roadmap (same as index) */
+.roadmap-wrap {
+  background: var(--bg1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.rm-item {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  align-items: center;
+  padding: 20px 28px;
+  border-bottom: 1px solid var(--border);
+  transition: background .12s;
+}
+.rm-item:last-child { border-bottom: none; }
+.rm-item:hover { background: var(--bg2); }
+.rm-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text3);
+  letter-spacing: 2px;
+}
+.rm-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.rm-desc {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--text3);
+  letter-spacing: .5px;
+}
+.rm-status {
+  font-family: var(--mono);
+  font-size: 8px;
+  padding: 3px 10px;
+  border-radius: var(--radius-sm);
+  letter-spacing: 1.5px;
+  white-space: nowrap;
+}
+.s-done { color: var(--green);  background: rgba(0,230,118,.08);  border: 1px solid rgba(0,230,118,.2); }
+.s-wip  { color: var(--amber);  background: rgba(255,193,7,.08);  border: 1px solid rgba(255,193,7,.2); }
+.s-next { color: var(--blue);   background: rgba(74,158,255,.08); border: 1px solid rgba(74,158,255,.2); }
+.s-plan { color: var(--text3);  background: transparent;          border: 1px solid var(--border); }
+
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; gap: 16px; }
+  .about-block { padding: 28px 22px; }
+  .rm-item { grid-template-columns: 36px 1fr auto; padding: 16px 18px; gap: 8px; }
+}
+</style>
 </head>
 <body>
-  <div class="scanlines"></div>
-  <div class="noise"></div>
 
-  <nav>
-    <a href="index.html" class="logo">
-      <span class="logo-bracket">[</span>RM<span class="logo-dot">.</span>ENG<span class="logo-bracket">]</span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html">_home</a></li>
-      <li><a href="blog.html">_blog</a></li>
-      <li><a href="apps.html">_apps</a></li>
-      <li><a href="about.html" class="active">_about</a></li>
-    </ul>
-    <button class="nav-toggle" onclick="toggleNav()">≡</button>
-  </nav>
+<a class="skip-link" href="#main">Skip to content</a>
 
-  <div class="page-hero">
-    <div class="page-hero-bg"></div>
-    <span class="page-label">// ABOUT</span>
-    <h1 class="page-title">RM-ENG</h1>
-    <p class="page-desc">Recursive Motomasa Engineering — ソロエンジニアの記録</p>
-  </div>
+<nav aria-label="Primary">
+  <a class="nav-logo" href="/">RM<em>.ENG</em></a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/about.html" class="active" aria-current="page">About</a></li>
+    <li><a href="/blog.html">Blog</a></li>
+    <li><a href="/apps.html">Apps</a></li>
+    <li><a href="https://github.com/motomasa-honda" target="_blank" rel="noopener">GitHub</a></li>
+  </ul>
+  <button class="nav-toggle" data-nav-toggle aria-label="Toggle navigation" aria-expanded="false">≡</button>
+</nav>
 
-  <div class="about-container">
+<main id="main">
+
+  <header class="page-hero">
+    <div class="page-eyebrow">// ABOUT</div>
+    <h1 class="page-title"><span class="g">motomasa</span> @ RM-Engineering</h1>
+    <p class="page-desc">
+      AI × 自動化 × ソロ開発をテーマに、複数 LLM を協調させた自律システムを構築するソロエンジニアです。
+    </p>
+  </header>
+
+  <section class="section" id="profile">
+    <div class="sec-label"><span class="sl-num">01</span> profile // hardware</div>
 
     <div class="about-grid">
-      <div class="about-block">
-        <div class="about-block-title">// PROFILE</div>
-        <div>
-          <div class="about-name">基真<br><span style="font-size:1.2rem;color:var(--text-dim);">Motomasa</span></div>
-          <div class="about-handle">@motomasa-honda</div>
-        </div>
+      <article class="about-block">
+        <div class="about-block-label">// PROFILE</div>
+        <h2 class="about-name">基真<span class="sr-only">（モトマサ）</span></h2>
+        <div class="about-handle">@motomasa-honda</div>
         <p class="about-bio">
-          AI × 自動化 × ソロ開発をテーマに活動するエンジニア。<br><br>
-          Mac mini M4とRX 7900 XTX搭載Linux PCのデュアルマシン構成で、LLMオーケストレーションパイプライン・Kaggle自動化・アプリ自動生成システムを構築中。<br><br>
-          将来的には一人会社（RM-Engineering）を設立し、AI自動化ツールとコンテンツ収益で自走するソロ開発ライフを目指している。
+          <strong>RM-Engineering (Recursive Motomasa Engineering)</strong> として、Mac mini M4 と
+          RX 7900 XTX 搭載 Linux PC のデュアル構成で、LLM オーケストレーションパイプライン・
+          Kaggle 自動化システム・アプリ自動生成エンジンを構築しています。
+          <br><br>
+          現在は <strong>KRS-Core v0.1.0</strong> (7 層マルチエージェント基盤) を実コンペで運用しつつ、
+          KRS-OS への発展と一人会社 RM-Engineering の法人化を視野に活動中。
         </p>
-        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-          <a href="https://github.com/motomasa-honda" target="_blank" class="btn-secondary" style="padding:0.5rem 1rem;font-size:0.8rem;">GitHub</a>
-          <a href="https://zenn.dev" target="_blank" class="btn-secondary" style="padding:0.5rem 1rem;font-size:0.8rem;">Zenn</a>
-          <a href="https://qiita.com" target="_blank" class="btn-secondary" style="padding:0.5rem 1rem;font-size:0.8rem;">Qiita</a>
+        <div class="about-links">
+          <a class="btn btn-ghost" href="https://github.com/motomasa-honda" target="_blank" rel="noopener">GitHub →</a>
+          <a class="btn btn-ghost" href="https://zenn.dev" target="_blank" rel="noopener">Zenn →</a>
+          <a class="btn btn-ghost" href="https://qiita.com" target="_blank" rel="noopener">Qiita →</a>
         </div>
-      </div>
+      </article>
 
-      <div class="about-block">
-        <div class="about-block-title">// HARDWARE</div>
+      <article class="about-block">
+        <div class="about-block-label">// HARDWARE / OPS</div>
         <div class="spec-list">
           <div class="spec-item">
             <span class="spec-key">Primary</span>
-            <span class="spec-val">Mac mini M4</span>
+            <span class="spec-val"><span class="accent">Mac mini M4</span> — dev / git / NAT</span>
           </div>
           <div class="spec-item">
-            <span class="spec-key">Role</span>
-            <span class="spec-val">司令塔・GitHub push・操作端末</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-key">GPU Server</span>
-            <span class="spec-val">Ubuntu 24.04</span>
+            <span class="spec-key">Compute</span>
+            <span class="spec-val"><span class="accent">Ubuntu 24.04</span> — exec / GPU</span>
           </div>
           <div class="spec-item">
             <span class="spec-key">CPU</span>
-            <span class="spec-val">Ryzen 9 9950X (32 threads)</span>
+            <span class="spec-val">Ryzen 9 9950X · 32 threads</span>
           </div>
           <div class="spec-item">
             <span class="spec-key">GPU</span>
-            <span class="spec-val">RX 7900 XTX 24GB</span>
+            <span class="spec-val">RX 7900 XTX · 24 GB · ROCm</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-key">Memory</span>
+            <span class="spec-val">192 GB DDR5</span>
           </div>
           <div class="spec-item">
             <span class="spec-key">Network</span>
-            <span class="spec-val">2.5G Ethernet 直結</span>
+            <span class="spec-val">2.5 G Ethernet 直結</span>
           </div>
           <div class="spec-item">
             <span class="spec-key">LLM Stack</span>
-            <span class="spec-val">Ollama + ROCm</span>
+            <span class="spec-val">Ollama + Claude API</span>
           </div>
         </div>
+      </article>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section" id="stack">
+    <div class="sec-label"><span class="sl-num">02</span> tech stack // tools</div>
+    <div class="skill-grid">
+      <span class="skill primary">Python</span>
+      <span class="skill primary">LLM Orchestration</span>
+      <span class="skill primary">Ollama</span>
+      <span class="skill primary">ROCm</span>
+      <span class="skill primary">LangGraph</span>
+      <span class="skill">Claude API</span>
+      <span class="skill">FastAPI</span>
+      <span class="skill">Streamlit</span>
+      <span class="skill">PostgreSQL</span>
+      <span class="skill">Qdrant</span>
+      <span class="skill">Kaggle</span>
+      <span class="skill">LightGBM / XGBoost / CatBoost</span>
+      <span class="skill">scikit-learn</span>
+      <span class="skill">Optuna</span>
+      <span class="skill">HTML / CSS / JS</span>
+      <span class="skill">Vercel</span>
+      <span class="skill">GitHub Actions</span>
+      <span class="skill">systemd (--user)</span>
+      <span class="skill">Ubuntu</span>
+      <span class="skill">macOS</span>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section" id="roadmap">
+    <div class="sec-label"><span class="sl-num">03</span> roadmap // goals</div>
+    <div class="roadmap-wrap">
+      <div class="rm-item">
+        <div class="rm-num">01</div>
+        <div>
+          <div class="rm-title">AI エージェント常駐 → 作業記録を毎日 GitHub 自動連携</div>
+          <div class="rm-desc">company-work-logs · daily report · git push automation</div>
+        </div>
+        <span class="rm-status s-done">✓ DONE</span>
+      </div>
+      <div class="rm-item">
+        <div class="rm-num">02</div>
+        <div>
+          <div class="rm-title">KRS-Core v0.1.0 — 汎用マルチエージェント基盤完成</div>
+          <div class="rm-desc">7-layer architecture · BaseAgent · ModelRouter · SkillExecutor</div>
+        </div>
+        <span class="rm-status s-done">✓ DONE</span>
+      </div>
+      <div class="rm-item">
+        <div class="rm-num">03</div>
+        <div>
+          <div class="rm-title">Knowledge ループ閉鎖 — KRS が過去から学ぶ最初の実証</div>
+          <div class="rm-desc">Episode 書き戻し + Planner recall → LB best 更新</div>
+        </div>
+        <span class="rm-status s-done">✓ DONE</span>
+      </div>
+      <div class="rm-item">
+        <div class="rm-num">04</div>
+        <div>
+          <div class="rm-title">作業記録 → 技術記事自動生成 → Zenn / Qiita 自動投稿</div>
+          <div class="rm-desc">DailyReport → Claude API → Markdown → Vercel deploy</div>
+        </div>
+        <span class="rm-status s-wip">IN PROGRESS</span>
+      </div>
+      <div class="rm-item">
+        <div class="rm-num">05</div>
+        <div>
+          <div class="rm-title">APPGENAgent — 5 エージェントによるアプリ自動生成</div>
+          <div class="rm-desc">Architect · Coder · Debugger · Reviewer · Judge (Claude API)</div>
+        </div>
+        <span class="rm-status s-next">NEXT</span>
+      </div>
+      <div class="rm-item">
+        <div class="rm-num">06</div>
+        <div>
+          <div class="rm-title">KRS-OS — 複数 Agent が協調する自律開発環境</div>
+          <div class="rm-desc">AgentRegistry · Scheduler · Cross-domain knowledge sharing</div>
+        </div>
+        <span class="rm-status s-plan">PLANNED</span>
+      </div>
+      <div class="rm-item">
+        <div class="rm-num">07</div>
+        <div>
+          <div class="rm-title">一人会社設立 — RM-Engineering 法人化</div>
+          <div class="rm-desc">Mac mini M4 / RX 7900 XTX / Linux PC を経費計上</div>
+        </div>
+        <span class="rm-status s-plan">PLANNED</span>
       </div>
     </div>
+  </section>
 
-    <div class="skill-section">
-      <div class="skill-section-title">// TECH STACK</div>
-      <div class="skill-grid">
-        <span class="skill-badge highlight">Python</span>
-        <span class="skill-badge highlight">LLM Orchestration</span>
-        <span class="skill-badge highlight">Ollama</span>
-        <span class="skill-badge highlight">ROCm</span>
-        <span class="skill-badge">FastAPI</span>
-        <span class="skill-badge">Streamlit</span>
-        <span class="skill-badge">Node.js</span>
-        <span class="skill-badge">Claude API</span>
-        <span class="skill-badge">Kaggle</span>
-        <span class="skill-badge">Machine Learning</span>
-        <span class="skill-badge">HTML/CSS/JS</span>
-        <span class="skill-badge">Vercel</span>
-        <span class="skill-badge">GitHub Actions</span>
-        <span class="skill-badge">Systemd</span>
-        <span class="skill-badge">Ubuntu</span>
-        <span class="skill-badge">macOS</span>
-      </div>
-    </div>
+</main>
 
-    <div class="skill-section">
-      <div class="skill-section-title">// GOALS — 中長期ロードマップ</div>
-      <div class="goal-list">
-        <div class="goal-item">
-          <span class="goal-num">01</span>
-          <span class="goal-text">AIエージェント常駐 → 作業記録を毎日GitHub自動連携</span>
-          <span class="goal-done">✅</span>
-        </div>
-        <div class="goal-item">
-          <span class="goal-num">02</span>
-          <span class="goal-text">作業記録から技術記事生成 → Zenn/Qiitaに自動投稿</span>
-          <span class="goal-done" style="color:var(--accent2);">🔜</span>
-        </div>
-        <div class="goal-item">
-          <span class="goal-num">03</span>
-          <span class="goal-text">noteで販売して新収入源を作る</span>
-          <span class="goal-done" style="color:var(--accent2);">🔜</span>
-        </div>
-        <div class="goal-item">
-          <span class="goal-num">04</span>
-          <span class="goal-text">Kaggle自動化 + アプリ自動生成LLMをLinux環境で稼働</span>
-          <span class="goal-done" style="color:var(--accent);">◑</span>
-        </div>
-        <div class="goal-item">
-          <span class="goal-num">05</span>
-          <span class="goal-text">一人会社設立（RM-Engineering）— Mac mini M4 / RX 7900 XTX / Linux PC を経費計上</span>
-          <span class="goal-done" style="color:var(--accent2);">🔜</span>
-        </div>
-      </div>
-    </div>
+<footer>
+  <div class="foot-logo">[[RM.ENG]] // Recursive Motomasa Engineering</div>
+  <ul class="foot-links" style="list-style:none">
+    <li><a href="https://github.com/motomasa-honda" target="_blank" rel="noopener">GitHub</a></li>
+    <li><a href="https://zenn.dev" target="_blank" rel="noopener">Zenn</a></li>
+    <li><a href="https://qiita.com" target="_blank" rel="noopener">Qiita</a></li>
+  </ul>
+  <div class="foot-copy">© 2026 RM-Engineering · Built with LLM</div>
+</footer>
 
-  </div>
-
-  <footer>
-    <div class="footer-logo">
-      <span class="logo-bracket">[</span>RM<span class="logo-dot">.</span>ENG<span class="logo-bracket">]</span>
-    </div>
-    <p class="footer-sub">Recursive Motomasa Engineering</p>
-    <div class="footer-links">
-      <a href="https://github.com/motomasa-honda" target="_blank">GitHub</a>
-      <a href="https://zenn.dev" target="_blank">Zenn</a>
-      <a href="https://qiita.com" target="_blank">Qiita</a>
-    </div>
-    <p class="footer-copy">© 2026 RM-Engineering. Built with ❤️ + LLM.</p>
-  </footer>
-
-  <script src="js/main.js"></script>
+<script src="/js/main.js" defer></script>
 </body>
 </html>
