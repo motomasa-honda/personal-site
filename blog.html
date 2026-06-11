@@ -258,97 +258,84 @@
         <button class="filter-btn" data-filter="krs-core" role="tab" aria-selected="false">KRS-Core</button>
         <button class="filter-btn" data-filter="kaggle" role="tab" aria-selected="false">Kaggle</button>
         <button class="filter-btn" data-filter="llm" role="tab" aria-selected="false">LLM</button>
-        <button class="filter-btn" data-filter="rocm" role="tab" aria-selected="false">ROCm</button>
+        <button class="filter-btn" data-filter="langgraph" role="tab" aria-selected="false">LangGraph</button>
         <button class="filter-btn" data-filter="infra" role="tab" aria-selected="false">Infra</button>
       </div>
 
       <div class="blog-list">
 
-        <a href="#" class="blog-post-card" data-tags="krs-core llm">
+        <a href="/post.html?slug=2026-06-11-oof-blending-lb-wiring" class="blog-post-card" data-tags="kaggle llm krs-core">
           <div class="blog-post-main">
             <div class="blog-post-meta">
+              <span class="tag tag-green">Kaggle</span>
               <span class="tag tag-purple">KRS-Core</span>
-              <span class="tag tag-blue">LLM</span>
+              <span class="tag tag-amber">Debugging</span>
             </div>
-            <h2 class="blog-post-title">KRS v8 → KRS-Core v0.1.0: 汎用マルチエージェント基盤へのリファクタリング全記録</h2>
+            <h2 class="blog-post-title">OOF を保存しても submit していなかった話 — Kaggle Agent の ensemble 経路を蘇生させた Phase 8-2</h2>
             <p class="blog-post-excerpt">
-              Kaggle 専用だったシステムを 7 層アーキテクチャの汎用基盤へ移行した全工程。
-              BaseAgent ABC・ModelRouter・SkillExecutor 実装まで。
+              playbook 6 関数中 4 つが未配線、繋がっている 2 つも結果が submit に届いていない致命的バグを発見。
+              TRIAL_NO の連番化 (env 経由)、regression OOF の log 空間保存、adversarial validation の Id 列除外を含む 8 ファイル修正で「OOF → LB」経路を初めて閉じた話。
             </p>
           </div>
           <div class="blog-post-side">
-            <span class="blog-post-date">2026.06.08</span>
+            <span class="blog-post-date">2026.06.11</span>
             <span class="external-badge draft">DRAFT</span>
           </div>
         </a>
 
-        <a href="#" class="blog-post-card" data-tags="kaggle llm">
+        <a href="/post.html?slug=2026-06-11-knowledge-loop-closure" class="blog-post-card" data-tags="krs-core llm langgraph kaggle">
           <div class="blog-post-main">
             <div class="blog-post-meta">
-              <span class="tag tag-green">Kaggle</span>
+              <span class="tag tag-purple">KRS-Core</span>
               <span class="tag tag-blue">LLM</span>
+              <span class="tag">LangGraph</span>
             </div>
-            <h2 class="blog-post-title">LLM を使った Kaggle 自動化パイプラインの設計と実装</h2>
+            <h2 class="blog-post-title">LangGraph で Knowledge ループを閉じる — Kaggle Agent が過去の自分から学ぶまで</h2>
             <p class="blog-post-excerpt">
-              Planner / Coder / Judge / Fixer の役割を複数 LLM に分担し LangGraph で 13 ノードパイプラインを構築。
-              Titanic CV 0.886 達成のアーキテクチャ公開。
+              EpisodeMemory 書き戻し (write) と GrandmasterMemory recall (read) を全部繋ぎ、
+              「前回 episode の successful 戦略を Planner が完全踏襲して LB best を更新する」観察に成功した実機実証の記録。
             </p>
           </div>
           <div class="blog-post-side">
-            <span class="blog-post-date">2026.05.04</span>
-            <span class="external-badge qiita">Qiita</span>
+            <span class="blog-post-date">2026.06.11</span>
+            <span class="external-badge draft">DRAFT</span>
           </div>
         </a>
 
-        <a href="#" class="blog-post-card" data-tags="rocm infra">
+        <a href="/post.html?slug=2026-06-10-mac-linux-rsync-deploy" class="blog-post-card" data-tags="infra ssh deploy">
           <div class="blog-post-main">
             <div class="blog-post-meta">
-              <span class="tag tag-cyan">ROCm</span>
               <span class="tag">Infra</span>
+              <span class="tag tag-cyan">SSH</span>
+              <span class="tag">Deploy</span>
             </div>
-            <h2 class="blog-post-title">Ubuntu 24.04 + ROCm で RX 7900 XTX を Ollama に正しく認識させる</h2>
+            <h2 class="blog-post-title">Linux→GitHub の SSH:22 が中間装置で塞がれていた話 — Mac mini を経由する rsync デプロイ運用に倒した経緯</h2>
             <p class="blog-post-excerpt">
-              ROCR_VISIBLE_DEVICES で内蔵 GPU を除外し RX 7900 XTX のみを Ollama に使わせる設定方法と
-              rocm-powercap 300W 制限の解説。
+              banner=6279353 で握り潰される SSH:22 outbound を発見。HTTPS+PAT 案を捨てて rsync 一本化に倒した経緯と、
+              <code>scripts/deploy_from_mac.sh</code> + <code>systemctl --user</code> での運用詳解。
             </p>
           </div>
           <div class="blog-post-side">
-            <span class="blog-post-date">2026.04.10</span>
-            <span class="external-badge zenn">Zenn</span>
+            <span class="blog-post-date">2026.06.10</span>
+            <span class="external-badge draft">DRAFT</span>
           </div>
         </a>
 
-        <a href="#" class="blog-post-card" data-tags="llm infra">
+        <a href="/post.html?slug=2026-06-08-krs-core-7layer-refactor" class="blog-post-card" data-tags="krs-core llm refactor langgraph">
           <div class="blog-post-main">
             <div class="blog-post-meta">
+              <span class="tag tag-purple">KRS-Core</span>
               <span class="tag tag-blue">LLM</span>
-              <span class="tag">Infra</span>
+              <span class="tag">Refactor</span>
             </div>
-            <h2 class="blog-post-title">Mac mini M4 + RX 7900 XTX で構築する階層型 AI 開発環境</h2>
+            <h2 class="blog-post-title">Kaggle 専用 v8 を 7 層の汎用マルチエージェント基盤 (KRS-Core) にリファクタした全工程</h2>
             <p class="blog-post-excerpt">
-              デュアルマシン構成で LLM オーケストレーションパイプラインを構築した記録。
-              Ollama によるローカルモデル管理から supervisor.py の設計まで詳解。
+              一体化していた KRS v8 を <code>core/knowledge</code> から <code>core/interfaces</code> までの 7 層に分離し、
+              BaseAgent ABC + ModelRouter + AgentRegistry で新 Agent が即座に載る基盤を作った全記録。
             </p>
           </div>
           <div class="blog-post-side">
-            <span class="blog-post-date">2026.03.20</span>
-            <span class="external-badge zenn">Zenn</span>
-          </div>
-        </a>
-
-        <a href="#" class="blog-post-card" data-tags="infra">
-          <div class="blog-post-main">
-            <div class="blog-post-meta">
-              <span class="tag">Infra</span>
-            </div>
-            <h2 class="blog-post-title">Mac mini と Linux PC を Ethernet 直結して SSH + Internet Sharing する構成</h2>
-            <p class="blog-post-excerpt">
-              Mac mini をルーター兼インターネット共有ホストとして使い、Ubuntu PC との 2.5G LAN 直結環境を構築。
-              rsync ベースのデプロイ運用も解説。
-            </p>
-          </div>
-          <div class="blog-post-side">
-            <span class="blog-post-date">2026.03.05</span>
+            <span class="blog-post-date">2026.06.08</span>
             <span class="external-badge draft">DRAFT</span>
           </div>
         </a>
@@ -367,7 +354,7 @@
           <button class="tag-btn" data-filter="krs-core">KRS-Core</button>
           <button class="tag-btn" data-filter="llm">LLM</button>
           <button class="tag-btn" data-filter="kaggle">Kaggle</button>
-          <button class="tag-btn" data-filter="rocm">ROCm</button>
+          <button class="tag-btn" data-filter="langgraph">LangGraph</button>
           <button class="tag-btn" data-filter="infra">Infra</button>
         </div>
       </div>

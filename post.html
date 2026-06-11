@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="RM-Engineering — 技術記事">
+<meta name="theme-color" content="#050810">
+<title>Post — RM-Engineering</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
+
+<style>
+.post-wrap {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 120px 32px 96px;
+  position: relative;
+  z-index: 1;
+}
+.post-meta-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text3);
+  letter-spacing: 1px;
+}
+.post-back {
+  color: var(--text3);
+  border: 1px solid var(--border);
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  transition: all .12s;
+}
+.post-back:hover {
+  border-color: var(--border2);
+  color: var(--text);
+}
+.post-emoji {
+  font-size: 40px;
+  margin-bottom: 16px;
+  display: block;
+}
+.post-title {
+  font-family: var(--sans);
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 600;
+  color: var(--text-bright);
+  line-height: 1.35;
+  letter-spacing: -.5px;
+  margin-bottom: 28px;
+}
+
+/* markdown body */
+.md {
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.85;
+}
+.md h2 {
+  font-family: var(--sans);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin: 56px 0 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.md h3 {
+  font-family: var(--sans);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin: 40px 0 12px;
+}
+.md p { margin: 0 0 18px; }
+.md a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(74, 158, 255, .35);
+  transition: text-decoration-color .12s;
+}
+.md a:hover { text-decoration-color: var(--blue); }
+
+.md ul, .md ol {
+  margin: 0 0 20px;
+  padding-left: 24px;
+}
+.md li { margin-bottom: 6px; }
+
+.md strong { color: var(--text-bright); font-weight: 500; }
+.md em     { color: var(--cyan); font-style: normal; }
+
+.md code {
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 2px 6px;
+  background: rgba(74, 158, 255, .08);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--cyan);
+}
+.md pre {
+  background: var(--bg1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  overflow-x: auto;
+  margin: 0 0 22px;
+  font-size: 12px;
+  line-height: 1.7;
+}
+.md pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--text);
+  font-size: inherit;
+}
+.md blockquote {
+  border-left: 3px solid var(--blue);
+  background: rgba(74, 158, 255, .04);
+  padding: 12px 18px;
+  margin: 0 0 22px;
+  color: var(--text2);
+  font-size: 14px;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+.md hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 40px 0;
+}
+
+.md table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 22px;
+  font-size: 13px;
+}
+.md th, .md td {
+  border: 1px solid var(--border);
+  padding: 8px 14px;
+  text-align: left;
+}
+.md th {
+  background: var(--bg1);
+  font-weight: 600;
+  color: var(--text-bright);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.md tr:hover td { background: rgba(74, 158, 255, .03); }
+
+.post-loading,
+.post-error {
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--text3);
+  text-align: center;
+  padding: 80px 20px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+}
+.post-error { color: var(--red); border-color: rgba(255, 82, 82, .25); }
+
+.post-foot {
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text3);
+  letter-spacing: 1px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (max-width: 600px) {
+  .post-wrap { padding: 100px 18px 60px; }
+  .md { font-size: 14px; }
+  .md pre { font-size: 11px; padding: 14px 16px; }
+}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav aria-label="Primary">
+  <a class="nav-logo" href="/">RM<em>.ENG</em></a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/blog.html" class="active">Blog</a></li>
+    <li><a href="/apps.html">Apps</a></li>
+    <li><a href="https://github.com/motomasa-honda" target="_blank" rel="noopener">GitHub</a></li>
+  </ul>
+  <button class="nav-toggle" data-nav-toggle aria-label="Toggle navigation" aria-expanded="false">≡</button>
+</nav>
+
+<main id="main">
+  <article class="post-wrap">
+    <div class="post-meta-top">
+      <a class="post-back" href="/blog.html">← Blog 一覧</a>
+      <span id="post-date"></span>
+      <span id="post-topics"></span>
+    </div>
+
+    <span class="post-emoji" id="post-emoji" aria-hidden="true"></span>
+    <h1 class="post-title" id="post-title">Loading…</h1>
+
+    <div id="post-body" class="md">
+      <div class="post-loading">// fetching markdown…</div>
+    </div>
+
+    <div class="post-foot">
+      <span id="post-slug"></span>
+      <a href="/blog.html">← Blog 一覧に戻る</a>
+    </div>
+  </article>
+</main>
+
+<footer>
+  <div class="foot-logo">[[RM.ENG]] // Recursive Motomasa Engineering</div>
+  <ul class="foot-links" style="list-style:none">
+    <li><a href="https://github.com/motomasa-honda" target="_blank" rel="noopener">GitHub</a></li>
+    <li><a href="https://zenn.dev" target="_blank" rel="noopener">Zenn</a></li>
+    <li><a href="https://qiita.com" target="_blank" rel="noopener">Qiita</a></li>
+  </ul>
+  <div class="foot-copy">© 2026 RM-Engineering · Built with LLM</div>
+</footer>
+
+<script src="/js/main.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
+<script>
+/* ────────────────────────────────────────
+   Markdown post renderer (client-side)
+   - ?slug=<filename without .md> → fetch /posts/<slug>.md
+   - YAML frontmatter を簡易パース
+   - 本文を marked.parse して #post-body へ流し込む
+   ──────────────────────────────────────── */
+(() => {
+  const params = new URLSearchParams(location.search);
+  const slug = params.get('slug');
+  const $title = document.getElementById('post-title');
+  const $body  = document.getElementById('post-body');
+  const $emoji = document.getElementById('post-emoji');
+  const $date  = document.getElementById('post-date');
+  const $topics = document.getElementById('post-topics');
+  const $slug  = document.getElementById('post-slug');
+
+  if (!slug) {
+    $title.textContent = 'No post selected';
+    $body.innerHTML = '<div class="post-error">// ?slug=... パラメータが必要です。<a href="/blog.html">Blog 一覧へ</a></div>';
+    return;
+  }
+  if (!/^[\w\d\-]+$/.test(slug)) {  // 防御的に
+    $title.textContent = 'Invalid slug';
+    $body.innerHTML = '<div class="post-error">// slug 形式が不正です</div>';
+    return;
+  }
+  $slug.textContent = `posts/${slug}.md`;
+
+  function parseFrontmatter(text) {
+    const m = text.match(/^---\n([\s\S]*?)\n---\n?/);
+    if (!m) return { meta: {}, body: text };
+    const meta = {};
+    m[1].split('\n').forEach(line => {
+      const idx = line.indexOf(':');
+      if (idx < 0) return;
+      const k = line.slice(0, idx).trim();
+      let v = line.slice(idx + 1).trim();
+      v = v.replace(/^["']|["']$/g, '');
+      if (v.startsWith('[') && v.endsWith(']')) {
+        v = v.slice(1, -1).split(',').map(s => s.trim().replace(/^["']|["']$/g, ''));
+      }
+      meta[k] = v;
+    });
+    return { meta, body: text.slice(m[0].length) };
+  }
+
+  fetch(`/posts/${slug}.md`)
+    .then(r => {
+      if (!r.ok) throw new Error(`fetch failed: ${r.status}`);
+      return r.text();
+    })
+    .then(text => {
+      const { meta, body } = parseFrontmatter(text);
+      const title = meta.title || slug;
+      document.title = `${title} — RM-Engineering`;
+
+      $emoji.textContent = meta.emoji || '';
+      $title.textContent = title;
+      $date.textContent  = meta.publication_date ? `// ${meta.publication_date}` : '';
+      const topics = Array.isArray(meta.topics) ? meta.topics : [];
+      $topics.textContent = topics.length ? `// ${topics.join(' · ')}` : '';
+
+      marked.setOptions({ breaks: false, gfm: true });
+      $body.innerHTML = marked.parse(body);
+
+      // 外部リンクは新規タブ
+      $body.querySelectorAll('a[href^="http"]').forEach(a => {
+        a.target = '_blank';
+        a.rel = 'noopener';
+      });
+    })
+    .catch(err => {
+      console.error(err);
+      $title.textContent = 'Post not found';
+      $body.innerHTML = `<div class="post-error">// 記事を読み込めませんでした (${slug})<br>${err.message}</div>`;
+    });
+})();
+</script>
+</body>
+</html>
