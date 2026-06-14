@@ -321,6 +321,45 @@
           </div>
         </a>
 
+        <a href="/post.html?slug=2026-06-10-krs-core-titanic-test" class="blog-post-card" data-tags="krs-core kaggle langgraph">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-purple">KRS-Core</span>
+              <span class="tag tag-green">Kaggle</span>
+              <span class="tag">LangGraph</span>
+            </div>
+            <h2 class="blog-post-title">自作マルチエージェントKaggleシステムをTitanicで実走テストした話【KRS-Core v0.1.0】</h2>
+            <p class="blog-post-excerpt">
+              KRS-Core v0.1.0 を Titanic コンペで初の実走テスト。LangGraph ノード間の state 受け渡しや
+              Kaggle CLI の提出制限など、設計段階では見えなかった実機特有の問題を一通り洗い出した記録。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.10</span>
+            <span class="external-badge draft">DRAFT</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-06-10-langgraph-multi-agent-design" class="blog-post-card" data-tags="langgraph llm kaggle krs-core">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag">LangGraph</span>
+              <span class="tag tag-blue">LLM</span>
+              <span class="tag tag-purple">KRS-Core</span>
+            </div>
+            <h2 class="blog-post-title">LangGraph × ローカルLLMでKaggleを自動化するマルチエージェント設計の話</h2>
+            <p class="blog-post-excerpt">
+              Planner / Coder / Critic などの役割を LangGraph のノードとして設計し、ローカル LLM (Ollama) を
+              タスク種別ごとに振り分けるマルチエージェント基盤の設計記録。<code>AgentState</code> の型定義が
+              デバッグ性を大きく左右することを学んだ回。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.10</span>
+            <span class="external-badge draft">DRAFT</span>
+          </div>
+        </a>
+
         <a href="/post.html?slug=2026-06-08-krs-core-7layer-refactor" class="blog-post-card" data-tags="krs-core llm refactor langgraph">
           <div class="blog-post-main">
             <div class="blog-post-meta">
@@ -336,6 +375,276 @@
           </div>
           <div class="blog-post-side">
             <span class="blog-post-date">2026.06.08</span>
+            <span class="external-badge draft">DRAFT</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-06-07-krs-core-platform-architecture" class="blog-post-card" data-tags="krs-core llm kaggle">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-purple">KRS-Core</span>
+              <span class="tag tag-green">Kaggle</span>
+            </div>
+            <h2 class="blog-post-title">Kaggle自動化ツールを『汎用AIエージェント基盤』に育てる設計判断の記録</h2>
+            <p class="blog-post-excerpt">
+              Kaggle専用ツールとして育ってきたシステムを汎用AIエージェント基盤へ発展させるための設計判断。
+              PostgreSQL + Qdrant による記憶層導入の検討も含め、後の KRS-Core 構想の原点となった意思決定記録。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.07</span>
+            <span class="external-badge draft">DRAFT</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-06-01-grandmaster-memory-pg-qdrant" class="blog-post-card" data-tags="kaggle krs-core llm">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-purple">KRS-Core</span>
+              <span class="tag tag-green">Kaggle</span>
+            </div>
+            <h2 class="blog-post-title">「賢いAIより記憶するAI」— KaggleグランドマスターAIの設計方針とPostgreSQL+Qdrant移行の意思決定</h2>
+            <p class="blog-post-excerpt">
+              「賢いAIより記憶するAI」を目指し、過去の試行履歴を PostgreSQL + Qdrant に移行する意思決定の記録。
+              GrandmasterMemory の設計方針を固めた、後の Knowledge ループ実装につながる原点。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.01</span>
+            <span class="external-badge draft">DRAFT</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-05-30-weekly-harvest-pipeline" class="blog-post-card" data-tags="kaggle llm">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-green">Kaggle</span>
+              <span class="tag tag-blue">LLM</span>
+            </div>
+            <h2 class="blog-post-title">Kaggle上位NotebookをLLMで自動SKILL化する週次Harvestパイプラインを作った</h2>
+            <p class="blog-post-excerpt">
+              Kaggle上位Notebookを毎週自動収集し、LLMで知識を蒸留してSKILL化する週次Harvestパイプラインを構築。
+              Kaggle CLIの認証形式変更など、実装上の落とし穴も併せて解説。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.05.30</span>
+            <span class="external-badge draft">DRAFT</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-05-30-dual-node-kaggle-design" class="blog-post-card" data-tags="kaggle infra">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-green">Kaggle</span>
+              <span class="tag">Infra</span>
+            </div>
+            <h2 class="blog-post-title">Mac mini M4 + Ubuntu RTX機でKaggle自動化AIを動かすデュアルノード構成の設計と落とし穴</h2>
+            <p class="blog-post-excerpt">
+              Mac mini M4 + Ubuntu の2台構成でKaggle自動化AIを動かす設計と、Kaggle CLI 2.2.0の
+              トークン形式変更などデュアルノード運用で踏んだ落とし穴をまとめた記録。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.05.30</span>
+            <span class="external-badge draft">DRAFT</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-05-17-grandmaster-playbook-automation" class="blog-post-card" data-tags="kaggle llm">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-green">Kaggle</span>
+              <span class="tag tag-blue">LLM</span>
+            </div>
+            <h2 class="blog-post-title">KaggleグランドマスターのPlaybookをLLMパイプラインに自動化して組み込んだ話</h2>
+            <p class="blog-post-excerpt">
+              Kaggleグランドマスターが使う定石（Playbook）をLLMパイプラインに自動組み込み。
+              hill climbing・stackingなどの戦略をAgentが自律的に選択できるようにした実装記録。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.05.17</span>
+            <span class="external-badge draft">DRAFT</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-05-17-ollama-client-rewrite" class="blog-post-card" data-tags="llm infra">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">LLM</span>
+              <span class="tag">Infra</span>
+            </div>
+            <h2 class="blog-post-title">ローカルLLMパイプラインのOllama呼び出しを全面刷新した話 — think:falseバグとMac依存の排除</h2>
+            <p class="blog-post-excerpt">
+              <code>think:false</code> が無視されるバグとMac依存のハードコードを一掃するため、Ollama呼び出しを全面刷新。
+              Mac/Ubuntu双方から呼べる共通クライアントへ再設計した記録。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.05.17</span>
+            <span class="external-badge draft">DRAFT</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-05-17-kaggle-pipeline-6-bugfixes" class="blog-post-card" data-tags="kaggle llm">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-green">Kaggle</span>
+              <span class="tag tag-amber">Debugging</span>
+            </div>
+            <h2 class="blog-post-title">Kaggle自動分析パイプラインの致命的バグを6本まとめて直した話</h2>
+            <p class="blog-post-excerpt">
+              Kaggle自動分析パイプラインに潜んでいた致命的バグ6本を一気に修正。
+              CV取得失敗やSubmit不整合など、自動化を止めていた根本原因をまとめたデバッグ記録。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.05.17</span>
+            <span class="external-badge draft">DRAFT</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-05-08-cv-harness-engineering" class="blog-post-card" data-tags="kaggle llm">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-green">Kaggle</span>
+              <span class="tag tag-amber">Debugging</span>
+            </div>
+            <h2 class="blog-post-title">LLM生成コードのCV未取得エラーをゼロに近づけるハーネスエンジニアリング実装記</h2>
+            <p class="blog-post-excerpt">
+              LLMが生成するKaggleコードでCVスコアが取得できないエラーをゼロに近づけるためのハーネス設計。
+              エラー内容をLLMに正しく伝える仕組みづくりの試行錯誤の記録。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.05.08</span>
+            <span class="external-badge draft">DRAFT</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-05-07-ollama-metal-crash-fallback" class="blog-post-card" data-tags="llm infra">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">LLM</span>
+              <span class="tag">Infra</span>
+            </div>
+            <h2 class="blog-post-title">OllamaのApple Metal（MPS）クラッシュをリトライ＋Linuxフォールバックで乗り越えた話</h2>
+            <p class="blog-post-excerpt">
+              Apple Silicon上のOllamaがMetal (MPS) で頻繁にクラッシュする問題に対し、リトライ＋Linux側への
+              フォールバック機構を実装。安定したローカルLLM推論基盤への一歩。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.05.07</span>
+            <span class="external-badge draft">DRAFT</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-05-07-multi-agent-llm-routing" class="blog-post-card" data-tags="llm kaggle">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">LLM</span>
+              <span class="tag tag-green">Kaggle</span>
+            </div>
+            <h2 class="blog-post-title">Kaggleスコアが上がらない本当の理由——同じLLMに全部任せるのをやめた話</h2>
+            <p class="blog-post-excerpt">
+              1つのLLMに企画から実装まで全部任せていたのがスコア停滞の元凶だった。
+              タスク種別ごとに異なるモデルを割り当てるマルチエージェント構成へ転換した分岐点の記録。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.05.07</span>
+            <span class="external-badge draft">DRAFT</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-05-03-llm-code-sanitize-layer" class="blog-post-card" data-tags="kaggle llm">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-green">Kaggle</span>
+              <span class="tag tag-amber">Debugging</span>
+            </div>
+            <h2 class="blog-post-title">LLM生成コードをそのまま実行したら死んだので自動修正レイヤーを作った</h2>
+            <p class="blog-post-excerpt">
+              LLMが生成したKaggleコードをそのまま実行すると様々な理由でクラッシュする。
+              実行前に構文・import・パスなどを自動修正するサニタイズレイヤーを実装した記録。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.05.03</span>
+            <span class="external-badge draft">DRAFT</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-05-01-ubuntu-headless-rdp" class="blog-post-card" data-tags="infra">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag">Infra</span>
+              <span class="tag tag-cyan">Linux</span>
+            </div>
+            <h2 class="blog-post-title">Ubuntu 24.04をヘッドレスRDP運用するまでの茨の道</h2>
+            <p class="blog-post-excerpt">
+              モニターなしのUbuntu 24.04機をRDPでGUI操作できるようにするまでの設定地獄。
+              GNOME + xrdpの組み合わせで踏んだ罠を一通り解説。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.05.01</span>
+            <span class="external-badge draft">DRAFT</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-05-01-rocm-gpu-streamlit-dashboard" class="blog-post-card" data-tags="infra">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag">Infra</span>
+              <span class="tag tag-amber">GPU</span>
+            </div>
+            <h2 class="blog-post-title">ROCm環境のAMD GPU（RX 7900 XTX）をStreamlitでリアルタイム監視するダッシュボードを作った</h2>
+            <p class="blog-post-excerpt">
+              ROCm環境のAMD GPUの使用率・温度・VRAMをリアルタイム監視するダッシュボードをStreamlitで自作。
+              Mac側ブラウザから2台構成のGPU状態を一目で確認できるようにした記録。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.05.01</span>
+            <span class="external-badge draft">DRAFT</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-04-30-mac-ubuntu-nat-pf-persistence" class="blog-post-card" data-tags="infra">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag">Infra</span>
+              <span class="tag tag-cyan">Network</span>
+            </div>
+            <h2 class="blog-post-title">Mac mini M4とUbuntu直結環境でインターネット共有をpfctlで永続化するまでの3時間</h2>
+            <p class="blog-post-excerpt">
+              Mac miniのインターネット共有とUbuntuの独自サブネットが噛み合わずNATが通らない問題を3時間かけて解決。
+              最終的にUbuntu側をmacOSの想定するサブネットに合わせて解決した、2台構成インフラの原点の記録。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.04.30</span>
+            <span class="external-badge draft">DRAFT</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-04-30-kaggle-pipeline-ubuntu-rocm-migration" class="blog-post-card" data-tags="kaggle infra">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-green">Kaggle</span>
+              <span class="tag">Infra</span>
+            </div>
+            <h2 class="blog-post-title">KaggleパイプラインをWindows+MacからUbuntu+Macに移植した話（ROCm GPU対応）</h2>
+            <p class="blog-post-excerpt">
+              Windows+Mac構成で動いていたKaggle自動化パイプラインを、ROCm対応のUbuntu+Mac構成へ移植。
+              IPアドレス変更を含む全面的な環境移行の記録。現在の2台構成インフラの起点となった一本。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.04.30</span>
             <span class="external-badge draft">DRAFT</span>
           </div>
         </a>
