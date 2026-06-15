@@ -264,6 +264,26 @@
 
       <div class="blog-list">
 
+        <a href="/post.html?slug=2026-06-15-kaggle-agent-poll-reconcile" class="blog-post-card" data-tags="kaggle llm krs-core">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-green">Kaggle</span>
+              <span class="tag tag-purple">KRS-Core</span>
+              <span class="tag tag-amber">Debugging</span>
+            </div>
+            <h2 class="blog-post-title">アンサンブルは全部動いたのに LB が 1mm も動かなかった — そして見つけた「自分のスコアを見失う」バグ</h2>
+            <p class="blog-post-excerpt">
+              quota reset 後に OOF ensemble 経路を実 LB で検証。機構は全部発火したのに LB は 0.13007 ×3 で不動 —
+              原因は 3 trial の予測が完全に同一 (多様性ゼロ)。調査中に「Agent が自分の LB スコアを見失う」
+              submit poll 取りこぼしバグも発見し、run 終了時の遅延 reconcile で修正した話。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.15</span>
+            <span class="external-badge draft">DRAFT</span>
+          </div>
+        </a>
+
         <a href="/post.html?slug=2026-06-11-oof-blending-lb-wiring" class="blog-post-card" data-tags="kaggle llm krs-core">
           <div class="blog-post-main">
             <div class="blog-post-meta">
