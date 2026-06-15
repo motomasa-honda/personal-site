@@ -264,6 +264,96 @@
 
       <div class="blog-list">
 
+        <a href="/post.html?slug=2026-06-16-rocm-pytorch-7900xtx-hf-xet" class="blog-post-card" data-tags="rocm gpu pytorch infra">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-amber">ROCm</span>
+              <span class="tag tag-cyan">GPU</span>
+              <span class="tag tag-blue">PyTorch</span>
+            </div>
+            <h2 class="blog-post-title">RX 7900 XTX に ROCm 版 PyTorch を入れて Kaggle Agent の画像/NLP を GPU 解禁する — hf-xet が NAT 越しでハングする地雷つき</h2>
+            <p class="blog-post-excerpt">
+              torch/timm/transformers がそもそも入っていなかった環境に、システム ROCm に合わせた wheel を入れて GPU を解禁。
+              一番ハマったのは torch ではなく hf-xet が NAT 越しで 49 分ハングする件。dry-run で爆風半径を測り、実テンソル演算まで確認する手順。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.16</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-06-16-leak-safe-feature-store" class="blog-post-card" data-tags="kaggle featureengineering machinelearning">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-green">Kaggle</span>
+              <span class="tag tag-purple">Feature Store</span>
+              <span class="tag tag-cyan">pandas</span>
+            </div>
+            <h2 class="blog-post-title">全 trial の特徴ベースを底上げする『決定的 Feature Store』— Kaggle Agent の CV を 0.12961 → 0.12873 に下げた一手</h2>
+            <p class="blog-post-excerpt">
+              再計算キャッシュ型ではなく「target を使わない・決定的なリーク安全特徴を 1 回だけ物質化し、全 trial が raw CSV の代わりに読む」型。
+              同一モデル・同一 CV・同一 seed の A/B で CV 0.12961 → 0.12873。78 特徴を全試行に無償で配る。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.16</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-06-16-catboost-cat-nan-sanitizer" class="blog-post-card" data-tags="kaggle catboost llm">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-green">Kaggle</span>
+              <span class="tag tag-amber">CatBoost</span>
+              <span class="tag tag-blue">LLM</span>
+            </div>
+            <h2 class="blog-post-title">CatBoost の cat_features に NaN を渡すと即死する — LLM の自己修復でも直せなかったバグを、決定的サニタイザで潰す</h2>
+            <p class="blog-post-excerpt">
+              欠損カテゴリで即死する CatBoost を、LLM の自己修復は直せなかった。astype 行だけ直しても派生フレームで再発。
+              「読み込み直後に源流で埋める」決定的サニタイザで解決し、落ちていた patch が CV 0.12403 で完走するまで。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.16</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-06-16-classical-nlp-timeseries-no-deps" class="blog-post-card" data-tags="kaggle nlp timeseries">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-green">Kaggle</span>
+              <span class="tag tag-purple">NLP</span>
+              <span class="tag tag-cyan">時系列</span>
+            </div>
+            <h2 class="blog-post-title">torch が無くてもやれることはある — NLP は char+word TF-IDF、時系列はカレンダー特徴で弱モダリティを底上げする</h2>
+            <p class="blog-post-excerpt">
+              深層学習を入れる前に、依存ゼロ・GPU 無しで取れる分を先に取る。NLP は word + char TF-IDF の hstack、時系列は日付を潰さずカレンダー特徴に展開。
+              import 抜けで即死していたテンプレや sklearn 1.8 の liblinear 多クラス非対応も込みで。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.16</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-06-16-codegen-local-regression-tests" class="blog-post-card" data-tags="llm testing kaggle">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">LLM</span>
+              <span class="tag tag-purple">Testing</span>
+              <span class="tag tag-green">Kaggle</span>
+            </div>
+            <h2 class="blog-post-title">LLM が書くコードを『回帰テスト』にする — Kaggle 提出枠を消費せずに codegen 品質を固定する</h2>
+            <p class="blog-post-excerpt">
+              生成コードを決定的に直すサニタイザを pytest で固定し、「直る/構文を壊さない/冪等/誤爆しない」を全ルールで検証。
+              ファイル直読みで依存を回避し開発機で 0.02 秒。提出枠を使わないベンチが自己修復でも直せないバグを炙り出す。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.16</span>
+          </div>
+        </a>
+
         <a href="/post.html?slug=2026-06-15-ensemble-codegen-quality-qwen3-coder" class="blog-post-card" data-tags="kaggle llm krs-core">
           <div class="blog-post-main">
             <div class="blog-post-meta">
