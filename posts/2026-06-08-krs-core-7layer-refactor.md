@@ -3,7 +3,7 @@ title: "Kaggle 専用 v8 を 7 層の汎用マルチエージェント基盤 (KR
 emoji: "🏗️"
 type: "tech"
 topics: ["python", "llm", "kaggle", "langgraph", "refactor"]
-published: false
+published: true
 publication_date: "2026-06-08"
 ---
 

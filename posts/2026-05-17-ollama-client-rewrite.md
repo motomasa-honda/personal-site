@@ -3,7 +3,7 @@ title: "ローカルLLMパイプラインのOllama呼び出しを全面刷新し
 emoji: "🧠"
 type: "tech"
 topics: ["ollama", "python", "llm", "mac", "ubuntu"]
-published: false
+published: true
 publication_date: "2026-05-17"
 ---
 
@@ -16,7 +16,7 @@ publication_date: "2026-05-17"
 
 ## 問題の背景
 
-Mac mini M4（IP: 192.168.2.1）と Ubuntu 24.04 PC（Ryzen 9 9950X / RX 7900 XTX）の2台構成でKaggle自動分析パイプラインを動かしている。重いLLM推論はUbuntu側のOllamaで実行し、MACはGitHub pushとKaggle提出の司令塔という役割分担だ。
+Mac mini M4（IP: 192.0.2.1）と Ubuntu 24.04 PC（Ryzen 9 9950X / RX 7900 XTX）の2台構成でKaggle自動分析パイプラインを動かしている。重いLLM推論はUbuntu側のOllamaで実行し、MACはGitHub pushとKaggle提出の司令塔という役割分担だ。
 
 ところがコードを読み返すと、LLM呼び出しが3種類の関数に散らばっていた。
 
@@ -119,7 +119,7 @@ class OllamaClient:
 from base import OllamaClient, ChatResponse
 
 _ollama_linux = OllamaClient(LINUX_OLLAMA_URL)   # "http://localhost:11434"
-_ollama_mac   = OllamaClient(MAC_OLLAMA_HOST)     # "http://192.168.2.1:11434"
+_ollama_mac   = OllamaClient(MAC_OLLAMA_HOST)     # "http://192.0.2.1:11434"
 ```
 
 ## chat_linux() を OllamaClient ベースに刷新

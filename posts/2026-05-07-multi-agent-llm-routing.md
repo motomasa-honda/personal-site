@@ -3,7 +3,7 @@ title: "Kaggleスコアが上がらない本当の理由——同じLLMに全部
 emoji: "🤖"
 type: "tech"
 topics: ["ollama", "llm", "kaggle", "python", "機械学習"]
-published: false
+published: true
 publication_date: "2026-05-07"
 ---
 
@@ -130,8 +130,8 @@ Criticは判断タスクなので軽量モデルで十分。Mac miniのgemma4:26
 Ollama同士の接続はHTTPで直結：
 
 ```python
-# Mac mini側（192.168.2.1）
-MAC_OLLAMA_HOST = "http://192.168.2.1:11434"
+# Mac mini側（192.0.2.1）
+MAC_OLLAMA_HOST = "http://192.0.2.1:11434"
 client_mac = Client(host=MAC_OLLAMA_HOST)
 
 # Linux側（localhost、Streamlit自体がLinuxで動作）

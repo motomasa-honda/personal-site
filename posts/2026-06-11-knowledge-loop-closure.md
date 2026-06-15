@@ -3,7 +3,7 @@ title: "LangGraph で Knowledge ループを閉じる — Kaggle Agent が過去
 emoji: "🔁"
 type: "tech"
 topics: ["python", "llm", "kaggle", "langgraph", "agent"]
-published: false
+published: true
 publication_date: "2026-06-11"
 ---
 

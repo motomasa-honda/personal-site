@@ -3,7 +3,7 @@ title: "Linux→GitHub の SSH:22 が中間装置で塞がれていた話 — Ma
 emoji: "🚀"
 type: "tech"
 topics: ["linux", "ssh", "deploy", "rsync", "infra"]
-published: false
+published: true
 publication_date: "2026-06-10"
 ---
 
@@ -22,7 +22,7 @@ publication_date: "2026-06-10"
       ▼
    ┌─────────────┐    Internet Sharing (NAT)    ┌─────────────┐
    │  Mac mini    │ ───────────────────────────→ │  LinuxPC     │
-   │ 192.168.2.1 │ ←───── LAN (SSH/HTTP) ─────→ │ 192.168.2.2 │
+   │ 192.0.2.1 │ ←───── LAN (SSH/HTTP) ─────→ │ 192.0.2.2 │
    └─────────────┘                              └─────────────┘
    M4 / dev/git                                 Ryzen + RX 7900 XTX
                                                 Ollama / FastAPI 常駐
@@ -68,7 +68,7 @@ HTTP/2 200    # ← HTTPS:443 は普通に通る
 
 ### B. Mac mini を SSH トンネル経由で踏み台にする
 
-`ssh -L 22:github.com:22 motomasa@mac` 的に Mac を経由させる。技術的には可能。
+`ssh -L 22:github.com:22 dev@mac` 的に Mac を経由させる。技術的には可能。
 
 却下理由:
 - トンネルセッションが切れた時の検出が面倒
@@ -140,8 +140,8 @@ After=network.target
 
 [Service]
 Type=simple
-WorkingDirectory=/home/motomasahonda/projects/kaggle-research-system
-ExecStart=/home/motomasahonda/ai-env/bin/uvicorn api.main:app --host 0.0.0.0 --port 8000
+WorkingDirectory=/home/ubuntu/projects/kaggle-research-system
+ExecStart=/home/ubuntu/ai-env/bin/uvicorn api.main:app --host 0.0.0.0 --port 8000
 Restart=on-failure
 RestartSec=5
 
@@ -152,7 +152,7 @@ WantedBy=default.target
 ログイン状態に関わらず常駐させるため:
 
 ```bash
-sudo loginctl enable-linger motomasahonda
+sudo loginctl enable-linger ubuntu
 ```
 
 これで `sudo systemctl` ではなく `systemctl --user` だけで運用が完結します。Mac mini ↔ Linux の SSH も rootless で済む。

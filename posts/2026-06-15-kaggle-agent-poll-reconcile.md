@@ -3,7 +3,7 @@ title: "アンサンブルは全部動いたのに LB が 1mm も動かなかっ
 emoji: "🔁"
 type: "tech"
 topics: ["kaggle", "machinelearning", "ensemble", "python", "debugging"]
-published: false
+published: true
 publication_date: "2026-06-15"
 ---
 

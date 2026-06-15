@@ -3,7 +3,7 @@ title: "KaggleパイプラインをWindows+MacからUbuntu+Macに移植した話
 emoji: "🏆"
 type: "tech"
 topics: ["kaggle", "ubuntu", "ollama", "python", "llm"]
-published: false
+published: true
 publication_date: "2026-04-30"
 ---
 
@@ -51,7 +51,7 @@ Claude API（最終手段・コードバリデーション）
 
 ```python
 # 移植前（Windows向け）
-WINDOWS_IP       = "192.168.10.2"
+WINDOWS_IP       = "192.0.2.20"
 WINDOWS_OLLAMA   = "http://{}:11434".format(WINDOWS_IP)
 WINDOWS_USER     = "gyaru"
 WINDOWS_PYTHON   = "C:/Users/gyaru/miniconda3/envs/kaggle_env/python.exe"
@@ -63,11 +63,11 @@ SSD_ROOT         = "/Volumes/UGREEN-SSD/kaggle_autmation"
 
 ```bash
 # 定数の書き換え
-sed -i 's|WINDOWS_IP       = "192.168.10.2"|LINUX_IP         = "192.168.2.2"|g' kaggle_optimizer.py
-sed -i 's|WINDOWS_USER     = "gyaru"|LINUX_USER       = "motomasahonda"|g' kaggle_optimizer.py
-sed -i 's|WINDOWS_PYTHON   = "C:/Users/gyaru/miniconda3/envs/kaggle_env/python.exe"|LINUX_PYTHON     = "/home/motomasahonda/ai-env/bin/python3"|g' kaggle_optimizer.py
-sed -i 's|WINDOWS_WORK_DIR = "C:/Users/gyaru/kaggle_work"|LINUX_WORK_DIR   = "/home/motomasahonda/kaggle_work"|g' kaggle_optimizer.py
-sed -i 's|SSD_ROOT = "/Volumes/UGREEN-SSD/kaggle_autmation"|SSD_ROOT = "/home/motomasahonda/kaggle_results"|g' kaggle_optimizer.py
+sed -i 's|WINDOWS_IP       = "192.0.2.20"|LINUX_IP         = "192.0.2.2"|g' kaggle_optimizer.py
+sed -i 's|WINDOWS_USER     = "gyaru"|LINUX_USER       = "ubuntu"|g' kaggle_optimizer.py
+sed -i 's|WINDOWS_PYTHON   = "C:/Users/gyaru/miniconda3/envs/kaggle_env/python.exe"|LINUX_PYTHON     = "/home/ubuntu/ai-env/bin/python3"|g' kaggle_optimizer.py
+sed -i 's|WINDOWS_WORK_DIR = "C:/Users/gyaru/kaggle_work"|LINUX_WORK_DIR   = "/home/ubuntu/kaggle_work"|g' kaggle_optimizer.py
+sed -i 's|SSD_ROOT = "/Volumes/UGREEN-SSD/kaggle_autmation"|SSD_ROOT = "/home/ubuntu/kaggle_results"|g' kaggle_optimizer.py
 
 # 変数名の参照も一括置換
 sed -i 's|WINDOWS_IP|LINUX_IP|g' kaggle_optimizer.py

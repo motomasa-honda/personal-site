@@ -3,7 +3,7 @@ title: "LLM生成コードをそのまま実行したら死んだので自動修
 emoji: "🔬"
 type: "tech"
 topics: ["python", "llm", "kaggle", "ollama", "自動化"]
-published: false
+published: true
 publication_date: "2026-05-03"
 ---
 

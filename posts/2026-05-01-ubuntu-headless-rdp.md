@@ -3,7 +3,7 @@ title: "Ubuntu 24.04をヘッドレスRDP運用するまでの茨の道"
 emoji: "🖥️"
 type: "tech"
 topics: ["ubuntu", "rdp", "gnome", "headless", "linux"]
-published: false
+published: true
 publication_date: "2026-05-01"
 ---
 
@@ -95,17 +95,17 @@ RDP接続時の画面が快適になる。
 
 ## 最終的な運用状態
 
-- Mac miniのMicrosoft Remote Desktopアプリから `192.168.2.2` に接続
+- Mac miniのMicrosoft Remote Desktopアプリから `192.0.2.2` に接続
 - 物理モニター・キーボードを外した状態で再起動しても自動でRDP接続可能
 - SSH（`ssh linuxpc`）とRDPを使い分けてUbuntuを操作
 
 ```
-Mac mini M4 (192.168.2.1)
+Mac mini M4 (192.0.2.1)
     │
     ├── ssh linuxpc          # ターミナル操作
-    └── RDP 192.168.2.2      # GUI操作
+    └── RDP 192.0.2.2      # GUI操作
             │
-        Ubuntu 24.04 (192.168.2.2)
+        Ubuntu 24.04 (192.0.2.2)
         ヘッドレス / 自動ログイン / Desktop Sharing有効
 ```
 

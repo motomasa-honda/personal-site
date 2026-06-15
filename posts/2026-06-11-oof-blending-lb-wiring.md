@@ -3,7 +3,7 @@ title: "OOF を保存しても submit していなかった話 — Kaggle Agent 
 emoji: "🔧"
 type: "tech"
 topics: ["kaggle", "machinelearning", "ensemble", "python", "debugging"]
-published: false
+published: true
 publication_date: "2026-06-11"
 ---
 
