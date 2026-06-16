@@ -264,6 +264,42 @@
 
       <div class="blog-list">
 
+        <a href="/post.html?slug=2026-06-16-ensemble-diversity-heterogeneous-models" class="blog-post-card" data-tags="kaggle ensemble llm machinelearning">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">Kaggle</span>
+              <span class="tag tag-cyan">Ensemble</span>
+              <span class="tag tag-amber">Diversity</span>
+            </div>
+            <h2 class="blog-post-title">ensemble が効かない真因は「探索の多様性不足」だった — GBDT ばかりの自動探索に線形モデルを混ぜる</h2>
+            <p class="blog-post-excerpt">
+              重みをどう正則化しても LB が動かない。真因はブレンドする中身が全部 GBDT で似すぎていたこと。
+              探索方向がぜんぶ GBDT だった自動探索に「異系統モデル」方向を足し、LLM が実際に Ridge を書くまで確認した話。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.16</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-06-16-ensemble-weight-regularization-backfired" class="blog-post-card" data-tags="kaggle ensemble regularization machinelearning">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">Kaggle</span>
+              <span class="tag tag-cyan">Ensemble</span>
+              <span class="tag tag-amber">Regularization</span>
+            </div>
+            <h2 class="blog-post-title">ensemble の重みを「均等寄り」にしたら LB が悪化した — CV を下げ切らない正則化の実証</h2>
+            <p class="blog-post-excerpt">
+              CV に overfit した ensemble の重みを uniform shrinkage で均したら、CV 維持のまま LB が 0.12807→0.12847 と悪化。
+              重みが偏るのが正しいケースでは均等化が害になる。正則化は default 無効にし、真因は多様性だと特定した記録。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.16</span>
+          </div>
+        </a>
+
         <a href="/post.html?slug=2026-06-16-ensemble-submission-column-name-error" class="blog-post-card" data-tags="kaggle ensemble debugging machinelearning">
           <div class="blog-post-main">
             <div class="blog-post-meta">
