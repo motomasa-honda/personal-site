@@ -264,6 +264,42 @@
 
       <div class="blog-list">
 
+        <a href="/post.html?slug=2026-06-16-ensemble-submission-column-name-error" class="blog-post-card" data-tags="kaggle ensemble debugging machinelearning">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">Kaggle</span>
+              <span class="tag tag-cyan">Ensemble</span>
+              <span class="tag tag-amber">Debugging</span>
+            </div>
+            <h2 class="blog-post-title">CV で圧勝した ensemble が LB に出てこない — 犯人は出力 CSV の「列名 1 つ」だった</h2>
+            <p class="blog-post-excerpt">
+              ブレンドも提出もログ上は全部成功、なのに Kaggle 採点だけが ERROR。値は健全だった。
+              犯人は出力ヘッダが Id,pred のままで、正しい Id,SalePrice になっていなかったこと。sample_submission から列名を解決して解決した話。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.16</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-06-16-cv-lb-gap-hill-climbing-overfit" class="blog-post-card" data-tags="kaggle ensemble crossvalidation machinelearning">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">Kaggle</span>
+              <span class="tag tag-cyan">Ensemble</span>
+              <span class="tag tag-amber">CV/LB</span>
+            </div>
+            <h2 class="blog-post-title">CV で圧勝した ensemble が、LB では single と引き分けた — hill climbing が最適化していたのは「CV」だった</h2>
+            <p class="blog-post-excerpt">
+              CV では ensemble 0.12458 が single 0.12808 を大きく上回るのに、LB ではほぼ引き分け。
+              貪欲ブレンドが最適化しているのは LB ではなく CV。CV 改善が LB に転写されない CV-LB ギャップを実スコアで観測した記録。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.16</span>
+          </div>
+        </a>
+
         <a href="/post.html?slug=2026-06-16-rocm-pytorch-7900xtx-hf-xet" class="blog-post-card" data-tags="rocm gpu pytorch infra">
           <div class="blog-post-main">
             <div class="blog-post-meta">
