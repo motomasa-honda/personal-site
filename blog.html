@@ -264,6 +264,42 @@
 
       <div class="blog-list">
 
+        <a href="/post.html?slug=2026-06-17-cv-lb-gap-stale-oof-contamination" class="blog-post-card" data-tags="kaggle ensemble crossvalidation machinelearning mlops">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">Kaggle</span>
+              <span class="tag tag-cyan">Ensemble</span>
+              <span class="tag tag-amber">CrossValidation</span>
+            </div>
+            <h2 class="blog-post-title">CV-LB ギャップの真犯人は「古い OOF の混入」だった — 評価プールを毎回クリーンにしたら LB が伸びた</h2>
+            <p class="blog-post-excerpt">
+              多様性不足が真因だと思って検証したら仮説は外れ、副産物で真犯人が見つかった。OOF プールが run 跨ぎで
+              クリアされず、数日前の trial が ensemble に混入し固定ラベルへ overfit していた。消すだけで LB が更新。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.17</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-06-17-diversity-needs-competitive-accuracy" class="blog-post-card" data-tags="kaggle ensemble diversity llm machinelearning">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">Kaggle</span>
+              <span class="tag tag-cyan">Ensemble</span>
+              <span class="tag tag-amber">Diversity</span>
+            </div>
+            <h2 class="blog-post-title">多様性は「精度が拮抗して初めて」効く — 弱い線形モデルは ensemble に一票も入らない</h2>
+            <p class="blog-post-excerpt">
+              GBDT に異系統を混ぜれば効くはず、を検証。CV 0.1486 の弱い線形は hill climbing に重みゼロで無視された。
+              前処理を尽くして RidgeCV で 0.1330 まで拮抗させたら、ようやく 1/3 の重みを獲得した話。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.17</span>
+          </div>
+        </a>
+
         <a href="/post.html?slug=2026-06-16-ensemble-diversity-heterogeneous-models" class="blog-post-card" data-tags="kaggle ensemble llm machinelearning">
           <div class="blog-post-main">
             <div class="blog-post-meta">
