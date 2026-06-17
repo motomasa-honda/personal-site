@@ -264,6 +264,78 @@
 
       <div class="blog-list">
 
+        <a href="/post.html?slug=2026-06-17-knowledge-loop-first-full-run" class="blog-post-card" data-tags="kaggle mlops llm machinelearning knowledge">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">Kaggle</span>
+              <span class="tag tag-cyan">MLOps</span>
+              <span class="tag tag-amber">LLM</span>
+            </div>
+            <h2 class="blog-post-title">修理した知識ループを seed 9コンペで初めて1周させた — kernel +73 / discussion +27 skill</h2>
+            <p class="blog-post-excerpt">
+              no-op だったハーベストと 403 だった discussion を直したあと、9コンペで初の end-to-end 1周。
+              kernel +73 / discussion +27 skill、349 件を DB sync。所要2時間、律速は 70B 抽出。直すと結実するは別、という話。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.17</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-06-17-gpu-contention-cpu-fallback" class="blog-post-card" data-tags="mlops gpu pytorch machinelearning infra">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">Infra</span>
+              <span class="tag tag-cyan">GPU</span>
+              <span class="tag tag-amber">PyTorch</span>
+            </div>
+            <h2 class="blog-post-title">1枚の GPU を LLM 推論と学習で共有する — VRAM を測って足りなければ CPU に落とす</h2>
+            <p class="blog-post-excerpt">
+              ハーベストの 70B が VRAM をほぼ専有する隙に GPU 学習を起動すると即 OOM。実行のチョークポイントで
+              空き VRAM を preflight し、足りなければ CUDA/HIP を隠して CPU で完走。落とすより遅くても完走、という割り切り。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.17</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-06-17-ft-transformer-third-member" class="blog-post-card" data-tags="kaggle ensemble pytorch transformer machinelearning">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">Kaggle</span>
+              <span class="tag tag-cyan">Ensemble</span>
+              <span class="tag tag-amber">PyTorch</span>
+            </div>
+            <h2 class="blog-post-title">FT-Transformer を ensemble の第3系統にする — 木でも MLP でもない予測のクセを足す</h2>
+            <p class="blog-post-excerpt">
+              GBDT と MLP だけだとクセが2系統。特徴量間 attention を持つ FT-Transformer を純 PyTorch で実装し、
+              ブランチ探索が低相関の第3メンバーとして自動注入。合成データで回帰は MLP を上回り、保存契約も満たす。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.17</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-06-17-discussions-403-pinned-cli" class="blog-post-card" data-tags="kaggle mlops cli api knowledge">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">Kaggle</span>
+              <span class="tag tag-cyan">MLOps</span>
+              <span class="tag tag-amber">CLI</span>
+            </div>
+            <h2 class="blog-post-title">ピン留めした CLI が discussions を黙って 403 にしていた — 本体を上げずに一機能だけ逃がす</h2>
+            <p class="blog-post-excerpt">
+              一覧は通るのに discussions だけ版固有で 403。本体 CLI は据え置き、その機能だけ別 venv の新版バイナリに
+              env で逃がす可逆策。提出が SDK 経由だと分かり影響を最小化。メダル解法の write-up が取れるように。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.17</span>
+          </div>
+        </a>
+
         <a href="/post.html?slug=2026-06-17-knowledge-harvest-was-a-noop" class="blog-post-card" data-tags="kaggle mlops llm machinelearning debugging">
           <div class="blog-post-main">
             <div class="blog-post-meta">
