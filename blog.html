@@ -264,6 +264,57 @@
 
       <div class="blog-list">
 
+        <a href="/post.html?slug=2026-06-19-binary-as-regression-metric-ssot" class="blog-post-card" data-tags="kaggle mlops machinelearning automl debugging">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">Kaggle</span>
+              <span class="tag tag-cyan">MLOps</span>
+              <span class="tag tag-amber">AutoML</span>
+            </div>
+            <h2 class="blog-post-title">0/1 が float で入っていただけで、二値分類が回帰として解かれていた</h2>
+            <p class="blog-post-excerpt">
+              自律 Kaggle システムを初めて実データ(終了済 Playground Series, 二値分類 AUC)で end-to-end 実行。LB 0.94145 を取ったが、解剖したらタスクが丸ごと回帰で解かれていた。原因はターゲットが 0.0/1.0(float)だったこと。しかも素直に直すと悪化する——指標を単一の真実にする改修の話。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.19</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-06-19-selfplay-lb-transfer-failed" class="blog-post-card" data-tags="kaggle gameai montecarlo validation machinelearning">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">Kaggle</span>
+              <span class="tag tag-cyan">Game AI</span>
+              <span class="tag tag-amber">Validation</span>
+            </div>
+            <h2 class="blog-post-title">自己対戦で 62% 勝つ bot が、本番ランキングでは負けていた</h2>
+            <p class="blog-post-excerpt">
+              カードゲーム bot の「CV の代わり」に自己対戦勝率を使っていた。その指標では Monte Carlo が hybrid に 62% 勝ち越したのに、本番の動的レーティングが収束したら逆転(hybrid 679 > MC 568)。代理指標が本番分布とズレると、ローカルの強さは転移しない、という話。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.19</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-06-19-alphazero-lite-value-vs-mc" class="blog-post-card" data-tags="kaggle reinforcementlearning montecarlo gameai machinelearning">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">Kaggle</span>
+              <span class="tag tag-cyan">Game AI</span>
+              <span class="tag tag-amber">RL</span>
+            </div>
+            <h2 class="blog-post-title">『学習した価値関数』でカードゲーム bot を強くしようとしたら、Monte Carlo に負けた</h2>
+            <p class="blog-post-excerpt">
+              GPU を解禁して AlphaZero-lite(value-first)を実装。価値NN は val AUC 0.834 まで学習できたのに、その価値で手を選ぶ bot は MC にも greedy にも負けた。「勝率を当てられること」と「勝てる手を選べること」は別物——value-first の近視眼を実測した話。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.19</span>
+          </div>
+        </a>
+
         <a href="/post.html?slug=2026-06-18-agent-comp-search-ceiling" class="blog-post-card" data-tags="kaggle montecarlo gameai search machinelearning">
           <div class="blog-post-main">
             <div class="blog-post-meta">
