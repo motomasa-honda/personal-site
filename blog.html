@@ -264,6 +264,74 @@
 
       <div class="blog-list">
 
+        <a href="/post.html?slug=2026-06-19-first-lb-median-beat" class="blog-post-card" data-tags="kaggle automl machinelearning validation mlops">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">Kaggle</span>
+              <span class="tag tag-amber">AutoML</span>
+              <span class="tag tag-cyan">MLOps</span>
+            </div>
+            <h2 class="blog-post-title">Metric-as-SSOT 改修が、実 LB で『中央値超え』として実証された</h2>
+            <p class="blog-post-excerpt">
+              前日に入れた『指標を単一の真実として全ノードに伝播する』改修を、quota 復帰後の late-submit で実証。public 0.94145 → 0.94869 (+0.00724) で実 LB で中央値を超え、CV-LB gap は 0.00025 で収束。机上の改修が実 LB で 1 対 1 の結果として返ってきた話。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.19</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-06-19-multiclass-string-label-ssot" class="blog-post-card" data-tags="kaggle automl machinelearning validation debugging">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">Kaggle</span>
+              <span class="tag tag-amber">AutoML</span>
+              <span class="tag tag-red">Debugging</span>
+            </div>
+            <h2 class="blog-post-title">5 連続 SubmissionStatus.ERROR が教えてくれた、多クラス文字列ラベルの SSOT 漏れ</h2>
+            <p class="blog-post-excerpt">
+              二値で動いていた自律システムを 3 クラス分類 (GALAXY/STAR/QSO) + Balanced Accuracy のメダル対象コンペに投入したら 5 連続 ERROR。Metric-as-SSOT の『多クラス + 文字列ラベル + 評価指標バリエーション』の盲点が同時露呈した。テンプレ・CV・LabelEncoder の 3 点を直して valid 提出にたどり着いた話。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.19</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-06-19-harvest-runaway-blocked-the-pipeline" class="blog-post-card" data-tags="kaggle llm ollama infra machinelearning">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">Kaggle</span>
+              <span class="tag tag-purple">LLM</span>
+              <span class="tag tag-green">Infra</span>
+            </div>
+            <h2 class="blog-post-title">『パイプラインが固まった』の真犯人は深夜の知識収集タスクだった</h2>
+            <p class="blog-post-excerpt">
+              自律 Kaggle システムが analyze 直後で 30 分沈黙。LLM 推論待ちかと思ったら、別プロセスの日次 harvest が deepseek-r1:70b の <think> 暴走で GPU を 1h44m 専有していた。num_predict 上限を入れて 1 件 2 分 40 秒に。flock 単一化と active job ガードで再発防止した話。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.19</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-06-19-sanitizer-self-recursion" class="blog-post-card" data-tags="python regex testing machinelearning kaggle">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">Kaggle</span>
+              <span class="tag tag-red">Debugging</span>
+              <span class="tag tag-cyan">Testing</span>
+            </div>
+            <h2 class="blog-post-title">正規表現が、自分自身が挿入したヘルパ関数を再帰化させていた</h2>
+            <p class="blog-post-excerpt">
+              iter1 は CV 0.949 で成功するのに iter2-6 が 0.8 秒で即死。RecursionError の原因は sanitizer の正規表現が 2 周目の sanitize で自分が挿入したヘルパ本体まで置換してしまうこと。冪等性テストはあったがサンプルが網羅されていなかった話。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.19</span>
+          </div>
+        </a>
+
         <a href="/post.html?slug=2026-06-19-binary-as-regression-metric-ssot" class="blog-post-card" data-tags="kaggle mlops machinelearning automl debugging">
           <div class="blog-post-main">
             <div class="blog-post-meta">
