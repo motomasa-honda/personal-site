@@ -264,6 +264,57 @@
 
       <div class="blog-list">
 
+        <a href="/post.html?slug=2026-06-20-s6e6-stairway-to-median" class="blog-post-card" data-tags="kaggle automl machinelearning ensemble validation">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">Kaggle</span>
+              <span class="tag tag-amber">AutoML</span>
+              <span class="tag tag-green">Ensemble</span>
+            </div>
+            <h2 class="blog-post-title">1 日で 0.954 → 0.964 まで上げた 4 つのレバー (Kaggle s6e6 中央超えへの階段)</h2>
+            <p class="blog-post-excerpt">
+              メダル対象の 3 クラス分類コンペで、baseline 0.95459 から strong3 0.96376 まで +0.00917 積み上げて中央値を超えた話。色等級 FE / 3-seed avg / XGBoost 追加 / per-class calibration の 4 段それぞれの CV と LB の上げ幅、何が一番効いたかの内訳付き。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.20</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-06-20-per-class-calibration-balanced-accuracy" class="blog-post-card" data-tags="machinelearning kaggle metrics imbalanced ensemble">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">Kaggle</span>
+              <span class="tag tag-cyan">ML</span>
+              <span class="tag tag-amber">Metrics</span>
+            </div>
+            <h2 class="blog-post-title">per-class calibration が balanced_accuracy で『一番効いた小さな手』だった</h2>
+            <p class="blog-post-excerpt">
+              3 クラス分類 + Balanced Accuracy で CV を +0.005 押し上げた一番大きいレバーは、argmax 直前で各クラスの確率に倍率を掛けるだけのコード 10 行のテクニック。なぜ効くか、grid search の刻み、stacking と比べてなぜ刺さるかをまとめた。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.20</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-06-20-sklearn-1-8-multi-class-removed" class="blog-post-card" data-tags="python scikit machinelearning deprecation kaggle">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">Kaggle</span>
+              <span class="tag tag-purple">Python</span>
+              <span class="tag tag-red">Debugging</span>
+            </div>
+            <h2 class="blog-post-title">sklearn 1.8 で LogisticRegression の multi_class が消えていて、2 時間 27 分の計算が死んだ</h2>
+            <p class="blog-post-excerpt">
+              3 モデル × 3 seed × 5 fold の 45 fold が完了した直後、最後の stacking で LogisticRegression(multi_class='multinomial') が TypeError。sklearn 1.8 で警告なしに削除されていた。OOF を mem-only で持っていた設計が被害を拡大した話と、リカバリの 50 分間。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.20</span>
+          </div>
+        </a>
+
         <a href="/post.html?slug=2026-06-19-first-lb-median-beat" class="blog-post-card" data-tags="kaggle automl machinelearning validation mlops">
           <div class="blog-post-main">
             <div class="blog-post-meta">
