@@ -264,6 +264,74 @@
 
       <div class="blog-list">
 
+        <a href="/post.html?slug=2026-06-21-49-percent-to-5-percent-in-one-day" class="blog-post-card" data-tags="kaggle machinelearning ensemble stacking competition">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">Kaggle</span>
+              <span class="tag tag-cyan">ML</span>
+              <span class="tag tag-green">Ensemble</span>
+            </div>
+            <h2 class="blog-post-title">1 日で Kaggle 順位を 49% → 5% に圧縮した手数の分解</h2>
+            <p class="blog-post-excerpt">
+              メダル対象コンペで朝 rank 1026/2076 (top 49%) → 24h 後 rank ~110/2109 (🥈 Silver 圏 top 5%) まで上げた。午前は自前モデル強化で +0.004、午後は公開資産取り込みの構造改造で +0.004。Gold cut まで残 +0.00033。手数を LB 推移と一緒に分解した記録。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.21</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-06-21-logit-stacker-beats-hill-climb-balanced-accuracy" class="blog-post-card" data-tags="machinelearning kaggle ensemble stacking logisticregression">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-cyan">ML</span>
+              <span class="tag tag-blue">Kaggle</span>
+              <span class="tag tag-green">Ensemble</span>
+            </div>
+            <h2 class="blog-post-title">balanced_accuracy で hill_climb が頭打ちした時、stacker を作り直して +0.003 取った</h2>
+            <p class="blog-post-excerpt">
+              hill_climb (確率平均) を多項ロジスティック回帰 (prob → logit) stacker に置き換えたら、同じ 3 base model から OOF が +0.0096 跳ねた。なぜ prior-agnostic な指標 (balanced_accuracy / macro_f1) で確率平均が頭打ちするか、logit 空間で何が起きているかの数学的説明と PyTorch 実装。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.21</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-06-21-external-oof-acquirer-asking-the-public-asset-question" class="blog-post-card" data-tags="kaggle automation machinelearning ensemble dataops">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">Kaggle</span>
+              <span class="tag tag-purple">Automation</span>
+              <span class="tag tag-green">Ensemble</span>
+            </div>
+            <h2 class="blog-post-title">『他の人の OOF も使えるんじゃないか』に踏み込んだ — 公開資産自動取得モジュール</h2>
+            <p class="blog-post-excerpt">
+              top kernel をスキャンして参照されている公開 OOF dataset を自動 DL、6 種類の異種フォーマットを統一形式に正規化する Python モジュールを実装した。検証コンペで LB +0.003 取った。Kaggle ToS との関係、loader のヘテロ対応、score フィルタの設計についてまとめた。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.21</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-06-21-submission-voting-the-other-half-of-public-knowledge" class="blog-post-card" data-tags="kaggle ensemble majorityvoting machinelearning metaensemble">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">Kaggle</span>
+              <span class="tag tag-green">Ensemble</span>
+              <span class="tag tag-cyan">ML</span>
+            </div>
+            <h2 class="blog-post-title">公開 OOF だけじゃない — score 付きハードラベル submission の山を加重多数決した</h2>
+            <p class="blog-post-excerpt">
+              ファイル名がそのまま LB スコアになっている submission CSV のアーカイブ (`0.97220.csv` 形式) を加重多数決して自分の stack と blend するモジュールを実装、LB +0.00155 で Silver 圏 (top 5%) 突入。直接 submit は ToS 違反なので、API 設計レベルで「集約 + blend」を強制する話を含む。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.21</span>
+          </div>
+        </a>
+
         <a href="/post.html?slug=2026-06-20-s6e6-stairway-to-median" class="blog-post-card" data-tags="kaggle automl machinelearning ensemble validation">
           <div class="blog-post-main">
             <div class="blog-post-meta">
