@@ -264,6 +264,40 @@
 
       <div class="blog-list">
 
+        <a href="/post.html?slug=2026-06-23-tabpfn-two-traps-foundation-nn-and-hf-anonymous-dl" class="blog-post-card" data-tags="kaggle machinelearning tabpfn huggingface neuralnetwork">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">Kaggle</span>
+              <span class="tag tag-cyan">ML</span>
+              <span class="tag tag-orange">HuggingFace</span>
+            </div>
+            <h2 class="blog-post-title">TabPFN を本番投入したら罠が 2 つあった — Foundation NN の domain mismatch と HF anonymous DL hang</h2>
+            <p class="blog-post-excerpt">
+              s6e6 で TabPFN-v3 を 5-fold OOF で検証。CV 0.96152 / LB 0.94691 と gap 0.0146 という異常な乖離、α=0.1 blend ですら voters 0.972+ → 0.952 に劣化。技術的な罠 2 連発: (1) huggingface_hub の anonymous DL が hang する (curl 36 MB/s でいけるのに) のを prefetch helper で回避、(2) Foundation NN の synthetic prior が astronomy real data と不一致、subsample 増では解けない構造的限界。「Foundation Tabular Model なら何でも上がる」と思考停止せず最初の 1 fold で必ず LB を測れ、という記録。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.23</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-06-23-four-features-in-one-day-krs-os-structure" class="blog-post-card" data-tags="kaggle automl optuna agent krs-core">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-purple">KRS-Core</span>
+              <span class="tag tag-blue">Kaggle</span>
+              <span class="tag tag-green">AutoML</span>
+            </div>
+            <h2 class="blog-post-title">1 日で 4 機能が回り出した KRS-OS — 並列開発を支える疎結合な設計</h2>
+            <p class="blog-post-excerpt">
+              朝 0 commit、夕方 5 commit。Planner プロンプトに meta-pattern 機械評価で注入 / Gap 2 Optuna 統合本実装 / cv_lb_log → LinearLBPredictor factory 配線 / TabPFN-v3 playbook の 4 機能が同じ日に独立に進んだ話。これがたまたまではなく、「並走パスを追加する」「Protocol で疎結合にする」「機能フラグ的なオプション引数」の 3 つの設計選択を 2 ヶ月積み上げてきた結果という分析。1 つの実験 (TabPFN s6e6 投入) が失敗しても他 3 機能の価値は残る、エージェント開発の重要な性質。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.06.23</span>
+          </div>
+        </a>
+
         <a href="/post.html?slug=2026-06-22-silver-near-miss-vote-saturation" class="blog-post-card" data-tags="kaggle ensemble voting stacking competition">
           <div class="blog-post-main">
             <div class="blog-post-meta">
