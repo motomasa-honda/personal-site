@@ -264,6 +264,40 @@
 
       <div class="blog-list">
 
+        <a href="/post.html?slug=2026-07-03-three-bugs-after-declaring-done" class="blog-post-card" data-tags="krs-core agent infra">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">KRS-Core</span>
+              <span class="tag tag-cyan">Agent</span>
+              <span class="tag tag-orange">Infra</span>
+            </div>
+            <h2 class="blog-post-title">「完了」と宣言した直後に見つかった3つのバグ</h2>
+            <p class="blog-post-excerpt">
+              段階を区切って進めてきた移行作業が終わり、テストも全部通った状態でもう一度全体を読み返したら、実害のあるバグが3つ見つかった。時系列に記録を読み出す処理が過去のエラー情報を消し忘れて安全装置を誤動作させかけたケース、採番と保存が別操作になっていたことで将来の並行実行で忍び込む競合状態、プロセスをkillしようとしたらもう死んでいて例外でクラッシュするケース。どれも「テストが通っている」は「バグがない」の証明にならないという教訓の記録。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.07.03</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-07-03-scoping-a-migration-that-refuses-to-end" class="blog-post-card" data-tags="krs-core agent architecture">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">KRS-Core</span>
+              <span class="tag tag-cyan">Agent</span>
+              <span class="tag tag-orange">Architecture</span>
+            </div>
+            <h2 class="blog-post-title">移植の途中で「これは移植すべきじゃない」と気づいた話 — 終わらない移行を終わらせる</h2>
+            <p class="blog-post-excerpt">
+              既存システムの実行ロジックを新基盤に移す作業を8段階に分解して1日で進めた。最後の1段だけ、ファイルを開いたら他の何倍もの規模で、しかも中身は独立したサブシステム群への入り口だった。その中に、以前「使うべきではない」と結論づけたばかりの手法が紛れ込んでいた。「忠実に移植する」を貫くと過去の負債まで運び込むことになると気づき、移行の「完了」の定義そのものを書き直した記録。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.07.03</span>
+          </div>
+        </a>
+
         <a href="/post.html?slug=2026-07-02-krs-os-runs-on-krs-nexus" class="blog-post-card" data-tags="krs-core agent infra architecture">
           <div class="blog-post-main">
             <div class="blog-post-meta">
