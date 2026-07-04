@@ -264,6 +264,57 @@
 
       <div class="blog-list">
 
+        <a href="/post.html?slug=2026-07-03-retire-the-ui-not-the-engine" class="blog-post-card" data-tags="krs-core architecture infra">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">KRS-Core</span>
+              <span class="tag tag-orange">Architecture</span>
+              <span class="tag tag-green">Infra</span>
+            </div>
+            <h2 class="blog-post-title">UIだけ引退させる — 旧システムを止めずに新ダッシュボードへ統合する読み取り専用ブリッジ</h2>
+            <p class="blog-post-excerpt">
+              新旧2つのシステムが並走し、新に綺麗な管理画面、旧に本物の実力(蓄積した知識と実データ)がある状態になった。統合したいと考えた時、まず「旧UIを引退させる」と「旧エンジンを引退させる」は別の話だと気づいた。前者は今すぐでき、後者はまだできない。旧エンジンを裏で動かしたまま新UIが旧データを読むだけの読み取り専用ブリッジを作った。実機に載せて初めて「本物のデータはテスト用の捏造データと形が違う(キーの使い方が違う)」という罠を踏んだ記録も添えて。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.07.03</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-07-03-growing-a-dependency-free-command-center" class="blog-post-card" data-tags="krs-core ui infra">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">KRS-Core</span>
+              <span class="tag tag-purple">UI</span>
+              <span class="tag tag-green">Infra</span>
+            </div>
+            <h2 class="blog-post-title">依存フリーで運用コマンドセンターを育てる — 単一ASGI・ui→apiのみ・電気代まで</h2>
+            <p class="blog-post-excerpt">
+              素っ気ない箇条書きだけの管理画面を、CPU/GPU/RAMの実測ゲージや電気代まで出るダークテーマの運用コマンドセンターに育てた。方針は徹底して依存フリー — 新規SPAもStreamlitも足さず、既存のサーバーレンダHTMLのまま拡張し、外部CDNもJSフレームワークも使わない。「画面はAPI経由でしか状態を読まない」という一本道を守ったまま、素のSVG・1つのkeyframe・meta-refresh・小さなfetchだけでどこまで作れるか。優雅に劣化させる設計で開発機と実行ノードに同じ画面を載せた話。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.07.03</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-07-03-plumbing-pipeline-ui-in-svg" class="blog-post-card" data-tags="krs-core ui design agent">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">KRS-Core</span>
+              <span class="tag tag-purple">UI</span>
+              <span class="tag tag-cyan">Agent</span>
+            </div>
+            <h2 class="blog-post-title">エージェントの実行ループを「配管」として描く — SVGパイプラインUI</h2>
+            <p class="blog-post-excerpt">
+              自律エージェントの実行ループを、最初は箱を4つ並べたステッパーで可視化した。動くけれど、やり直しが起きて先頭に戻るループ構造が平らな一列では表現できず違和感があった。作り直して、ケーシングと流体が流れる本物の配管みたいなSVG図にした。パイプに液が流れるアニメーション、reflectバルブから元に戻る/抜ける分岐、複数コンペが枝分かれするマニフォールド、実行中だけ自走する自動リフレッシュ。ライブラリなしで「今なにをして、なぜ止まったか」を一目で掴める画面にした設計の記録。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.07.03</span>
+          </div>
+        </a>
+
         <a href="/post.html?slug=2026-07-03-three-bugs-after-declaring-done" class="blog-post-card" data-tags="krs-core agent infra">
           <div class="blog-post-main">
             <div class="blog-post-meta">
