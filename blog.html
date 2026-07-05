@@ -264,6 +264,23 @@
 
       <div class="blog-list">
 
+        <a href="/post.html?slug=2026-07-05-the-model-learned-the-wrong-dataset" class="blog-post-card" data-tags="krs-core agent llm">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">KRS-Core</span>
+              <span class="tag tag-cyan">Agent</span>
+              <span class="tag tag-red">LLM</span>
+            </div>
+            <h2 class="blog-post-title">『Titanicの分析』のはずが、モデルはMNISTを学習していた</h2>
+            <p class="blog-post-excerpt">
+              自律エージェントにTitanicの生存予測を頼み、本物のCSVを渡した。何回か試行を重ねた末、それらしい精度が返ってきたが、以前ダミーデータで試したときと桁まで一致するスコアに違和感を覚えて中身を確認すると、モデルは渡したファイルを一度も開かず、代わりにMNISTを勝手にダウンロードして学習していた。原因は「依頼から実際のコードが書かれるまでにLLMの言い換えを4段階挟んでいる間に、具体的な事実がリレーの途中で蒸発する」という構造的な劣化。ファイルシステムから直接読んだ事実をコード生成の直前に差し込むことで直し、無視した場合の検出層も足した記録。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.07.05</span>
+          </div>
+        </a>
+
         <a href="/post.html?slug=2026-07-03-retire-the-ui-not-the-engine" class="blog-post-card" data-tags="krs-core architecture infra">
           <div class="blog-post-main">
             <div class="blog-post-meta">
