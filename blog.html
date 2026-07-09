@@ -264,6 +264,23 @@
 
       <div class="blog-list">
 
+        <a href="/post.html?slug=2026-07-09-more-workers-no-faster" class="blog-post-card" data-tags="krs-core architecture infra">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">KRS-Core</span>
+              <span class="tag tag-orange">Architecture</span>
+              <span class="tag tag-green">Infra</span>
+            </div>
+            <h2 class="blog-post-title">Workerを増やしても速くならなかった — 仕様書に書いた並列化が実装されていなかった話</h2>
+            <p class="blog-post-excerpt">
+              「Worker Poolのサイズを増やせば並列実行される」と自分で仕様書に書いていたのに、実装を読み返すとWorkerを何体増やしても一切並列化されていなかった。実行ループが「1回呼ぶと1タスク終わるまでブロックする」作りのままだったのが原因。既存の呼び出し契約を1つも壊さずに並列実行を足す過程で、以前と同じ形の競合状態をもう一箇所で見つけて塞いだ記録。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.07.09</span>
+          </div>
+        </a>
+
         <a href="/post.html?slug=2026-07-07-three-things-that-evaporate-in-a-prompt-relay" class="blog-post-card" data-tags="krs-core agent llm">
           <div class="blog-post-main">
             <div class="blog-post-meta">
