@@ -264,6 +264,23 @@
 
       <div class="blog-list">
 
+        <a href="/post.html?slug=2026-07-10-the-second-stage-guessed-a-filename" class="blog-post-card" data-tags="krs-core agent llm">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">KRS-Core</span>
+              <span class="tag tag-cyan">Agent</span>
+              <span class="tag tag-red">LLM</span>
+            </div>
+            <h2 class="blog-post-title">前の工程が何というファイル名で保存したか、後工程のAIは知らなかった</h2>
+            <p class="blog-post-excerpt">
+              分析タスクを2つの工程に分け、それぞれ別プロセスとしてコードを書かせて実行する仕組みを作った。設計は紙の上ではきれいに閉じていたが、実機の本番モデルへ実際にコードを書かせてみたところ、2つ目の工程が「1つ目の工程が保存したファイル」を毎回もっともらしいが間違った名前で探しに行き、失敗し続けた。原因は「前工程の出力を実行前に一括で生成していた」こと——後工程には前工程の実際のファイル名を知る手段がなかった。設計レビューでは絶対に見つからなかった話。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.07.10</span>
+          </div>
+        </a>
+
         <a href="/post.html?slug=2026-07-10-evidence-nobody-was-reading" class="blog-post-card" data-tags="krs-core agent architecture">
           <div class="blog-post-main">
             <div class="blog-post-meta">
