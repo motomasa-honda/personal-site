@@ -264,6 +264,57 @@
 
       <div class="blog-list">
 
+        <a href="/post.html?slug=2026-07-10-two-wrong-guesses-before-the-kernel-told-me" class="blog-post-card" data-tags="mac ubuntu network ollama debugging">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">Network</span>
+              <span class="tag tag-cyan">Ollama</span>
+              <span class="tag tag-orange">Debugging</span>
+            </div>
+            <h2 class="blog-post-title">接続はできるのに応答が空だった — 2つの間違った仮説の後、カーネルの状態を見て気づいた話</h2>
+            <p class="blog-post-excerpt">
+              直結した2台構成で、片方からもう片方のローカルLLMサーバーへアクセスすると、TCP接続はできるのに応答が一切返らない現象にぶつかった。バインド設定、NATのhairpin問題と2つの仮説を順に試してどちらも外れた後、カーネルの接続状態を直接見ることで、実はネットワーク層ではなくアプリケーション側の接続元許可リストが原因だったと分かった記録。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.07.10</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-07-10-systemd-said-active-socket-was-gone" class="blog-post-card" data-tags="linux ubuntu infra mlops debugging">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">Infra</span>
+              <span class="tag tag-cyan">Linux</span>
+              <span class="tag tag-orange">Debugging</span>
+            </div>
+            <h2 class="blog-post-title">systemdは「稼働中」と言い張っていたが、ソケットファイルは消えていた</h2>
+            <p class="blog-post-excerpt">
+              同じマシンに二重インストールされていたDockerの片方を削除したら、残した方まで動かなくなった。systemctlは終始「active (running)」と表示し続けていたが、実際には肝心のソケットファイルが消えていた——ステータス表示を信じるだけでは気づけない壊れ方だった話。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.07.10</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-07-10-sandbox-that-only-ran-a-forward-pass" class="blog-post-card" data-tags="krs-core agent mlops pytorch huggingface">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">KRS-Core</span>
+              <span class="tag tag-cyan">Agent</span>
+              <span class="tag tag-orange">MLOps</span>
+            </div>
+            <h2 class="blog-post-title">制限環境で本当にLoRAは学習できるのか、実機で確かめるまでの話</h2>
+            <p class="blog-post-excerpt">
+              生成AIが書いたコードを実行するサンドボックスで、環境変数を絞る許可リスト方式を検証していたが、これまでは「読むだけ」の処理しか試していなかった。実際の学習ループまで実機で確かめたところ、途中で無関係なパッケージ不足を「サンドボックスのせい」と誤解しかけた——比較の基本に立ち返って原因を切り分けた記録。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.07.10</span>
+          </div>
+        </a>
+
         <a href="/post.html?slug=2026-07-10-the-second-stage-guessed-a-filename" class="blog-post-card" data-tags="krs-core agent llm">
           <div class="blog-post-main">
             <div class="blog-post-meta">
