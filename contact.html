@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="RM-Engineering へのお問い合わせ。30分無料相談の予約、AI-OS導入相談、カスタム開発相談など。">
+<meta name="theme-color" content="#050810">
+<title>Contact — RM-Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
+<style>
+:root{ --sans: 'Inter', 'Noto Sans JP', sans-serif; }
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.contact-block{background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px}
+.cal-placeholder{border:1px dashed var(--border2);border-radius:var(--radius);padding:48px 24px;text-align:center;
+  font-family:var(--mono);font-size:12px;color:var(--text3)}
+.form-field{display:flex;flex-direction:column;gap:6px;margin-bottom:18px}
+.form-field label{font-family:var(--mono);font-size:11px;color:var(--text2);letter-spacing:.5px}
+.form-field input,.form-field select,.form-field textarea{
+  background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm);
+  color:var(--text);padding:10px 12px;font-family:var(--sans);font-size:13px}
+.form-field textarea{min-height:100px;resize:vertical}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{outline:2px solid var(--blue);border-color:var(--blue)}
+.other-contacts{display:flex;flex-direction:column;gap:10px;margin-top:20px}
+.other-contacts a{font-family:var(--mono);font-size:12px;color:var(--text2);
+  padding:8px 12px;border:1px solid var(--border);border-radius:var(--radius-sm)}
+.other-contacts a:hover{border-color:var(--blue);color:var(--text)}
+@media(max-width:900px){ .contact-grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav aria-label="Primary">
+  <a class="nav-logo" href="/">RM<em>.ENG</em></a>
+  <ul class="nav-links">
+    <li><a href="/product.html">Product</a></li>
+    <li><a href="/services.html">Services</a></li>
+    <li><a href="/approach.html">Approach</a></li>
+    <li><a href="/apps.html">Portfolio</a></li>
+    <li><a href="/blog.html">Blog</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/contact.html" class="active btn btn-primary" style="padding:6px 16px" aria-current="page">お問い合わせ</a></li>
+  </ul>
+  <button class="nav-toggle" data-nav-toggle aria-label="Toggle navigation" aria-expanded="false">≡</button>
+</nav>
+
+<main id="main">
+  <header class="page-hero">
+    <div class="page-eyebrow">// CONTACT</div>
+    <h1 class="page-title">まずは<span class="g">30分の無料相談</span>から</h1>
+    <p class="page-desc">導入検討、技術質問、協業のご相談まで、お気軽にどうぞ。営業日12時間以内に返信いたします(土日祝を除く)。</p>
+  </header>
+
+  <section class="section">
+    <div class="contact-grid">
+      <div class="contact-block">
+        <div class="sec-label" style="margin-bottom:20px"><span class="sl-num">01</span> 30分無料相談を予約</div>
+        <div class="cal-placeholder">
+          [ Cal.com 予約カレンダー埋め込み枠 ]<br><br>
+          <a href="#" style="color:var(--blue)">【Cal.com予約URLを記入】</a><br><br>
+          ※ 予約URL確定後、ここに &lt;iframe&gt; を埋め込みます
+        </div>
+        <div class="other-contacts">
+          <a href="mailto:contact@example.com">Email: 【メールアドレスを記入】</a>
+          <a href="https://github.com/motomasa-honda" target="_blank" rel="noopener">GitHub →</a>
+          <a href="https://zenn.dev" target="_blank" rel="noopener">Zenn →</a>
+          <a href="#" target="_blank" rel="noopener">X (Twitter) →【URLを記入】</a>
+        </div>
+      </div>
+
+      <div class="contact-block">
+        <div class="sec-label" style="margin-bottom:20px"><span class="sl-num">02</span> お問い合わせフォーム</div>
+        <form action="mailto:contact@example.com" method="post" enctype="text/plain">
+          <div class="form-field">
+            <label for="company">会社名</label>
+            <input id="company" name="company" type="text">
+          </div>
+          <div class="form-field">
+            <label for="name">お名前 <span style="color:var(--red)">*</span></label>
+            <input id="name" name="name" type="text" required>
+          </div>
+          <div class="form-field">
+            <label for="email">メールアドレス <span style="color:var(--red)">*</span></label>
+            <input id="email" name="email" type="email" required>
+          </div>
+          <div class="form-field">
+            <label for="phone">電話番号(任意)</label>
+            <input id="phone" name="phone" type="tel">
+          </div>
+          <div class="form-field">
+            <label for="type">お問い合わせ種別 <span style="color:var(--red)">*</span></label>
+            <select id="type" name="type" required>
+              <option value="">選択してください</option>
+              <option>AI-OS 導入相談</option>
+              <option>カスタム開発相談</option>
+              <option>Retainer 相談</option>
+              <option>技術質問</option>
+              <option>協業・パートナー</option>
+              <option>採用・キャリア(将来向け)</option>
+              <option>メディア取材</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="message">相談内容 <span style="color:var(--red)">*</span></label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <div class="form-field" style="flex-direction:row;align-items:center;gap:8px">
+            <input id="consent" type="checkbox" required style="width:auto">
+            <label for="consent" style="font-family:var(--sans);font-size:12px">
+              <a href="/privacy.html" style="color:var(--blue)">プライバシーポリシー</a>に同意する
+            </label>
+          </div>
+          <button type="submit" class="btn btn-primary">送信する</button>
+        </form>
+        <p style="font-size:10px;color:var(--text3);margin-top:12px;font-family:var(--mono)">
+          ※ 現状はメールクライアント経由の簡易送信です。フォーム送信APIは導入準備中(SITE-TODO.md参照)。
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot-logo">[[RM.ENG]] // Recursive Motomasa Engineering</div>
+  <div class="foot-links">
+    <a href="/product.html">Product</a>
+    <a href="/services.html">Services</a>
+    <a href="/about.html">About</a>
+    <a href="/privacy.html">プライバシーポリシー</a>
+    <a href="/tokushoho.html">特定商取引法に基づく表記</a>
+  </div>
+  <div class="foot-copy">© 2026 RM-Engineering</div>
+</footer>
+<script src="/js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="KRS-OS — 7層アーキテクチャで組む、企業向けマルチエージェントAI基盤。マルチLLMオーケストレーション、207+スキルライブラリ、オンプレ/VPC対応。">
+<meta name="theme-color" content="#050810">
+<title>Product: KRS-OS — RM-Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
+<style>
+:root{ --sans: 'Inter', 'Noto Sans JP', sans-serif; }
+.concept-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:8px}
+.concept-block{background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px}
+.concept-block p{font-size:13.5px;color:var(--text2);line-height:1.85}
+.layer-list{display:flex;flex-direction:column;gap:6px}
+.layer-row{display:grid;grid-template-columns:32px 140px 1fr;align-items:center;gap:14px;
+  padding:12px 16px;background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius-sm);
+  font-family:var(--mono);font-size:11px}
+.lr-num{color:var(--text3)}
+.lr-name{color:var(--blue)}
+.lr-desc{color:var(--text2);font-size:11px}
+.agents-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.agent-card{background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px}
+.agent-name{font-family:var(--mono);font-size:14px;color:var(--text-bright);margin-bottom:8px}
+.agent-desc{font-size:12.5px;color:var(--text2);line-height:1.7}
+.deploy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.deploy-card{background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;text-align:center}
+.deploy-name{font-family:var(--mono);font-size:13px;color:var(--blue);margin-bottom:8px}
+.deploy-desc{font-size:12px;color:var(--text2);line-height:1.7}
+.security-list{display:flex;flex-direction:column;gap:10px}
+.security-item{display:flex;gap:12px;font-size:13px;color:var(--text2);align-items:flex-start}
+.faq-item{border-bottom:1px solid var(--border);padding:20px 0}
+.faq-q{font-size:14px;font-weight:600;color:var(--text-bright);margin-bottom:8px}
+.faq-a{font-size:13px;color:var(--text2);line-height:1.75}
+@media(max-width:900px){
+  .concept-grid,.agents-grid,.deploy-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav aria-label="Primary">
+  <a class="nav-logo" href="/">RM<em>.ENG</em></a>
+  <ul class="nav-links">
+    <li><a href="/product.html" class="active" aria-current="page">Product</a></li>
+    <li><a href="/services.html">Services</a></li>
+    <li><a href="/approach.html">Approach</a></li>
+    <li><a href="/apps.html">Portfolio</a></li>
+    <li><a href="/blog.html">Blog</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/contact.html" class="btn btn-primary" style="padding:6px 16px">お問い合わせ</a></li>
+  </ul>
+  <button class="nav-toggle" data-nav-toggle aria-label="Toggle navigation" aria-expanded="false">≡</button>
+</nav>
+
+<main id="main">
+  <header class="page-hero">
+    <div class="page-eyebrow">// PRODUCT</div>
+    <h1 class="page-title"><span class="g">KRS-OS</span></h1>
+    <p class="page-desc">7層アーキテクチャで組む、企業向けマルチエージェントAI基盤。単発のAIツールではなく、業務プロセスを層で構造化する思想で設計されています。</p>
+  </header>
+
+  <section class="section" id="concept">
+    <div class="sec-label"><span class="sl-num">01</span> concept // なぜ "OS" と呼ぶのか</div>
+    <div class="concept-grid">
+      <div class="concept-block">
+        <p>KRS-OS は単発のAIツールの寄せ集めではありません。Kernel(LLM Router)+ Filesystem(Memory)+
+        Applications(Agents)というOSのアナロジーで、業務プロセス全体を層として構造化します。</p>
+      </div>
+      <div class="concept-block">
+        <p>だから新しい業務要件が来ても、既存の層(ルーティング・記憶・監査)を再利用しながら、
+        その業務専用のエージェントだけを上位層に追加すればよい設計になっています。</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section" id="architecture">
+    <div class="sec-label"><span class="sl-num">02</span> 7-layer architecture</div>
+    <div class="layer-list">
+      <div class="layer-row"><span class="lr-num">07</span><span class="lr-name">interfaces/</span><span class="lr-desc">Web UI / API / Slack・Teams 連携</span></div>
+      <div class="layer-row"><span class="lr-num">06</span><span class="lr-name">skills/</span><span class="lr-desc">業務スキルライブラリ(207+)、再利用可能な形で蓄積</span></div>
+      <div class="layer-row"><span class="lr-num">05</span><span class="lr-name">runtime/</span><span class="lr-desc">エージェント実行環境、ライフサイクル管理</span></div>
+      <div class="layer-row"><span class="lr-num">04</span><span class="lr-name">tools/</span><span class="lr-desc">Shell / Python / DB / SaaS 連携ツール</span></div>
+      <div class="layer-row"><span class="lr-num">03</span><span class="lr-name">router/</span><span class="lr-desc">タスク種別に応じたLLM自動選択(ローカル/クラウド)</span></div>
+      <div class="layer-row"><span class="lr-num">02</span><span class="lr-name">memory/</span><span class="lr-desc">会話・プロジェクトの永続記憶</span></div>
+      <div class="layer-row"><span class="lr-num">01</span><span class="lr-name">knowledge/</span><span class="lr-desc">スキル・ドメイン知識ベース</span></div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section" id="agents">
+    <div class="sec-label"><span class="sl-num">03</span> built-in agents // KRS-OS上で動く既製エージェント</div>
+    <div class="agents-grid">
+      <div class="agent-card">
+        <div class="agent-name">⚡ KaggleAgent</div>
+        <div class="agent-desc">データ分析・モデリングを自律実行。Planner / Coder / Judge の複数LLM役割分担で反復改善します。</div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-name">◈ APPGENAgent <span style="color:var(--text3);font-size:10px">(Coming Soon)</span></div>
+        <div class="agent-desc">5エージェント協調型のアプリケーション自動生成パイプライン。要件定義から実装まで一気通貫。</div>
+      </div>
+      <div class="agent-card">
+        <div class="agent-name">+ CustomAgent</div>
+        <div class="agent-desc">顧客の業務に合わせて個別実装するエージェント。Fixed-scope パッケージで構築します。</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section" id="deploy">
+    <div class="sec-label"><span class="sl-num">04</span> how it deploys</div>
+    <div class="deploy-grid">
+      <div class="deploy-card"><div class="deploy-name">SaaS</div><div class="deploy-desc">最速で試したい企業向け。ホスティング環境で提供。</div></div>
+      <div class="deploy-card"><div class="deploy-name">VPC</div><div class="deploy-desc">クラウド内の専有環境。データ境界を明確に分離。</div></div>
+      <div class="deploy-card"><div class="deploy-name">オンプレ</div><div class="deploy-desc">社内インフラに直接構築。データを外に出さない構成。</div></div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section" id="security">
+    <div class="sec-label"><span class="sl-num">05</span> security &amp; compliance</div>
+    <div class="security-list">
+      <div class="security-item"><span>✓</span><span>全実行の監査ログ — いつ・どのLLMが・何を処理したかを追跡可能</span></div>
+      <div class="security-item"><span>✓</span><span>データ持ち出しなし構成 — オンプレ/VPCではプロンプトが外部クラウドLLMに渡らない構成を選択可能</span></div>
+      <div class="security-item"><span>✓</span><span>NDA前提 — 着手前に秘密保持契約を締結</span></div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section" id="faq">
+    <div class="sec-label"><span class="sl-num">06</span> faq</div>
+    <div class="faq-item">
+      <div class="faq-q">既存の社内システムと連携できますか?</div>
+      <div class="faq-a">Tools 層にDB/SaaS連携を追加する形で対応します。個別要件はFixed-scopeパッケージのヒアリングで確認します。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">クラウドLLM(Claude/OpenAI等)を使わない構成にできますか?</div>
+      <div class="faq-a">はい。ルーティング層でローカルLLMのみに固定する構成が可能です。機密データを扱う業務では推奨しています。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">導入後、社内で運用を引き継げますか?</div>
+      <div class="faq-a">はい。ソースコード全開示 + 運用ドキュメント + 引き継ぎセッションを標準の納品物としています。</div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section">
+    <div class="final-cta" style="text-align:center;padding:56px 40px;background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius-lg)">
+      <h2 style="font-family:var(--mono);font-size:22px;color:var(--text-bright);margin-bottom:14px">KRS-OS 資料請求 / デモ予約</h2>
+      <a class="btn btn-primary" href="/contact.html">お問い合わせ →</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot-logo">[[RM.ENG]] // Recursive Motomasa Engineering</div>
+  <div class="foot-links">
+    <a href="/services.html">Services</a>
+    <a href="/approach.html">Approach</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/llms.txt">For AI Agents (llms.txt)</a>
+  </div>
+  <div class="foot-copy">© 2026 RM-Engineering</div>
+</footer>
+<script src="/js/main.js" defer></script>
+</body>
+</html>

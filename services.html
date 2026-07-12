@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="RM-Engineering の料金体系。AI-OS導入パッケージ(Fixed-scope)/ 月次リテナー / カスタム開発の3プラン。">
+<meta name="theme-color" content="#050810">
+<title>Services — RM-Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
+<style>
+:root{ --sans: 'Inter', 'Noto Sans JP', sans-serif; }
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pkg-card{background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius-lg);
+  padding:32px 28px;display:flex;flex-direction:column;gap:16px;position:relative;overflow:hidden}
+.pkg-card.featured::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--blue),var(--purple))}
+.pkg-label{font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:2px;text-transform:uppercase}
+.pkg-name{font-size:18px;font-weight:600;color:var(--text-bright)}
+.pkg-price{font-family:var(--mono);font-size:26px;color:var(--blue)}
+.pkg-price small{font-size:12px;color:var(--text3);display:block;margin-top:2px}
+.pkg-tagline{font-size:13px;color:var(--text2);line-height:1.7}
+.pkg-includes{display:flex;flex-direction:column;gap:8px;font-size:12.5px;color:var(--text2);
+  border-top:1px dashed var(--border);padding-top:16px}
+.pkg-includes li{list-style:none;display:flex;gap:8px}
+.pkg-meta{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:var(--text3);
+  border-top:1px solid var(--border);padding-top:14px}
+.process-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
+.process-cell{padding:24px 20px;border-right:1px solid var(--border);text-align:center}
+.process-cell:last-child{border-right:none}
+.process-step{font-family:var(--mono);font-size:12px;color:var(--text-bright);margin-bottom:6px}
+.process-day{font-family:var(--mono);font-size:10px;color:var(--blue)}
+.capacity-box{background:var(--bg1);border:1px solid rgba(0,230,118,.2);border-radius:var(--radius-lg);
+  padding:24px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+@media(max-width:900px){
+  .pkg-grid{grid-template-columns:1fr}
+  .process-wrap{grid-template-columns:1fr 1fr}
+  .process-cell{border-bottom:1px solid var(--border)}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav aria-label="Primary">
+  <a class="nav-logo" href="/">RM<em>.ENG</em></a>
+  <ul class="nav-links">
+    <li><a href="/product.html">Product</a></li>
+    <li><a href="/services.html" class="active" aria-current="page">Services</a></li>
+    <li><a href="/approach.html">Approach</a></li>
+    <li><a href="/apps.html">Portfolio</a></li>
+    <li><a href="/blog.html">Blog</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/contact.html" class="btn btn-primary" style="padding:6px 16px">お問い合わせ</a></li>
+  </ul>
+  <button class="nav-toggle" data-nav-toggle aria-label="Toggle navigation" aria-expanded="false">≡</button>
+</nav>
+
+<main id="main">
+  <header class="page-hero">
+    <div class="page-eyebrow">// SERVICES</div>
+    <h1 class="page-title">3つの<span class="g">関わり方</span>から選べます</h1>
+    <p class="page-desc">SaaSのTier型ではなく、コンサル型のFixed-scope + Retainer + Custom の3層で構成しています。</p>
+  </header>
+
+  <section class="section" id="capacity">
+    <div class="capacity-box">
+      <div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--text3);letter-spacing:1px;margin-bottom:4px">CURRENT CAPACITY</div>
+        <div style="font-family:var(--mono);font-size:18px;color:var(--green)">残り【◯を記入】社 <span style="font-size:11px;color:var(--text3)">(【2026年◯月を記入】時点)</span></div>
+      </div>
+      <div style="font-size:12px;color:var(--text2);max-width:360px">同時進行は最大3社まで。無理なコミットをしないための意図的な制約です。</div>
+    </div>
+  </section>
+
+  <section class="section" id="packages">
+    <div class="sec-label"><span class="sl-num">01</span> packages</div>
+    <div class="pkg-grid">
+
+      <div class="pkg-card featured">
+        <div class="pkg-label">Fixed-scope</div>
+        <div class="pkg-name">AI-OS 導入パッケージ</div>
+        <div class="pkg-price">50万円〜<small>【要確定】/ 3週間</small></div>
+        <div class="pkg-tagline">業務1プロセスをAI-OS化する、成果物確定の3週間パッケージ。「まず1業務を試したい」中堅企業向け。</div>
+        <ul class="pkg-includes">
+          <li>✓ 初回ヒアリング &amp; 業務モデル化(1週目)</li>
+          <li>✓ KRS-OS 上での実装 &amp; テスト(2週目)</li>
+          <li>✓ 納品 &amp; 引き継ぎドキュメント + 1ヶ月保守(3週目)</li>
+        </ul>
+        <div class="pkg-meta"><span>成果物</span><span>コード / ドキュメント / 監査ログ設計</span></div>
+      </div>
+
+      <div class="pkg-card">
+        <div class="pkg-label">Retainer</div>
+        <div class="pkg-name">月次リテナー</div>
+        <div class="pkg-price">20万円〜<small>【要確定】/ 月</small></div>
+        <div class="pkg-tagline">AI-OS の継続改善と、社内AI相談窓口を月契約で。導入後の継続運用に伴走がほしい企業向け。</div>
+        <ul class="pkg-includes">
+          <li>✓ 月8時間の実装 or 改善対応</li>
+          <li>✓ Slack / Teams でのAI相談チャンネル</li>
+          <li>✓ 月次レビューミーティング(30分)</li>
+        </ul>
+        <div class="pkg-meta"><span>契約期間</span><span>3ヶ月〜</span></div>
+      </div>
+
+      <div class="pkg-card">
+        <div class="pkg-label">Custom</div>
+        <div class="pkg-name">カスタム開発</div>
+        <div class="pkg-price">個別見積<small>目安200万〜</small></div>
+        <div class="pkg-tagline">業務要件が大きい、複数プロセスを統合したい場合。部門横断のAI-OS導入を狙う企業向け。</div>
+        <ul class="pkg-includes">
+          <li>✓ 要件定義から個別設計</li>
+          <li>✓ 複数プロセス・複数エージェント統合</li>
+        </ul>
+        <div class="pkg-meta"><span>納期</span><span>2〜6ヶ月</span></div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section" id="process">
+    <div class="sec-label"><span class="sl-num">02</span> 進め方</div>
+    <div class="process-wrap">
+      <div class="process-cell"><div class="process-step">お問い合わせ</div><div class="process-day">0日目</div></div>
+      <div class="process-cell"><div class="process-step">無料相談30分</div><div class="process-day">3日以内</div></div>
+      <div class="process-cell"><div class="process-step">見積・提案</div><div class="process-day">1週間以内</div></div>
+      <div class="process-cell"><div class="process-step">契約・着手</div><div class="process-day">契約後3営業日</div></div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section">
+    <div class="final-cta" style="text-align:center;padding:56px 40px;background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius-lg)">
+      <h2 style="font-family:var(--mono);font-size:22px;color:var(--text-bright);margin-bottom:14px">まずは無料相談から</h2>
+      <a class="btn btn-primary" href="/contact.html">無料相談を予約する →</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot-logo">[[RM.ENG]] // Recursive Motomasa Engineering</div>
+  <div class="foot-links">
+    <a href="/product.html">Product</a>
+    <a href="/approach.html">Approach</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+    <a href="/tokushoho.html">特定商取引法に基づく表記</a>
+  </div>
+  <div class="foot-copy">© 2026 RM-Engineering</div>
+</footer>
+<script src="/js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+# RM-Engineering
+> AI-OS Implementation Studio
+
+RM-Engineering は、企業の業務プロセスにマルチエージェントAI基盤「KRS-OS」を実装する個人技術事務所です。
+SIerに丸投げせず、ひとりの専門家と直接組んで業務にAI-OSを実装します。
+
+## Product
+- [KRS-OS](/product.html): 7層アーキテクチャで組む、企業向けマルチエージェントAI基盤。マルチLLMオーケストレーション・207+スキルライブラリ・オンプレ/VPC対応。
+
+## Services
+- [AI-OS 導入パッケージ](/services.html#packages): Fixed-scope、50万円〜、3週間
+- [月次リテナー](/services.html#packages): 20万円〜/月、契約期間3ヶ月〜
+- [カスタム開発](/services.html#packages): 個別見積、目安200万〜
+
+## Approach
+- [Approach](/approach.html): 仕事の進め方、SLA(営業日12時間以内応答)、納品物標準(ソースコード全開示)
+
+## Portfolio
+- [Portfolio](/apps.html): KaggleAgent(LIVE)、KRS-OS運用コマンドセンター、その他構築実績
+
+## Blog
+- [Blog](/blog.html): AI-OS設計・導入ノート・技術解説・事業記録
+
+## About
+- [About](/about.html): 代表者プロフィール、事業者情報
+
+## Contact
+- [Contact](/contact.html): 30分無料相談予約、お問い合わせフォーム
+- Email: 【メールアドレスを記入】

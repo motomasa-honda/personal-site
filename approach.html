@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="RM-Engineering の仕事の進め方 — Working Principles / プロセス / セキュリティ / SLA / 納品物標準。一人事業主の信頼性ギャップに正面から答えます。">
+<meta name="theme-color" content="#050810">
+<title>Approach — RM-Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
+<style>
+:root{ --sans: 'Inter', 'Noto Sans JP', sans-serif; }
+.principle-list{display:flex;flex-direction:column;gap:12px}
+.principle-item{display:flex;gap:14px;align-items:flex-start;background:var(--bg1);border:1px solid var(--border);
+  border-radius:var(--radius-sm);padding:16px 20px;font-size:13.5px;color:var(--text2)}
+.principle-item .pn{font-family:var(--mono);color:var(--blue);flex-shrink:0}
+.sla-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.sla-card{background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px;text-align:center}
+.sla-val{font-family:var(--mono);font-size:20px;color:var(--blue);margin-bottom:6px}
+.sla-label{font-size:11px;color:var(--text3)}
+.deliv-list{display:flex;flex-direction:column;gap:10px}
+.deliv-item{display:flex;gap:12px;font-size:13px;color:var(--text2)}
+@media(max-width:900px){ .sla-grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav aria-label="Primary">
+  <a class="nav-logo" href="/">RM<em>.ENG</em></a>
+  <ul class="nav-links">
+    <li><a href="/product.html">Product</a></li>
+    <li><a href="/services.html">Services</a></li>
+    <li><a href="/approach.html" class="active" aria-current="page">Approach</a></li>
+    <li><a href="/apps.html">Portfolio</a></li>
+    <li><a href="/blog.html">Blog</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/contact.html" class="btn btn-primary" style="padding:6px 16px">お問い合わせ</a></li>
+  </ul>
+  <button class="nav-toggle" data-nav-toggle aria-label="Toggle navigation" aria-expanded="false">≡</button>
+</nav>
+
+<main id="main">
+  <header class="page-hero">
+    <div class="page-eyebrow">// APPROACH</div>
+    <h1 class="page-title">どう<span class="g">仕事するか</span>を明示する</h1>
+    <p class="page-desc">一人事業主の信頼性ギャップは、仕事の進め方を透明にすることで埋められると考えています。</p>
+  </header>
+
+  <section class="section" id="principles">
+    <div class="sec-label"><span class="sl-num">01</span> working principles</div>
+    <div class="principle-list">
+      <div class="principle-item"><span class="pn">01</span>見積は無料、提案書に固定価格を明記します</div>
+      <div class="principle-item"><span class="pn">02</span>納品物にソースコードを全開示します</div>
+      <div class="principle-item"><span class="pn">03</span>NDA・秘密保持は着手前に締結します</div>
+      <div class="principle-item"><span class="pn">04</span>進捗は Slack / Notion で毎日可視化します</div>
+      <div class="principle-item"><span class="pn">05</span>稼働状況(受注可能枠)を本サイトで常時公開します</div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section" id="process">
+    <div class="sec-label"><span class="sl-num">02</span> how we work</div>
+    <p style="font-size:13.5px;color:var(--text2);line-height:1.8;max-width:640px;margin-bottom:16px">
+      Fixed-scope パッケージは1週目ヒアリング、2週目実装、3週目納品・引き継ぎの週次ブレイクダウンで進めます。
+      使用ツールは GitHub / Slack / Notion。特別なツール導入を必要としません。
+    </p>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section" id="security">
+    <div class="sec-label"><span class="sl-num">03</span> security &amp; confidentiality</div>
+    <div class="principle-list">
+      <div class="principle-item"><span class="pn">✓</span>NDAテンプレート開示 — 着手前にご確認いただけます</div>
+      <div class="principle-item"><span class="pn">✓</span>データ取り扱いポリシーを契約書に明記</div>
+      <div class="principle-item"><span class="pn">✓</span>オンプレ / VPC 構成の技術詳細を事前共有</div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section" id="sla">
+    <div class="sec-label"><span class="sl-num">04</span> communication sla</div>
+    <div class="sla-grid">
+      <div class="sla-card"><div class="sla-val">12時間以内</div><div class="sla-label">営業日応答</div></div>
+      <div class="sla-card"><div class="sla-val">24/7</div><div class="sla-label">緊急応答オプション(別途契約)</div></div>
+      <div class="sla-card"><div class="sla-val">週1 or 隔週</div><div class="sla-label">定例ミーティング</div></div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section" id="deliverables">
+    <div class="sec-label"><span class="sl-num">05</span> deliverables standard // 納品物の標準</div>
+    <div class="deliv-list">
+      <div class="deliv-item">✓ ソースコード(Gitリポジトリ)</div>
+      <div class="deliv-item">✓ 運用ドキュメント(Markdown)</div>
+      <div class="deliv-item">✓ 監査ログ設計書</div>
+      <div class="deliv-item">✓ 運用引き継ぎセッション(2時間)</div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section">
+    <div class="final-cta" style="text-align:center;padding:56px 40px;background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius-lg)">
+      <h2 style="font-family:var(--mono);font-size:22px;color:var(--text-bright);margin-bottom:14px">進め方について質問がありますか?</h2>
+      <a class="btn btn-primary" href="/contact.html">お問い合わせ →</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot-logo">[[RM.ENG]] // Recursive Motomasa Engineering</div>
+  <div class="foot-links">
+    <a href="/product.html">Product</a>
+    <a href="/services.html">Services</a>
+    <a href="/about.html">About</a>
+    <a href="/contact.html">Contact</a>
+  </div>
+  <div class="foot-copy">© 2026 RM-Engineering</div>
+</footer>
+<script src="/js/main.js" defer></script>
+</body>
+</html>

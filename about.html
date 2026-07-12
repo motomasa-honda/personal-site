@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="RM-Engineering について。Mac mini M4 + RX 7900 XTX のデュアルマシン構成で LLM オーケストレーション・Kaggle 自動化・アプリ自動生成を構築するソロエンジニア motomasa の紹介。">
+<meta name="description" content="RM-Engineering について。AI-OS「KRS-OS」を開発・実装するソロエンジニア motomasa の紹介、事業者情報。">
 <meta name="theme-color" content="#050810">
 <title>About — RM-Engineering</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/site.css">
 
 <style>
-/* ── about-only ───────────────────────────── */
+:root{ --sans: 'Inter', 'Noto Sans JP', sans-serif; }
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -66,7 +66,6 @@
 .about-bio strong { color: var(--text); font-weight: 500; }
 .about-links { display: flex; gap: 10px; flex-wrap: wrap; }
 
-/* spec list (hardware) */
 .spec-list {
   display: flex; flex-direction: column;
   gap: 8px;
@@ -75,7 +74,7 @@
 }
 .spec-item {
   display: grid;
-  grid-template-columns: 110px 1fr;
+  grid-template-columns: 130px 1fr;
   gap: 16px;
   padding: 10px 0;
   border-bottom: 1px dashed var(--border);
@@ -85,10 +84,7 @@
 .spec-val { color: var(--text); }
 .spec-val .accent { color: var(--cyan); }
 
-/* skill grid */
-.skill-grid {
-  display: flex; flex-wrap: wrap; gap: 8px;
-}
+.skill-grid { display: flex; flex-wrap: wrap; gap: 8px; }
 .skill {
   font-family: var(--mono);
   font-size: 11px;
@@ -97,12 +93,6 @@
   border-radius: var(--radius-sm);
   color: var(--text2);
   letter-spacing: .5px;
-  transition: all .12s;
-}
-.skill:hover {
-  border-color: var(--blue);
-  color: var(--text);
-  background: rgba(74, 158, 255, .05);
 }
 .skill.primary {
   border-color: rgba(0, 230, 118, .25);
@@ -110,7 +100,22 @@
   background: rgba(0, 230, 118, .05);
 }
 
-/* roadmap (same as index) */
+.mv-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.mv-card{background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px}
+.mv-label{font-family:var(--mono);font-size:9px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;margin-bottom:12px}
+.mv-quote{font-size:16px;color:var(--text-bright);line-height:1.6;font-family:var(--mono)}
+
+.biz-table{width:100%;border-collapse:collapse;font-size:13px}
+.biz-table th{text-align:left;font-family:var(--mono);font-size:10px;letter-spacing:1px;color:var(--text3);
+  padding:14px 20px;width:140px;vertical-align:top;border-bottom:1px solid var(--border)}
+.biz-table td{padding:14px 20px;color:var(--text2);border-bottom:1px solid var(--border)}
+.biz-table tr:last-child th,.biz-table tr:last-child td{border-bottom:none}
+
+.pub-list{display:flex;flex-direction:column;gap:10px}
+.pub-list a{font-family:var(--mono);font-size:12px;color:var(--text2);padding:8px 12px;
+  border:1px solid var(--border);border-radius:var(--radius-sm)}
+.pub-list a:hover{border-color:var(--blue);color:var(--text)}
+
 .roadmap-wrap {
   background: var(--bg1);
   border: 1px solid var(--border);
@@ -123,43 +128,19 @@
   align-items: center;
   padding: 20px 28px;
   border-bottom: 1px solid var(--border);
-  transition: background .12s;
 }
 .rm-item:last-child { border-bottom: none; }
-.rm-item:hover { background: var(--bg2); }
-.rm-num {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--text3);
-  letter-spacing: 2px;
-}
-.rm-title {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text);
-  margin-bottom: 4px;
-}
-.rm-desc {
-  font-family: var(--mono);
-  font-size: 9px;
-  color: var(--text3);
-  letter-spacing: .5px;
-}
-.rm-status {
-  font-family: var(--mono);
-  font-size: 8px;
-  padding: 3px 10px;
-  border-radius: var(--radius-sm);
-  letter-spacing: 1.5px;
-  white-space: nowrap;
-}
+.rm-num { font-family: var(--mono); font-size: 11px; color: var(--text3); letter-spacing: 2px; }
+.rm-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+.rm-desc { font-family: var(--mono); font-size: 9px; color: var(--text3); letter-spacing: .5px; }
+.rm-status { font-family: var(--mono); font-size: 8px; padding: 3px 10px; border-radius: var(--radius-sm); letter-spacing: 1.5px; white-space: nowrap; }
 .s-done { color: var(--green);  background: rgba(0,230,118,.08);  border: 1px solid rgba(0,230,118,.2); }
 .s-wip  { color: var(--amber);  background: rgba(255,193,7,.08);  border: 1px solid rgba(255,193,7,.2); }
 .s-next { color: var(--blue);   background: rgba(74,158,255,.08); border: 1px solid rgba(74,158,255,.2); }
 .s-plan { color: var(--text3);  background: transparent;          border: 1px solid var(--border); }
 
 @media (max-width: 900px) {
-  .about-grid { grid-template-columns: 1fr; gap: 16px; }
+  .about-grid,.mv-grid { grid-template-columns: 1fr; gap: 16px; }
   .about-block { padding: 28px 22px; }
   .rm-item { grid-template-columns: 36px 1fr auto; padding: 16px 18px; gap: 8px; }
 }
@@ -172,11 +153,13 @@
 <nav aria-label="Primary">
   <a class="nav-logo" href="/">RM<em>.ENG</em></a>
   <ul class="nav-links">
-    <li><a href="/">Home</a></li>
-    <li><a href="/about.html" class="active" aria-current="page">About</a></li>
+    <li><a href="/product.html">Product</a></li>
+    <li><a href="/services.html">Services</a></li>
+    <li><a href="/approach.html">Approach</a></li>
+    <li><a href="/apps.html">Portfolio</a></li>
     <li><a href="/blog.html">Blog</a></li>
-    <li><a href="/apps.html">Apps</a></li>
-    <li><a href="https://github.com/motomasa-honda" target="_blank" rel="noopener">GitHub</a></li>
+    <li><a href="/about.html" class="active" aria-current="page">About</a></li>
+    <li><a href="/contact.html" class="btn btn-primary" style="padding:6px 16px">お問い合わせ</a></li>
   </ul>
   <button class="nav-toggle" data-nav-toggle aria-label="Toggle navigation" aria-expanded="false">≡</button>
 </nav>
@@ -187,12 +170,12 @@
     <div class="page-eyebrow">// ABOUT</div>
     <h1 class="page-title"><span class="g">motomasa</span> @ RM-Engineering</h1>
     <p class="page-desc">
-      AI × 自動化 × ソロ開発をテーマに、複数 LLM を協調させた自律システムを構築するソロエンジニアです。
+      AI-OSを業務に実装する個人技術事務所、RM-Engineering の代表者紹介と事業者情報です。
     </p>
   </header>
 
   <section class="section" id="profile">
-    <div class="sec-label"><span class="sl-num">01</span> profile // hardware</div>
+    <div class="sec-label"><span class="sl-num">01</span> founder's story</div>
 
     <div class="about-grid">
       <article class="about-block">
@@ -200,12 +183,13 @@
         <h2 class="about-name">基真<span class="sr-only">（モトマサ）</span></h2>
         <div class="about-handle">@motomasa-honda</div>
         <p class="about-bio">
-          <strong>RM-Engineering (Recursive Motomasa Engineering)</strong> として、Mac mini M4 と
-          RX 7900 XTX 搭載 Linux PC のデュアル構成で、LLM オーケストレーションパイプライン・
-          Kaggle 自動化システム・アプリ自動生成エンジンを構築しています。
+          <strong>RM-Engineering (Recursive Motomasa Engineering)</strong> の代表として、
+          Mac mini と Linux GPU 機のデュアル構成で、LLM オーケストレーションパイプライン・
+          自律エージェント基盤を開発してきました。
           <br><br>
-          現在は <strong>KRS-Core v0.1.0</strong> (7 層マルチエージェント基盤) を実コンペで運用しつつ、
-          KRS-OS への発展と一人会社 RM-Engineering の法人化を視野に活動中。
+          現在は <strong>KRS-OS</strong>(7層マルチエージェント基盤)を実運用しながら、
+          企業の業務プロセスにAI-OSを実装する事業として RM-Engineering を展開しています。
+          【Founder's Story本文を記入 — なぜこの事業を始めたか、経歴、開発の背景】
         </p>
         <div class="about-links">
           <a class="btn btn-ghost" href="https://github.com/motomasa-honda" target="_blank" rel="noopener">GitHub →</a>
@@ -215,35 +199,27 @@
       </article>
 
       <article class="about-block">
-        <div class="about-block-label">// HARDWARE / OPS</div>
+        <div class="about-block-label">// INFRASTRUCTURE (PROOF)</div>
         <div class="spec-list">
           <div class="spec-item">
-            <span class="spec-key">Primary</span>
-            <span class="spec-val"><span class="accent">Mac mini M4</span> — dev / git / NAT</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-key">Compute</span>
-            <span class="spec-val"><span class="accent">Ubuntu 24.04</span> — exec / GPU</span>
-          </div>
-          <div class="spec-item">
-            <span class="spec-key">CPU</span>
-            <span class="spec-val">Ryzen 9 9950X · 32 threads</span>
+            <span class="spec-key">構成</span>
+            <span class="spec-val"><span class="accent">Mac + Linux</span> デュアルノード構成</span>
           </div>
           <div class="spec-item">
             <span class="spec-key">GPU</span>
-            <span class="spec-val">RX 7900 XTX · 24 GB · ROCm</span>
+            <span class="spec-val">24GB クラス GPU · ROCm</span>
           </div>
           <div class="spec-item">
             <span class="spec-key">Memory</span>
             <span class="spec-val">192 GB DDR5</span>
           </div>
           <div class="spec-item">
-            <span class="spec-key">Network</span>
-            <span class="spec-val">2.5 G Ethernet 直結</span>
+            <span class="spec-key">LLM Stack</span>
+            <span class="spec-val">Ollama(ローカル)+ Claude API(クラウド)</span>
           </div>
           <div class="spec-item">
-            <span class="spec-key">LLM Stack</span>
-            <span class="spec-val">Ollama + Claude API</span>
+            <span class="spec-key">運用形態</span>
+            <span class="spec-val">オンプレ / VPC 双方の構成を実機検証済み</span>
           </div>
         </div>
       </article>
@@ -252,8 +228,40 @@
 
   <hr class="divider">
 
+  <section class="section" id="mission-vision">
+    <div class="sec-label"><span class="sl-num">02</span> mission &amp; vision</div>
+    <div class="mv-grid">
+      <div class="mv-card">
+        <div class="mv-label">Mission</div>
+        <div class="mv-quote">「業務を"OS"として設計しなおし、AIで再構築する。」</div>
+      </div>
+      <div class="mv-card">
+        <div class="mv-label">Vision</div>
+        <div class="mv-quote">「ひとりのエンジニアリングが、企業の意思決定速度を10倍にする。」</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section class="section" id="business-info">
+    <div class="sec-label"><span class="sl-num">03</span> 事業者情報</div>
+    <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius-lg);overflow-x:auto">
+      <table class="biz-table">
+        <tr><th>屋号</th><td>RM-Engineering</td></tr>
+        <tr><th>代表者</th><td>【氏名フルネームを漢字で記入】</td></tr>
+        <tr><th>事業内容</th><td>AI-OS「KRS-OS」の開発・実装、業務AI化支援</td></tr>
+        <tr><th>所在地</th><td>【所在地を記入(非公開なら「請求により開示」も可)】</td></tr>
+        <tr><th>開業</th><td>【開業日を記入】</td></tr>
+        <tr><th>連絡先</th><td>【メールアドレスを記入】</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <hr class="divider">
+
   <section class="section" id="stack">
-    <div class="sec-label"><span class="sl-num">02</span> tech stack // tools</div>
+    <div class="sec-label"><span class="sl-num">04</span> tech stack // tools</div>
     <div class="skill-grid">
       <span class="skill primary">Python</span>
       <span class="skill primary">LLM Orchestration</span>
@@ -262,15 +270,9 @@
       <span class="skill primary">LangGraph</span>
       <span class="skill">Claude API</span>
       <span class="skill">FastAPI</span>
-      <span class="skill">Streamlit</span>
       <span class="skill">PostgreSQL</span>
       <span class="skill">Qdrant</span>
-      <span class="skill">Kaggle</span>
-      <span class="skill">LightGBM / XGBoost / CatBoost</span>
-      <span class="skill">scikit-learn</span>
-      <span class="skill">Optuna</span>
-      <span class="skill">HTML / CSS / JS</span>
-      <span class="skill">Vercel</span>
+      <span class="skill">Docker</span>
       <span class="skill">GitHub Actions</span>
       <span class="skill">systemd (--user)</span>
       <span class="skill">Ubuntu</span>
@@ -280,62 +282,65 @@
 
   <hr class="divider">
 
+  <section class="section" id="publications">
+    <div class="sec-label"><span class="sl-num">05</span> 登壇・執筆履歴</div>
+    <div class="pub-list">
+      <a href="https://zenn.dev" target="_blank" rel="noopener">Zenn 記事一覧 →</a>
+      <a href="https://qiita.com" target="_blank" rel="noopener">Qiita 記事一覧 →</a>
+      <span style="font-family:var(--mono);font-size:11px;color:var(--text3);padding:8px 12px">勉強会登壇記録: 【あれば記入】</span>
+    </div>
+  </section>
+
+  <hr class="divider">
+
   <section class="section" id="roadmap">
-    <div class="sec-label"><span class="sl-num">03</span> roadmap // goals</div>
+    <div class="sec-label"><span class="sl-num">06</span> roadmap // 事業</div>
     <div class="roadmap-wrap">
       <div class="rm-item">
         <div class="rm-num">01</div>
         <div>
-          <div class="rm-title">AI エージェント常駐 → 作業記録を毎日 GitHub 自動連携</div>
-          <div class="rm-desc">company-work-logs · daily report · git push automation</div>
+          <div class="rm-title">KRS-OS v0.1.0 — 汎用マルチエージェント基盤完成</div>
+          <div class="rm-desc">7-layer architecture · マルチLLMルーティング · スキルライブラリ</div>
         </div>
         <span class="rm-status s-done">✓ DONE</span>
       </div>
       <div class="rm-item">
         <div class="rm-num">02</div>
         <div>
-          <div class="rm-title">KRS-Core v0.1.0 — 汎用マルチエージェント基盤完成</div>
-          <div class="rm-desc">7-layer architecture · BaseAgent · ModelRouter · SkillExecutor</div>
+          <div class="rm-title">RM-Engineering 屋号にて開業、事業サイト公開</div>
+          <div class="rm-desc">AI-OS導入パッケージ / 月次リテナー / カスタム開発の3プラン提供開始</div>
         </div>
         <span class="rm-status s-done">✓ DONE</span>
       </div>
       <div class="rm-item">
         <div class="rm-num">03</div>
         <div>
-          <div class="rm-title">Knowledge ループ閉鎖 — KRS が過去から学ぶ最初の実証</div>
-          <div class="rm-desc">Episode 書き戻し + Planner recall → LB best 更新</div>
-        </div>
-        <span class="rm-status s-done">✓ DONE</span>
-      </div>
-      <div class="rm-item">
-        <div class="rm-num">04</div>
-        <div>
-          <div class="rm-title">作業記録 → 技術記事自動生成 → Zenn / Qiita 自動投稿</div>
-          <div class="rm-desc">DailyReport → Claude API → Markdown → Vercel deploy</div>
+          <div class="rm-title">初期顧客獲得フェーズ</div>
+          <div class="rm-desc">Fixed-scope パッケージでの導入実績づくり</div>
         </div>
         <span class="rm-status s-wip">IN PROGRESS</span>
       </div>
       <div class="rm-item">
-        <div class="rm-num">05</div>
+        <div class="rm-num">04</div>
         <div>
-          <div class="rm-title">APPGENAgent — 5 エージェントによるアプリ自動生成</div>
-          <div class="rm-desc">Architect · Coder · Debugger · Reviewer · Judge (Claude API)</div>
+          <div class="rm-title">Case Studies 公開</div>
+          <div class="rm-desc">実案件の導入事例(匿名化)をBlogで公開</div>
         </div>
         <span class="rm-status s-next">NEXT</span>
       </div>
       <div class="rm-item">
-        <div class="rm-num">06</div>
+        <div class="rm-num">05</div>
         <div>
-          <div class="rm-title">KRS-OS — 複数 Agent が協調する自律開発環境</div>
-          <div class="rm-desc">AgentRegistry · Scheduler · Cross-domain knowledge sharing</div>
+          <div class="rm-title">法人化 — RM-Engineering株式会社(予定)</div>
+          <div class="rm-desc">事業規模拡大に合わせて法人化を検討</div>
         </div>
         <span class="rm-status s-plan">PLANNED</span>
       </div>
       <div class="rm-item">
-        <div class="rm-num">07</div>
+        <div class="rm-num">06</div>
         <div>
-          <div class="rm-title">一人会社設立 — RM-Engineering 法人化</div>
-          <div class="rm-desc">Mac mini M4 / RX 7900 XTX / Linux PC を経費計上</div>
+          <div class="rm-title">初回採用 / チーム化</div>
+          <div class="rm-desc">案件数の増加に応じて体制を拡大</div>
         </div>
         <span class="rm-status s-plan">PLANNED</span>
       </div>
@@ -350,8 +355,9 @@
     <li><a href="https://github.com/motomasa-honda" target="_blank" rel="noopener">GitHub</a></li>
     <li><a href="https://zenn.dev" target="_blank" rel="noopener">Zenn</a></li>
     <li><a href="https://qiita.com" target="_blank" rel="noopener">Qiita</a></li>
+    <li><a href="/tokushoho.html">特定商取引法に基づく表記</a></li>
   </ul>
-  <div class="foot-copy">© 2026 RM-Engineering · Built with LLM</div>
+  <div class="foot-copy">© 2026 RM-Engineering</div>
 </footer>
 
 <script src="/js/main.js" defer></script>

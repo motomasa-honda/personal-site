@@ -230,11 +230,13 @@
 <nav aria-label="Primary">
   <a class="nav-logo" href="/">RM<em>.ENG</em></a>
   <ul class="nav-links">
-    <li><a href="/">Home</a></li>
-    <li><a href="/about.html">About</a></li>
+    <li><a href="/product.html">Product</a></li>
+    <li><a href="/services.html">Services</a></li>
+    <li><a href="/approach.html">Approach</a></li>
+    <li><a href="/apps.html">Portfolio</a></li>
     <li><a href="/blog.html" class="active" aria-current="page">Blog</a></li>
-    <li><a href="/apps.html">Apps</a></li>
-    <li><a href="https://github.com/motomasa-honda" target="_blank" rel="noopener">GitHub</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/contact.html" class="btn btn-primary" style="padding:6px 16px">お問い合わせ</a></li>
   </ul>
   <button class="nav-toggle" data-nav-toggle aria-label="Toggle navigation" aria-expanded="false">≡</button>
 </nav>
@@ -242,11 +244,11 @@
 <main id="main">
 
   <header class="page-hero">
-    <div class="page-eyebrow">// TECHNICAL BLOG</div>
+    <div class="page-eyebrow">// INSIGHTS</div>
     <h1 class="page-title"><span class="g">Blog</span> // 技術記事</h1>
     <p class="page-desc">
-      LLM オーケストレーション、Kaggle 自動化、ROCm 環境構築、KRS-Core 開発記録。
-      Zenn / Qiita 連携記事と自動生成記事 (AUTO-GEN) を含みます。
+      KRS-OS の設計・導入ノート・技術解説・事業記録。R&amp;Dのケーススタディとして、
+      エージェント基盤の推論・自己検証・運用の実例を積み上げています。
     </p>
   </header>
 
@@ -679,7 +681,7 @@
               <span class="tag tag-purple">Automation</span>
               <span class="tag tag-green">Ensemble</span>
             </div>
-            <h2 class="blog-post-title">『他の人の OOF も使えるんじゃないか』に踏み込んだ — 公開資産自動取得モジュール</h2>
+            <h2 class="blog-post-title">コンペの公開知識資産を自動で取り込む — 外部OOF統合モジュール</h2>
             <p class="blog-post-excerpt">
               top kernel をスキャンして参照されている公開 OOF dataset を自動 DL、6 種類の異種フォーマットを統一形式に正規化する Python モジュールを実装した。検証コンペで LB +0.003 取った。Kaggle ToS との関係、loader のヘテロ対応、score フィルタの設計についてまとめた。
             </p>
@@ -1610,6 +1612,14 @@
 
     <aside class="blog-sidebar" aria-label="サイドバー">
       <div class="side-block">
+        <div class="side-block-title">// AI-OS 導入相談</div>
+        <p style="font-size:12px;color:var(--text2);line-height:1.7;margin-bottom:14px">
+          ここで書いている推論・自己検証・運用の知見は、そのままKRS-OSの実装力です。
+        </p>
+        <a class="btn btn-primary" href="/contact.html" style="width:100%;justify-content:center">導入相談はこちら →</a>
+      </div>
+
+      <div class="side-block">
         <div class="side-block-title">// TOPICS</div>
         <div class="tag-cloud">
           <button class="tag-btn" data-filter="krs-core">KRS-Core</button>
@@ -1637,11 +1647,14 @@
 <footer>
   <div class="foot-logo">[[RM.ENG]] // Recursive Motomasa Engineering</div>
   <ul class="foot-links" style="list-style:none">
+    <li><a href="/product.html">Product</a></li>
+    <li><a href="/services.html">Services</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/contact.html">Contact</a></li>
     <li><a href="https://github.com/motomasa-honda" target="_blank" rel="noopener">GitHub</a></li>
     <li><a href="https://zenn.dev" target="_blank" rel="noopener">Zenn</a></li>
-    <li><a href="https://qiita.com" target="_blank" rel="noopener">Qiita</a></li>
   </ul>
-  <div class="foot-copy">© 2026 RM-Engineering · Built with LLM</div>
+  <div class="foot-copy">© 2026 RM-Engineering</div>
 </footer>
 
 <script src="/js/main.js" defer></script>

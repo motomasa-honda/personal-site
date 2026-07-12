@@ -1,6 +1,6 @@
 ---
-title: "『他の人の OOF も使えるんじゃないか』に踏み込んだ — 公開資産自動取得モジュール"
-emoji: "🔓"
+title: "コンペの公開知識資産を自動で取り込む — 外部OOF統合モジュール"
+emoji: "🧩"
 type: "tech"
 topics: ["kaggle", "automation", "machinelearning", "ensemble", "dataops"]
 published: true
@@ -19,7 +19,7 @@ ToS 違反ではない)。
 (+0.003)、LB **0.96769 → 0.97042** (+0.003)。これは自分のモデル品質はそのまま、stack 材料が
 増えただけで取れた gain。
 
-## なぜこれが「ちょっとズルい」感じがして、なぜそうじゃないのか
+## Kaggle のルール上、どこまでが許容範囲か
 
 Kaggle にはルールがある:
 - ❌ **他人の submission CSV を直接提出する**: ルール違反 (submission farming)
