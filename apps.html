@@ -62,11 +62,6 @@
 .app-link { font-family: var(--mono); font-size: 10px; color: var(--blue); letter-spacing: 1px; padding: 6px 10px; border: 1px solid var(--border); border-radius: var(--radius-sm); }
 .app-link:hover { border-color: var(--blue); background: rgba(74,158,255,.05); }
 
-.screenshot-placeholder{
-  background: var(--bg2); border: 1px dashed var(--border2); border-radius: var(--radius-sm);
-  padding: 32px 16px; text-align: center; font-family: var(--mono); font-size: 10.5px; color: var(--text3);
-}
-
 .icon-kaggle  { background: rgba(0,230,118,.1);   color: var(--green); }
 .icon-krs     { background: rgba(74,158,255,.1);  color: var(--blue); }
 .icon-cc      { background: rgba(255,193,7,.1);   color: var(--amber); }
@@ -122,11 +117,51 @@
             1画面にまとめた運用コマンドセンターです。外部SPA・JSフレームワーク非依存で構築し、
             開発機・実行ノードの双方で同じ画面を使えます。
           </p>
-          <div class="screenshot-placeholder">
-            [ スクリーンショット挿入予定 ]<br>
-            ※ 社内LAN上で稼働中のため、URLは非公開。詳細は
-            <a href="/contact.html" style="color:var(--blue)">お問い合わせ</a>にてデモ可能です。
+          <div style="background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px 16px 10px;position:relative">
+            <svg viewBox="0 0 400 170" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block" aria-hidden="true">
+              <rect x="0" y="0" width="400" height="170" rx="4" fill="none"/>
+              <!-- gauges -->
+              <g font-family="Space Mono, monospace" font-size="8" fill="#7891b8">
+                <circle cx="45" cy="45" r="28" fill="none" stroke="#33425f" stroke-width="6"/>
+                <circle cx="45" cy="45" r="28" fill="none" stroke="#00e676" stroke-width="6" stroke-dasharray="132 176" stroke-linecap="round" transform="rotate(-90 45 45)"/>
+                <text x="45" y="49" text-anchor="middle" font-size="12" fill="#dce8ff" font-weight="700">42%</text>
+                <text x="45" y="82" text-anchor="middle">CPU</text>
+
+                <circle cx="130" cy="45" r="28" fill="none" stroke="#33425f" stroke-width="6"/>
+                <circle cx="130" cy="45" r="28" fill="none" stroke="#4a9eff" stroke-width="6" stroke-dasharray="99 176" stroke-linecap="round" transform="rotate(-90 130 45)"/>
+                <text x="130" y="49" text-anchor="middle" font-size="12" fill="#dce8ff" font-weight="700">56%</text>
+                <text x="130" y="82" text-anchor="middle">GPU</text>
+
+                <circle cx="215" cy="45" r="28" fill="none" stroke="#33425f" stroke-width="6"/>
+                <circle cx="215" cy="45" r="28" fill="none" stroke="#b388ff" stroke-width="6" stroke-dasharray="70 176" stroke-linecap="round" transform="rotate(-90 215 45)"/>
+                <text x="215" y="49" text-anchor="middle" font-size="12" fill="#dce8ff" font-weight="700">40%</text>
+                <text x="215" y="82" text-anchor="middle">RAM</text>
+
+                <rect x="270" y="20" width="110" height="50" rx="4" fill="#080c18" stroke="#33425f"/>
+                <text x="325" y="40" text-anchor="middle" fill="#93add0">電気代/月</text>
+                <text x="325" y="58" text-anchor="middle" font-size="13" fill="#00e676" font-weight="700">¥4,820</text>
+              </g>
+              <!-- pipeline -->
+              <g font-family="Space Mono, monospace" font-size="8">
+                <line x1="20" y1="130" x2="380" y2="130" stroke="#33425f" stroke-width="2"/>
+                <circle cx="40" cy="130" r="9" fill="#0c1220" stroke="#00e676" stroke-width="2"/>
+                <circle cx="140" cy="130" r="9" fill="#0c1220" stroke="#4a9eff" stroke-width="2"/>
+                <circle cx="240" cy="130" r="9" fill="#0c1220" stroke="#ffc107" stroke-width="2"/>
+                <circle cx="340" cy="130" r="9" fill="#0c1220" stroke="#33425f" stroke-width="2"/>
+                <text x="40" y="150" text-anchor="middle" fill="#93add0">Plan</text>
+                <text x="140" y="150" text-anchor="middle" fill="#93add0">Code</text>
+                <text x="240" y="150" text-anchor="middle" fill="#93add0">Verify</text>
+                <text x="340" y="150" text-anchor="middle" fill="#7891b8">Done</text>
+              </g>
+            </svg>
+            <div style="font-family:var(--mono);font-size:9px;color:var(--text3);text-align:center;margin-top:6px;letter-spacing:.5px">
+              ※ イメージ図(概念図) — 実際の画面ではありません
+            </div>
           </div>
+          <p style="font-size:11px;color:var(--text2);margin-top:2px">
+            社内LAN上で稼働中のため、URLは非公開です。実際の画面は
+            <a href="/contact.html" style="color:var(--blue)">お問い合わせ</a>いただければデモでお見せできます。
+          </p>
           <div class="app-stack">
             <span class="tag tag-amber">FastAPI</span>
             <span class="tag">SVG</span>
@@ -242,7 +277,7 @@
   <ul class="foot-links" style="list-style:none">
     <li><a href="/product.html">Product</a></li>
     <li><a href="https://github.com/motomasa-honda" target="_blank" rel="noopener">GitHub</a></li>
-    <li><a href="https://zenn.dev" target="_blank" rel="noopener">Zenn</a></li>
+    <li><span style="opacity:.5">Zenn(準備中)</span></li>
   </ul>
   <div class="foot-copy">© 2026 RM-Engineering</div>
 </footer>

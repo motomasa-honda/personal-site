@@ -16,15 +16,17 @@
   --bg2:     #0c1220;
   --bg3:     #101828;
 
-  /* Borders */
-  --border:  #182035;
-  --border2: #223050;
+  /* Borders (raised for visibility — WCAG non-text contrast ~3:1, was ~1.2:1) */
+  --border:  #33425f;
+  --border2: #4f6690;
 
-  /* Text scale (bright → dim) */
+  /* Text scale (bright → dim). All three now meet WCAG AA (4.5:1) for normal text
+     against --bg; previously --text3 was 2.29:1 (unreadable, was designed as
+     decorative-only but got reused as real content color across the site). */
   --text-bright: #dce8ff;
   --text:        #b8ccec;
-  --text2:       #6a84aa;
-  --text3:       #384c68;
+  --text2:       #93add0;
+  --text3:       #7891b8;
 
   /* Accent palette (5 colors) */
   --green:   #00e676;
@@ -121,6 +123,13 @@ nav {
 .nav-links a:focus-visible,
 .nav-links a.active { color: var(--text); outline: none; }
 .nav-links a.active { color: var(--blue); }
+
+/* CTA button inside nav must win over .nav-links a's color rule (was invisible:
+   --text3 text on a --blue button background, since ".nav-links a.active" and
+   ".btn-primary" tied in specificity and source order picked the wrong one). */
+nav .nav-links a.btn-primary,
+nav .nav-links a.btn-primary:hover,
+nav .nav-links a.btn-primary.active { color: #fff; }
 
 .nav-pill {
   display: inline-flex; align-items: center; gap: 5px;
