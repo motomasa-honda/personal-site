@@ -269,7 +269,7 @@
     </div>
     <div class="hero-cta">
       <a class="btn btn-primary" href="/contact.html">無料相談を予約する (30分)</a>
-      <a class="btn btn-ghost" href="/product.html">KRS-OS を見る →</a>
+      <a class="btn btn-ghost" href="/apps.html">実績を見る →</a>
     </div>
   </div>
 
@@ -311,11 +311,35 @@ result = invoice_agent.<span class="t-fn">run</span>(
   </div>
 </section>
 
+<!-- JOURNEY STEPPER -->
+<div class="journey" style="margin:56px auto 56px">
+  <div class="journey-step">
+    <span class="js-arrow">→</span>
+    <div class="js-num">STEP 01</div>
+    <div class="js-title">課題と解決策を知る</div>
+    <div class="js-desc">AI導入でよくある壁と、AI-OSでどう解決するかを確認します。</div>
+  </div>
+  <div class="journey-step">
+    <span class="js-arrow">→</span>
+    <div class="js-num">STEP 02</div>
+    <div class="js-title">実績・仕組みを確認</div>
+    <div class="js-desc">KRS-OSの構造と、実際に動かしている運用実績を見て判断できます。</div>
+  </div>
+  <div class="journey-step">
+    <div class="js-num">STEP 03</div>
+    <div class="js-title">無料相談する</div>
+    <div class="js-desc">30分のヒアリングで、御見積の目安をお伝えします。</div>
+  </div>
+</div>
+
 <hr class="divider">
 
 <!-- PROBLEM -->
 <section class="section" id="problem">
-  <div class="sec-label"><span class="sl-num">01</span> problem // AI導入、こんな壁にぶつかっていませんか？</div>
+  <div class="sec-head">
+    <div class="sec-eyebrow"><span class="sl-num">01</span> PROBLEM</div>
+    <h2 class="sec-title">AI導入、こんな壁にぶつかっていませんか？</h2>
+  </div>
   <div class="problem-grid">
     <div class="problem-card">
       <div class="problem-icon">🧱</div>
@@ -339,7 +363,11 @@ result = invoice_agent.<span class="t-fn">run</span>(
 
 <!-- SOLUTION -->
 <section class="section" id="solution">
-  <div class="sec-label"><span class="sl-num">02</span> solution // AI-OS を、ひとりの専門家が直接実装する</div>
+  <div class="sec-head">
+    <div class="sec-eyebrow"><span class="sl-num">02</span> SOLUTION</div>
+    <h2 class="sec-title">AI-OS を、ひとりの専門家が直接実装する</h2>
+    <p class="sec-sub">ヒアリングから実装・運用まで、間にベンダーを挟まず一貫して担当します。</p>
+  </div>
   <div class="steps-wrap">
     <div class="step-cell">
       <div class="step-num">STEP 01</div>
@@ -363,7 +391,10 @@ result = invoice_agent.<span class="t-fn">run</span>(
 
 <!-- TRANSFORMATION -->
 <section class="section" id="transformation">
-  <div class="sec-label"><span class="sl-num">03</span> transformation // 導入前と導入後</div>
+  <div class="sec-head">
+    <div class="sec-eyebrow"><span class="sl-num">03</span> TRANSFORMATION</div>
+    <h2 class="sec-title">導入前と導入後</h2>
+  </div>
   <div style="overflow-x:auto">
   <table class="transform-table">
     <thead><tr><th>Before(よくある状況)</th><th>After(RM-Engineering 導入後)</th></tr></thead>
@@ -382,7 +413,10 @@ result = invoice_agent.<span class="t-fn">run</span>(
 
 <!-- PRODUCT HIGHLIGHT -->
 <section class="section" id="krs">
-  <div class="sec-label"><span class="sl-num">04</span> core product // KRS-OS</div>
+  <div class="sec-head">
+    <div class="sec-eyebrow"><span class="sl-num">04</span> CORE PRODUCT</div>
+    <h2 class="sec-title">KRS-OS — 7層アーキテクチャのAI基盤</h2>
+  </div>
   <div class="krs-wrapper">
     <div class="krs-grid">
       <div class="krs-left">
@@ -419,9 +453,40 @@ result = invoice_agent.<span class="t-fn">run</span>(
 
 <hr class="divider">
 
+<!-- PORTFOLIO / 実績 PREVIEW -->
+<section class="section" id="portfolio-preview">
+  <div class="sec-head">
+    <div class="sec-eyebrow"><span class="sl-num">05</span> PORTFOLIO</div>
+    <h2 class="sec-title">机上の設計ではなく、実際に動いている実績</h2>
+    <p class="sec-sub">KRS-OS は、自分自身の運用でも日々動かしている基盤です。「作れます」ではなく「動かしています」を、実物で確認いただけます。</p>
+  </div>
+  <div class="proof-preview">
+    <a class="proof-card" href="/apps.html">
+      <span class="pc-tag"><span class="pulse" style="width:6px;height:6px;border-radius:50%;background:var(--green)"></span> LIVE</span>
+      <div class="pc-title">KRS-OS Command Center</div>
+      <div class="pc-desc">CPU/GPU/メモリの実測ゲージ、実行パイプラインのSVG可視化、承認待ちタスクのキューまでを1画面にまとめた運用ダッシュボード。実際に稼働中です。</div>
+      <span class="pc-link">実績を見る →</span>
+    </a>
+    <a class="proof-card" href="/apps.html">
+      <span class="pc-tag"><span class="pulse" style="width:6px;height:6px;border-radius:50%;background:var(--green)"></span> LIVE</span>
+      <div class="pc-title">KaggleAgent</div>
+      <div class="pc-desc">複数LLMにPlanner / Coder / Judge の役割を分担させ、自己検証しながら反復改善する自律エージェント。KRS-OSの推論・運用能力を実データで検証したケーススタディ。</div>
+      <span class="pc-link">実績を見る →</span>
+    </a>
+  </div>
+  <div style="text-align:center;margin-top:28px">
+    <a href="/apps.html" class="btn btn-ghost">Portfolio をすべて見る →</a>
+  </div>
+</section>
+
+<hr class="divider">
+
 <!-- SERVICES -->
 <section class="section" id="services">
-  <div class="sec-label"><span class="sl-num">05</span> services // 3つの関わり方から選べます</div>
+  <div class="sec-head">
+    <div class="sec-eyebrow"><span class="sl-num">06</span> SERVICES</div>
+    <h2 class="sec-title">3つの関わり方から選べます</h2>
+  </div>
   <div class="capacity-badge"><span class="pulse" style="width:6px;height:6px;border-radius:50%;background:var(--green)"></span> 受注可能枠: 残り3社(2026年7月時点)</div>
   <div class="services-grid">
     <div class="svc-card featured">
@@ -452,11 +517,11 @@ result = invoice_agent.<span class="t-fn">run</span>(
 
 <!-- WHY SOLO -->
 <section class="section" id="why-solo">
-  <div class="sec-label"><span class="sl-num">06</span> why solo // なぜ、"ひとり" に頼むのか</div>
-  <p style="font-size:14px;color:var(--text2);max-width:640px;margin-bottom:28px;line-height:1.8">
-    「個人事業主に発注して大丈夫か？」— 当然の疑問です。RM-Engineering は、その懸念に
-    5つの仕組みで正面から答えます。
-  </p>
+  <div class="sec-head">
+    <div class="sec-eyebrow"><span class="sl-num">07</span> WHY SOLO</div>
+    <h2 class="sec-title">なぜ、"ひとり" に頼むのか</h2>
+    <p class="sec-sub">「個人事業主に発注して大丈夫か？」— 当然の疑問です。RM-Engineering は、その懸念に5つの仕組みで正面から答えます。</p>
+  </div>
   <div class="whysolo-wrap">
     <div class="whysolo-item">
       <div class="whysolo-title">① 継続性</div>
@@ -485,7 +550,10 @@ result = invoice_agent.<span class="t-fn">run</span>(
 
 <!-- PROOF / NUMBERS -->
 <section class="section" id="stats">
-  <div class="sec-label"><span class="sl-num">07</span> numbers &amp; proof</div>
+  <div class="sec-head">
+    <div class="sec-eyebrow"><span class="sl-num">08</span> NUMBERS &amp; PROOF</div>
+    <h2 class="sec-title">数字で見るKRS-OS</h2>
+  </div>
   <div class="stats-grid">
     <div class="stat-cell" style="--acc-color:var(--green)">
       <div class="stat-l">Skills in KB</div>
@@ -514,7 +582,11 @@ result = invoice_agent.<span class="t-fn">run</span>(
 
 <!-- BLOG -->
 <section class="section" id="blog">
-  <div class="sec-label"><span class="sl-num">08</span> insights // 最新の技術記事</div>
+  <div class="sec-head">
+    <div class="sec-eyebrow"><span class="sl-num">09</span> INSIGHTS</div>
+    <h2 class="sec-title">最新の技術記事</h2>
+    <p class="sec-sub">推論・自己検証・運用の知見を積み上げています。これがそのままKRS-OSの実装力です。</p>
+  </div>
   <div class="blog-grid">
     <a class="blog-card" href="/post.html?slug=2026-07-10-two-wrong-guesses-before-the-kernel-told-me"
       style="--card-acc:linear-gradient(90deg,var(--blue),var(--cyan))">

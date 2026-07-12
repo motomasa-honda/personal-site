@@ -228,6 +228,95 @@ nav .nav-links a.btn-primary.active { color: #fff; }
   max-width: 200px;
 }
 
+/* ── SECTION HEADER (readable two-part) ─────
+   .sec-eyebrow = small mono tag (英字ラベル), .sec-title = 大きく読める日本語見出し.
+   旧 .sec-label は日本語の文章を 9px に押し込んでいて読みにくかったため分離。 */
+.sec-head { margin-bottom: 40px; }
+.sec-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--blue);
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 14px;
+}
+.sec-eyebrow .sl-num { color: var(--text3); }
+.sec-eyebrow::after {
+  content: '';
+  flex: 1; height: 1px;
+  background: linear-gradient(90deg, var(--border2), transparent);
+  max-width: 160px;
+}
+.sec-title {
+  font-family: var(--sans);
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 600;
+  color: var(--text-bright);
+  line-height: 1.4;
+  letter-spacing: -.3px;
+}
+.sec-sub {
+  font-size: 14.5px;
+  color: var(--text2);
+  line-height: 1.8;
+  max-width: 680px;
+  margin-top: 14px;
+}
+
+/* ── JOURNEY STEPPER ──────────────────────── */
+.journey {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 80px;
+  position: relative;
+  z-index: 1;
+}
+.journey-step {
+  background: var(--bg1);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px 22px;
+  position: relative;
+}
+.journey-step .js-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--blue);
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+}
+.journey-step .js-title {
+  font-size: 15px; font-weight: 600; color: var(--text-bright);
+  margin-bottom: 6px;
+}
+.journey-step .js-desc { font-size: 12.5px; color: var(--text2); line-height: 1.7; }
+.journey-step .js-arrow {
+  position: absolute; right: -11px; top: 50%; transform: translateY(-50%);
+  color: var(--border2); font-family: var(--mono); font-size: 14px; z-index: 2;
+  background: var(--bg); padding: 2px 0;
+}
+
+/* ── PROOF / PORTFOLIO PREVIEW (homepage) ──── */
+.proof-preview { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.proof-card {
+  background: var(--bg1); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 26px 24px;
+  display: flex; flex-direction: column; gap: 12px;
+  transition: border-color .12s, transform .12s;
+}
+.proof-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+.proof-card .pc-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--mono); font-size: 9px; color: var(--green); letter-spacing: 1px;
+}
+.proof-card .pc-title { font-size: 16px; font-weight: 600; color: var(--text-bright); }
+.proof-card .pc-desc { font-size: 13px; color: var(--text2); line-height: 1.75; flex: 1; }
+.proof-card .pc-link { font-family: var(--mono); font-size: 10px; color: var(--blue); letter-spacing: 1px; }
+
 .divider {
   border: none;
   border-top: 1px solid var(--border);
@@ -382,12 +471,19 @@ footer {
   .section { padding: 60px 40px; }
   .site-footer { padding: 24px 40px; }
   .page-hero { padding: 120px 40px 48px; }
+  .journey { padding: 0 40px; }
+}
+@media (max-width: 900px) {
+  .journey { grid-template-columns: 1fr; }
+  .journey-step .js-arrow { display: none; }
+  .proof-preview { grid-template-columns: 1fr; }
 }
 @media (max-width: 768px) {
   .nav { padding: 0 20px; }
   .nav-pill { display: none; }
   .nav-links { gap: 18px; }
   .section { padding: 48px 20px; }
+  .journey { padding: 0 20px; }
   .site-footer {
     padding: 24px 20px;
     flex-direction: column;
