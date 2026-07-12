@@ -54,36 +54,43 @@
   </header>
 
   <section class="section">
+    <div style="background:rgba(255,193,7,.06);border:1px solid rgba(255,193,7,.25);border-radius:var(--radius-lg);
+      padding:20px 24px;margin-bottom:32px;font-size:13px;color:var(--text2);display:flex;align-items:center;gap:12px">
+      <span style="font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:1px;padding:3px 10px;
+        border:1px solid rgba(255,193,7,.3);border-radius:20px;white-space:nowrap">COMING SOON</span>
+      <span>お問い合わせ受付は準備中です。事業用メールアドレス・予約カレンダーの開設後、正式に受付を開始します。</span>
+    </div>
+
     <div class="contact-grid">
       <div class="contact-block">
         <div class="sec-label" style="margin-bottom:20px"><span class="sl-num">01</span> 30分無料相談を予約</div>
         <div class="cal-placeholder">
           [ Cal.com 予約カレンダー埋め込み枠 ]<br><br>
-          <a href="#" style="color:var(--blue)">【Cal.com予約URLを記入】</a><br><br>
+          準備中(Coming Soon)<br><br>
           ※ 予約URL確定後、ここに &lt;iframe&gt; を埋め込みます
         </div>
         <div class="other-contacts">
-          <a href="mailto:contact@example.com">Email: 【メールアドレスを記入】</a>
+          <span style="display:block;font-family:var(--mono);font-size:12px;color:var(--text3);padding:8px 12px;
+            border:1px solid var(--border);border-radius:var(--radius-sm)">Email: 準備中(Coming Soon)</span>
           <a href="https://github.com/motomasa-honda" target="_blank" rel="noopener">GitHub →</a>
           <a href="https://zenn.dev" target="_blank" rel="noopener">Zenn →</a>
-          <a href="#" target="_blank" rel="noopener">X (Twitter) →【URLを記入】</a>
         </div>
       </div>
 
       <div class="contact-block">
         <div class="sec-label" style="margin-bottom:20px"><span class="sl-num">02</span> お問い合わせフォーム</div>
-        <form action="mailto:contact@example.com" method="post" enctype="text/plain">
+        <fieldset disabled style="border:none;padding:0;margin:0;opacity:.6">
           <div class="form-field">
             <label for="company">会社名</label>
             <input id="company" name="company" type="text">
           </div>
           <div class="form-field">
             <label for="name">お名前 <span style="color:var(--red)">*</span></label>
-            <input id="name" name="name" type="text" required>
+            <input id="name" name="name" type="text">
           </div>
           <div class="form-field">
             <label for="email">メールアドレス <span style="color:var(--red)">*</span></label>
-            <input id="email" name="email" type="email" required>
+            <input id="email" name="email" type="email">
           </div>
           <div class="form-field">
             <label for="phone">電話番号(任意)</label>
@@ -91,7 +98,7 @@
           </div>
           <div class="form-field">
             <label for="type">お問い合わせ種別 <span style="color:var(--red)">*</span></label>
-            <select id="type" name="type" required>
+            <select id="type" name="type">
               <option value="">選択してください</option>
               <option>AI-OS 導入相談</option>
               <option>カスタム開発相談</option>
@@ -104,18 +111,18 @@
           </div>
           <div class="form-field">
             <label for="message">相談内容 <span style="color:var(--red)">*</span></label>
-            <textarea id="message" name="message" required></textarea>
+            <textarea id="message" name="message"></textarea>
           </div>
           <div class="form-field" style="flex-direction:row;align-items:center;gap:8px">
-            <input id="consent" type="checkbox" required style="width:auto">
+            <input id="consent" type="checkbox" style="width:auto">
             <label for="consent" style="font-family:var(--sans);font-size:12px">
               <a href="/privacy.html" style="color:var(--blue)">プライバシーポリシー</a>に同意する
             </label>
           </div>
-          <button type="submit" class="btn btn-primary">送信する</button>
-        </form>
+          <button type="submit" class="btn btn-ghost">送信する(準備中)</button>
+        </fieldset>
         <p style="font-size:10px;color:var(--text3);margin-top:12px;font-family:var(--mono)">
-          ※ 現状はメールクライアント経由の簡易送信です。フォーム送信APIは導入準備中(SITE-TODO.md参照)。
+          ※ 事業用メールアドレス開設・フォーム送信API導入まで、フォームは一時的に無効化しています(SITE-TODO.md参照)。
         </p>
       </div>
     </div>

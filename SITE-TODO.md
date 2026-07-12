@@ -1,34 +1,32 @@
 # サイト公開前に記入・確認が必要な項目
 
-RM-Engineering サイトを個人事業主向け事業サイトとして公開する前に、以下を実際の値に差し替えてください。
-サイト内では `【◯◯を記入】` の形式でプレースホルダとして埋め込んであります(`grep -rn "記入" *.html` で全箇所を検索可能)。
+RM-Engineering サイトを個人事業主向け事業サイトとして公開する前の残タスク一覧です。
 
-## 優先度 ★★★ (特定商取引法・必須)
+## 確定済み(2026-07-12)
 
-- [ ] 代表者氏名フルネーム(漢字表記必須、屋号・ローマ字・苗字のみ不可) → `tokushoho.html`, `about.html`
-- [ ] 連絡先メールアドレス → `tokushoho.html`, `contact.html`, `about.html`, footer 全ページ
-- [ ] 3パッケージの実際の価格(下限確定) → `services.html`, `tokushoho.html`
-- [ ] 支払時期・引渡し時期の具体的日数 → `tokushoho.html`
+- [x] 代表者氏名フルネーム → **本多 基真** → `tokushoho.html`, `about.html` に反映済み
+- [x] 開業日 → **2026年8月4日** → `about.html`, `tokushoho.html` に反映済み
+- [x] 3パッケージの価格 → 仕様書ドラフト値のまま確定(Fixed-scope 50万円〜/3週間、Retainer 20万円〜/月、Custom 個別見積・目安200万〜)
+- [x] 支払時期・引渡し時期 → 「契約締結後7日以内に支払い」「契約締結後3営業日以内に着手」で確定 → `tokushoho.html`
+- [x] 所在地・電話番号 → 「請求により遅滞なく開示」方式に確定(実際の住所・電話番号はサイトに非掲載)→ `tokushoho.html`, `about.html`
+- [x] 現在の受注可能枠 → 「残り3社(2026年7月時点)」で確定 → `index.html`, `services.html`
+- [x] コマンドセンターのURL(192.168.2.2:8600/ui/) → 意図的に非公開。`apps.html` にはスクリーンショット枠と機能説明のみ掲載
 
-## 優先度 ★★☆
+## 未確定(要対応 — サイトは「準備中」表示でガードしてある)
 
-- [ ] 所在地(または「請求により遅滞なく開示」運用にするか確定) → `tokushoho.html`
-- [ ] 電話番号(または「請求により遅滞なく開示」運用にするか確定) → `tokushoho.html`
-- [ ] 予約カレンダーURL(Cal.com 等) → `contact.html`
-- [ ] 開業日 → `about.html`, `tokushoho.html`
-- [ ] 現在の受注可能枠(残り◯社、更新日) → `index.html`, `services.html`
-
-## 優先度 ★☆☆
-
-- [ ] X (Twitter) / Zenn / Qiita の実URL(現状 zenn.dev / qiita.com のトップページのままプレースホルダ) → 全ページ footer, `about.html`
+- [ ] **連絡先メールアドレス**: 事業用Gmail作成後、`contact.html` / `tokushoho.html` / `about.html` / `privacy.html` / footer の「準備中(Coming Soon)」表示を実アドレスに差し替え。
+      → **重要**: `contact.html` のお問い合わせフォームは現在 `<fieldset disabled>` で送信不可にしてあります(実アドレスが無い状態で問い合わせが来ないようにするため)。メール開設後、`disabled` を外し、`action="mailto:実アドレス"` に差し替えてください。
+- [ ] 予約カレンダーURL(Cal.com 等) → `contact.html` の `[ Cal.com 予約カレンダー埋め込み枠 ]` を実際の埋め込みに差し替え
+- [ ] X (Twitter) / Zenn / Qiita の実URL(現状 zenn.dev / qiita.com のトップページのままのプレースホルダ)
 - [ ] Founder's Story 本文(現状は簡易版のまま) → `about.html`
 - [ ] 代表者写真 or アバター画像 → `about.html`
-- [ ] お問い合わせフォームの送信先(現状 mailto: リンクのみ。Resend 等のAPI連携は未実装) → `contact.html`
-- [ ] コマンドセンター(KRS-OS運用画面)のスクリーンショット画像 → `apps.html` の Portfolio セクション(現状はテキストのみ、画像未挿入。LAN内IPは意図的に非公開)
+- [ ] 勉強会登壇記録(あれば) → `about.html`
+- [ ] コマンドセンターのスクリーンショット画像 → `apps.html` の Portfolio セクション(現状テキストのみ)
+- [ ] KRS-OSライセンス条項の詳細 → `terms.html` 「4. KRS-OSライセンス条項」(Stripe等の本格販売開始までに確定)
 
 ## 実装メモ
 
 - 今回の改修は既存のプレーン HTML/CSS/JS 構成のまま実施(Next.js 移行はせず)。
 - `llms.txt` を追加。動的生成ではなく静的ファイル。
-- 特商法ページは「請求により遅滞なく開示」のテンプレート文言を採用済み — 所在地・電話番号を公開するかは代表者の判断で `tokushoho.html` を編集。
 - 旧記事のうち、企業向け営業サイトとして公開するには具体的すぎる内部実装の欠陥・脆弱性の記述を含むものは表現を調整済み(詳細は git log 参照)。
+- 事業用メールアドレスが未開設のため、サイト全体を「準備中」トーンでガードしてある。メール開設 → Contact フォーム有効化 → 特商法ページのメール欄更新、の順で対応してください。
