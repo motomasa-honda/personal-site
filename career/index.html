@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="本多 基真 (motomasa) のエンジニアポートフォリオ。複数LLMをオーケストレートする自律エージェント基盤 KRS-OS の設計・実装、Kaggleデータ分析自動化、ROCm/GPU運用など。">
+<meta name="theme-color" content="#050810">
+<meta name="author" content="motomasa-honda">
+
+<link rel="canonical" href="https://personal-site-eight-delta.vercel.app/career/">
+
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="motomasa — Engineer Portfolio">
+<meta property="og:title" content="motomasa — Software Engineer Portfolio">
+<meta property="og:description" content="複数LLMをオーケストレートする自律エージェント基盤を、一人で設計・実装・運用するソフトウェアエンジニアです。">
+<meta property="og:url" content="https://personal-site-eight-delta.vercel.app/career/">
+<meta property="og:locale" content="ja_JP">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="motomasa — Software Engineer Portfolio">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "name": "本多 基真",
+      "alternateName": "motomasa",
+      "url": "https://personal-site-eight-delta.vercel.app/career/",
+      "sameAs": ["https://github.com/motomasa-honda"],
+      "jobTitle": "Software Engineer",
+      "knowsAbout": ["LLM Orchestration", "Multi-Agent Systems", "Python", "ROCm", "Kaggle", "FastAPI"]
+    },
+    {
+      "@type": "WebSite",
+      "url": "https://personal-site-eight-delta.vercel.app/career/",
+      "name": "motomasa — Engineer Portfolio",
+      "inLanguage": "ja"
+    }
+  ]
+}
+</script>
+
+<title>motomasa — Software Engineer Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
+
+<style>
+:root{ --sans: 'Inter', 'Noto Sans JP', sans-serif; }
+
+/* ── HERO ─────────────────────────────────── */
+.chero{
+  min-height:88vh; display:flex; flex-direction:column; justify-content:center;
+  max-width:1000px; margin:0 auto; padding:140px 40px 60px; position:relative; z-index:1;
+}
+.chero-eyebrow{font-family:var(--mono);font-size:11px;color:var(--text3);letter-spacing:3px;
+  text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:14px}
+.chero-avatar{width:56px;height:56px;border-radius:10px;flex-shrink:0}
+.chero-name{font-family:var(--mono);font-size:clamp(34px,5vw,58px);font-weight:700;color:var(--text-bright);
+  line-height:1.1;letter-spacing:-1.5px;margin-bottom:14px}
+.chero-name .g{background:linear-gradient(120deg,var(--green) 0%,var(--cyan) 55%,var(--blue) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.chero-desc{font-size:15.5px;color:var(--text2);max-width:620px;line-height:1.85;margin-bottom:28px}
+.chero-cta{display:flex;gap:12px;flex-wrap:wrap}
+
+/* ── ABOUT ────────────────────────────────── */
+.about-two{display:grid;grid-template-columns:1.3fr 1fr;gap:32px}
+.about-text{font-size:14px;color:var(--text2);line-height:1.9}
+.about-text strong{color:var(--text)}
+.quickfacts{display:flex;flex-direction:column;gap:0;background:var(--bg1);border:1px solid var(--border);
+  border-radius:var(--radius-lg);overflow:hidden}
+.qf-row{display:grid;grid-template-columns:110px 1fr;gap:14px;padding:14px 18px;
+  border-bottom:1px solid var(--border);font-size:12.5px}
+.qf-row:last-child{border-bottom:none}
+.qf-key{font-family:var(--mono);color:var(--text3);letter-spacing:.5px}
+.qf-val{color:var(--text)}
+
+/* ── SKILLS ───────────────────────────────── */
+.skill-groups{display:flex;flex-direction:column;gap:22px}
+.skill-group-label{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:2px;
+  text-transform:uppercase;margin-bottom:10px}
+.skill-grid{display:flex;flex-wrap:wrap;gap:8px}
+.skill{font-family:var(--mono);font-size:11.5px;padding:6px 13px;border:1px solid var(--border);
+  border-radius:var(--radius-sm);color:var(--text2)}
+.skill.primary{border-color:rgba(0,230,118,.3);color:var(--green);background:rgba(0,230,118,.06)}
+
+/* ── PROJECTS ─────────────────────────────── */
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.proj-card{background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius-lg);
+  padding:26px 24px;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden}
+.proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:var(--card-acc,linear-gradient(90deg,var(--blue),var(--purple)))}
+.proj-status{font-family:var(--mono);font-size:8px;padding:3px 9px;border-radius:20px;letter-spacing:1px;
+  color:var(--green);background:rgba(0,230,118,.08);border:1px solid rgba(0,230,118,.22);
+  align-self:flex-start}
+.proj-title{font-size:16px;font-weight:600;color:var(--text-bright)}
+.proj-desc{font-size:13px;color:var(--text2);line-height:1.75;flex:1}
+.proj-stack{display:flex;flex-wrap:wrap;gap:6px}
+.proj-links{display:flex;gap:14px;margin-top:4px}
+.proj-links a{font-family:var(--mono);font-size:10.5px;color:var(--blue)}
+
+/* ── TIMELINE ─────────────────────────────── */
+.timeline{display:flex;flex-direction:column;gap:0;background:var(--bg1);border:1px solid var(--border);
+  border-radius:var(--radius-lg);overflow:hidden}
+.tl-row{display:grid;grid-template-columns:110px 1fr;gap:20px;padding:18px 24px;border-bottom:1px solid var(--border)}
+.tl-row:last-child{border-bottom:none}
+.tl-date{font-family:var(--mono);font-size:11px;color:var(--blue)}
+.tl-title{font-size:13.5px;color:var(--text);font-weight:500;margin-bottom:2px}
+.tl-desc{font-size:12px;color:var(--text2);line-height:1.6}
+
+/* ── WRITING ──────────────────────────────── */
+.write-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.write-card{background:var(--bg1);border:1px solid var(--border);border-radius:4px;padding:20px;display:block}
+.write-title{font-size:12.5px;font-weight:500;color:var(--text);line-height:1.5;margin-bottom:8px}
+.write-date{font-family:var(--mono);font-size:9px;color:var(--text3)}
+
+/* ── CONTACT ──────────────────────────────── */
+.contact-box{background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius-lg);
+  padding:40px;text-align:center}
+.contact-links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+
+@media(max-width:900px){
+  .about-two,.proj-grid,.write-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<nav aria-label="Primary">
+  <a class="nav-logo" href="/career/" aria-label="motomasa home">motomasa<em>.dev</em></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="/blog.html">Writing</a></li>
+    <li><a href="#contact" class="btn btn-primary" style="padding:6px 16px">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" data-nav-toggle aria-label="Toggle navigation" aria-expanded="false">≡</button>
+</nav>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="chero" id="hero">
+    <div class="chero-eyebrow">
+      <svg class="chero-avatar" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="cAvatarGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#00e676"/>
+            <stop offset="50%" stop-color="#00bcd4"/>
+            <stop offset="100%" stop-color="#4a9eff"/>
+          </linearGradient>
+        </defs>
+        <rect x="1" y="1" width="62" height="62" rx="8" fill="#080c18" stroke="url(#cAvatarGrad)" stroke-width="1.5"/>
+        <text x="32" y="40" text-anchor="middle" font-family="Space Mono, monospace" font-size="22" font-weight="700" fill="url(#cAvatarGrad)">本</text>
+      </svg>
+      Software Engineer / Portfolio
+    </div>
+    <div class="chero-name">本多 基真<br><span class="g">motomasa</span></div>
+    <p class="chero-desc">
+      複数のLLMをオーケストレートする自律マルチエージェント基盤を、要件定義から実装・運用まで
+      一人で作り続けているソフトウェアエンジニアです。Kaggleのデータ分析自動化から出発し、
+      7層アーキテクチャの汎用エージェント基盤「KRS-OS」、GPU/ROCm運用、依存フリーの運用
+      ダッシュボードまで、実際に動かしながら設計してきました。
+    </p>
+    <div class="chero-cta">
+      <a class="btn btn-primary" href="#projects">プロジェクトを見る</a>
+      <a class="btn btn-ghost" href="/blog.html">技術ブログを読む →</a>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="sec-head">
+      <div class="sec-eyebrow"><span class="sl-num">01</span> ABOUT</div>
+      <h2 class="sec-title">何をしてきたか</h2>
+    </div>
+    <div class="about-two">
+      <div class="about-text">
+        <p>
+          最初のきっかけは、Kaggleのデータ分析コンペを自律実行する「KaggleAgent」でした。
+          複数のLLMに<strong>Planner・Coder・Judge</strong>といった役割を分担させ、試行錯誤の
+          履歴から自ら学習して改善していくエージェントを、一人で設計・実装・運用する中で、
+          単発のツールではなく<strong>業務プロセスそのものを再構築できる汎用基盤</strong>になる
+          という手応えを得ました。
+        </p>
+        <p style="margin-top:16px">
+          そこから、Kernel(LLM Router)・Memory・Applications(Agents)という層構造を持つ
+          「OS」として設計し直したのが<strong>KRS-OS</strong>(7層マルチエージェント基盤)です。
+          Mac mini と Linux GPU 機のデュアルノード構成で、ローカルLLM(Ollama)とクラウドLLM
+          (Claude API)を自動ルーティングし、監査ログ・権限制御・運用ダッシュボードまで
+          一貫して作り込んでいます。
+        </p>
+      </div>
+      <div class="quickfacts">
+        <div class="qf-row"><span class="qf-key">Focus</span><span class="qf-val">LLM Orchestration / Multi-Agent Systems</span></div>
+        <div class="qf-row"><span class="qf-key">Infra</span><span class="qf-val">Mac + Linux GPU デュアルノード</span></div>
+        <div class="qf-row"><span class="qf-key">GPU</span><span class="qf-val">24GBクラス GPU・ROCm</span></div>
+        <div class="qf-row"><span class="qf-key">Writing</span><span class="qf-val">技術ブログで日々の設計・デバッグ記録を公開</span></div>
+        <div class="qf-row"><span class="qf-key">GitHub</span><span class="qf-val"><a href="https://github.com/motomasa-honda" target="_blank" rel="noopener" style="color:var(--blue)">@motomasa-honda →</a></span></div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- SKILLS -->
+  <section class="section" id="skills">
+    <div class="sec-head">
+      <div class="sec-eyebrow"><span class="sl-num">02</span> SKILLS</div>
+      <h2 class="sec-title">技術スタック</h2>
+    </div>
+    <div class="skill-groups">
+      <div>
+        <div class="skill-group-label">Core</div>
+        <div class="skill-grid">
+          <span class="skill primary">Python</span>
+          <span class="skill primary">LLM Orchestration</span>
+          <span class="skill primary">Multi-Agent Systems</span>
+          <span class="skill primary">Ollama</span>
+          <span class="skill primary">Claude API</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-label">Backend / Infra</div>
+        <div class="skill-grid">
+          <span class="skill">FastAPI</span>
+          <span class="skill">PostgreSQL</span>
+          <span class="skill">SQLite</span>
+          <span class="skill">Docker</span>
+          <span class="skill">systemd (--user)</span>
+          <span class="skill">ROCm</span>
+          <span class="skill">GitHub Actions</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-label">Data / ML</div>
+        <div class="skill-grid">
+          <span class="skill">Kaggle</span>
+          <span class="skill">LightGBM / XGBoost / CatBoost</span>
+          <span class="skill">scikit-learn</span>
+          <span class="skill">Optuna</span>
+          <span class="skill">PyTorch</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-label">Frontend / Tools</div>
+        <div class="skill-grid">
+          <span class="skill">HTML / CSS / JS</span>
+          <span class="skill">SVG</span>
+          <span class="skill">Vercel</span>
+          <span class="skill">Ubuntu</span>
+          <span class="skill">macOS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <div class="sec-head">
+      <div class="sec-eyebrow"><span class="sl-num">03</span> PROJECTS</div>
+      <h2 class="sec-title">プロジェクト</h2>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card" style="--card-acc:linear-gradient(90deg,var(--blue),var(--purple))">
+        <span class="proj-status">● LIVE</span>
+        <div class="proj-title">KRS-OS</div>
+        <div class="proj-desc">
+          7層アーキテクチャ(Knowledge / Memory / Router / Tools / Runtime / Skills / Interfaces)の
+          汎用マルチエージェント基盤。複数LLMの自動ルーティング、監査ログ、権限制御、
+          207+件の再利用可能なスキルライブラリを実装。
+        </div>
+        <div class="proj-stack">
+          <span class="tag tag-blue">Python</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag tag-purple">Multi-Agent</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://github.com/motomasa-honda" target="_blank" rel="noopener">GitHub →</a>
+          <a href="/blog.html">Blog →</a>
+        </div>
+      </div>
+
+      <div class="proj-card" style="--card-acc:linear-gradient(90deg,var(--green),var(--cyan))">
+        <span class="proj-status">● LIVE</span>
+        <div class="proj-title">KaggleAgent</div>
+        <div class="proj-desc">
+          データ分析コンペを自律実行するエージェント。Planner / Coder / Judge の役割分担と
+          知識ループで、過去の試行から戦略をrecallしながらスコアを改善。
+        </div>
+        <div class="proj-stack">
+          <span class="tag tag-green">複数LLM</span>
+          <span class="tag">LightGBM</span>
+          <span class="tag tag-cyan">自己検証ループ</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://github.com/motomasa-honda" target="_blank" rel="noopener">GitHub →</a>
+          <a href="/blog.html">Blog →</a>
+        </div>
+      </div>
+
+      <div class="proj-card" style="--card-acc:linear-gradient(90deg,var(--amber),var(--blue))">
+        <span class="proj-status">● LIVE</span>
+        <div class="proj-title">運用コマンドセンター</div>
+        <div class="proj-desc">
+          CPU/GPU/メモリの実測ゲージ、実行パイプラインのSVG可視化、承認待ちタスクのキューを
+          1画面にまとめた運用ダッシュボード。外部SPA・JSフレームワーク非依存で構築。
+        </div>
+        <div class="proj-stack">
+          <span class="tag tag-amber">SVG</span>
+          <span class="tag">Server-rendered UI</span>
+          <span class="tag tag-blue">依存フリー</span>
+        </div>
+        <div class="proj-links">
+          <a href="/blog.html">Blog →</a>
+        </div>
+      </div>
+
+      <div class="proj-card" style="--card-acc:linear-gradient(90deg,var(--cyan),var(--green))">
+        <span class="proj-status">● LIVE</span>
+        <div class="proj-title">Mac + Linux GPU デュアルノード運用</div>
+        <div class="proj-desc">
+          Mac mini を司令塔、Linux GPU機を実行ノードとするデュアル構成。ROCmでのGPU認識、
+          ヘッドレス運用、ネットワーク診断まで含めて自前で構築・保守。
+        </div>
+        <div class="proj-stack">
+          <span class="tag tag-cyan">ROCm</span>
+          <span class="tag">systemd</span>
+          <span class="tag tag-green">Networking</span>
+        </div>
+        <div class="proj-links">
+          <a href="/blog.html">Blog →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- WRITING -->
+  <section class="section" id="writing">
+    <div class="sec-head">
+      <div class="sec-eyebrow"><span class="sl-num">04</span> WRITING</div>
+      <h2 class="sec-title">技術ブログ(最新記事)</h2>
+      <p class="sec-sub">設計・実装・デバッグの過程をそのまま公開しています。詳細な思考過程はブログで確認できます。</p>
+    </div>
+    <div class="write-grid">
+      <a class="write-card" href="/post.html?slug=2026-07-10-two-wrong-guesses-before-the-kernel-told-me">
+        <div class="write-date">2026.07.10</div>
+        <div class="write-title" style="margin-top:8px">接続はできるのに応答が空だった — カーネルの状態を見て気づいた話</div>
+      </a>
+      <a class="write-card" href="/post.html?slug=2026-07-09-more-workers-no-faster">
+        <div class="write-date">2026.07.09</div>
+        <div class="write-title" style="margin-top:8px">Workerを増やしても速くならなかった話</div>
+      </a>
+      <a class="write-card" href="/post.html?slug=2026-07-03-growing-a-dependency-free-command-center">
+        <div class="write-date">2026.07.03</div>
+        <div class="write-title" style="margin-top:8px">依存フリーで運用コマンドセンターを育てる</div>
+      </a>
+    </div>
+    <div style="text-align:center;margin-top:24px">
+      <a href="/blog.html" class="btn btn-ghost">全記事を見る →</a>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="sec-head">
+      <div class="sec-eyebrow"><span class="sl-num">05</span> CONTACT</div>
+      <h2 class="sec-title">連絡先</h2>
+    </div>
+    <div class="contact-box">
+      <p style="font-size:14px;color:var(--text2);max-width:480px;margin:0 auto;line-height:1.8">
+        ご興味を持っていただけましたら、お気軽にご連絡ください。
+      </p>
+      <div class="contact-links">
+        <a class="btn btn-ghost" href="https://github.com/motomasa-honda" target="_blank" rel="noopener">GitHub →</a>
+        <span class="btn btn-ghost" style="opacity:.5;cursor:not-allowed">Email(準備中)</span>
+        <span class="btn btn-ghost" style="opacity:.5;cursor:not-allowed">履歴書 / 職務経歴書(準備中)</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="foot-logo">motomasa // Software Engineer</div>
+  <div class="foot-links">
+    <a href="https://github.com/motomasa-honda" target="_blank" rel="noopener">GitHub</a>
+    <a href="/blog.html">Blog</a>
+  </div>
+  <div class="foot-copy">© 2026 motomasa</div>
+</footer>
+
+<script src="/js/main.js" defer></script>
+</body>
+</html>
