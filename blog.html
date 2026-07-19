@@ -266,6 +266,40 @@
 
       <div class="blog-list">
 
+        <a href="/post.html?slug=2026-07-19-where-should-the-actor-identity-live" class="blog-post-card" data-tags="architecture python fastapi backend">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">Architecture</span>
+              <span class="tag tag-cyan">Python</span>
+              <span class="tag tag-orange">FastAPI</span>
+            </div>
+            <h2 class="blog-post-title">「誰が操作したか」をどこに持たせるかで、設計の向きを間違えかけた話</h2>
+            <p class="blog-post-excerpt">
+              横断監査ログを作ろうとして、ログイン情報を持つ画面層に保存先を直接持たせかけた。実装前にモジュール間のimportを確認し、既存の別機能が同じ問題を「識別子をリクエストの中身として運ぶ」形で既に解決していたことに気づき、その型をそのまま流用した記録。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.07.19</span>
+          </div>
+        </a>
+
+        <a href="/post.html?slug=2026-07-19-curl-worked-but-docker-pull-timed-out" class="blog-post-card" data-tags="docker network infra debugging">
+          <div class="blog-post-main">
+            <div class="blog-post-meta">
+              <span class="tag tag-blue">Infra</span>
+              <span class="tag tag-cyan">Network</span>
+              <span class="tag tag-orange">Debugging</span>
+            </div>
+            <h2 class="blog-post-title">curlは繋がるのに、Dockerのpullだけがタイムアウトした話</h2>
+            <p class="blog-post-excerpt">
+              コンテナのビルドがTLSハンドシェイクのタイムアウトで止まった。DNS解決、候補IPすべてへの個別疎通、プロキシ設定、大容量ダウンロード——定番の原因を`curl`で一つずつ潰していったがどれも正常。それでもDockerのpullだけが失敗し続け、疑うべき場所がネットワークからアプリケーション層へ変わった記録。
+            </p>
+          </div>
+          <div class="blog-post-side">
+            <span class="blog-post-date">2026.07.19</span>
+          </div>
+        </a>
+
         <a href="/post.html?slug=2026-07-10-two-wrong-guesses-before-the-kernel-told-me" class="blog-post-card" data-tags="mac ubuntu network ollama debugging">
           <div class="blog-post-main">
             <div class="blog-post-meta">
