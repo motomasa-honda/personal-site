@@ -84,10 +84,11 @@
   display:flex;align-items:center;gap:10px}
 .hero-eyebrow::after{content:'';flex:1;height:1px;background:var(--border);max-width:80px}
 .hero-name{font-family:var(--mono);font-size:clamp(32px,4.6vw,62px);font-weight:700;
-  line-height:1.15;letter-spacing:-1.5px;color:#dce8ff;margin-bottom:20px}
-.hero-name .g{
-  background:linear-gradient(120deg,var(--blue) 0%,var(--cyan) 50%,var(--purple) 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+  line-height:1.15;letter-spacing:-1.5px;color:var(--text-bright);margin-bottom:20px;
+  overflow-wrap:anywhere;min-width:0}
+/* グラデーション文字は使わない（可読性低下＋典型的なAI生成の指紋）。
+   強調は単色アクセントで出す。 */
+.hero-name .g{color:var(--blue)}
 .hero-desc{font-size:15px;color:var(--text2);max-width:500px;line-height:1.85;margin-bottom:24px}
 .hero-trustbar{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:32px;
   font-family:var(--mono);font-size:10px;color:var(--text3)}
@@ -124,8 +125,9 @@
 /* ── PRODUCT / KRS-OS ─────────────────────── */
 .krs-wrapper{background:var(--bg1);border:1px solid var(--border);border-radius:6px;
   overflow:hidden;position:relative}
+/* 多色レインボー罫は装飾過多。主アクセント1色のフェードに絞る。 */
 .krs-wrapper::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,var(--blue),var(--purple),var(--cyan),transparent)}
+  background:linear-gradient(90deg,transparent,var(--blue),transparent)}
 .krs-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
 .krs-left{padding:48px;border-right:1px solid var(--border)}
 .krs-right{padding:48px}
