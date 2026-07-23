@@ -28,13 +28,23 @@
   --text2:       #93add0;
   --text3:       #7891b8;
 
-  /* Accent palette (5 colors) */
+  /* Accent palette.
+     役割を明確に分ける（多色使いは "AIっぽさ" の主因なので用途を固定する）:
+     - blue  = 主アクセント（リンク・CTA・強調）
+     - green = 副アクセント（稼働中/ライブ等の状態、ターミナルのプロンプト）
+     - amber / red = 状態色専用（警告・エラー）。装飾には使わない
+     - cyan / purple = シンタックスハイライトとタグの識別のみ。装飾グラデ禁止 */
   --green:   #00e676;
   --blue:    #4a9eff;
   --cyan:    #00bcd4;
   --purple:  #b388ff;
   --amber:   #ffc107;
   --red:     #ff5252;
+
+  /* blue の状態バリエーション + アクセント上のテキスト色 */
+  --blue-bright: #6ab8ff;
+  --blue-deep:   #2b7fe0;
+  --on-accent:   #041022;
 
   /* Typography */
   --mono: 'Space Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
@@ -49,13 +59,15 @@
 
 /* ── RESET ────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+/* overflow-x は hidden ではなく clip。hidden は子孫の position: sticky /
+   fixed を壊すが、clip は壊さない。html と body の両方に必要。 */
+html { scroll-behavior: smooth; overflow-x: clip; }
 body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--sans);
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
@@ -126,10 +138,12 @@ nav {
 
 /* CTA button inside nav must win over .nav-links a's color rule (was invisible:
    --text3 text on a --blue button background, since ".nav-links a.active" and
-   ".btn-primary" tied in specificity and source order picked the wrong one). */
+   ".btn-primary" tied in specificity and source order picked the wrong one).
+   白文字は --blue に対して 2.75:1 しかなくWCAG AA(4.5:1)を満たさなかったため、
+   --on-accent（濃紺インク, 6.9:1）に変更。 */
 nav .nav-links a.btn-primary,
 nav .nav-links a.btn-primary:hover,
-nav .nav-links a.btn-primary.active { color: #fff; }
+nav .nav-links a.btn-primary.active { color: var(--on-accent); }
 
 .nav-pill {
   display: inline-flex; align-items: center; gap: 5px;
@@ -190,12 +204,9 @@ nav .nav-links a.btn-primary.active { color: #fff; }
   line-height: 1;
   margin-bottom: 16px;
 }
-.page-title .g {
-  background: linear-gradient(120deg, var(--blue), var(--cyan) 50%, var(--purple));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+/* 強調は単色アクセントで出す。グラデーション文字は可読性を落とすうえ、
+   青→シアン→紫は最も典型的な "AI生成" の指紋なので使わない。 */
+.page-title .g { color: var(--blue); }
 .page-desc {
   font-size: 15px;
   color: var(--text2);
@@ -332,32 +343,39 @@ nav .nav-links a.btn-primary.active { color: #fff; }
   padding: 10px 22px;
   border-radius: var(--radius-sm);
   letter-spacing: 1.5px;
-  transition: all .12s;
+  /* transition: all は禁止（意図しないプロパティまで拾う）。対象を明示する。 */
+  transition: background-color .12s, border-color .12s, color .12s;
   display: inline-flex; align-items: center; gap: 8px;
   border: 1px solid;
+  white-space: nowrap; /* CTAラベルは絶対に2行に折り返さない */
 }
+/* フォーカスリングは即時表示（トランジションさせない） */
 .btn:focus-visible {
   outline: 2px solid var(--blue);
   outline-offset: 2px;
+  transition: none;
+}
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  opacity: .55;
+  cursor: not-allowed;
+  box-shadow: none;
 }
 .btn-primary {
   background: var(--blue);
-  color: #fff;
+  color: var(--on-accent);
   border-color: var(--blue);
 }
-.btn-primary:hover {
-  background: #6ab8ff;
-  box-shadow: 0 0 24px rgba(74, 158, 255, .35);
-}
+/* hover効果は1つだけ（色の変化のみ）。グローを重ねると装飾過多になる。 */
+.btn-primary:hover:not(:disabled) { background: var(--blue-bright); border-color: var(--blue-bright); }
+.btn-primary:active:not(:disabled) { background: var(--blue-deep); border-color: var(--blue-deep); }
 .btn-ghost {
   background: transparent;
   color: var(--text2);
   border-color: var(--border2);
 }
-.btn-ghost:hover {
-  border-color: var(--blue);
-  color: var(--text);
-}
+.btn-ghost:hover:not(:disabled) { border-color: var(--blue); color: var(--text); }
+.btn-ghost:active:not(:disabled) { border-color: var(--blue-deep); color: var(--text-bright); }
 
 /* ── FOOTER ───────────────────────────────── */
 footer {
@@ -479,9 +497,30 @@ footer {
   .proof-preview { grid-template-columns: 1fr; }
 }
 @media (max-width: 768px) {
-  .nav { padding: 0 20px; }
+  /* セレクタは `.nav` ではなく要素 `nav`（class="nav" は存在しないため旧ルールは死んでいた） */
+  nav { padding: 0 20px; }
   .nav-pill { display: none; }
-  .nav-links { gap: 18px; }
+
+  /* モバイルはドロワーに畳む。
+     従来は gap と font-size を縮めるだけで畳んでおらず、狭い画面ではリンクが
+     はみ出して overflow-x: clip に切り取られ、操作不能になっていた。 */
+  .nav-toggle { display: inline-block; margin-left: auto; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 48px; left: 0; right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 4px 20px 14px;
+    background: var(--bg1);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li { border-top: 1px solid var(--border); }
+  .nav-links a { display: block; font-size: 12px; padding: 12px 0; letter-spacing: 1px; }
+  .nav-links a.btn-primary { text-align: center; margin-top: 10px; padding: 12px 22px; }
+
   .section { padding: 48px 20px; }
   .journey { padding: 0 20px; }
   .site-footer {
@@ -490,9 +529,6 @@ footer {
     text-align: center;
   }
   .page-hero { padding: 100px 20px 40px; }
-}
-@media (max-width: 480px) {
-  .nav-links a { font-size: 9px; }
 }
 
 /* ── A11Y ────────────────────────────────── */
