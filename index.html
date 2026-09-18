@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="RM-Engineering — AI-OS Implementation Studio。SIerに数千万円を払わず、AIエージェント基盤「KRS-OS」を、企業の業務プロセスに直接実装する個人技術事務所。">
-<meta name="theme-color" content="#050810">
+<meta name="description" content="Motomasa Honda の個人技術サイト。飲食店の毎日を整える「だんどり」と、業務ツール・AI活用の実装記録を公開しています。">
+<meta name="theme-color" content="#faf6ed">
 <meta name="author" content="motomasa-honda">
 
 <!-- Canonical -->
@@ -13,17 +13,15 @@
 <!-- OGP -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="RM-Engineering">
-<meta property="og:title" content="RM-Engineering — AI-OSを、あなたの業務に。">
-<meta property="og:description" content="SIerではなく、ひとりの技術者と直接。企業向けマルチエージェントAI基盤「KRS-OS」を業務に実装する個人技術事務所。">
+<meta property="og:title" content="Motomasa Honda — つくって、現場で確かめる。">
+<meta property="og:description" content="飲食店の毎日を整える「だんどり」と、業務ツール・AI活用の実装記録。">
 <meta property="og:url" content="https://personal-site-eight-delta.vercel.app/">
-<meta property="og:image" content="https://personal-site-eight-delta.vercel.app/og.png">
 <meta property="og:locale" content="ja_JP">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="RM-Engineering — AI-OSを、あなたの業務に。">
-<meta name="twitter:description" content="SIerに丸投げせず、ひとりの専門家と直接組んでAI-OSを業務に実装する。">
-<meta name="twitter:image" content="https://personal-site-eight-delta.vercel.app/og.png">
+<meta name="twitter:title" content="Motomasa Honda — つくって、現場で確かめる。">
+<meta name="twitter:description" content="飲食店の毎日を整える「だんどり」と、業務ツール・AI活用の実装記録。">
 
 <!-- JSON-LD -->
 <script type="application/ld+json">
@@ -31,11 +29,10 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "ProfessionalService",
-      "name": "RM-Engineering",
-      "alternateName": "Recursive Motomasa Engineering",
+      "@type": "Person",
+      "name": "Motomasa Honda",
       "url": "https://personal-site-eight-delta.vercel.app/",
-      "description": "企業の業務プロセスにマルチエージェントAI基盤「KRS-OS」を実装する個人技術事務所。",
+      "description": "飲食店向け業務プラットフォーム「だんどり」と、業務ツール・AI活用の実装記録を公開する個人技術サイト。",
       "areaServed": "JP",
       "sameAs": [
         "https://github.com/motomasa-honda"
@@ -44,20 +41,20 @@
     {
       "@type": "WebSite",
       "url": "https://personal-site-eight-delta.vercel.app/",
-      "name": "RM-Engineering",
+      "name": "motomasa.works",
       "inLanguage": "ja"
     }
   ]
 }
 </script>
 
-<title>RM-Engineering — AI-OSを、あなたの業務に。</title>
+<title>Motomasa Honda — つくって、現場で確かめる。</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/css/site.css">
-<style>
+<link rel="stylesheet" href="/css/home.css">
+<style media="not all">
 :root{ --sans: 'Inter', 'Noto Sans JP', sans-serif; }
 
 /* ── BOOT OVERLAY ─────────────────────────── */
@@ -224,7 +221,7 @@
 }
 </style>
 </head>
-<body>
+<body class="home-v2">
 
 <div id="boot">
   <div style="font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:2px;margin-bottom:24px">
@@ -234,7 +231,7 @@
   <div style="margin-top:8px"><span id="boot-cursor"></span></div>
 </div>
 
-<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip-link legacy-skip" href="#main">Skip to content</a>
 
 <nav aria-label="Primary">
   <a class="nav-logo" href="/" aria-label="RM-Engineering home">RM<em>.ENG</em></a>
@@ -657,6 +654,113 @@ result = invoice_agent.<span class="t-fn">run</span>(
     <a href="https://dandori-lp.vercel.app/" target="_blank" rel="noopener">だんどり（飲食店向けSaaS）↗</a>
   </div>
   <div class="foot-copy">© 2026 RM-Engineering</div>
+</footer>
+
+<a class="skip-link" href="#new-main">本文へ移動</a>
+
+<nav class="site-nav" aria-label="Primary">
+  <a class="wordmark" href="/" aria-label="Motomasa Honda home">motomasa<span>.</span>works</a>
+  <ul class="nav-links">
+    <li><a href="https://dandori-lp.vercel.app/" target="_blank" rel="noopener">だんどり</a></li>
+    <li><a href="/blog.html">技術記事</a></li>
+    <li><a href="/about.html">プロフィール</a></li>
+    <li><a href="/contact.html" class="nav-cta">相談する</a></li>
+  </ul>
+  <button class="nav-toggle" data-nav-toggle aria-label="メニューを開く" aria-expanded="false">Menu</button>
+</nav>
+
+<main id="new-main">
+  <section class="hero" aria-labelledby="hero-title">
+    <div>
+      <p class="hero-kicker">RM-Engineering / Motomasa Honda</p>
+      <h1 id="hero-title">現場の毎日を、<span>ちゃんと回る形</span>にする。</h1>
+      <p class="hero-copy">飲食店の発注・シフト・日々の判断をひとつにつなぐ「だんどり」をつくっています。手を動かして、使われるところまで確かめる個人の技術サイトです。</p>
+      <div class="hero-actions">
+        <a class="button-primary" href="https://dandori-lp.vercel.app/" target="_blank" rel="noopener">だんどりを見る ↗</a>
+        <a class="button-secondary" href="/contact.html">まず相談する</a>
+      </div>
+    </div>
+    <aside class="hero-note" aria-label="このサイトについて">
+      <p class="project-label">NOW BUILDING</p>
+      <p><strong>だんどり</strong><br>飲食店の「今日どう回す？」を、スタッフ・在庫・発注の情報から考えやすくする業務プラットフォームです。</p>
+      <p>機能を増やすだけでなく、現場で迷わず使えるかを一緒に見ています。</p>
+    </aside>
+  </section>
+
+  <section class="page-section split-section" aria-labelledby="dandori-title">
+    <div>
+      <p class="section-kicker">FEATURED WORK</p>
+      <h2 class="section-heading" id="dandori-title">飲食店の「段取り」を、ひとつの画面へ。</h2>
+    </div>
+    <div class="dandori-sheet">
+      <div class="dandori-mark"><span class="dandori-dot" aria-hidden="true"></span>だんどり</div>
+      <p>発注、シフト、売上や在庫の確認を別々の作業として終わらせず、次の判断につながる状態へ整えるためのプロダクトです。</p>
+      <ul class="dandori-list">
+        <li><span>01</span>日々の営業状況をひと目で確認するダッシュボード</li>
+        <li><span>02</span>発注や在庫の判断を、記録と一緒に残す仕組み</li>
+        <li><span>03</span>シフトと現場の予定を、運用に合わせて管理する機能</li>
+      </ul>
+      <a class="button-primary" href="https://dandori-lp.vercel.app/" target="_blank" rel="noopener">プロダクトの詳細へ ↗</a>
+    </div>
+  </section>
+
+  <section class="page-section split-section reverse" aria-labelledby="why-dandori-title">
+    <div class="hero-note">
+      <p class="project-label">WHY I BUILT IT</p>
+      <p><strong>元・飲食店従業員として。</strong><br>忙しい時間帯ほど、確認や転記、連絡のために手が止まる場面を何度も見てきました。</p>
+      <p>「これがこうだったらいいな」「ここに時間をかけるのは、もったいないな」。その小さな違和感を、現場が少しでも楽になる仕組みに変えたくて、だんどりを作っています。</p>
+    </div>
+    <div>
+      <p class="section-kicker">THE STARTING POINT</p>
+      <h2 class="section-heading" id="why-dandori-title">現場の時間を、作業ではなくお客さまのために使えるように。</h2>
+      <p class="section-copy">技術のための技術ではなく、飲食店で働く人の負担を減らし、判断しやすくするための技術です。だからこそ、だんどりは現場で使われることを基準に育てていきます。</p>
+    </div>
+  </section>
+
+  <section class="page-section split-section reverse" aria-labelledby="work-title">
+    <div class="work-list">
+      <a class="work-item" href="/apps.html"><span><span class="work-title">業務ツールとダッシュボード</span><span class="work-detail">複雑な情報を、次の行動に変える画面設計と実装。</span></span><span class="work-arrow">↗</span></a>
+      <a class="work-item" href="/product.html"><span><span class="work-title">KRS-Nexus / KRS-OS</span><span class="work-detail">AI活用や運用設計を試し、積み上げてきた技術基盤。</span></span><span class="work-arrow">↗</span></a>
+      <a class="work-item" href="https://github.com/motomasa-honda" target="_blank" rel="noopener"><span><span class="work-title">GitHub</span><span class="work-detail">公開できる実装と、作りながら考えた過程。</span></span><span class="work-arrow">↗</span></a>
+    </div>
+    <div>
+      <p class="section-kicker">OTHER WORK</p>
+      <h2 class="section-heading" id="work-title">つくれる範囲は、ひとつの業種に閉じません。</h2>
+      <p class="section-copy">プロダクトづくりを中心に、業務の整理、データの見える化、AIを含む運用の自動化まで扱います。KRS-Nexus は主役ではなく、そのために積み上げた実装のひとつです。</p>
+    </div>
+  </section>
+
+  <section class="archive" aria-labelledby="archive-title">
+    <div class="page-section archive-grid">
+      <div>
+        <p class="section-kicker">NOTES FROM THE WORKBENCH</p>
+        <h2 class="section-heading" id="archive-title">技術記事は、仕事の途中で残した記録です。</h2>
+        <p class="section-copy">失敗した理由、設計を変えた理由、実装で詰まった点まで。これまで書き溜めた記事はそのまま残し、これからも更新していきます。</p>
+      </div>
+      <div class="archive-links">
+        <a class="archive-link" href="/post.html?slug=2026-07-10-two-wrong-guesses-before-the-kernel-told-me"><span class="archive-meta">2026.07.10</span><strong>接続はできるのに応答が空だった — カーネルの状態を見て気づいた話</strong></a>
+        <a class="archive-link" href="/post.html?slug=2026-07-09-more-workers-no-faster"><span class="archive-meta">2026.07.09</span><strong>Workerを増やしても速くならなかった話</strong></a>
+        <a class="archive-link" href="/post.html?slug=2026-07-03-growing-a-dependency-free-command-center"><span class="archive-meta">2026.07.03</span><strong>依存フリーで運用コマンドセンターを育てる</strong></a>
+        <a class="archive-link" href="/blog.html"><span class="archive-meta">ARCHIVE</span><strong>すべての技術記事を見る →</strong></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-band" aria-labelledby="contact-title">
+    <div class="contact-band-inner">
+      <h2 id="contact-title">まずは、今の困りごとから聞かせてください。</h2>
+      <a class="button-primary" href="/contact.html">相談の入口へ</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="footer-line">つくって、現場で確かめる。</p>
+  <div class="footer-meta">
+    <span class="wordmark">motomasa<span>.</span>works</span>
+    <span>© 2026 RM-Engineering</span>
+    <a href="/privacy.html">プライバシーポリシー</a>
+  </div>
 </footer>
 
 <script src="/js/main.js" defer></script>

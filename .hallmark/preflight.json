@@ -1,0 +1,8 @@
+{
+  "date": "2026-09-17",
+  "fonts": "Inter, Noto Sans JP, Space Mono via Google Fonts",
+  "palette": "dark cyber-terminal CSS custom properties in css/site.css",
+  "motion": "no motion library; inline boot animation on index.html",
+  "spacing": "ad-hoc CSS values; no framework scale",
+  "framework": "plain static HTML, CSS, and JavaScript"
+}
