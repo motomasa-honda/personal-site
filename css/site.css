@@ -1,3 +1,9 @@
+/* Hallmark · genre: modern-minimal · macrostructure: Ecosystem Index · theme: Coral · tone: editorial-utilitarian · anchor hue: warm coral · enrichment: none · nav: N5-inspired shared bar · footer: Ft5-inspired statement
+ * audience: だんどりの導入相談者・技術記事の読者 · use: プロダクト・記事・相談へ迷わず進む
+ * Hallmark · pre-emit critique: P5 H4 E5 S5 R5 V4 · contrast: pass (40–41) · responsive: pass (34, 49) */
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Noto+Sans+JP:wght@400;500;700&display=swap");
+@import url("/tokens.css");
+
 /* ============================================================
    RM-Engineering — Design System (Site-wide SSOT)
    ============================================================
@@ -62,6 +68,9 @@
 /* overflow-x は hidden ではなく clip。hidden は子孫の position: sticky /
    fixed を壊すが、clip は壊さない。html と body の両方に必要。 */
 html { scroll-behavior: smooth; overflow-x: clip; }
+html,
+body { overflow-x: clip; }
+
 body {
   background: var(--bg);
   color: var(--text);
@@ -570,4 +579,136 @@ footer {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+/* ── LIGHT PERSONAL-SITE OVERRIDES ───────────────────────────
+   The older pages keep their existing markup and page-specific CSS. These
+   aliases deliberately remap that vocabulary to the shared personal-site
+   system used by the current homepage. */
+:root {
+  --bg: var(--color-paper);
+  --bg1: var(--color-paper-raised);
+  --bg2: var(--color-paper-soft);
+  --bg3: var(--color-paper-soft);
+  --border: var(--color-rule);
+  --border2: var(--color-rule-strong);
+  --text-bright: var(--color-ink);
+  --text: var(--color-ink);
+  --text2: var(--color-ink-muted);
+  --text3: var(--color-ink-faint);
+  --green: var(--color-success);
+  --blue: var(--color-accent);
+  --cyan: var(--color-accent-strong);
+  --purple: var(--color-accent-strong);
+  --amber: var(--color-accent-strong);
+  --red: var(--color-accent-strong);
+  --blue-bright: var(--color-accent-strong);
+  --blue-deep: var(--color-ink);
+  --on-accent: var(--color-on-ink);
+  --sans: var(--font-body);
+  --mono: var(--font-body);
+  --radius-sm: var(--radius-md);
+  --radius: var(--radius-md);
+  --radius-lg: var(--radius-md);
+  --max-w: var(--page-width);
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+body::before,
+body::after { display: none; }
+
+nav {
+  top: var(--space-md);
+  left: 50%;
+  right: auto;
+  width: max-content;
+  max-width: calc(100% - var(--space-xl));
+  min-height: var(--control-height);
+  height: auto;
+  padding: var(--space-xs) var(--space-xs) var(--space-xs) var(--space-lg);
+  border: var(--rule-hair) solid var(--color-rule);
+  border-radius: var(--radius-pill);
+  background: color-mix(in oklch, var(--color-paper) 92%, transparent);
+  box-shadow: var(--shadow-nav);
+  transform: translateX(-50%);
+}
+
+.nav-logo {
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  letter-spacing: -0.04em;
+  margin-right: var(--space-md);
+}
+
+.nav-logo em { color: var(--color-accent); }
+.nav-links { gap: var(--space-md); }
+.nav-links a { color: var(--color-ink-muted); font-family: var(--font-body); font-size: var(--text-sm); font-weight: 700; letter-spacing: 0; }
+.nav-links a:hover,
+.nav-links a:focus-visible,
+.nav-links a.active { color: var(--color-accent-strong); }
+nav .nav-links a.btn-primary,
+nav .nav-links a.btn-primary:hover,
+nav .nav-links a.btn-primary.active { color: var(--color-on-ink); }
+
+.page-hero { padding-top: clamp(8rem, 14vw, 11rem); }
+.page-eyebrow,
+.sec-eyebrow,
+.sec-label { color: var(--color-ink-faint); font-family: var(--font-body); font-weight: 700; letter-spacing: 0.05em; }
+.page-title,
+.sec-title { color: var(--color-ink); font-family: var(--font-display); font-weight: 700; overflow-wrap: anywhere; min-width: 0; }
+.page-title .g { color: var(--color-accent); }
+
+.btn {
+  min-height: var(--control-height);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.btn-primary { background: var(--color-ink); border-color: var(--color-ink); color: var(--color-on-ink); }
+.btn-primary:hover:not(:disabled) { background: var(--color-accent-strong); border-color: var(--color-accent-strong); }
+.btn-primary:active:not(:disabled) { background: var(--color-ink); border-color: var(--color-ink); }
+.btn-ghost { border-color: var(--color-ink); color: var(--color-ink); }
+.btn-ghost:hover:not(:disabled) { border-color: var(--color-accent-strong); color: var(--color-accent-strong); }
+.btn:focus-visible,
+.nav-links a:focus-visible,
+.nav-toggle:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 3px; }
+
+.section,
+.page-hero,
+.journey { z-index: 1; }
+
+footer {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  padding: var(--space-3xl) var(--page-gutter) var(--space-xl);
+  border-top: var(--rule-hair) solid var(--color-rule);
+}
+
+.foot-logo { color: var(--color-ink); font-family: var(--font-display); font-size: var(--text-md); letter-spacing: -0.035em; }
+.foot-links a,
+.foot-copy { color: var(--color-ink-muted); font-family: var(--font-body); font-size: var(--text-xs); letter-spacing: 0; }
+.foot-links a:hover,
+.foot-links a:focus-visible { color: var(--color-accent-strong); }
+
+.term-card { box-shadow: none; }
+.term-bar { background: var(--color-paper-soft); }
+.tag { font-family: var(--font-body); font-weight: 700; letter-spacing: 0; }
+
+@media (max-width: 48rem) {
+  nav { left: var(--space-md); right: var(--space-md); width: auto; max-width: none; transform: none; }
+  .nav-toggle { min-width: var(--control-height); min-height: var(--control-height); }
+  .nav-links { top: calc(100% + var(--space-xs)); left: 0; right: 0; padding: var(--space-sm); border: var(--rule-hair) solid var(--color-rule); border-radius: var(--radius-md); background: var(--color-paper); box-shadow: var(--shadow-nav); }
+  .nav-links li { border-top: 0; }
+  .nav-links a { min-height: var(--control-height); display: flex; align-items: center; }
+  .nav-links a.btn-primary { margin-top: 0; padding: var(--space-sm) var(--space-lg); }
+  footer { padding-inline: var(--page-gutter); }
 }
