@@ -11,6 +11,38 @@
 
   /* ── Active nav link by current path ─────── */
   const path = location.pathname.replace(/\/index\.html$/, '/');
+
+  /* Public pages share a compact personal-site navigation. */
+  const primaryNav = document.querySelector('nav[aria-label="Primary"]:not(.site-nav)');
+  if (primaryNav) {
+    const logo = primaryNav.querySelector('.nav-logo');
+    if (logo) {
+      logo.textContent = 'motomasa.works';
+      logo.setAttribute('aria-label', '本多 基真 ホーム');
+      logo.href = '/';
+    }
+    const list = primaryNav.querySelector('.nav-links');
+    if (list) {
+      const links = [
+        ['/apps.html', 'つくったもの'],
+        ['/blog.html', '技術記事'],
+        ['/about.html', '自己紹介'],
+        ['/contact.html', '連絡する'],
+      ];
+      list.replaceChildren(...links.map(([href, label]) => {
+        const item = document.createElement('li');
+        const link = document.createElement('a');
+        link.href = href;
+        link.textContent = label;
+        if (href === '/contact.html') link.className = 'btn btn-primary';
+        item.append(link);
+        return item;
+      }));
+    }
+  }
+
+  document.querySelectorAll('.foot-logo').forEach((el) => { el.textContent = '本多 基真 / motomasa.works'; });
+  document.querySelectorAll('.foot-copy').forEach((el) => { el.textContent = '© 2026 本多 基真'; });
   document.querySelectorAll('.nav-links a').forEach(a => {
     const href = a.getAttribute('href');
     if (!href) return;
@@ -21,8 +53,9 @@
   });
 
   /* ── Mobile nav toggle ───────────────────── */
-  const toggle = document.querySelector('[data-nav-toggle]');
-  const links = document.querySelector('.nav-links');
+  const activeNav = document.querySelector('nav.site-nav') || primaryNav;
+  const toggle = activeNav?.querySelector('[data-nav-toggle]');
+  const links = activeNav?.querySelector('.nav-links');
   if (toggle && links) {
     toggle.addEventListener('click', () => {
       const open = links.classList.toggle('open');

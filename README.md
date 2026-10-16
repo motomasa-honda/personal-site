@@ -1,19 +1,19 @@
-# personal-site
+# Motomasa Honda — personal-site
 
-RM-Engineering（Recursive Motomasa Engineering）のサイト一式。
-ビルドステップの無いプレーンな静的サイトで、Vercel にデプロイしている。
+本多基真の個人エンジニアサイトです。飲食店で働いた経験から作り始めた「だんどり」を代表作に、制作物と技術記事を紹介するプレーンな静的サイトです。Vercel にデプロイしています。
 
 **本番:** https://personal-site-eight-delta.vercel.app/
 
 ## サイト構成
 
-1つのデプロイに、意図的にトーンと配色を分けた2つのサイトが同居している。
+記事・制作記録・必要な事業者情報を、1つの明るいデザインにまとめています。
 
 | パス | 中身 | 配色 |
 | --- | --- | --- |
-| `/`（`index.html` ほかルート直下の各ページ） | RM-Engineering の事業サイト。企業向けAI-OS「KRS-OS」の導入を訴求する | 青 / 紫 |
-| `/career/` | 転職用エンジニアポートフォリオ。Hero/About/Skills/Projects/Contact の1ページ構成 | 緑 / シアン |
-| `/blog.html` + `/posts/*.md` | 上記2つの両方から参照される共有の技術ブログ | — |
+| `/` | 本人の自己紹介、代表作「だんどり」、技術記事、他の制作物 | Warm Paper |
+| `/apps.html` | 個人で作ったもの・技術実験 | Warm Paper |
+| `/career/` | 経歴詳細の補足 | Warm Paper |
+| `/blog.html` + `/posts/*.md` | 技術記事一覧と記事本文。既存slugとURLを維持 | Warm Paper |
 
 公開前の残タスク（連絡先メールの差し替えなど）は [SITE-TODO.md](SITE-TODO.md) にまとまっている。
 
@@ -22,20 +22,20 @@ RM-Engineering（Recursive Motomasa Engineering）のサイト一式。
 - プレーンな HTML + CSS + JavaScript。**ビルド無し・npm 依存無し**（`package.json` も `vercel.json` も無い）
 - CSS は手書き。`css/site.css` 冒頭の CSS 変数（背景スケール・テキスト4段階・アクセント6色）がデザイントークンになっている。**Tailwind は使っていない**
 - JS は `js/main.js` の1本のみ。ナビのアクティブ表示、モバイルメニュー開閉、ブログのタグフィルタだけを担当する
-- 外部依存は CDN 経由の2つだけ — Google Fonts と `marked@12`（Markdown 描画用。`post.html` でのみ読み込む）
+- 外部依存は Markdown 記事描画用の `marked@12`（CDN、`post.html` のみ）。フォントはOS標準フォントへフォールバックし、Google Fontsには接続しない。
 
 ```
-├── index.html          # トップ（事業サイト）
+├── index.html          # 本人・代表作・最近の技術記事
 ├── product.html        # KRS-OS
-├── services.html       # 料金パッケージ
-├── approach.html       # 進め方・SLA
-├── apps.html           # 実績・ポートフォリオ
-├── about.html          # 代表者・事業者情報
-├── contact.html        # 問い合わせ（現在フォームは無効化中）
+├── services.html       # 相談できるテーマ
+├── approach.html       # 個人開発で意識すること
+├── apps.html           # つくったもの（だんどりが先頭）
+├── about.html          # 自己紹介・必要な事業者情報
+├── contact.html        # 連絡先（フォームは準備中）
 ├── privacy.html / terms.html / tokushoho.html   # 法務ページ
 ├── blog.html           # 記事一覧（カードは手書き）
 ├── post.html           # 記事ビューア（?slug= で posts/*.md を描画）
-├── career/index.html   # 転職用ポートフォリオ
+├── career/index.html   # 経歴詳細の補足
 ├── posts/*.md          # 記事本体（Markdown のまま配信）
 ├── css/site.css        # スタイル（全ページ共通・唯一のSSOT）
 ├── js/main.js

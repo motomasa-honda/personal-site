@@ -3,17 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="RM-Engineering の Portfolio — KRS-OS 運用コマンドセンター、KaggleAgent など、実際に構築・運用しているシステム群。">
+<meta name="description" content="本多基真が個人で作っているプロダクトや技術実験。飲食店向け業務ツール『だんどり』を中心に、制作と試行錯誤を紹介します。">
 <meta name="theme-color" content="#faf6ed">
-<title>Portfolio — RM-Engineering</title>
+<title>つくったもの — Motomasa Honda</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/site.css">
 
 <style>
-:root{ --sans: 'Inter', 'Noto Sans JP', sans-serif; }
 .apps-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
@@ -91,18 +87,36 @@
 
   <header class="page-hero">
     <div class="page-eyebrow">// PORTFOLIO</div>
-    <h1 class="page-title"><span class="g">Portfolio</span> // 構築・運用実績</h1>
+    <h1 class="page-title">つくったもの</h1>
     <p class="page-desc">
-      KRS-OS を中核とした自律エージェント群と、実際に運用している管理画面です。LIVE / WIP / PLANNED の各ステージで開発中。
+      個人で作っているプロダクトや技術実験をまとめています。導入実績ではなく、実装したものと試行錯誤の記録です。
     </p>
   </header>
 
   <section class="section">
     <div class="sec-head">
-      <div class="sec-eyebrow"><span class="sl-num">01</span> COMMAND CENTER</div>
-      <h2 class="sec-title">KRS-OS 運用ダッシュボード</h2>
+      <div class="sec-eyebrow"><span class="sl-num">01</span> FEATURED PROJECT</div>
+      <h2 class="sec-title">飲食店のシフト・発注をつなぐ「だんどり」</h2>
     </div>
 
+    <div class="apps-grid">
+      <article class="app-card" style="--card-acc: var(--color-accent-strong)">
+        <header class="app-card-header">
+          <div class="app-icon icon-krs">だ</div>
+          <div class="app-info"><h2 class="app-name">だんどり</h2><div class="app-sub">飲食店向け業務ツール · 個人開発</div></div>
+          <span class="app-status status-live">開発中</span>
+        </header>
+        <div class="app-body">
+          <p class="app-desc">元飲食店従業員として感じた「確認や転記に時間をかけるのはもったいない」を出発点に、営業状況・シフト・仕入れ・在庫をひとつの流れで扱える画面を作っています。現在のデモは架空データ専用で、実店舗の運用とは分けています。</p>
+          <div class="app-stack"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span></div>
+          <div class="app-actions"><a class="app-link" href="https://dandori-lp.vercel.app/demo/#/dashboard">操作デモ ↗</a><a class="app-link" href="https://dandori-lp.vercel.app/">製品ページ ↗</a><a class="app-link" href="/about.html">作った理由 →</a></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="sec-head"><div class="sec-eyebrow"><span class="sl-num">02</span> OTHER PROJECTS</div><h2 class="sec-title">技術実験と道具づくり</h2></div>
     <div class="apps-grid">
       <article class="app-card" style="--card-acc: linear-gradient(90deg, var(--amber), var(--blue))">
         <header class="app-card-header">

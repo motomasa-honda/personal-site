@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-labelledby="title">
+  <title id="title">だんどり</title>
+  <rect x="3" y="3" width="19" height="19" rx="5" fill="#b34f2d"/>
+  <rect x="26" y="3" width="19" height="19" rx="5" fill="#9a741f"/>
+  <rect x="3" y="26" width="19" height="19" rx="5" fill="#477a72"/>
+  <rect x="26" y="26" width="19" height="19" rx="5" fill="#526c48"/>
+</svg>

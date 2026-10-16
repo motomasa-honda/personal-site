@@ -3,15 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="RM-Engineering の仕事の進め方 — Working Principles / プロセス / セキュリティ / SLA / 納品物標準。一人事業主の信頼性ギャップに正面から答えます。">
+<meta name="description" content="本多基真が個人開発で意識していること。使う人の困りごとから考え、小さく作り、実際の操作で確かめています。">
 <meta name="theme-color" content="#faf6ed">
-<title>Approach — RM-Engineering</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<title>作るときに大切にしていること — Motomasa Honda</title>
 <link rel="stylesheet" href="/css/site.css">
 <style>
-:root{ --sans: 'Inter', 'Noto Sans JP', sans-serif; }
 .principle-list{display:flex;flex-direction:column;gap:12px}
 .principle-item{display:flex;gap:14px;align-items:flex-start;background:var(--bg1);border:1px solid var(--border);
   border-radius:var(--radius-sm);padding:16px 20px;font-size:13.5px;color:var(--text2)}
@@ -23,6 +19,10 @@
 .deliv-list{display:flex;flex-direction:column;gap:10px}
 .deliv-item{display:flex;gap:12px;font-size:13px;color:var(--text2)}
 @media(max-width:900px){ .sla-grid{grid-template-columns:1fr} }
+</style>
+<style>
+/* Hallmark · state: unverified service-level promises are not part of the personal work notes */
+#sla, #security, #deliverables { display: none !important; }
 </style>
 </head>
 <body>
@@ -44,21 +44,21 @@
 <main id="main">
   <header class="page-hero">
     <div class="page-eyebrow">// APPROACH</div>
-    <h1 class="page-title">どう<span class="g">仕事するか</span>を明示する</h1>
-    <p class="page-desc">一人事業主の信頼性ギャップは、仕事の進め方を透明にすることで埋められると考えています。</p>
+    <h1 class="page-title">作るときに大切にしていること</h1>
+    <p class="page-desc">使う人の困りごとから考え、小さく作って、実際に触って確かめる。今の個人開発で意識している進め方です。</p>
   </header>
 
   <section class="section" id="principles">
     <div class="sec-head">
-      <div class="sec-eyebrow"><span class="sl-num">01</span> WORKING PRINCIPLES</div>
-      <h2 class="sec-title">仕事の原則</h2>
+      <div class="sec-eyebrow"><span class="sl-num">01</span> WORKING NOTES</div>
+      <h2 class="sec-title">私が意識していること</h2>
     </div>
     <div class="principle-list">
-      <div class="principle-item"><span class="pn">01</span>見積は無料、提案書に固定価格を明記します</div>
-      <div class="principle-item"><span class="pn">02</span>納品物にソースコードを全開示します</div>
-      <div class="principle-item"><span class="pn">03</span>NDA・秘密保持は着手前に締結します</div>
-      <div class="principle-item"><span class="pn">04</span>進捗は Slack / Notion で毎日可視化します</div>
-      <div class="principle-item"><span class="pn">05</span>稼働状況(受注可能枠)を本サイトで常時公開します</div>
+      <div class="principle-item"><span class="pn">01</span>道具を決める前に、どの作業で困っているかを整理する</div>
+      <div class="principle-item"><span class="pn">02</span>まず小さな範囲で作り、操作して分かったことを次へ反映する</div>
+      <div class="principle-item"><span class="pn">03</span>動く部分と、未実装・検証中の部分を分けて伝える</div>
+      <div class="principle-item"><span class="pn">04</span>数字や見栄えだけでなく、データの流れと例外を確かめる</div>
+      <div class="principle-item"><span class="pn">05</span>後から読み返せるよう、判断や失敗も記事に残す</div>
     </div>
   </section>
 
@@ -66,12 +66,11 @@
 
   <section class="section" id="process">
     <div class="sec-head">
-      <div class="sec-eyebrow"><span class="sl-num">02</span> HOW WE WORK</div>
-      <h2 class="sec-title">進め方とツール</h2>
+      <div class="sec-eyebrow"><span class="sl-num">02</span> ITERATION</div>
+      <h2 class="sec-title">作って、確かめて、直す</h2>
     </div>
     <p style="font-size:13.5px;color:var(--text2);line-height:1.8;max-width:640px;margin-bottom:16px">
-      Fixed-scope パッケージは1週目ヒアリング、2週目実装、3週目納品・引き継ぎの週次ブレイクダウンで進めます。
-      使用ツールは GitHub / Slack / Notion。特別なツール導入を必要としません。
+      だんどりでは、画面・API・データのつながりを作り、固定サンプルで操作を確かめています。機能の境界や制約も明記し、見せるデモが実店舗に誤接続しないよう分けています。
     </p>
   </section>
 
@@ -122,8 +121,8 @@
 
   <section class="section">
     <div class="final-cta" style="text-align:center;padding:56px 40px;background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius-lg)">
-      <h2 style="font-family:var(--mono);font-size:22px;color:var(--text-bright);margin-bottom:14px">進め方について質問がありますか?</h2>
-      <a class="btn btn-primary" href="/contact.html">お問い合わせ →</a>
+      <h2 style="font-family:var(--mono);font-size:22px;color:var(--text-bright);margin-bottom:14px">制作物と記事を見る</h2>
+      <a class="btn btn-primary" href="/apps.html">つくったもの →</a>
     </div>
   </section>
 </main>

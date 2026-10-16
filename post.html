@@ -3,13 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="RM-Engineering — 技術記事">
+<meta name="description" content="本多基真の技術記事。個人開発や技術検証の記録。">
 <meta name="theme-color" content="#faf6ed">
-<title>Post — RM-Engineering</title>
+<title>記事 — Motomasa Honda</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/css/site.css">
 
 <style>
@@ -232,9 +230,9 @@
       border:1px solid var(--border);border-radius:var(--radius-lg);display:flex;
       align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
       <div style="font-size:13.5px;color:var(--text2);max-width:420px">
-        こうした推論・自己検証・運用の知見は、そのままKRS-OSの実装力です。業務へのAI-OS導入相談はこちらから。
+        読んでいただきありがとうございます。ほかの記事や、現在作っているものもまとめています。
       </div>
-      <a class="btn btn-primary" href="/contact.html">KRS-OS の導入相談はこちら →</a>
+      <a class="btn btn-primary" href="/apps.html">制作物と記事一覧へ →</a>
     </div>
 
     <div class="post-foot">
@@ -313,7 +311,7 @@
     .then(text => {
       const { meta, body } = parseFrontmatter(text);
       const title = meta.title || slug;
-      document.title = `${title} — RM-Engineering`;
+      document.title = `${title} — Motomasa Honda`;
 
       $emoji.textContent = meta.emoji || '';
       $title.textContent = title;

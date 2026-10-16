@@ -1,0 +1,55 @@
+/* Hallmark · design-system: dandori + Motomasa Honda · theme: Warm Paper · macrostructure: shared tokens
+ * audience: 飲食店の店長と制作物を知りたい読者 · use: 読みやすく、次の操作へ進む · tone: 明るく実直
+ * contrast: ink 14.1:1 on paper · accent-strong 5.2:1 · primary text 14.1:1
+ */
+:root {
+  color-scheme: light;
+
+  --brand-paper: #faf7f0;
+  --brand-paper-raised: #f5f0e6;
+  --brand-paper-soft: #eee7da;
+  --brand-ink: #28251f;
+  --brand-ink-muted: #625d54;
+  --brand-ink-faint: #6b655b;
+  --brand-rule: #ded6c8;
+  --brand-rule-strong: #b9ad9a;
+  --brand-accent: #b34f2d;
+  --brand-accent-strong: #8f3e24;
+  --brand-accent-tint: #f7e8df;
+  --brand-focus: #245d9b;
+  --brand-primary: #28251f;
+  --brand-on-primary: #faf7f0;
+
+  --brand-success: #356c48;
+  --brand-success-tint: #e8f1e8;
+  --brand-warning: #835c08;
+  --brand-warning-tint: #f7efd8;
+  --brand-danger: #ad3727;
+  --brand-danger-tint: #f8e7e2;
+  --brand-info: #286b70;
+  --brand-info-tint: #e3f0ef;
+
+  --brand-font-display: "Bricolage Grotesque", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", YuGothic, Meiryo, system-ui, sans-serif;
+  --brand-font-body: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", YuGothic, Meiryo, system-ui, sans-serif;
+  --brand-font-mono: "IBM Plex Mono", "SF Mono", Menlo, Consolas, monospace;
+
+  --brand-space-1: 0.25rem;
+  --brand-space-2: 0.5rem;
+  --brand-space-3: 0.75rem;
+  --brand-space-4: 1rem;
+  --brand-space-6: 1.5rem;
+  --brand-space-8: 2rem;
+  --brand-space-12: 3rem;
+  --brand-space-16: 4rem;
+  --brand-radius-control: 0.65rem;
+  --brand-radius-card: 1rem;
+  --brand-radius-pill: 999px;
+  --brand-control-height: 2.75rem;
+  --brand-shadow-nav: 0 0.55rem 1.7rem rgb(40 37 31 / 0.09);
+  --brand-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --brand-duration-fast: 140ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --brand-duration-fast: 1ms; }
+}

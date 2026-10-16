@@ -3,21 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="本多 基真 (motomasa) のエンジニアポートフォリオ。複数LLMをオーケストレートする自律エージェント基盤 KRS-OS の設計・実装、Kaggleデータ分析自動化、ROCm/GPU運用など。">
+<meta name="description" content="本多 基真 (Motomasa Honda) の制作記録。飲食店で働いた経験をもとに業務アプリを作り、技術記事で設計や試行錯誤を記録しています。">
 <meta name="theme-color" content="#faf6ed">
 <meta name="author" content="motomasa-honda">
 
 <link rel="canonical" href="https://personal-site-eight-delta.vercel.app/career/">
 
 <meta property="og:type" content="profile">
-<meta property="og:site_name" content="motomasa — Engineer Portfolio">
-<meta property="og:title" content="motomasa — Software Engineer Portfolio">
-<meta property="og:description" content="複数LLMをオーケストレートする自律エージェント基盤を、一人で設計・実装・運用するソフトウェアエンジニアです。">
+<meta property="og:site_name" content="Motomasa Honda — 個人サイト">
+<meta property="og:title" content="本多 基真 — 制作と技術の記録">
+<meta property="og:description" content="飲食店で働いた経験をもとに業務アプリを作り、技術記事で設計や試行錯誤を記録しています。">
 <meta property="og:url" content="https://personal-site-eight-delta.vercel.app/career/">
 <meta property="og:locale" content="ja_JP">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="motomasa — Software Engineer Portfolio">
+<meta name="twitter:title" content="本多 基真 — 制作と技術の記録">
 
 <script type="application/ld+json">
 {
@@ -35,21 +35,17 @@
     {
       "@type": "WebSite",
       "url": "https://personal-site-eight-delta.vercel.app/career/",
-      "name": "motomasa — Engineer Portfolio",
+      "name": "Motomasa Honda — 個人サイト",
       "inLanguage": "ja"
     }
   ]
 }
 </script>
 
-<title>motomasa — Software Engineer Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<title>本多 基真 — 制作と技術の記録</title>
 <link rel="stylesheet" href="/css/site.css">
 
 <style>
-:root{ --sans: 'Inter', 'Noto Sans JP', sans-serif; }
 
 /* ── HERO ─────────────────────────────────── */
 .chero{
@@ -146,19 +142,17 @@
 
   <!-- HERO -->
   <section class="chero" id="hero">
-    <div class="chero-eyebrow">
+  <div class="chero-eyebrow">
       <svg class="chero-avatar" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <rect x="1" y="1" width="62" height="62" rx="8" fill="var(--color-paper-raised)" stroke="var(--color-accent)" stroke-width="1.5"/>
         <text x="32" y="40" text-anchor="middle" font-family="var(--font-body)" font-size="22" font-weight="700" fill="var(--color-accent)">本</text>
       </svg>
-      Software Engineer / Portfolio
+      制作と技術の記録
     </div>
-    <div class="chero-name">本多 基真<br><span class="g">motomasa</span></div>
+    <h1 class="chero-name">本多 基真<br><span class="g">Motomasa Honda</span></h1>
     <p class="chero-desc">
-      複数のLLMをオーケストレートする自律マルチエージェント基盤を、要件定義から実装・運用まで
-      一人で作り続けているソフトウェアエンジニアです。Kaggleのデータ分析自動化から出発し、
-      7層アーキテクチャの汎用エージェント基盤「KRS-OS」、GPU/ROCm運用、依存フリーの運用
-      ダッシュボードまで、実際に動かしながら設計してきました。
+      飲食店で働いた経験をもとに、現場の手間を減らすWebアプリを作っています。
+      代表作の「だんどり」をはじめ、設計や試行錯誤を技術記事に記録しています。
     </p>
     <div class="chero-cta">
       <a class="btn btn-primary" href="#projects">プロジェクトを見る</a>
@@ -265,12 +259,29 @@
     </div>
     <div class="proj-grid">
       <div class="proj-card" style="--card-acc:var(--color-accent)">
-        <span class="proj-status">● LIVE</span>
+        <span class="proj-status">● 代表作 / 開発中</span>
+        <div class="proj-title">だんどり</div>
+        <div class="proj-desc">
+          元飲食店従業員として、確認や転記に時間を取られる場面を技術で変えたいと思い、シフト・仕入れ・在庫をつなぐ業務ツールを個人開発しています。登録不要の架空データデモで操作を試せます。
+        </div>
+        <div class="proj-stack">
+          <span class="tag tag-blue">React</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag tag-purple">FastAPI</span>
+        </div>
+        <div class="proj-links">
+          <a href="https://dandori-lp.vercel.app/demo/#/dashboard" target="_blank" rel="noopener">操作デモ →</a>
+          <a href="https://dandori-lp.vercel.app/" target="_blank" rel="noopener">紹介ページ →</a>
+        </div>
+      </div>
+
+      <div class="proj-card" style="--card-acc:var(--color-accent)">
+        <span class="proj-status">● 個人開発の記録</span>
         <div class="proj-title">KRS-OS</div>
         <div class="proj-desc">
           7層アーキテクチャ(Knowledge / Memory / Router / Tools / Runtime / Skills / Interfaces)の
           汎用マルチエージェント基盤。複数LLMの自動ルーティング、監査ログ、権限制御、
-          207+件の再利用可能なスキルライブラリを実装。
+          再利用できるスキルや処理を整理する設計を試作。
         </div>
         <div class="proj-stack">
           <span class="tag tag-blue">Python</span>
@@ -284,7 +295,7 @@
       </div>
 
       <div class="proj-card" style="--card-acc:var(--color-accent)">
-        <span class="proj-status">● LIVE</span>
+        <span class="proj-status">● 個人開発の記録</span>
         <div class="proj-title">KaggleAgent</div>
         <div class="proj-desc">
           データ分析コンペを自律実行するエージェント。Planner / Coder / Judge の役割分担と
@@ -302,7 +313,7 @@
       </div>
 
       <div class="proj-card" style="--card-acc:var(--color-accent)">
-        <span class="proj-status">● LIVE</span>
+        <span class="proj-status">● 実装記録</span>
         <div class="proj-title">運用コマンドセンター</div>
         <div class="proj-desc">
           CPU/GPU/メモリの実測ゲージ、実行パイプラインのSVG可視化、承認待ちタスクのキューを
@@ -319,7 +330,7 @@
       </div>
 
       <div class="proj-card" style="--card-acc:var(--color-accent)">
-        <span class="proj-status">● LIVE</span>
+        <span class="proj-status">● 構築・運用記録</span>
         <div class="proj-title">Mac + Linux GPU デュアルノード運用</div>
         <div class="proj-desc">
           Mac mini を司令塔、Linux GPU機を実行ノードとするデュアル構成。ROCmでのGPU認識、
@@ -375,7 +386,7 @@
     </div>
     <div class="contact-box">
       <p style="font-size:14px;color:var(--text2);max-width:480px;margin:0 auto;line-height:1.8">
-        ご興味を持っていただけましたら、お気軽にご連絡ください。
+        メールフォームは準備中です。現在の連絡先はGitHubの公開プロフィールです。
       </p>
       <div class="contact-links">
         <a class="btn btn-ghost" href="https://github.com/motomasa-honda" target="_blank" rel="noopener">GitHub →</a>

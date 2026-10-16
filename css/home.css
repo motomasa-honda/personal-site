@@ -1,5 +1,5 @@
-/* Hallmark · genre: modern-minimal · macrostructure: Split Studio · theme: Coral · tone: editorial-utilitarian · anchor hue: warm coral · enrichment: none · nav: N5 · footer: Ft5
- * audience: 飲食店・小規模事業者と協業先 · use: だんどりを見る／相談する
+/* Hallmark · design-system: shared Warm Paper · macrostructure: Split Studio · tone: personal, direct · nav: N5 · footer: Ft5
+ * audience: 制作物と記事からエンジニア本人を知りたい読者 · use: つくったものを試す／技術記事を読む／連絡する
  * knobs: H2 ratio=7/5, right-side=proof column, divider=negative space · Ft5 sentence=38ch, wordmark=under, rule=hairline
  * Hallmark · pre-emit critique: P5 H4 E5 S5 R5 V4 */
 @import url("/tokens.css");

@@ -3,15 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="RM-Engineering の料金体系。AI-OS導入パッケージ(Fixed-scope)/ 月次リテナー / カスタム開発の3プラン。">
+<meta name="description" content="本多基真に相談できるテーマと、現在の受付状況。料金・納期などは内容を確認してから個別に相談します。">
 <meta name="theme-color" content="#faf6ed">
-<title>Services — RM-Engineering</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<title>相談できること — Motomasa Honda</title>
 <link rel="stylesheet" href="/css/site.css">
 <style>
-:root{ --sans: 'Inter', 'Noto Sans JP', sans-serif; }
 .pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .pkg-card{background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius-lg);
   padding:32px 28px;display:flex;flex-direction:column;gap:16px;position:relative;overflow:hidden}
@@ -41,6 +37,10 @@
   .process-cell{border-bottom:1px solid var(--border)}
 }
 </style>
+<style>
+/* Hallmark · state: legacy unverified package claims are intentionally not presented as offers */
+#capacity, #packages, #process { display: none !important; }
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -61,9 +61,24 @@
 <main id="main">
   <header class="page-hero">
     <div class="page-eyebrow">// SERVICES</div>
-    <h1 class="page-title">3つの<span class="g">関わり方</span>から選べます</h1>
-    <p class="page-desc">SaaSのTier型ではなく、コンサル型のFixed-scope + Retainer + Custom の3層で構成しています。</p>
+    <h1 class="page-title">相談できること</h1>
+    <p class="page-desc">個人で作っているものや、業務の中で感じた不便をどう形にするか。内容を聞いて、できること・難しいことを率直にお話しします。</p>
   </header>
+
+  <section class="section" aria-labelledby="topics-title">
+    <div class="sec-head"><div class="sec-eyebrow"><span class="sl-num">01</span> TOPICS</div><h2 class="sec-title" id="topics-title">話題の例</h2></div>
+    <div class="principle-list">
+      <div class="principle-item"><span class="pn">01</span>小さな業務ツールや管理画面を、まず動く形にしてみたい</div>
+      <div class="principle-item"><span class="pn">02</span>散らばったデータや手作業を整理し、判断しやすい画面にしたい</div>
+      <div class="principle-item"><span class="pn">03</span>AIや自動化を使う前に、業務に合うか一緒に確かめたい</div>
+      <div class="principle-item"><span class="pn">04</span>「だんどり」の機能・利用について知りたい場合は、製品ページから相談する</div>
+    </div>
+    <p style="margin-top:1.5rem;color:var(--text2);line-height:1.8">決まった料金表・納期・応答時間をここでは約束していません。相談内容と現在の受付状況を確認したうえで、進め方を個別に決めます。</p>
+    <div class="hero-cta" style="margin-top:1.5rem;display:flex;gap:12px;flex-wrap:wrap">
+      <a class="btn btn-primary" href="/contact.html">連絡先を確認する →</a>
+      <a class="btn btn-ghost" href="https://dandori-lp.vercel.app/">だんどりの詳細 ↗</a>
+    </div>
+  </section>
 
   <section class="section" id="capacity">
     <div class="capacity-box">
@@ -142,8 +157,8 @@
 
   <section class="section">
     <div class="final-cta" style="text-align:center;padding:56px 40px;background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius-lg)">
-      <h2 style="font-family:var(--mono);font-size:22px;color:var(--text-bright);margin-bottom:14px">まずは無料相談から</h2>
-      <a class="btn btn-primary" href="/contact.html">無料相談を予約する →</a>
+      <h2 style="font-family:var(--mono);font-size:22px;color:var(--text-bright);margin-bottom:14px">連絡先と受付状況</h2>
+      <a class="btn btn-primary" href="/contact.html">連絡する →</a>
     </div>
   </section>
 </main>

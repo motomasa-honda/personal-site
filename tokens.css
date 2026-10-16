@@ -1,21 +1,25 @@
+@import url("/assets/brand/brand.tokens.css");
+@import url("/assets/brand/brand.components.css");
+
+/* Hallmark · design-system: shared brand tokens · page layouts retain their own purpose */
 :root {
-  --color-paper: oklch(97% 0.01 75);
-  --color-paper-raised: oklch(94% 0.014 75);
-  --color-paper-soft: oklch(91% 0.018 75);
-  --color-ink: oklch(21% 0.018 65);
-  --color-ink-muted: oklch(42% 0.018 65);
-  --color-ink-faint: oklch(58% 0.014 65);
-  --color-rule: oklch(82% 0.018 75);
-  --color-rule-strong: oklch(68% 0.024 65);
-  --color-accent: oklch(56% 0.17 42);
-  --color-accent-strong: oklch(46% 0.17 42);
-  --color-focus: oklch(53% 0.18 250);
-  --color-success: oklch(49% 0.12 145);
-  --color-on-ink: oklch(97% 0.01 75);
-  --shadow-nav: 0 0.75rem 2rem oklch(31% 0.02 65 / 0.1);
-  --font-display: "Bricolage Grotesque", "Noto Sans JP", sans-serif;
-  --font-body: "Noto Sans JP", sans-serif;
-  --font-mono: "IBM Plex Mono", monospace;
+  --color-paper: var(--brand-paper);
+  --color-paper-raised: var(--brand-paper-raised);
+  --color-paper-soft: var(--brand-paper-soft);
+  --color-ink: var(--brand-ink);
+  --color-ink-muted: var(--brand-ink-muted);
+  --color-ink-faint: var(--brand-ink-faint);
+  --color-rule: var(--brand-rule);
+  --color-rule-strong: var(--brand-rule-strong);
+  --color-accent: var(--brand-accent);
+  --color-accent-strong: var(--brand-accent-strong);
+  --color-focus: var(--brand-focus);
+  --color-success: var(--brand-success);
+  --color-on-ink: var(--brand-on-primary);
+  --shadow-nav: var(--brand-shadow-nav);
+  --font-display: var(--brand-font-display);
+  --font-body: var(--brand-font-body);
+  --font-mono: var(--brand-font-mono);
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;

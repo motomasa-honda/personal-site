@@ -3,23 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="RM-Engineering について。AI-OS「KRS-OS」を開発・実装するソロエンジニア motomasa の紹介、事業者情報。">
+<meta name="description" content="本多基真の自己紹介。元飲食店従業員として感じた不便から、飲食店向け業務ツール『だんどり』を個人開発しています。">
 <meta name="theme-color" content="#faf6ed">
-<title>About — RM-Engineering</title>
+<title>自己紹介 — Motomasa Honda</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/site.css">
 
 <style>
-:root{ --sans: 'Inter', 'Noto Sans JP', sans-serif; }
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 32px;
   margin-bottom: 64px;
 }
+#mission-vision, #roadmap { display: none !important; }
 .about-block {
   background: var(--bg1);
   border: 1px solid var(--border);
@@ -168,21 +165,21 @@
 
   <header class="page-hero">
     <div class="page-eyebrow">// ABOUT</div>
-    <h1 class="page-title"><span class="g">motomasa</span> @ RM-Engineering</h1>
+    <h1 class="page-title">本多 基真 — 自己紹介</h1>
     <p class="page-desc">
-      AI-OSを業務に実装する個人技術事務所、RM-Engineering の代表者紹介と事業者情報です。
+      元飲食店従業員として感じた不便を、ソフトウェアで少しずつ変える個人エンジニアです。
     </p>
   </header>
 
   <section class="section" id="profile">
     <div class="sec-head">
-      <div class="sec-eyebrow"><span class="sl-num">01</span> FOUNDER'S STORY</div>
-      <h2 class="sec-title">代表者について</h2>
+      <div class="sec-eyebrow"><span class="sl-num">01</span> ABOUT ME</div>
+      <h2 class="sec-title">作っているもの、考えていること</h2>
     </div>
 
     <div class="about-grid">
       <article class="about-block">
-        <div class="about-block-label">// PROFILE</div>
+        <div class="about-block-label">// MOTOMASA HONDA</div>
         <div style="display:flex;align-items:center;gap:20px;margin-bottom:6px">
           <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="flex-shrink:0">
             <rect x="1" y="1" width="62" height="62" rx="8" fill="var(--color-paper-raised)" stroke="var(--color-accent)" stroke-width="1.5"/>
@@ -195,26 +192,11 @@
           </div>
         </div>
         <p class="about-bio">
-          <strong>RM-Engineering (Recursive Motomasa Engineering)</strong> の代表として、
-          Mac mini と Linux GPU 機のデュアル構成で、LLM オーケストレーションパイプライン・
-          自律エージェント基盤を開発してきました。
+          本多 基真です。元飲食店従業員として働く中で、「これがこうだったらいいな」「ここに時間をかけるのは、もったいないな」と感じることがありました。確認や転記に追われる時間を、技術の力で変えたいと思ったのが、今のものづくりの出発点です。
           <br><br>
-          最初のきっかけは、Kaggleのデータ分析コンペを自律実行する「KaggleAgent」でした。
-          複数のLLMにPlanner・Coder・Judgeといった役割を分担させ、試行錯誤の履歴から
-          自ら学習して改善していくエージェントを、一人で設計・実装・運用する中で、
-          「これは特定のコンペ専用のツールではなく、業務プロセスそのものを再構築できる
-          汎用基盤になる」という手応えを得ました。
+          現在は、飲食店のシフト・仕入れ・在庫をつなぐ「だんどり」を個人で開発しています。画面だけでなく、React・TypeScriptのフロントエンド、FastAPIのAPI、データの扱い、運用の確認まで手を動かしています。公開デモでは、架空データと実運用を分けることも意識しています。
           <br><br>
-          そこから、単発のAIツールの寄せ集めではなく、Kernel(LLM Router)・Memory・
-          Applications(Agents)という層構造を持つ「OS」として設計し直したのが
-          <strong>KRS-OS</strong>(7層マルチエージェント基盤)です。実際に自分の手で動かし、
-          バグを直し、監査ログや権限制御まで含めて作り込んできた基盤だからこそ、
-          「動くものを、動いている状態のまま企業の業務に実装する」ことができると考えています。
-          <br><br>
-          大手SIerに発注すると数千万円・半年がかりになる案件でも、代表ひとりが直接ヒアリングから
-          実装・運用まで担当することで、意思決定の速度と透明性を両立できる——それがRM-Engineeringの
-          出発点です。
-          <span style="font-family:var(--mono);font-size:10px;color:var(--text3)">(draft — 本人確認・加筆予定)</span>
+          それ以前から、KRS-OSやKaggleAgentなどの個人開発にも取り組み、試して分かったことや失敗した理由を技術記事に残してきました。作ったものと、その途中の記録をこのサイトにまとめています。
         </p>
         <div class="about-links">
           <a class="btn btn-ghost" href="https://github.com/motomasa-honda" target="_blank" rel="noopener">GitHub →</a>
@@ -224,7 +206,7 @@
       </article>
 
       <article class="about-block">
-        <div class="about-block-label">// INFRASTRUCTURE (PROOF)</div>
+      <div class="about-block-label">// WORKBENCH</div>
         <div class="spec-list">
           <div class="spec-item">
             <span class="spec-key">構成</span>
@@ -255,37 +237,18 @@
 
   <section class="section" id="mission-vision">
     <div class="sec-head">
-      <div class="sec-eyebrow"><span class="sl-num">02</span> MISSION &amp; VISION</div>
-      <h2 class="sec-title">ミッションとビジョン</h2>
+      <div class="sec-eyebrow"><span class="sl-num">02</span> HOW I BUILD</div>
+      <h2 class="sec-title">小さく作って、実際の操作で確かめる</h2>
     </div>
     <div class="mv-grid">
       <div class="mv-card">
-        <div class="mv-label">Mission</div>
-        <div class="mv-quote">「業務を"OS"として設計しなおし、AIで再構築する。」</div>
+        <div class="mv-label">出発点</div>
+        <div class="mv-quote">何度も繰り返す確認や転記を見つけたら、まず仕事の流れを整理します。</div>
       </div>
       <div class="mv-card">
-        <div class="mv-label">Vision</div>
-        <div class="mv-quote">「ひとりのエンジニアリングが、企業の意思決定速度を10倍にする。」</div>
+        <div class="mv-label">確かめ方</div>
+        <div class="mv-quote">画面だけで終わらせず、APIやデータの流れもつないで操作結果を見ます。</div>
       </div>
-    </div>
-  </section>
-
-  <hr class="divider">
-
-  <section class="section" id="business-info">
-    <div class="sec-head">
-      <div class="sec-eyebrow"><span class="sl-num">03</span> BUSINESS INFO</div>
-      <h2 class="sec-title">事業者情報</h2>
-    </div>
-    <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius-lg);overflow-x:auto">
-      <table class="biz-table">
-        <tr><th>屋号</th><td>RM-Engineering</td></tr>
-        <tr><th>代表者</th><td>本多 基真</td></tr>
-        <tr><th>事業内容</th><td>AI-OS「KRS-OS」の開発・実装、業務AI化支援</td></tr>
-        <tr><th>所在地</th><td>ご請求いただいた場合、遅滞なく開示いたします</td></tr>
-        <tr><th>開業</th><td>2026年8月4日</td></tr>
-        <tr><th>連絡先</th><td>準備中(Coming Soon) — 事業用メールアドレス開設後に公開予定</td></tr>
-      </table>
     </div>
   </section>
 
@@ -314,62 +277,15 @@
     </div>
   </section>
 
-  <hr class="divider">
-
-  <section class="section" id="roadmap">
+  <section class="section" id="more">
     <div class="sec-head">
-      <div class="sec-eyebrow"><span class="sl-num">05</span> ROADMAP</div>
-      <h2 class="sec-title">事業ロードマップ</h2>
+      <div class="sec-eyebrow"><span class="sl-num">05</span> MORE</div>
+      <h2 class="sec-title">制作物と記録を読む</h2>
     </div>
-    <div class="roadmap-wrap">
-      <div class="rm-item">
-        <div class="rm-num">01</div>
-        <div>
-          <div class="rm-title">KRS-OS v0.1.0 — 汎用マルチエージェント基盤完成</div>
-          <div class="rm-desc">7-layer architecture · マルチLLMルーティング · スキルライブラリ</div>
-        </div>
-        <span class="rm-status s-done">✓ DONE</span>
-      </div>
-      <div class="rm-item">
-        <div class="rm-num">02</div>
-        <div>
-          <div class="rm-title">RM-Engineering 屋号にて開業、事業サイト公開</div>
-          <div class="rm-desc">AI-OS導入パッケージ / 月次リテナー / カスタム開発の3プラン提供開始</div>
-        </div>
-        <span class="rm-status s-done">✓ DONE</span>
-      </div>
-      <div class="rm-item">
-        <div class="rm-num">03</div>
-        <div>
-          <div class="rm-title">初期顧客獲得フェーズ</div>
-          <div class="rm-desc">Fixed-scope パッケージでの導入実績づくり</div>
-        </div>
-        <span class="rm-status s-wip">IN PROGRESS</span>
-      </div>
-      <div class="rm-item">
-        <div class="rm-num">04</div>
-        <div>
-          <div class="rm-title">Case Studies 公開</div>
-          <div class="rm-desc">実案件の導入事例(匿名化)をBlogで公開</div>
-        </div>
-        <span class="rm-status s-next">NEXT</span>
-      </div>
-      <div class="rm-item">
-        <div class="rm-num">05</div>
-        <div>
-          <div class="rm-title">法人化 — RM-Engineering株式会社(予定)</div>
-          <div class="rm-desc">事業規模拡大に合わせて法人化を検討</div>
-        </div>
-        <span class="rm-status s-plan">PLANNED</span>
-      </div>
-      <div class="rm-item">
-        <div class="rm-num">06</div>
-        <div>
-          <div class="rm-title">初回採用 / チーム化</div>
-          <div class="rm-desc">案件数の増加に応じて体制を拡大</div>
-        </div>
-        <span class="rm-status s-plan">PLANNED</span>
-      </div>
+    <div class="about-links">
+      <a class="btn btn-ghost" href="/apps.html">つくったもの →</a>
+      <a class="btn btn-ghost" href="/blog.html">技術記事 →</a>
+      <a class="btn btn-ghost" href="/career/">経歴の詳細 →</a>
     </div>
   </section>
 

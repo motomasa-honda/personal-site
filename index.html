@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Motomasa Honda の個人技術サイト。飲食店の毎日を整える「だんどり」と、業務ツール・AI活用の実装記録を公開しています。">
-<meta name="theme-color" content="#faf6ed">
+<meta name="theme-color" content="#faf7f0">
 <meta name="author" content="motomasa-honda">
 
 <!-- Canonical -->
@@ -12,7 +12,7 @@
 
 <!-- OGP -->
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="RM-Engineering">
+<meta property="og:site_name" content="Motomasa Honda">
 <meta property="og:title" content="Motomasa Honda — つくって、現場で確かめる。">
 <meta property="og:description" content="飲食店の毎日を整える「だんどり」と、業務ツール・AI活用の実装記録。">
 <meta property="og:url" content="https://personal-site-eight-delta.vercel.app/">
@@ -41,7 +41,7 @@
     {
       "@type": "WebSite",
       "url": "https://personal-site-eight-delta.vercel.app/",
-      "name": "motomasa.works",
+      "name": "Motomasa Honda — 個人技術サイト",
       "inLanguage": "ja"
     }
   ]
@@ -49,10 +49,6 @@
 </script>
 
 <title>Motomasa Honda — つくって、現場で確かめる。</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
-
 <link rel="stylesheet" href="/css/home.css">
 <style media="not all">
 :root{ --sans: 'Inter', 'Noto Sans JP', sans-serif; }
@@ -223,6 +219,8 @@
 </head>
 <body class="home-v2">
 
+<!-- The previous corporate homepage is retained as inert reference markup; it is not rendered. -->
+<template id="archived-home-v1">
 <div id="boot">
   <div style="font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:2px;margin-bottom:24px">
     RM-ENGINEERING — AI-OS IMPLEMENTATION STUDIO
@@ -656,12 +654,15 @@ result = invoice_agent.<span class="t-fn">run</span>(
   <div class="foot-copy">© 2026 RM-Engineering</div>
 </footer>
 
+</template>
+
 <a class="skip-link" href="#new-main">本文へ移動</a>
 
 <nav class="site-nav" aria-label="Primary">
   <a class="wordmark" href="/" aria-label="Motomasa Honda home">motomasa<span>.</span>works</a>
   <ul class="nav-links">
-    <li><a href="https://dandori-lp.vercel.app/" target="_blank" rel="noopener">だんどり</a></li>
+    <li><a href="https://dandori-lp.vercel.app/demo/#/dashboard">デモを操作</a></li>
+    <li><a href="/apps.html">つくったもの</a></li>
     <li><a href="/blog.html">技術記事</a></li>
     <li><a href="/about.html">プロフィール</a></li>
     <li><a href="/contact.html" class="nav-cta">相談する</a></li>
@@ -672,25 +673,25 @@ result = invoice_agent.<span class="t-fn">run</span>(
 <main id="new-main">
   <section class="hero" aria-labelledby="hero-title">
     <div>
-      <p class="hero-kicker">RM-Engineering / Motomasa Honda</p>
-      <h1 id="hero-title">現場の毎日を、<span>ちゃんと回る形</span>にする。</h1>
-      <p class="hero-copy">飲食店の発注・シフト・日々の判断をひとつにつなぐ「だんどり」をつくっています。手を動かして、使われるところまで確かめる個人の技術サイトです。</p>
+      <p class="hero-kicker">エンジニア / 個人で開発</p>
+      <h1 id="hero-title">本多 基真<br><span>Motomasa Honda</span></h1>
+      <p class="hero-copy">元飲食店従業員です。「これがこうだったらいいな」「ここに時間をかけるのは、もったいないな」と感じたことを、技術で使える形にしています。</p>
       <div class="hero-actions">
-        <a class="button-primary" href="https://dandori-lp.vercel.app/" target="_blank" rel="noopener">だんどりを見る ↗</a>
-        <a class="button-secondary" href="/contact.html">まず相談する</a>
+        <a class="button-primary" href="https://dandori-lp.vercel.app/demo/#/dashboard">だんどりのデモを操作 ↗</a>
+        <a class="button-secondary" href="/blog.html">技術記事を読む</a>
       </div>
     </div>
     <aside class="hero-note" aria-label="このサイトについて">
-      <p class="project-label">NOW BUILDING</p>
-      <p><strong>だんどり</strong><br>飲食店の「今日どう回す？」を、スタッフ・在庫・発注の情報から考えやすくする業務プラットフォームです。</p>
-      <p>機能を増やすだけでなく、現場で迷わず使えるかを一緒に見ています。</p>
+      <p class="project-label">いま作っているもの</p>
+      <p><strong>だんどり</strong><br>飲食店のシフト・仕入れ・在庫の情報をつなぎ、日々の判断をしやすくする業務ツールです。</p>
+      <p>画面を作って終わりにせず、データの流れや実際の操作まで確かめながら開発しています。</p>
     </aside>
   </section>
 
   <section class="page-section split-section" aria-labelledby="dandori-title">
     <div>
       <p class="section-kicker">FEATURED WORK</p>
-      <h2 class="section-heading" id="dandori-title">飲食店の「段取り」を、ひとつの画面へ。</h2>
+      <h2 class="section-heading" id="dandori-title">飲食店のシフト・発注をまとめる「だんどり」</h2>
     </div>
     <div class="dandori-sheet">
       <div class="dandori-mark"><span class="dandori-dot" aria-hidden="true"></span>だんどり</div>
@@ -700,20 +701,29 @@ result = invoice_agent.<span class="t-fn">run</span>(
         <li><span>02</span>発注や在庫の判断を、記録と一緒に残す仕組み</li>
         <li><span>03</span>シフトと現場の予定を、運用に合わせて管理する機能</li>
       </ul>
-      <a class="button-primary" href="https://dandori-lp.vercel.app/" target="_blank" rel="noopener">プロダクトの詳細へ ↗</a>
+      <p>React・TypeScriptの管理画面とFastAPIのAPIを実装し、ダッシュボード、権限を意識した管理、操作デモまで組み立てています。実装途中の機能はデモ上でサンプルと明記し、実店舗の運用とは分けています。</p>
+      <p><strong>元飲食店従業員として、確認や転記に時間を取られる場面を技術で変えたかった。</strong>「これがこうだったらいいな」「ここに時間をかけるのは、もったいないな」という実感が、だんどりを作り始めた理由です。</p>
+      <div class="hero-actions">
+        <a class="button-primary" href="https://dandori-lp.vercel.app/demo/#/dashboard">デモを操作する ↗</a>
+        <a class="button-secondary" href="https://dandori-lp.vercel.app/#screens">画面イメージを見る</a>
+        <a class="button-secondary" href="https://dandori-lp.vercel.app/">製品の詳細へ</a>
+      </div>
     </div>
   </section>
 
-  <section class="page-section split-section reverse" aria-labelledby="why-dandori-title">
-    <div class="hero-note">
-      <p class="project-label">WHY I BUILT IT</p>
-      <p><strong>元・飲食店従業員として。</strong><br>忙しい時間帯ほど、確認や転記、連絡のために手が止まる場面を何度も見てきました。</p>
-      <p>「これがこうだったらいいな」「ここに時間をかけるのは、もったいないな」。その小さな違和感を、現場が少しでも楽になる仕組みに変えたくて、だんどりを作っています。</p>
-    </div>
-    <div>
-      <p class="section-kicker">THE STARTING POINT</p>
-      <h2 class="section-heading" id="why-dandori-title">現場の時間を、作業ではなくお客さまのために使えるように。</h2>
-      <p class="section-copy">技術のための技術ではなく、飲食店で働く人の負担を減らし、判断しやすくするための技術です。だからこそ、だんどりは現場で使われることを基準に育てていきます。</p>
+  <section class="archive" aria-labelledby="archive-title">
+    <div class="page-section archive-grid">
+      <div>
+        <p class="section-kicker">NOTES FROM THE WORKBENCH</p>
+        <h2 class="section-heading" id="archive-title">技術記事 — 作る途中で考えたこと。</h2>
+        <p class="section-copy">実装で詰まったこと、設計を変えた理由、試して分かったこと。公開済みの記事とURLはそのまま残し、書いた記録を最近のものから紹介します。</p>
+      </div>
+      <div class="archive-links">
+        <a class="archive-link" href="/post.html?slug=2026-07-19-where-should-the-actor-identity-live"><span class="archive-meta">2026.07.19</span><strong>「誰が操作したか」をどこに持たせるかで、設計の向きを間違えかけた話</strong></a>
+        <a class="archive-link" href="/post.html?slug=2026-07-19-curl-worked-but-docker-pull-timed-out"><span class="archive-meta">2026.07.19</span><strong>curlは繋がるのに、Dockerのpullだけがタイムアウトした話</strong></a>
+        <a class="archive-link" href="/post.html?slug=2026-07-10-two-wrong-guesses-before-the-kernel-told-me"><span class="archive-meta">2026.07.10</span><strong>接続はできるのに応答が空だった — カーネルの状態を見て気づいた話</strong></a>
+        <a class="archive-link" href="/blog.html"><span class="archive-meta">記事一覧</span><strong>すべての技術記事を見る →</strong></a>
+      </div>
     </div>
   </section>
 
@@ -727,22 +737,6 @@ result = invoice_agent.<span class="t-fn">run</span>(
       <p class="section-kicker">OTHER WORK</p>
       <h2 class="section-heading" id="work-title">つくれる範囲は、ひとつの業種に閉じません。</h2>
       <p class="section-copy">プロダクトづくりを中心に、業務の整理、データの見える化、AIを含む運用の自動化まで扱います。KRS-Nexus は主役ではなく、そのために積み上げた実装のひとつです。</p>
-    </div>
-  </section>
-
-  <section class="archive" aria-labelledby="archive-title">
-    <div class="page-section archive-grid">
-      <div>
-        <p class="section-kicker">NOTES FROM THE WORKBENCH</p>
-        <h2 class="section-heading" id="archive-title">技術記事は、仕事の途中で残した記録です。</h2>
-        <p class="section-copy">失敗した理由、設計を変えた理由、実装で詰まった点まで。これまで書き溜めた記事はそのまま残し、これからも更新していきます。</p>
-      </div>
-      <div class="archive-links">
-        <a class="archive-link" href="/post.html?slug=2026-07-10-two-wrong-guesses-before-the-kernel-told-me"><span class="archive-meta">2026.07.10</span><strong>接続はできるのに応答が空だった — カーネルの状態を見て気づいた話</strong></a>
-        <a class="archive-link" href="/post.html?slug=2026-07-09-more-workers-no-faster"><span class="archive-meta">2026.07.09</span><strong>Workerを増やしても速くならなかった話</strong></a>
-        <a class="archive-link" href="/post.html?slug=2026-07-03-growing-a-dependency-free-command-center"><span class="archive-meta">2026.07.03</span><strong>依存フリーで運用コマンドセンターを育てる</strong></a>
-        <a class="archive-link" href="/blog.html"><span class="archive-meta">ARCHIVE</span><strong>すべての技術記事を見る →</strong></a>
-      </div>
     </div>
   </section>
 
@@ -763,34 +757,6 @@ result = invoice_agent.<span class="t-fn">run</span>(
   </div>
 </footer>
 
-<script src="/js/main.js" defer></script>
-<script>
-const BOOT_LINES = [
-  { label: 'system',      msg: 'RM-Engineering AI-OS Studio', cls: 'ok', delay: 0   },
-  { label: 'router',      msg: 'multi-LLM routing — ready',    cls: 'ok', delay: 180 },
-  { label: 'skill_lib',   msg: '207 skills loaded',            cls: 'ok', delay: 360 },
-  { label: 'audit_log',   msg: 'enabled — all runs traceable', cls: 'ok', delay: 540 },
-  { label: 'capacity',    msg: 'accepting new engagements',    cls: 'ok', delay: 720 },
-  { label: 'system',      msg: 'all systems nominal',          cls: 'ok', delay: 900 },
-];
-const container = document.getElementById('boot-lines');
-BOOT_LINES.forEach(({ label, msg, cls, delay }) => {
-  setTimeout(() => {
-    const div = document.createElement('div');
-    div.className = `boot-line ${cls}`;
-    div.innerHTML = `<span class="bl-label">[${label.padEnd(12,' ')}]</span><span class="bl-status">${msg}</span>`;
-    container.appendChild(div);
-    requestAnimationFrame(() => {
-      div.style.transition = 'width .35s ease';
-      div.style.width = '100%';
-    });
-  }, delay);
-});
-setTimeout(() => {
-  const boot = document.getElementById('boot');
-  boot.classList.add('hide');
-  setTimeout(() => boot.style.display = 'none', 600);
-}, 1500);
-</script>
+<script src="/js/main.js?v=mobile-nav-20261016" defer></script>
 </body>
 </html>

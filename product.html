@@ -3,15 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="KRS-OS — 7層アーキテクチャで組む、企業向けマルチエージェントAI基盤。マルチLLMオーケストレーション、207+スキルライブラリ、オンプレ/VPC対応。">
+<meta name="description" content="本多基真が個人開発してきたKRS-OSの設計と実験記録。現在の代表作は飲食店向け業務ツール『だんどり』です。">
 <meta name="theme-color" content="#faf6ed">
-<title>Product: KRS-OS — RM-Engineering</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<title>KRS-OS — 技術記録 / Motomasa Honda</title>
 <link rel="stylesheet" href="/css/site.css">
 <style>
-:root{ --sans: 'Inter', 'Noto Sans JP', sans-serif; }
 .concept-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-bottom:8px}
 .concept-block{background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px}
 .concept-block p{font-size:13.5px;color:var(--text2);line-height:1.85}
@@ -59,8 +55,8 @@
 <main id="main">
   <header class="page-hero">
     <div class="page-eyebrow">// PRODUCT</div>
-    <h1 class="page-title"><span class="g">KRS-OS</span></h1>
-    <p class="page-desc">7層アーキテクチャで組む、企業向けマルチエージェントAI基盤。単発のAIツールではなく、業務プロセスを層で構造化する思想で設計されています。</p>
+    <h1 class="page-title">KRS-OS — 技術記録</h1>
+    <p class="page-desc">以前から続けている個人開発の記録です。現在の代表作は「だんどり」で、KRS-OSを同格の主力商品として販売するページではありません。</p>
   </header>
 
   <section class="section" id="concept">
@@ -70,14 +66,18 @@
     </div>
     <div class="concept-grid">
       <div class="concept-block">
-        <p>KRS-OS は単発のAIツールの寄せ集めではありません。Kernel(LLM Router)+ Filesystem(Memory)+
-        Applications(Agents)というOSのアナロジーで、業務プロセス全体を層として構造化します。</p>
+        <p>複数のモデルや処理をどう組み合わせるかを試す中で、Kernel（ルーティング）・Memory・Applications（Agents）という層で整理してきました。これは私自身の設計メモです。</p>
       </div>
       <div class="concept-block">
-        <p>だから新しい業務要件が来ても、既存の層(ルーティング・記憶・監査)を再利用しながら、
-        その業務専用のエージェントだけを上位層に追加すればよい設計になっています。</p>
+        <p>何を共通化し、何を用途ごとに分けるか。実装と運用で見えたことを記事に残し、現在のプロダクト開発にも必要な考え方を持ち込んでいます。</p>
       </div>
     </div>
+  </section>
+
+  <section class="section" aria-labelledby="krs-notes-title">
+    <div class="sec-head"><div class="sec-eyebrow"><span class="sl-num">02</span> NOTES</div><h2 class="sec-title" id="krs-notes-title">設計や実験の記録</h2></div>
+    <p style="max-width:64ch;color:var(--text2);line-height:1.8">KRS関連の実装や試行錯誤は技術記事に残しています。機能や運用状況は記事の日付と公開コードをご確認ください。</p>
+    <div class="hero-cta" style="margin-top:1.5rem;display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-primary" href="/blog.html">技術記事を読む →</a><a class="btn btn-ghost" href="/apps.html">他の制作物を見る</a></div>
   </section>
 
   <hr class="divider">
@@ -85,19 +85,21 @@
   <section class="section" id="architecture">
     <div class="sec-head">
       <div class="sec-eyebrow"><span class="sl-num">02</span> ARCHITECTURE</div>
-      <h2 class="sec-title">7層アーキテクチャ</h2>
+      <h2 class="sec-title">以前の設計メモ</h2>
     </div>
+    <p style="max-width:64ch;color:var(--text2);line-height:1.8;margin-bottom:1.25rem">以下は個人開発で検討した構成の記録です。現在の稼働状況や、提供・連携を保証する機能一覧ではありません。</p>
     <div class="layer-list">
-      <div class="layer-row"><span class="lr-num">07</span><span class="lr-name">interfaces/</span><span class="lr-desc">Web UI / API / Slack・Teams 連携</span></div>
-      <div class="layer-row"><span class="lr-num">06</span><span class="lr-name">skills/</span><span class="lr-desc">業務スキルライブラリ(207+)、再利用可能な形で蓄積</span></div>
-      <div class="layer-row"><span class="lr-num">05</span><span class="lr-name">runtime/</span><span class="lr-desc">エージェント実行環境、ライフサイクル管理</span></div>
-      <div class="layer-row"><span class="lr-num">04</span><span class="lr-name">tools/</span><span class="lr-desc">Shell / Python / DB / SaaS 連携ツール</span></div>
-      <div class="layer-row"><span class="lr-num">03</span><span class="lr-name">router/</span><span class="lr-desc">タスク種別に応じたLLM自動選択(ローカル/クラウド)</span></div>
-      <div class="layer-row"><span class="lr-num">02</span><span class="lr-name">memory/</span><span class="lr-desc">会話・プロジェクトの永続記憶</span></div>
-      <div class="layer-row"><span class="lr-num">01</span><span class="lr-name">knowledge/</span><span class="lr-desc">スキル・ドメイン知識ベース</span></div>
+      <div class="layer-row"><span class="lr-num">07</span><span class="lr-name">interfaces/</span><span class="lr-desc">画面・APIなど、利用者との接点を分けて考える</span></div>
+      <div class="layer-row"><span class="lr-num">06</span><span class="lr-name">skills/</span><span class="lr-desc">再利用する処理を整理するための設計案</span></div>
+      <div class="layer-row"><span class="lr-num">05</span><span class="lr-name">runtime/</span><span class="lr-desc">処理の実行とライフサイクルを扱う層</span></div>
+      <div class="layer-row"><span class="lr-num">04</span><span class="lr-name">tools/</span><span class="lr-desc">外部処理との接続方法を分離する考え方</span></div>
+      <div class="layer-row"><span class="lr-num">03</span><span class="lr-name">router/</span><span class="lr-desc">処理の振り分けを担う層</span></div>
+      <div class="layer-row"><span class="lr-num">02</span><span class="lr-name">memory/</span><span class="lr-desc">状態や履歴の持ち方を検討する層</span></div>
+      <div class="layer-row"><span class="lr-num">01</span><span class="lr-name">knowledge/</span><span class="lr-desc">参照する知識を扱う層</span></div>
     </div>
   </section>
 
+  <template id="archived-krs-sales-sections">
   <hr class="divider">
 
   <section class="section" id="agents">
@@ -174,10 +176,12 @@
 
   <section class="section">
     <div class="final-cta" style="text-align:center;padding:56px 40px;background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius-lg)">
-      <h2 style="font-family:var(--mono);font-size:22px;color:var(--text-bright);margin-bottom:14px">KRS-OS 資料請求 / デモ予約</h2>
-      <a class="btn btn-primary" href="/contact.html">お問い合わせ →</a>
+      <h2 style="font-family:var(--mono);font-size:22px;color:var(--text-bright);margin-bottom:14px">KRS-OSについて書いた記事</h2>
+      <p style="color:var(--text2);margin-bottom:18px">設計や実験の記録を技術記事にまとめています。</p>
+      <a class="btn btn-primary" href="/blog.html">技術記事を読む →</a>
     </div>
   </section>
+  </template>
 </main>
 
 <footer>
@@ -188,7 +192,7 @@
     <a href="/about.html">About</a>
     <a href="/contact.html">Contact</a>
     <a href="/llms.txt">For AI Agents (llms.txt)</a>
-    <a href="https://dandori-lp.vercel.app/" target="_blank" rel="noopener">だんどり（飲食店向けSaaS）↗</a>
+    <a href="https://dandori-lp.vercel.app/" target="_blank" rel="noopener">飲食店向け業務ツール「だんどり」↗</a>
   </div>
   <div class="foot-copy">© 2026 RM-Engineering</div>
 </footer>

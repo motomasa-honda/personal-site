@@ -1,0 +1,33 @@
+/* Hallmark · design-system: shared public components · states: default · hover · focus · active · disabled */
+.brand-primary,
+.brand-secondary {
+  display: inline-flex;
+  min-height: var(--brand-control-height);
+  align-items: center;
+  justify-content: center;
+  gap: var(--brand-space-2);
+  padding: var(--brand-space-2) var(--brand-space-6);
+  border: 1px solid var(--brand-primary);
+  border-radius: var(--brand-radius-pill);
+  font: 700 0.9rem/1.25 var(--brand-font-body);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--brand-duration-fast) var(--brand-ease-out),
+    background-color var(--brand-duration-fast) var(--brand-ease-out),
+    border-color var(--brand-duration-fast) var(--brand-ease-out),
+    transform var(--brand-duration-fast) var(--brand-ease-out);
+}
+
+.brand-primary { background: var(--brand-primary); color: var(--brand-on-primary); }
+.brand-secondary { background: transparent; color: var(--brand-ink); }
+.brand-primary:hover { background: var(--brand-accent-strong); border-color: var(--brand-accent-strong); color: var(--brand-on-primary); }
+.brand-secondary:hover { border-color: var(--brand-accent-strong); color: var(--brand-accent-strong); }
+.brand-primary:active,
+.brand-secondary:active { transform: translateY(1px); }
+.brand-primary:focus-visible,
+.brand-secondary:focus-visible,
+.brand-link:focus-visible { outline: 3px solid var(--brand-focus); outline-offset: 3px; }
+.brand-primary[aria-disabled="true"],
+.brand-secondary[aria-disabled="true"] { cursor: not-allowed; opacity: 0.55; }
+.brand-link { color: var(--brand-accent-strong); text-underline-offset: 0.2em; }
+.brand-link:hover { color: var(--brand-ink); }
