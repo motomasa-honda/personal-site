@@ -43,6 +43,9 @@
 
   document.querySelectorAll('.foot-logo').forEach((el) => { el.textContent = '本多 基真 / motomasa.works'; });
   document.querySelectorAll('.foot-copy').forEach((el) => { el.textContent = '© 2026 本多 基真'; });
+  document.querySelectorAll('a[href^="https://dandori-lp.vercel.app/"]').forEach((link) => {
+    if (link.textContent.includes('SaaS')) link.textContent = '飲食店向け業務ツール「だんどり」↗';
+  });
   document.querySelectorAll('.nav-links a').forEach(a => {
     const href = a.getAttribute('href');
     if (!href) return;
